@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Animations */
+@keyframes logo-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes headline-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subheadline-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes workflow-step {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation Classes */
+.animate-logo-reveal {
+  animation: logo-reveal 1s ease-out forwards;
+}
+
+.animate-headline-reveal {
+  animation: headline-reveal 1s ease-out forwards;
+}
+
+.animate-subheadline-reveal {
+  animation: subheadline-reveal 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.animate-workflow-step {
+  animation: workflow-step 0.7s ease-out forwards;
+}
+
+/* Animation Delays */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #147dc8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Glow Effects */
+.glow-brand {
+  box-shadow: 0 0 20px rgba(20, 125, 200, 0.5);
+}
+
+.glow-brand-lg {
+  box-shadow: 0 0 40px rgba(20, 125, 200, 0.8);
+}
+
+/* Hover Effects */
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(20, 125, 200, 0.6);
+}
+
+/* Background Patterns */
+.bg-pattern {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(20, 125, 200, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
+}
+
+/* Text Gradients */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #147dc8 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom Transitions */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Typography Utilities */
+.font-display {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.font-body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.font-light {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+.font-bold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+/* Responsive Design Utilities */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+/* Loading States */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(20, 125, 200, 0.1), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
