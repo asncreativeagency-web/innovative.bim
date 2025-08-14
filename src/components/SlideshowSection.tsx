@@ -10,35 +10,99 @@ const SlideshowSection: React.FC = () => {
   const slides = [
     {
       id: 1,
-      title: 'BIM Excellence',
-      subtitle: 'Advanced 3D Modeling & Coordination',
-      description: 'Precision engineering meets architectural innovation with our cutting-edge BIM solutions.',
-      image: '/slide-1.jpg',
+      title: 'BIM 3D Model Excellence',
+      subtitle: 'Advanced Architectural Visualization',
+      description: 'Comprehensive 3D BIM models showcasing architectural precision and design innovation.',
+      image: '/Slideshow Photos/01-BIM Mdel 3D View.jpg',
       category: '3D Modeling'
     },
     {
       id: 2,
-      title: 'Structural Innovation',
-      subtitle: 'Cutting-Edge Engineering Solutions',
-      description: 'Revolutionary structural analysis and design optimization for complex projects.',
-      image: '/slide-2.jpg',
-      category: 'Engineering'
+      title: 'Structural BIM Innovation',
+      subtitle: 'Engineering Excellence in 3D',
+      description: 'Detailed structural BIM models demonstrating advanced engineering solutions and coordination.',
+      image: '/Slideshow Photos/02-BIM Mdel 3D View.jpg',
+      category: 'Structural Design'
     },
     {
       id: 3,
-      title: 'Digital Transformation',
-      subtitle: 'Revolutionizing Construction Industry',
-      description: 'AI-powered workflows that streamline project delivery and enhance collaboration.',
-      image: '/slide-3.jpg',
-      category: 'Digital Solutions'
+      title: 'Comprehensive BIM Coordination',
+      subtitle: 'Multi-Disciplinary Integration',
+      description: 'Integrated BIM models showing seamless coordination between architectural, structural, and MEP systems.',
+      image: '/Slideshow Photos/03-BIM Mdel 3D View.jpg',
+      category: 'BIM Coordination'
     },
     {
       id: 4,
-      title: 'Smart Infrastructure',
-      subtitle: 'Future-Ready Building Systems',
-      description: 'Next-generation infrastructure design with sustainability and efficiency at its core.',
-      image: '/slide-4.jpg',
-      category: 'Infrastructure'
+      title: 'Detailed BIM Visualization',
+      subtitle: 'High-Resolution 3D Models',
+      description: 'High-quality BIM visualizations with detailed geometry and realistic material representation.',
+      image: '/Slideshow Photos/04-BIM Mdel 3D View.jpg',
+      category: 'Visualization'
+    },
+    {
+      id: 5,
+      title: '3D Plan View Mastery',
+      subtitle: 'Comprehensive Floor Planning',
+      description: 'Advanced 3D plan views demonstrating spatial relationships and functional layouts.',
+      image: '/Slideshow Photos/05-3D Plan View.jpg',
+      category: 'Planning'
+    },
+    {
+      id: 6,
+      title: 'Detailed Plan Analysis',
+      subtitle: 'Precision in Every Detail',
+      description: 'Detailed 3D plan views with comprehensive analysis and optimization capabilities.',
+      image: '/Slideshow Photos/06-3D Plan View.jpg',
+      category: 'Analysis'
+    },
+    {
+      id: 7,
+      title: 'Kitchen Design Innovation',
+      subtitle: 'Functional Space Optimization',
+      description: 'Specialized 3D kitchen views showcasing ergonomic design and efficient space utilization.',
+      image: '/Slideshow Photos/07-3D Kitchen View.jpg',
+      category: 'Interior Design'
+    },
+    {
+      id: 8,
+      title: 'Technical Drawing Excellence',
+      subtitle: 'Professional Documentation',
+      description: 'High-quality technical drawings and plans with precise measurements and specifications.',
+      image: '/Slideshow Photos/08-Sheet view-plan.jpg',
+      category: 'Documentation'
+    },
+    {
+      id: 9,
+      title: 'Section View Precision',
+      subtitle: 'Detailed Cross-Sections',
+      description: 'Comprehensive section views revealing internal structure and construction details.',
+      image: '/Slideshow Photos/09-Sheet view-Section.png',
+      category: 'Technical Drawing'
+    },
+    {
+      id: 10,
+      title: 'Section Analysis',
+      subtitle: 'Structural Understanding',
+      description: 'Detailed section views providing insights into building construction and material assembly.',
+      image: '/Slideshow Photos/10-Sheet view-Section.jpg',
+      category: 'Analysis'
+    },
+    {
+      id: 11,
+      title: 'Elevation Mastery',
+      subtitle: 'Architectural Facades',
+      description: 'Professional elevation drawings showcasing building exteriors and architectural details.',
+      image: '/Slideshow Photos/11-Sheet view-Elevataion.jpg',
+      category: 'Architecture'
+    },
+    {
+      id: 12,
+      title: 'Elevation Excellence',
+      subtitle: 'Design Detail Precision',
+      description: 'Comprehensive elevation views with detailed architectural elements and material specifications.',
+      image: '/Slideshow Photos/12-Sheet view-elevation.jpg',
+      category: 'Design'
     }
   ]
 
