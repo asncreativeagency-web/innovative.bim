@@ -273,31 +273,6 @@ const SlideshowSection: React.FC = () => {
             />
           </div>
 
-          {/* Thumbnail Navigation */}
-          <div className="flex justify-center mt-6 space-x-4">
-            {slides.map((slide, index) => (
-              <button
-                key={slide.id}
-                onClick={() => goToSlide(index)}
-                className={`relative overflow-hidden rounded-lg transition-all duration-300 ${
-                  index === currentSlide
-                    ? 'ring-2 ring-blue-400 scale-110'
-                    : 'hover:scale-105 opacity-70 hover:opacity-100'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-20 h-12 object-cover"
-                />
-                {index === currentSlide && (
-                  <div className="absolute inset-0 bg-blue-500/20" />
-                )}
-              </button>
-            ))}
-          </div>
-
           {/* CTA Button */}
           <div className="text-center mt-8">
             <button 
