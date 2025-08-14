@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 interface PricingPlan {
   id: string
@@ -14,14 +13,6 @@ interface PricingPlan {
 
 const PricingSection: React.FC = () => {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly')
-
-  // Scroll-triggered animations
-  const headerAnimation = useScrollAnimation({ 
-    animationType: 'slideUp', 
-    delay: 100, 
-    duration: 800 
-  })
-  const pricingPlansAnimation = useStaggeredAnimation(3, 200)
 
   const pricingPlans: PricingPlan[] = [
     {
@@ -82,7 +73,7 @@ const PricingSection: React.FC = () => {
   const savings = billingPeriod === 'yearly' ? 'Save 17%' : ''
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 interface BlogPost {
   id: string
@@ -18,19 +17,6 @@ interface BlogPost {
 
 const BlogSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
-
-  // Scroll-triggered animations
-  const headerAnimation = useScrollAnimation({ 
-    animationType: 'slideUp', 
-    delay: 100, 
-    duration: 800 
-  })
-  const categoriesAnimation = useScrollAnimation({ 
-    animationType: 'fadeIn', 
-    delay: 200, 
-    duration: 800 
-  })
-  const blogPostsAnimation = useStaggeredAnimation(6, 150)
 
   const blogPosts: BlogPost[] = [
     {
@@ -129,7 +115,7 @@ const BlogSection: React.FC = () => {
   }
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -142,11 +128,7 @@ const BlogSection: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Section Header */}
-        <div 
-          ref={headerAnimation.elementRef as React.RefObject<HTMLDivElement>}
-          className="text-center mb-16"
-          style={headerAnimation.getAnimationStyle()}
-        >
+        <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Industry Insights
@@ -160,11 +142,7 @@ const BlogSection: React.FC = () => {
         </div>
 
         {/* Category Filter */}
-        <div 
-          ref={categoriesAnimation.elementRef as React.RefObject<HTMLDivElement>}
-          className="flex justify-center mb-12"
-          style={categoriesAnimation.getAnimationStyle()}
-        >
+        <div className="flex justify-center mb-12">
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-2 flex flex-wrap justify-center">
             {categories.map((category) => (
               <button
@@ -263,10 +241,11 @@ const BlogSection: React.FC = () => {
           {filteredPosts.filter(post => !post.featured).map((post, index) => (
             <div
               key={post.id}
-              ref={(el) => (blogPostsAnimation.elementRefs.current[index] = el)}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/30 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20"
-              style={blogPostsAnimation.getStaggeredStyle(index)}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
+              <div
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2"
+              >
               {/* Post Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -342,8 +321,9 @@ const BlogSection: React.FC = () => {
                 </button>
               </div>
 
-              {/* Hover Glow */}
+                            {/* Hover Glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
             </div>
           ))}
         </div>

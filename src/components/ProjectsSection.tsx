@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { useParallax } from '../hooks/use-parallax'
-import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 interface Project {
   id: string
@@ -17,19 +15,6 @@ interface Project {
 const ProjectsSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [activeCategory, setActiveCategory] = useState('All')
-
-  // Parallax effects for different elements
-  const backgroundParallax = useParallax({ speed: 0.3, direction: 'up' })
-  const headerParallax = useParallax({ speed: 0.5, direction: 'up' })
-  const projectsParallax = useParallax({ speed: 0.4, direction: 'up' })
-
-  // Scroll-triggered animations
-  const headerAnimation = useScrollAnimation({ 
-    animationType: 'slideUp', 
-    delay: 100, 
-    duration: 800 
-  })
-  const projectsAnimation = useStaggeredAnimation(6, 150)
 
   const projects: Project[] = [
     {
@@ -108,43 +93,26 @@ const ProjectsSection: React.FC = () => {
   }
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Background Pattern */}
-      <div 
-        ref={backgroundParallax.elementRef as React.RefObject<HTMLDivElement>}
-        className="absolute inset-0 opacity-10"
-        style={backgroundParallax.getTransformStyle()}
-      >
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }} />
       </div>
 
-      {/* Brand color overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10" />
-
-      {/* Navigation Spacer */}
-      <div className="h-20"></div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Section Header */}
-        <div 
-          ref={headerAnimation.elementRef as React.RefObject<HTMLDivElement>}
-          className="text-center mb-16"
-          style={{
-            ...headerAnimation.getAnimationStyle(),
-            ...headerParallax.getTransformStyle()
-          }}
-        >
+        <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-            Our Work
+            Our Portfolio
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Featured <span className="text-blue-400">Projects</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Discover our portfolio of successful BIM projects across various sectors and scales
+            Discover our innovative BIM solutions that have transformed construction projects worldwide
           </p>
         </div>
 
@@ -168,17 +136,11 @@ const ProjectsSection: React.FC = () => {
         </div>
 
         {/* Projects Grid */}
-        <div 
-          ref={projectsParallax.elementRef as React.RefObject<HTMLDivElement>}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          style={projectsParallax.getTransformStyle()}
-        >
-          {filteredProjects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              ref={(el) => (projectsAnimation.elementRefs.current[index] = el)}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20"
-              style={projectsAnimation.getStaggeredStyle(index)}
+              className="group cursor-pointer transform hover:-translate-y-2 transition-all duration-500"
               onClick={() => openProject(project)}
             >
               {/* Project Card */}
@@ -250,7 +212,7 @@ const ProjectsSection: React.FC = () => {
           onClick={() => setSelectedProject(null)}
         >
           <div 
-            className="bg-white rounded-3xl max-w-4xl w-full p-8"
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}

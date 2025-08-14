@@ -2,39 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Reset for Scrollbars */
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-/* Remove any custom scrollbar styles */
-::-webkit-scrollbar {
-  width: auto;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #6b7280;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
-}
-
 /* Custom Animations */
 @keyframes logo-reveal {
   0% {
@@ -117,14 +84,27 @@ body {
   animation-delay: 2s;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #147dc8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-/* Ensure proper scrollbar behavior */
-* {
-  box-sizing: border-box;
 }
 
 /* Custom Glow Effects */

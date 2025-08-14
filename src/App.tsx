@@ -54,64 +54,64 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
       <Navigation activeSection={activeSection} onNavigate={scrollToSection} />
       <SmoothCursor />
       
       <main>
-        <section id="home" className="py-20">
+        <section id="home" className="min-h-screen">
           <HeroSection />
         </section>
         
-        <section id="slideshow" className="py-20">
+        <section id="slideshow" className="min-h-screen">
           <SlideshowSection />
         </section>
         
-        <section id="services" className="py-20">
+        <section id="services" className="min-h-screen">
           <ServicesSection />
         </section>
         
-        <section id="projects" className="py-20">
+        <section id="projects" className="min-h-screen">
           <ProjectsSection />
         </section>
         
-        <section id="about" className="py-20">
+        <section id="about" className="min-h-screen">
           <AboutSection />
         </section>
         
-        <section id="technologies" className="py-20">
+        <section id="technologies" className="min-h-screen">
           <TechnologiesSection />
         </section>
         
-        <section id="team" className="py-20">
+        <section id="team" className="min-h-screen">
           <TeamSection />
         </section>
         
-        <section id="testimonials" className="py-20">
+        <section id="testimonials" className="min-h-screen">
           <TestimonialsSection />
         </section>
         
-        <section id="case-studies" className="py-20">
+        <section id="case-studies" className="min-h-screen">
           <CaseStudiesSection />
         </section>
         
-        <section id="faq" className="py-20">
+        <section id="faq" className="min-h-screen">
           <FAQSection />
         </section>
         
-        <section id="pricing" className="py-20">
+        <section id="pricing" className="min-h-screen">
           <PricingSection />
         </section>
         
-        <section id="resources" className="py-20">
+        <section id="resources" className="min-h-screen">
           <ResourcesSection />
         </section>
         
-        <section id="blog" className="py-20">
+        <section id="blog" className="min-h-screen">
           <BlogSection />
         </section>
         
-        <section id="contact" className="py-20">
+        <section id="contact" className="min-h-screen">
           <ContactSection />
         </section>
       </main>

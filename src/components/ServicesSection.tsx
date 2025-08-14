@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { useParallax } from '../hooks/use-parallax'
-import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 interface Service {
   id: string
@@ -13,19 +11,6 @@ interface Service {
 
 const ServicesSection: React.FC = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null)
-
-  // Parallax effects for different elements
-  const backgroundParallax = useParallax({ speed: 0.3, direction: 'up' })
-  const headerParallax = useParallax({ speed: 0.5, direction: 'up' })
-  const servicesParallax = useParallax({ speed: 0.4, direction: 'up' })
-
-  // Scroll-triggered animations
-  const headerAnimation = useScrollAnimation({ 
-    animationType: 'slideUp', 
-    delay: 100, 
-    duration: 800 
-  })
-  const servicesAnimation = useStaggeredAnimation(6, 150)
 
   const services: Service[] = [
     {
@@ -90,13 +75,9 @@ const ServicesSection: React.FC = () => {
   }
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
       {/* Background Pattern */}
-      <div 
-        ref={backgroundParallax.elementRef as React.RefObject<HTMLDivElement>}
-        className="absolute inset-0 opacity-10"
-        style={backgroundParallax.getTransformStyle()}
-      >
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }} />
@@ -107,14 +88,7 @@ const ServicesSection: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div 
-          ref={headerAnimation.elementRef as React.RefObject<HTMLDivElement>}
-          className="text-center mb-16"
-          style={{
-            ...headerAnimation.getAnimationStyle(),
-            ...headerParallax.getTransformStyle()
-          }}
-        >
+        <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             What We Offer
@@ -128,72 +102,71 @@ const ServicesSection: React.FC = () => {
         </div>
 
         {/* Services Grid */}
-        <div 
-          ref={servicesParallax.elementRef as React.RefObject<HTMLDivElement>}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          style={servicesParallax.getTransformStyle()}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
-              key={service.id}
-              ref={(el) => (servicesAnimation.elementRefs.current[index] = el)}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20"
-              style={servicesAnimation.getStaggeredStyle(index)}
+              key={service.title}
               onClick={() => setSelectedService(service)}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
+              <div
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20"
+              >
               {/* Glowing border effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {/* Service Icon */}
+              <div className="relative z-10 mb-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-cyan-400/30 transition-all duration-500 text-4xl">
                   {service.icon}
                 </div>
-                
-                {/* Title */}
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">
+              </div>
+
+              {/* Service Title */}
+                              <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
                   {service.title}
                 </h3>
-                
-                {/* Description */}
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                
-                {/* LOD Levels */}
-                {service.lodLevels && (
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {service.lodLevels.map((lod) => (
-                      <span
-                        key={lod}
-                        className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full border border-blue-400/30"
-                      >
-                        {lod}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                
-                {/* Features */}
-                <div className="space-y-2">
-                  {service.features.slice(0, 3).map((feature) => (
-                    <div key={feature} className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-                      <span className="text-gray-400 text-xs">{feature}</span>
-                    </div>
+
+              {/* Service Description */}
+              <p className="relative z-10 text-gray-300 mb-4 leading-relaxed">
+                {service.description}
+              </p>
+
+              {/* Features */}
+              <div className="relative z-10 mb-4">
+                <div className="flex flex-wrap gap-2">
+                  {service.features.slice(0, 2).map((feature) => (
+                    <span
+                      key={feature}
+                      className="px-2 py-1 text-xs font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-lg"
+                    >
+                      {feature}
+                    </span>
                   ))}
                 </div>
               </div>
-              
-              {/* Hover Indicator */}
-              <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
+
+              {/* LOD Levels */}
+              <div className="relative z-10 flex flex-wrap gap-2">
+                {service.lodLevels?.map((level) => (
+                                      <span
+                      key={level}
+                      className="px-3 py-1 text-xs font-medium bg-white/10 text-white border border-white/20 rounded-full group-hover:bg-blue-500/20 group-hover:border-blue-500/30 group-hover:text-blue-300 transition-all duration-300"
+                    >
+                      {level}
+                    </span>
+                ))}
               </div>
+
+                              {/* Hover Indicator */}
+                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+            </div>
             </div>
           ))}
         </div>
@@ -216,7 +189,7 @@ const ServicesSection: React.FC = () => {
           onClick={() => setSelectedService(null)}
         >
           <div 
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-4xl w-full border border-white/10"
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}

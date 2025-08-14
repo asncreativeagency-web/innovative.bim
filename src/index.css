@@ -121,6 +121,24 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #111827;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #147dc8;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+  }
 }
 
 @layer components {
@@ -433,6 +451,7 @@
 /* Parallax Effects */
 .parallax-container {
   position: relative;
+  overflow: hidden;
   will-change: transform;
 }
 
@@ -475,6 +494,7 @@
 /* Parallax Container */
 .parallax-wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 /* Floating Parallax Elements */

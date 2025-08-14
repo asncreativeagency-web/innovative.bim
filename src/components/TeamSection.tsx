@@ -1,5 +1,4 @@
 import React from 'react'
-import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 interface TeamMember {
   id: string
@@ -12,14 +11,6 @@ interface TeamMember {
 }
 
 const TeamSection: React.FC = () => {
-  // Scroll-triggered animations
-  const headerAnimation = useScrollAnimation({ 
-    animationType: 'slideUp', 
-    delay: 100, 
-    duration: 800 
-  })
-  const teamMembersAnimation = useStaggeredAnimation(6, 150)
-
   const teamMembers: TeamMember[] = [
     {
       id: '1',
@@ -78,7 +69,7 @@ const TeamSection: React.FC = () => {
   ]
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
