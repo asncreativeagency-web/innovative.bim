@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { useParallax } from '../hooks/use-parallax'
+import { useScrollAnimation } from '../hooks/use-scroll-animations'
 
 const SlideshowSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -6,6 +8,29 @@ const SlideshowSection: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // Parallax effects for different elements
+  const backgroundParallax = useParallax({ speed: 0.3, direction: 'up' })
+  const headerParallax = useParallax({ speed: 0.5, direction: 'up' })
+  const slideshowParallax = useParallax({ speed: 0.4, direction: 'up' })
+  const ctaParallax = useParallax({ speed: 0.6, direction: 'up' })
+
+  // Scroll-triggered animations
+  const headerAnimation = useScrollAnimation({ 
+    animationType: 'slideUp', 
+    delay: 100, 
+    duration: 800 
+  })
+  const slideshowAnimation = useScrollAnimation({ 
+    animationType: 'fadeIn', 
+    delay: 200, 
+    duration: 800 
+  })
+  const ctaAnimation = useScrollAnimation({ 
+    animationType: 'scaleIn', 
+    delay: 400, 
+    duration: 800 
+  })
 
   const slides = [
     {
@@ -164,9 +189,13 @@ const SlideshowSection: React.FC = () => {
   }, [handleKeyDown])
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-hidden">
+    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div 
+        ref={backgroundParallax.elementRef as React.RefObject<HTMLDivElement>}
+        className="absolute inset-0 opacity-10"
+        style={backgroundParallax.getTransformStyle()}
+      >
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }} />
@@ -177,7 +206,14 @@ const SlideshowSection: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div 
+          ref={headerAnimation.elementRef as React.RefObject<HTMLDivElement>}
+          className="text-center mb-16"
+          style={{
+            ...headerAnimation.getAnimationStyle(),
+            ...headerParallax.getTransformStyle()
+          }}
+        >
           <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Project Showcase
@@ -192,10 +228,14 @@ const SlideshowSection: React.FC = () => {
 
         {/* Slideshow Container */}
         <div 
-          ref={containerRef}
+          ref={slideshowAnimation.elementRef as React.RefObject<HTMLDivElement>}
           className="relative max-w-6xl mx-auto"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          style={{
+            ...slideshowAnimation.getAnimationStyle(),
+            ...slideshowParallax.getTransformStyle()
+          }}
         >
           {/* Main Slide */}
           <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
@@ -274,7 +314,14 @@ const SlideshowSection: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="text-center mt-8">
+          <div 
+            ref={ctaAnimation.elementRef as React.RefObject<HTMLDivElement>}
+            className="text-center mt-8"
+            style={{
+              ...ctaAnimation.getAnimationStyle(),
+              ...ctaParallax.getTransformStyle()
+            }}
+          >
             <button 
               onClick={() => {
                 const projectsSection = document.getElementById('projects');

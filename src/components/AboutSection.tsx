@@ -1,7 +1,29 @@
 import React, { useEffect, useRef } from 'react'
+import { useParallax } from '../hooks/use-parallax'
+import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 const AboutSection: React.FC = () => {
   const workflowRef = useRef<HTMLDivElement>(null)
+
+  // Parallax effects for different elements
+  const backgroundParallax = useParallax({ speed: 0.3, direction: 'up' })
+  const headerParallax = useParallax({ speed: 0.5, direction: 'up' })
+  const contentParallax = useParallax({ speed: 0.4, direction: 'up' })
+  const statsParallax = useParallax({ speed: 0.6, direction: 'up' })
+
+  // Scroll-triggered animations
+  const headerAnimation = useScrollAnimation({ 
+    animationType: 'slideUp', 
+    delay: 100, 
+    duration: 800 
+  })
+  const contentAnimation = useScrollAnimation({ 
+    animationType: 'fadeIn', 
+    delay: 200, 
+    duration: 800 
+  })
+  const workflowAnimation = useStaggeredAnimation(7, 200)
+  const statsAnimation = useStaggeredAnimation(4, 150)
 
   const workflowSteps = [
     { id: 1, title: 'Client Inputs', description: 'Requirements gathering and project scope definition', icon: '📋' },
@@ -41,9 +63,13 @@ const AboutSection: React.FC = () => {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div 
+        ref={backgroundParallax.elementRef as React.RefObject<HTMLDivElement>}
+        className="absolute inset-0 opacity-10"
+        style={backgroundParallax.getTransformStyle()}
+      >
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }} />
@@ -54,7 +80,14 @@ const AboutSection: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div 
+          ref={headerAnimation.elementRef as React.RefObject<HTMLDivElement>}
+          className="text-center mb-20"
+          style={{
+            ...headerAnimation.getAnimationStyle(),
+            ...headerParallax.getTransformStyle()
+          }}
+        >
           <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Who We Are
@@ -68,7 +101,14 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Company Description */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+        <div 
+          ref={contentAnimation.elementRef as React.RefObject<HTMLDivElement>}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20"
+          style={{
+            ...contentAnimation.getAnimationStyle(),
+            ...contentParallax.getTransformStyle()
+          }}
+        >
           <div className="space-y-8">
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
@@ -138,8 +178,9 @@ const AboutSection: React.FC = () => {
               {workflowSteps.map((step, index) => (
                 <div
                   key={step.id}
-                  className={`workflow-step relative group opacity-0 transform translate-y-8 transition-all duration-700 ease-out`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
+                  ref={(el) => (workflowAnimation.elementRefs.current[index] = el)}
+                  className="workflow-step relative group"
+                  style={workflowAnimation.getStaggeredStyle(index)}
                 >
                   {/* Step Circle */}
                   <div className="relative z-10 mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-400 border-4 border-white rounded-full flex items-center justify-center mb-6 group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transform group-hover:scale-110">
@@ -164,6 +205,34 @@ const AboutSection: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="text-center">
+          <h3 className="text-3xl font-bold text-white mb-16">
+            Our <span className="text-blue-400">Achievements</span>
+          </h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                ref={(el) => (statsAnimation.elementRefs.current[index] = el)}
+                className="group"
+                style={statsAnimation.getStaggeredStyle(index)}
+              >
+                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                  {stat.icon}
+                </div>
+                <div className="text-white font-bold text-3xl mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                  {stat.value}
+                </div>
+                <div className="text-blue-300 text-sm group-hover:text-blue-200 transition-colors duration-300">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

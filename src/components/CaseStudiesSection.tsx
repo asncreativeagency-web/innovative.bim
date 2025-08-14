@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 interface CaseStudy {
   id: string
@@ -17,6 +18,14 @@ interface CaseStudy {
 
 const CaseStudiesSection: React.FC = () => {
   const [selectedCase, setSelectedCase] = useState<CaseStudy | null>(null)
+
+  // Scroll-triggered animations
+  const headerAnimation = useScrollAnimation({ 
+    animationType: 'slideUp', 
+    delay: 100, 
+    duration: 800 
+  })
+  const caseStudiesAnimation = useStaggeredAnimation(3, 200)
 
   const caseStudies: CaseStudy[] = [
     {
@@ -103,7 +112,7 @@ const CaseStudiesSection: React.FC = () => {
   ]
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -233,7 +242,7 @@ const CaseStudiesSection: React.FC = () => {
           onClick={() => setSelectedCase(null)}
         >
           <div 
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-white/10"
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-5xl w-full border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-start p-8 border-b border-white/10">

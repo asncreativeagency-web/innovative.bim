@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useScrollAnimation, useStaggeredAnimation } from '../hooks/use-scroll-animations'
 
 interface FAQItem {
   id: string
@@ -9,6 +10,14 @@ interface FAQItem {
 
 const FAQSection: React.FC = () => {
   const [openItems, setOpenItems] = useState<string[]>(['1'])
+
+  // Scroll-triggered animations
+  const headerAnimation = useScrollAnimation({ 
+    animationType: 'slideUp', 
+    delay: 100, 
+    duration: 800 
+  })
+  const faqItemsAnimation = useStaggeredAnimation(8, 100)
 
   const faqItems: FAQItem[] = [
     {
@@ -72,7 +81,7 @@ const FAQSection: React.FC = () => {
   const categories = ['All', 'General', 'Technical', 'Project Management', 'Support', 'Security']
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+    <div className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
