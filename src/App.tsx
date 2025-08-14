@@ -15,13 +15,14 @@ import BlogSection from './components/BlogSection'
 import ContactSection from './components/ContactSection'
 import Navigation from './components/Navigation'
 import { SmoothCursor } from './components/ui/smooth-cursor'
+import TechnologiesSection from './components/TechnologiesSection'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'team', 'testimonials', 'case-studies', 'faq', 'pricing', 'resources', 'blog', 'contact']
+      const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'technologies', 'team', 'testimonials', 'case-studies', 'faq', 'pricing', 'resources', 'blog', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -76,6 +77,10 @@ function App() {
         
         <section id="about" className="min-h-screen">
           <AboutSection />
+        </section>
+        
+        <section id="technologies" className="min-h-screen">
+          <TechnologiesSection />
         </section>
         
         <section id="team" className="min-h-screen">

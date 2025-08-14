@@ -93,40 +93,40 @@ const ProjectsSection: React.FC = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-brand-500/10 text-brand-600 text-sm font-medium rounded-full mb-4">
-            <span className="w-2 h-2 bg-brand-500 rounded-full mr-2"></span>
+          <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Our Portfolio
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Featured <span className="text-brand-500">Projects</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Featured <span className="text-blue-400">Projects</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Discover our innovative BIM solutions that have transformed construction projects worldwide
           </p>
         </div>
 
         {/* Category Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="bg-white border border-gray-200 rounded-2xl p-2 shadow-lg">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-2 shadow-lg">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-3 text-sm font-medium rounded-xl transition-all duration-300 ${
                   activeCategory === category
-                    ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/25'
-                    : 'text-gray-600 hover:text-brand-500 hover:bg-gray-50'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/25'
+                    : 'text-gray-300 hover:text-blue-400 hover:bg-white/10'
                 }`}
               >
                 {category}
@@ -144,7 +144,7 @@ const ProjectsSection: React.FC = () => {
               onClick={() => openProject(project)}
             >
               {/* Project Card */}
-              <div className="relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-brand-500 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-500/20">
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <img
@@ -158,14 +158,14 @@ const ProjectsSection: React.FC = () => {
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-brand-500 text-white text-xs font-medium rounded-full shadow-lg">
+                    <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xs font-medium rounded-full shadow-lg">
                       {project.category}
                     </span>
                   </div>
 
                   {/* View Details Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="bg-white text-brand-500 px-6 py-3 rounded-full font-medium shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="bg-white text-blue-600 px-6 py-3 rounded-full font-medium shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                       View Details
                     </div>
                   </div>
@@ -173,22 +173,22 @@ const ProjectsSection: React.FC = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-500 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
                     {project.description}
                   </p>
                   
                   {/* Project Stats */}
-                  <div className="flex items-center justify-between text-xs text-gray-500">
+                  <div className="flex items-center justify-between text-xs text-gray-400">
                     <span>⏱️ {project.duration}</span>
                     <span>👥 {project.teamSize}</span>
                   </div>
                 </div>
 
                 {/* Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-500/0 via-brand-500/5 to-brand-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
           ))}
@@ -196,7 +196,7 @@ const ProjectsSection: React.FC = () => {
 
         {/* View All Projects Button */}
         <div className="text-center mt-16">
-          <button className="inline-flex items-center px-8 py-4 bg-brand-500 text-white font-medium rounded-2xl hover:bg-brand-600 transition-all duration-300 hover:shadow-xl hover:shadow-brand-500/25 transform hover:-translate-y-1">
+          <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-medium rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1">
             View All Projects
             <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

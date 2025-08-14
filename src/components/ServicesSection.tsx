@@ -75,7 +75,7 @@ const ServicesSection: React.FC = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -89,12 +89,12 @@ const ServicesSection: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-brand-500/20 text-brand-300 text-sm font-medium rounded-full mb-4">
-            <span className="w-2 h-2 bg-brand-500 rounded-full mr-2"></span>
+          <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             What We Offer
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Our <span className="text-brand-500">Services</span>
+            Our <span className="text-blue-400">Services</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Comprehensive BIM and CAD solutions designed to streamline your construction projects
@@ -110,22 +110,22 @@ const ServicesSection: React.FC = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
-                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-brand-500/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/20"
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20"
               >
               {/* Glowing border effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-500/0 via-brand-500/10 to-brand-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Service Icon */}
               <div className="relative z-10 mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-brand-500/20 to-brand-600/20 rounded-2xl flex items-center justify-center group-hover:from-brand-500/30 group-hover:to-brand-600/30 transition-all duration-500 text-4xl">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-cyan-400/30 transition-all duration-500 text-4xl">
                   {service.icon}
                 </div>
               </div>
 
               {/* Service Title */}
-              <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors duration-300">
-                {service.title}
-              </h3>
+                              <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                  {service.title}
+                </h3>
 
               {/* Service Description */}
               <p className="relative z-10 text-gray-300 mb-4 leading-relaxed">
@@ -138,7 +138,7 @@ const ServicesSection: React.FC = () => {
                   {service.features.slice(0, 2).map((feature) => (
                     <span
                       key={feature}
-                      className="px-2 py-1 text-xs font-medium bg-brand-500/20 text-brand-300 border border-brand-500/30 rounded-lg"
+                      className="px-2 py-1 text-xs font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-lg"
                     >
                       {feature}
                     </span>
@@ -149,23 +149,23 @@ const ServicesSection: React.FC = () => {
               {/* LOD Levels */}
               <div className="relative z-10 flex flex-wrap gap-2">
                 {service.lodLevels?.map((level) => (
-                  <span
-                    key={level}
-                    className="px-3 py-1 text-xs font-medium bg-white/10 text-white border border-white/20 rounded-full group-hover:bg-brand-500/20 group-hover:border-brand-500/30 group-hover:text-brand-300 transition-all duration-300"
-                  >
-                    {level}
-                  </span>
+                                      <span
+                      key={level}
+                      className="px-3 py-1 text-xs font-medium bg-white/10 text-white border border-white/20 rounded-full group-hover:bg-blue-500/20 group-hover:border-blue-500/30 group-hover:text-blue-300 transition-all duration-300"
+                    >
+                      {level}
+                    </span>
                 ))}
               </div>
 
-              {/* Hover Indicator */}
-              <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                <div className="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                              {/* Hover Indicator */}
+                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
-              </div>
             </div>
             </div>
           ))}
@@ -173,7 +173,7 @@ const ServicesSection: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <button className="inline-flex items-center px-8 py-4 bg-brand-500 text-white font-medium rounded-2xl hover:bg-brand-600 transition-all duration-300 hover:shadow-xl hover:shadow-brand-500/25 transform hover:-translate-y-1">
+          <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-medium rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1">
             Get Started Today
             <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -184,8 +184,14 @@ const ServicesSection: React.FC = () => {
 
       {/* Enhanced LOD Modal */}
       {selectedService && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-white/10">
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedService(null)}
+        >
+          <div 
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Modal Header */}
             <div className="flex justify-between items-start p-8 border-b border-white/10">
               <div>

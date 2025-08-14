@@ -44,6 +44,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
     { id: 'services', label: 'Services' },
     { id: 'projects', label: 'Projects' },
     { id: 'about', label: 'About' },
+    { id: 'technologies', label: 'Technologies' },
     { id: 'team', label: 'Team' },
     { id: 'testimonials', label: 'Reviews' },
     { id: 'case-studies', label: 'Case Studies' },
@@ -56,18 +57,18 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
   // Group navigation items for better organization
   const primaryNav = navItems.slice(0, 5) // Home, Showcase, Services, Projects, About
-  const secondaryNav = navItems.slice(5, 8) // Team, Reviews, Case Studies
-  const tertiaryNav = navItems.slice(8, 12) // FAQ, Pricing, Resources, Blog
-  const contactNav = navItems.slice(12) // Contact
+  const secondaryNav = navItems.slice(5, 8) // Technologies, Team, Reviews
+  const tertiaryNav = navItems.slice(8, 13) // Case Studies, FAQ, Pricing, Resources, Blog
+  const contactNav = navItems.slice(13) // Contact
 
   return (
-    <nav className={`fixed top-4 left-16 right-16 z-50 transition-all duration-700 rounded-3xl ${
+    <nav className={`fixed top-4 left-4 right-4 lg:left-16 lg:right-16 z-50 transition-all duration-700 rounded-3xl ${
       isScrolled ? 'bg-gray-900/10 backdrop-blur-2xl shadow-2xl shadow-black/30 border border-white/20' : 'bg-gray-900/5 backdrop-blur-xl border border-white/10'
     } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
       <div className="max-w-6xl mx-auto px-1 sm:px-2 lg:px-3">
         <div className="flex items-center justify-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 mr-8">
+          <div className="flex-shrink-0 mr-3 lg:mr-6">
             <div 
               className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => {
@@ -78,7 +79,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               <img
                 src="/logo.png"
                 alt="BIM Arcana Logo"
-                className="h-28 w-auto object-contain"
+                className="h-14 lg:h-24 w-auto object-contain"
                 style={{ mixBlendMode: 'multiply' }}
               />
             </div>
@@ -86,20 +87,20 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
           {/* Desktop Navigation */}
           <div className="hidden xl:block">
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-3">
               {/* Primary Navigation */}
-              <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-3">
                 {primaryNav.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => onNavigate(item.id)}
-                    className={`px-3 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative group ${
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group ${
                       activeSection === item.id
                         ? 'text-blue-400'
                         : 'text-gray-300 hover:text-blue-300'
                     }`}
                   >
-                    <div className={`absolute inset-0 rounded-xl transition-all duration-500 ${
+                    <div className={`absolute inset-0 rounded-lg transition-all duration-500 ${
                       activeSection === item.id
                         ? 'bg-blue-500/20 shadow-lg shadow-blue-500/25 scale-105'
                         : 'bg-transparent group-hover:bg-blue-500/10 group-hover:scale-105'
@@ -110,15 +111,15 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               </div>
 
               {/* Separator */}
-              <div className="w-px h-6 bg-white/20 mx-2"></div>
+              <div className="w-px h-6 bg-white/20 mx-1"></div>
 
               {/* Secondary Navigation */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
                 {secondaryNav.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => onNavigate(item.id)}
-                    className={`px-2 py-2 rounded-lg text-xs font-medium transition-all duration-300 relative group ${
+                    className={`px-2 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group ${
                       activeSection === item.id
                         ? 'text-blue-400'
                         : 'text-gray-400 hover:text-blue-300'
@@ -135,15 +136,15 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               </div>
 
               {/* Separator */}
-              <div className="w-px h-6 bg-white/20 mx-2"></div>
+              <div className="w-px h-6 bg-white/20 mx-1"></div>
 
               {/* Tertiary Navigation */}
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2">
                 {tertiaryNav.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => onNavigate(item.id)}
-                    className={`px-2 py-2 rounded-lg text-xs font-medium transition-all duration-300 relative group ${
+                    className={`px-2 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group ${
                       activeSection === item.id
                         ? 'text-blue-400'
                         : 'text-gray-400 hover:text-blue-300'
@@ -160,7 +161,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               </div>
 
               {/* Separator */}
-              <div className="w-px h-6 bg-white/20 mx-2"></div>
+              <div className="w-px h-6 bg-white/20 mx-1"></div>
 
               {/* Contact Navigation */}
               <div className="flex items-center">
@@ -168,7 +169,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                   <button
                     key={item.id}
                     onClick={() => onNavigate(item.id)}
-                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative group bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/25 ${
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/25 ${
                       activeSection === item.id
                         ? 'from-blue-600 to-cyan-500 shadow-xl shadow-blue-500/40'
                         : 'hover:from-blue-600 hover:to-cyan-500 hover:shadow-xl hover:shadow-blue-500/40'
@@ -223,7 +224,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
               {/* Secondary Navigation */}
               <div>
-                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Company</h3>
+                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Company & Blog</h3>
                 <div className="space-y-2">
                   {secondaryNav.map((item) => (
                     <button
@@ -246,7 +247,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
               {/* Tertiary Navigation */}
               <div>
-                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Resources</h3>
+                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Services & Resources</h3>
                 <div className="space-y-2">
                   {tertiaryNav.map((item) => (
                     <button

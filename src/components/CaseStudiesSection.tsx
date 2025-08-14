@@ -228,8 +228,14 @@ const CaseStudiesSection: React.FC = () => {
 
       {/* Enhanced Case Study Modal */}
       {selectedCase && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-white/10">
+        <div 
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedCase(null)}
+        >
+          <div 
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex justify-between items-start p-8 border-b border-white/10">
               <div>
                 <h3 className="text-3xl font-bold text-white mb-2">
