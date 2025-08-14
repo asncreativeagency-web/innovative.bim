@@ -153,9 +153,11 @@ const ResourcesSection: React.FC = () => {
           {resources.map((resource, index) => (
             <div
               key={resource.id}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2"
               style={{ animationDelay: `${index * 100}ms` }}
             >
+              <div
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2"
+              >
               {/* Resource Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -212,8 +214,9 @@ const ResourcesSection: React.FC = () => {
                 </button>
               </div>
 
-              {/* Hover Glow */}
+                            {/* Hover Glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
             </div>
           ))}
         </div>

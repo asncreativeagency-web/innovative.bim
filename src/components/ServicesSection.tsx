@@ -106,10 +106,12 @@ const ServicesSection: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-brand-500/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/20"
               onClick={() => setSelectedService(service)}
               style={{ animationDelay: `${index * 100}ms` }}
             >
+              <div
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-brand-500/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/20"
+              >
               {/* Glowing border effect */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-500/0 via-brand-500/10 to-brand-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
@@ -164,6 +166,7 @@ const ServicesSection: React.FC = () => {
                   </svg>
                 </div>
               </div>
+            </div>
             </div>
           ))}
         </div>

@@ -100,9 +100,11 @@ const TeamSection: React.FC = () => {
           {teamMembers.map((member, index) => (
             <div
               key={member.id}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2"
               style={{ animationDelay: `${index * 100}ms` }}
             >
+              <div
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2"
+              >
               {/* Member Image */}
               <div className="relative mb-6">
                 <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white/20 group-hover:border-blue-400/50 transition-all duration-500 shadow-lg">
@@ -154,8 +156,9 @@ const TeamSection: React.FC = () => {
                 )}
               </div>
 
-              {/* Hover Glow */}
+                            {/* Hover Glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
             </div>
           ))}
         </div>

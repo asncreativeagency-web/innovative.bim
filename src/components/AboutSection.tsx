@@ -185,7 +185,10 @@ const AboutSection: React.FC = () => {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {technologies.map((tech) => (
-              <div key={tech.name} className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-blue-400/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transform hover:-translate-y-2">
+                            <div 
+                key={tech.name} 
+                className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-blue-400/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transform hover:-translate-y-2"
+              >
                 <div className="text-3xl mb-3">{tech.icon || '🔧'}</div>
                 <div className="text-white font-medium text-lg mb-1">{tech.name}</div>
                 <div className="text-blue-300 text-sm">{tech.category}</div>

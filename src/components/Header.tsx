@@ -13,7 +13,21 @@ const navItems = [
 
 const scrollToId = (id: string) => {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (el) {
+    // Ensure smooth scrolling with fallback
+    try {
+      el.scrollIntoView({ 
+        behavior: "smooth", 
+        block: "start",
+        inline: "nearest"
+      });
+    } catch (error) {
+      // Fallback for browsers that don't support smooth scrolling
+      el.scrollIntoView();
+    }
+  } else {
+    console.warn(`Element with id "${id}" not found`);
+  }
 };
 
 const Header: React.FC = () => {
@@ -40,9 +54,28 @@ const Header: React.FC = () => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              scrollToId("home");
+              console.log("Logo clicked, attempting to scroll to hero section...");
+              // Add a small delay to ensure the DOM is ready
+              setTimeout(() => {
+                // Try to scroll to home first, then hero-section as fallback
+                const homeElement = document.getElementById("home");
+                const heroElement = document.getElementById("hero-section");
+                
+                console.log("Home element:", homeElement);
+                console.log("Hero element:", heroElement);
+                
+                if (homeElement) {
+                  scrollToId("home");
+                } else if (heroElement) {
+                  scrollToId("hero-section");
+                } else {
+                  // Fallback: scroll to top of page
+                  console.log("No target elements found, scrolling to top");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }, 100);
             }}
-            className="flex items-center gap-3"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
           >
             <BrandLogo size="md" />
             <span className="font-brand font-extrabold tracking-tight text-lg text-foreground/90">

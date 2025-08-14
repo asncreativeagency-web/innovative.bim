@@ -68,7 +68,13 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
         <div className="flex items-center justify-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0 mr-8">
-            <div className="flex items-center space-x-2">
+            <div 
+              className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => {
+                console.log('Logo clicked! Navigating to home section...');
+                onNavigate('home');
+              }}
+            >
               <img
                 src="/logo.png"
                 alt="BIM Arcana Logo"

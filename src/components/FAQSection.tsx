@@ -103,9 +103,11 @@ const FAQSection: React.FC = () => {
           {faqItems.map((item, index) => (
             <div
               key={item.id}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/30 transition-all duration-500"
               style={{ animationDelay: `${index * 100}ms` }}
             >
+              <div
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/30 transition-all duration-500"
+              >
               {/* Question Header */}
               <button
                 onClick={() => toggleItem(item.id)}
@@ -141,6 +143,7 @@ const FAQSection: React.FC = () => {
                   </p>
                 </div>
               )}
+              </div>
             </div>
           ))}
         </div>

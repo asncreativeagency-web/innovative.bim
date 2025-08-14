@@ -186,14 +186,14 @@ const TestimonialsSection: React.FC = () => {
           ].map((stat, index) => (
             <div key={index} className="text-center group">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2">
-                <div className="text-4xl mb-3">{stat.icon}</div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
-                  {stat.number}
+                                  <div className="text-4xl mb-3">{stat.icon}</div>
+                  <div className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-300 text-lg">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-gray-300 text-lg">
-                  {stat.label}
-                </div>
-              </div>
             </div>
           ))}
         </div>

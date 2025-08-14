@@ -14,6 +14,7 @@ import ResourcesSection from './components/ResourcesSection'
 import BlogSection from './components/BlogSection'
 import ContactSection from './components/ContactSection'
 import Navigation from './components/Navigation'
+import { SmoothCursor } from './components/ui/smooth-cursor'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -30,6 +31,10 @@ function App() {
           break
         }
       }
+
+      // Simple parallax effect using CSS custom properties
+      const scrollY = window.scrollY;
+      document.documentElement.style.setProperty('--scroll-y', scrollY.toString());
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -37,15 +42,20 @@ function App() {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
+    console.log(`Attempting to scroll to section: ${sectionId}`);
     const element = document.getElementById(sectionId)
     if (element) {
+      console.log(`Element found, scrolling to:`, element);
       element.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      console.warn(`Element with id "${sectionId}" not found`);
     }
   }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
       <Navigation activeSection={activeSection} onNavigate={scrollToSection} />
+      <SmoothCursor />
       
       <main>
         <section id="home" className="min-h-screen">

@@ -207,8 +207,14 @@ const ProjectsSection: React.FC = () => {
 
       {/* Enhanced Project Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl">
+        <div 
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div 
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}

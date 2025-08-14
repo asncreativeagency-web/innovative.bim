@@ -168,7 +168,10 @@ const BlogSection: React.FC = () => {
               Featured Article
             </h3>
             {filteredPosts.filter(post => post.featured).map((post) => (
-              <div key={post.id} className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-blue-400/30 transition-all duration-500">
+              <div 
+                key={post.id} 
+                className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-blue-400/30 transition-all duration-500"
+              >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Image */}
                   <div className="relative h-64 lg:h-full overflow-hidden">
@@ -238,9 +241,11 @@ const BlogSection: React.FC = () => {
           {filteredPosts.filter(post => !post.featured).map((post, index) => (
             <div
               key={post.id}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2"
               style={{ animationDelay: `${index * 100}ms` }}
             >
+              <div
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 transform hover:-translate-y-2"
+              >
               {/* Post Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -316,8 +321,9 @@ const BlogSection: React.FC = () => {
                 </button>
               </div>
 
-              {/* Hover Glow */}
+                            {/* Hover Glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
             </div>
           ))}
         </div>
