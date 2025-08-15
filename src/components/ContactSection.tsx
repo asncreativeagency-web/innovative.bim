@@ -9,6 +9,7 @@ const ContactSection: React.FC = () => {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -20,14 +21,20 @@ const ContactSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    setIsSubmitting(false)
-    
-    // Reset form
-    setFormData({ firstName: '', lastName: '', email: '', company: '', message: '' })
-    alert('Thank you for your message! We will get back to you soon.')
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      // Reset form
+      setFormData({ firstName: '', lastName: '', email: '', company: '', message: '' })
+      setSubmitStatus('success')
+    } catch (error) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -221,6 +228,18 @@ const ContactSection: React.FC = () => {
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+              
+              {submitStatus === 'success' && (
+                <div className="text-green-400 text-center mt-4">
+                  Thank you for your message! We will get back to you soon.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="text-red-400 text-center mt-4">
+                  Sorry, there was an error sending your message. Please try again.
+                </div>
+              )}
             </form>
           </div>
         </div>

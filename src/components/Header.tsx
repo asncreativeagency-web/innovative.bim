@@ -35,8 +35,15 @@ const Header: React.FC = () => {
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      setFade(window.scrollY > 120);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setFade(window.scrollY > 120);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -54,23 +61,15 @@ const Header: React.FC = () => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              console.log("Logo clicked, attempting to scroll to hero section...");
-              // Add a small delay to ensure the DOM is ready
               setTimeout(() => {
-                // Try to scroll to home first, then hero-section as fallback
                 const homeElement = document.getElementById("home");
                 const heroElement = document.getElementById("hero-section");
-                
-                console.log("Home element:", homeElement);
-                console.log("Hero element:", heroElement);
                 
                 if (homeElement) {
                   scrollToId("home");
                 } else if (heroElement) {
                   scrollToId("hero-section");
                 } else {
-                  // Fallback: scroll to top of page
-                  console.log("No target elements found, scrolling to top");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }, 100);

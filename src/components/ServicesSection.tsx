@@ -52,59 +52,60 @@ const IconSvg: React.FC<{ name: string }> = ({ name }) => {
   }
 }
 
+const services: Service[] = [
+  {
+    id: '1',
+    title: 'BIM Modeling',
+    description: 'Comprehensive 3D modeling services including architectural, structural, and MEP systems with detailed LOD specifications.',
+    icon: '🏗️',
+    lodLevels: ['LOD 200', 'LOD 350', 'LOD 500'],
+    features: ['3D Modeling', 'Parametric Design', 'Family Creation', 'Template Development']
+  },
+  {
+    id: '2',
+    title: 'Clash Detection',
+    description: 'Advanced clash detection and resolution services to identify and resolve design conflicts before construction begins.',
+    icon: '🔍',
+    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
+    features: ['Multi-discipline Coordination', 'Clash Resolution', 'Report Generation', 'Automated Detection']
+  },
+  {
+    id: '3',
+    title: '4D Scheduling',
+    description: 'Time-based project scheduling and sequencing using BIM models to optimize construction workflows and timelines.',
+    icon: '⏰',
+    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
+    features: ['Construction Sequencing', 'Resource Planning', 'Timeline Visualization', 'Progress Tracking']
+  },
+  {
+    id: '4',
+    title: 'Quantity Takeoff',
+    description: 'Accurate material quantity calculations and cost estimation from BIM models for better project budgeting.',
+    icon: '📊',
+    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
+    features: ['Material Quantities', 'Cost Estimation', 'Bill of Materials', 'Change Order Analysis']
+  },
+  {
+    id: '5',
+    title: 'BIM Coordination',
+    description: 'Multi-disciplinary coordination services ensuring seamless integration between all building systems and trades.',
+    icon: '🤝',
+    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
+    features: ['Trade Coordination', 'System Integration', 'Quality Assurance', 'Documentation']
+  },
+  {
+    id: '6',
+    title: 'BIM Training',
+    description: 'Comprehensive training programs for teams to effectively implement and utilize BIM in their projects.',
+    icon: '🎓',
+    lodLevels: ['All Levels'],
+    features: ['Software Training', 'Workflow Optimization', 'Best Practices', 'Ongoing Support']
+  }
+]
+
 const ServicesSection: React.FC = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null)
 
-  const services: Service[] = [
-    {
-      id: '1',
-      title: 'BIM Modeling',
-      description: 'Comprehensive 3D modeling services including architectural, structural, and MEP systems with detailed LOD specifications.',
-      icon: '🏗️',
-      lodLevels: ['LOD 200', 'LOD 350', 'LOD 500'],
-      features: ['3D Modeling', 'Parametric Design', 'Family Creation', 'Template Development']
-    },
-    {
-      id: '2',
-      title: 'Clash Detection',
-      description: 'Advanced clash detection and resolution services to identify and resolve design conflicts before construction begins.',
-      icon: '🔍',
-      lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-      features: ['Multi-discipline Coordination', 'Clash Resolution', 'Report Generation', 'Automated Detection']
-    },
-    {
-      id: '3',
-      title: '4D Scheduling',
-      description: 'Time-based project scheduling and sequencing using BIM models to optimize construction workflows and timelines.',
-      icon: '⏰',
-      lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-      features: ['Construction Sequencing', 'Resource Planning', 'Timeline Visualization', 'Progress Tracking']
-    },
-    {
-      id: '4',
-      title: 'Quantity Takeoff',
-      description: 'Accurate material quantity calculations and cost estimation from BIM models for better project budgeting.',
-      icon: '📊',
-      lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-      features: ['Material Quantities', 'Cost Estimation', 'Bill of Materials', 'Change Order Analysis']
-    },
-    {
-      id: '5',
-      title: 'BIM Coordination',
-      description: 'Multi-disciplinary coordination services ensuring seamless integration between all building systems and trades.',
-      icon: '🤝',
-      lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-      features: ['Trade Coordination', 'System Integration', 'Quality Assurance', 'Documentation']
-    },
-    {
-      id: '6',
-      title: 'BIM Training',
-      description: 'Comprehensive training programs for teams to effectively implement and utilize BIM in their projects.',
-      icon: '🎓',
-      lodLevels: ['All Levels'],
-      features: ['Software Training', 'Workflow Optimization', 'Best Practices', 'Ongoing Support']
-    }
-  ]
 
   const getLodDescription = (lod: string) => {
     const descriptions: { [key: string]: string } = {
@@ -266,8 +267,8 @@ const ServicesSection: React.FC = () => {
                   <h4 className="text-xl font-semibold text-white mb-6">LOD Levels Available</h4>
                   <div className="space-y-4">
                     {selectedService.lodLevels?.map((lod) => (
-                      <div key={lod} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-brand-500/30 transition-all duration-300">
-                        <h5 className="text-lg font-semibold text-brand-400 mb-2">{lod}</h5>
+                      <div key={lod} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-blue-500/30 transition-all duration-300">
+                        <h5 className="text-lg font-semibold text-blue-400 mb-2">{lod}</h5>
                         <p className="text-gray-300 text-sm leading-relaxed">
                           {getLodDescription(lod)}
                         </p>
@@ -282,7 +283,7 @@ const ServicesSection: React.FC = () => {
                   <div className="space-y-3">
                     {selectedService.features.map((feature) => (
                       <div key={feature} className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-brand-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                         <span className="text-gray-300">{feature}</span>
                       </div>
                     ))}
@@ -303,9 +304,9 @@ const ServicesSection: React.FC = () => {
       )}
 
       {/* Floating Elements */}
-      <div className="absolute top-1/4 right-20 w-2 h-2 bg-brand-500 rounded-full animate-ping" />
-      <div className="absolute bottom-1/4 left-20 w-3 h-3 bg-brand-500 rounded-full animate-ping delay-1000" />
-      <div className="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-brand-400 rounded-full animate-ping delay-500" />
+      <div className="absolute top-1/4 right-20 w-2 h-2 bg-blue-500 rounded-full animate-ping" />
+      <div className="absolute bottom-1/4 left-20 w-3 h-3 bg-blue-500 rounded-full animate-ping delay-1000" />
+      <div className="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping delay-500" />
     </div>
   )
 }

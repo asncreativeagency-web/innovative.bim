@@ -17,25 +17,35 @@ import Navigation from './components/Navigation'
 import { SmoothCursor } from './components/ui/smooth-cursor'
 import TechnologiesSection from './components/TechnologiesSection'
 
+const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'technologies', 'team', 'testimonials', 'case-studies', 'faq', 'pricing', 'resources', 'blog', 'contact']
+
 function App() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'technologies', 'team', 'testimonials', 'case-studies', 'faq', 'pricing', 'resources', 'blog', 'contact']
-      const scrollPosition = window.scrollY + 100
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY + 100
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const element = document.getElementById(sections[i])
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i])
-          break
-        }
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const element = document.getElementById(sections[i])
+            if (element && element.offsetTop <= scrollPosition) {
+              setActiveSection(sections[i])
+              break
+            }
+          }
+
+          // Simple parallax effect using CSS custom properties
+          const scrollY = window.scrollY;
+          document.documentElement.style.setProperty('--scroll-y', scrollY.toString());
+          
+          ticking = false
+        })
+        ticking = true
       }
-
-      // Simple parallax effect using CSS custom properties
-      const scrollY = window.scrollY;
-      document.documentElement.style.setProperty('--scroll-y', scrollY.toString());
     }
 
     window.addEventListener('scroll', handleScroll)

@@ -39,8 +39,9 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+      const currentElement = elementRef.current;
+      if (currentElement) {
+        observer.unobserve(currentElement);
       }
     };
   }, [threshold, rootMargin, triggerOnce]);
@@ -55,8 +56,8 @@ export const useScrollProgress = () => {
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
     };
 
     window.addEventListener('scroll', updateScrollProgress);

@@ -58,7 +58,7 @@ export const useParallax = (options: UseParallaxOptions = {}) => {
         cancelAnimationFrame(rafId.current);
       }
     };
-  }, [speed, direction, easing, disabled, offset]);
+  }, [speed, direction, easing, disabled]);
 
   const getTransformStyle = () => {
     if (disabled) return {};

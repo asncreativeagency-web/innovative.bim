@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 interface PricingPlan {
   id: string
@@ -14,7 +14,7 @@ interface PricingPlan {
 const PricingSection: React.FC = () => {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly')
 
-  const pricingPlans: PricingPlan[] = [
+  const pricingPlans: PricingPlan[] = useMemo(() => [
     {
       id: '1',
       name: 'Starter',
@@ -68,7 +68,7 @@ const PricingSection: React.FC = () => {
       ],
       cta: 'Contact Sales'
     }
-  ]
+  ], [billingPeriod])
 
   const savings = billingPeriod === 'yearly' ? 'Save 17%' : ''
 
@@ -189,21 +189,9 @@ const PricingSection: React.FC = () => {
                 <div className="mt-auto">
                   <button 
                     onClick={() => {
-                      console.log('Button clicked:', plan.cta);
                       const contactElement = document.getElementById('contact');
                       if (contactElement) {
-                        const offsetTop = contactElement.offsetTop;
-                        window.scrollTo({
-                          top: offsetTop,
-                          behavior: 'smooth'
-                        });
-                      } else {
-                        console.error('Contact section not found');
-                        // Fallback: scroll to bottom of page
-                        window.scrollTo({
-                          top: document.body.scrollHeight,
-                          behavior: 'smooth'
-                        });
+                        contactElement.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
                     className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
@@ -235,21 +223,9 @@ const PricingSection: React.FC = () => {
             </p>
             <button 
               onClick={() => {
-                console.log('Request Custom Quote button clicked');
                 const contactElement = document.getElementById('contact');
                 if (contactElement) {
-                  const offsetTop = contactElement.offsetTop;
-                  window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                  });
-                } else {
-                  console.error('Contact section not found');
-                  // Fallback: scroll to bottom of page
-                  window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: 'smooth'
-                  });
+                  contactElement.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
@@ -274,21 +250,9 @@ const PricingSection: React.FC = () => {
             </button> or{' '}
             <button 
               onClick={() => {
-                console.log('Contact our team link clicked');
                 const contactElement = document.getElementById('contact');
                 if (contactElement) {
-                  const offsetTop = contactElement.offsetTop;
-                  window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                  });
-                } else {
-                  console.error('Contact section not found');
-                  // Fallback: scroll to bottom of page
-                  window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: 'smooth'
-                  });
+                  contactElement.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
               className="text-blue-400 hover:underline"

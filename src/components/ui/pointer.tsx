@@ -32,22 +32,23 @@ export function Pointer({ children }: PointerProps): JSX.Element {
     const observer = new MutationObserver(hideCursorOnElements);
     observer.observe(document.body, { childList: true, subtree: true });
 
+    const isLogoElement = (target: HTMLElement): boolean => {
+      return !!(target.closest('[src*="logo"], .logo, [alt*="logo"], [alt*="Logo"]') || 
+                target.closest('img[src*="logo"]') ||
+                target.closest('div[onclick*="Logo"]') ||
+                target.closest('div[onclick*="logo"]') ||
+                target.closest('div[onclick*="home"]'));
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
-      // Make pointer more reactive with immediate updates
       setPosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
       
-      // Check if hovering over a button or interactive element
-      const target = e.target as HTMLElement;
-      const isButton = target.closest('button, a, input, textarea, select, [role="button"], [tabindex]');
+      const target = e.target;
+      if (!(target instanceof HTMLElement)) return;
       
-      // Special case: don't treat logo elements as buttons
-      // Check if the target or any of its parents contain logo-related content
-      const isLogo = target.closest('[src*="logo"], .logo, [alt*="logo"], [alt*="Logo"]') || 
-                     target.closest('img[src*="logo"]') ||
-                     target.closest('div[onclick*="Logo"]') ||
-                     target.closest('div[onclick*="logo"]') ||
-                     target.closest('div[onclick*="home"]');
+      const isButton = target.closest('button, a, input, textarea, select, [role="button"], [tabindex]');
+      const isLogo = isLogoElement(target);
       
       setIsHoveringButton(!!isButton && !isLogo);
     };
