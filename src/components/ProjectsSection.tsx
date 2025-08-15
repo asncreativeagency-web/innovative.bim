@@ -19,69 +19,91 @@ const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
       id: '1',
-      title: 'Downtown Office Complex',
-      description: 'A 25-story commercial building with advanced MEP coordination and sustainable design features.',
-      category: 'Commercial',
-      image: '/project-1.jpg',
-      details: 'This state-of-the-art office complex features advanced BIM coordination across all disciplines, including structural, MEP, and architectural systems. The project utilized LOD 400 models for construction coordination and achieved 30% reduction in construction time through advanced clash detection.',
-      technologies: ['Revit', 'Navisworks', 'BIM 360', 'Dynamo'],
-      duration: '18 months',
-      teamSize: '12 specialists'
-    },
-    {
-      id: '2',
-      title: 'Healthcare Facility',
-      description: 'Modern hospital with complex medical equipment integration and strict compliance requirements.',
-      category: 'Healthcare',
-      image: '/project-2.jpg',
-      details: 'A comprehensive healthcare facility project requiring meticulous BIM coordination for medical equipment, HVAC systems, and life safety systems. Achieved 99.9% clash-free coordination and reduced RFIs by 60%.',
-      technologies: ['Revit', 'AutoCAD', 'Navisworks', 'BIM 360'],
-      duration: '24 months',
-      teamSize: '15 specialists'
-    },
-    {
-      id: '3',
-      title: 'Residential Tower',
-      description: 'Luxury residential development with premium finishes and advanced structural systems.',
-      category: 'Residential',
-      image: '/project-3.jpg',
-      details: 'High-end residential tower featuring complex structural systems and premium architectural details. BIM models included detailed LOD 500 specifications for custom millwork and specialized finishes.',
-      technologies: ['Revit', 'Tekla', 'ArchiCAD', 'BIM 360'],
-      duration: '20 months',
-      teamSize: '10 specialists'
-    },
-    {
-      id: '4',
-      title: 'Industrial Warehouse',
-      description: 'Large-scale industrial facility with specialized equipment and logistics optimization.',
-      category: 'Industrial',
-      image: '/project-4.jpg',
-      details: 'Massive industrial warehouse requiring coordination of heavy machinery, specialized HVAC systems, and complex structural elements. Achieved optimal space utilization through advanced BIM analysis.',
-      technologies: ['Revit', 'AutoCAD', 'Navisworks', 'Python'],
-      duration: '16 months',
+      title: 'BIM Sample Model',
+      description: 'Comprehensive BIM model showcasing advanced 3D coordination and detailed building information modeling.',
+      category: 'BIM',
+      image: '/Projects/BIM Projects/01_BIM sample model.jpg',
+      details: 'This comprehensive BIM model demonstrates our expertise in creating detailed 3D building information models. The project showcases advanced coordination between architectural, structural, and MEP systems, achieving optimal clash detection and construction sequencing.',
+      technologies: ['Revit', 'Navisworks', 'BIM 360', 'AutoCAD'],
+      duration: '12 months',
       teamSize: '8 specialists'
     },
     {
+      id: '2',
+      title: '3D Plan View - Level 1',
+      description: 'Detailed 3D plan view showing comprehensive floor layout with all building systems integrated.',
+      category: 'BIM',
+      image: '/Projects/BIM Projects/03_3D Plan View.jpg',
+      details: 'Advanced 3D plan view demonstrating our ability to create detailed floor layouts with integrated building systems. This view shows comprehensive coordination between structural elements, MEP systems, and architectural features.',
+      technologies: ['Revit', 'BIM 360', 'Dynamo', 'Navisworks'],
+      duration: '8 months',
+      teamSize: '6 specialists'
+    },
+    {
+      id: '3',
+      title: '3D Kitchen View',
+      description: 'Specialized 3D kitchen design with detailed MEP coordination and custom cabinetry integration.',
+      category: 'BIM',
+      image: '/Projects/BIM Projects/05_3D Kitchen View.jpg',
+      details: 'Detailed 3D kitchen view showcasing our expertise in specialized space design. The model includes comprehensive MEP coordination, custom cabinetry details, and precise equipment placement for optimal functionality.',
+      technologies: ['Revit', 'AutoCAD', 'BIM 360', 'SketchUp'],
+      duration: '6 months',
+      teamSize: '4 specialists'
+    },
+    {
+      id: '4',
+      title: 'Sheet View - Plan',
+      description: 'Professional construction documentation sheet with detailed plan views and specifications.',
+      category: 'BIM',
+      image: '/Projects/BIM Projects/06_Sheet view-plan.jpg',
+      details: 'Professional construction documentation sheet demonstrating our expertise in creating detailed plan views. This sheet includes comprehensive annotations, dimensions, and specifications for construction teams.',
+      technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Bluebeam'],
+      duration: '4 months',
+      teamSize: '3 specialists'
+    },
+    {
       id: '5',
-      title: 'Educational Campus',
-      description: 'Multi-building educational complex with modern learning spaces and sustainable features.',
-      category: 'Education',
-      image: '/project-5.jpg',
-      details: 'Multi-building campus project featuring sustainable design elements, advanced acoustics, and flexible learning spaces. BIM coordination ensured seamless integration of all building systems.',
-      technologies: ['Revit', 'ArchiCAD', 'BIM 360', 'Dynamo'],
-      duration: '22 months',
-      teamSize: '14 specialists'
+      title: 'Sheet View - Section',
+      description: 'Detailed section view sheet showing building cross-sections with comprehensive annotations.',
+      category: 'BIM',
+      image: '/Projects/BIM Projects/07_Sheet view-Section.jpg',
+      details: 'Detailed section view sheet showcasing our ability to create comprehensive building cross-sections. The sheet includes detailed annotations, material specifications, and construction details for accurate implementation.',
+      technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Bluebeam'],
+      duration: '4 months',
+      teamSize: '3 specialists'
     },
     {
       id: '6',
-      title: 'Mixed-Use Development',
-      description: 'Urban development combining retail, residential, and office spaces in a cohesive design.',
-      category: 'Mixed-Use',
-      image: '/project-6.jpg',
-      details: 'Complex mixed-use development requiring coordination of multiple building types and functions. BIM models facilitated seamless integration of retail, residential, and office spaces.',
-      technologies: ['Revit', 'Navisworks', 'BIM 360', 'AutoCAD'],
-      duration: '26 months',
-      teamSize: '18 specialists'
+      title: 'Window Parametric Family',
+      description: 'Custom parametric window family with adjustable parameters for various project requirements.',
+      category: 'Parametric Family',
+      image: '/Projects/Parametric Family_s/01_Window.jpg',
+      details: 'Custom parametric window family demonstrating our expertise in creating flexible, reusable BIM components. The family includes adjustable parameters for width, height, materials, and performance specifications.',
+      technologies: ['Revit', 'Dynamo', 'BIM 360', 'Family Editor'],
+      duration: '3 months',
+      teamSize: '2 specialists'
+    },
+    {
+      id: '7',
+      title: 'Structure Sample Model',
+      description: 'Comprehensive structural model with detailed analysis and construction coordination.',
+      category: 'Structure',
+      image: '/Projects/Structure Projects/01_Structure sample model.jpg',
+      details: 'Comprehensive structural model showcasing our expertise in structural engineering and BIM coordination. The model includes detailed structural analysis, construction sequencing, and coordination with architectural and MEP systems.',
+      technologies: ['Revit', 'Tekla', 'Robot Structural Analysis', 'BIM 360'],
+      duration: '10 months',
+      teamSize: '7 specialists'
+    },
+    {
+      id: '8',
+      title: 'Advanced Structure Model',
+      description: 'Complex structural system with innovative design solutions and advanced analysis.',
+      category: 'Structure',
+      image: '/Projects/Structure Projects/02_Structure sample model.jpg',
+      details: 'Advanced structural model featuring innovative design solutions and complex structural systems. The project demonstrates our ability to handle challenging structural requirements while maintaining BIM coordination standards.',
+      technologies: ['Revit', 'Tekla', 'Robot Structural Analysis', 'Dynamo'],
+      duration: '14 months',
+      teamSize: '9 specialists'
     }
   ]
 
@@ -192,16 +214,6 @@ const ProjectsSection: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* View All Projects Button */}
-        <div className="text-center mt-16">
-          <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-medium rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1">
-            View All Projects
-            <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
         </div>
       </div>
 

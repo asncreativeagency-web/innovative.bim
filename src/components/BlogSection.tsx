@@ -328,15 +328,6 @@ const BlogSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Load More */}
-        <div className="text-center mt-16">
-          <button className="inline-flex items-center px-8 py-4 bg-white/10 text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 hover:border-blue-400/30 transition-all duration-300 transform hover:scale-105">
-            Load More Articles
-            <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-        </div>
       </div>
 
       {/* Floating Elements */}

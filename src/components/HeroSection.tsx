@@ -59,46 +59,41 @@ const HeroSection: React.FC = () => {
       {/* Brand color overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/60 via-gray-900/40 to-gray-900/60" />
 
-      {/* Main Content Grid */}
-      <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-screen px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        {/* Left Column - Text Content */}
-        <div className="flex flex-col justify-center space-y-6 pt-20">
-          {/* Headline */}
-          <h1
-            ref={headlineRef}
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold transform translate-y-8 opacity-0 transition-all duration-1000 ease-out leading-tight tracking-tight"
-            style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}
-          >
-            <span className="text-white">Innovative </span>
-            <span className="gradient-text-animated">BIM </span>
-            <span className="text-white">Services</span>
-          </h1>
+      {/* Main Content - Centered */}
+      <div className="relative z-20 flex flex-col justify-center items-center min-h-screen px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center pt-20">
+        {/* Headline */}
+        <h1
+          ref={headlineRef}
+          className="text-5xl md:text-6xl lg:text-7xl font-extrabold transform translate-y-8 opacity-0 transition-all duration-1000 ease-out leading-tight tracking-tight mb-8"
+          style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}
+        >
+          <span className="text-white">Innovative </span>
+          <span className="gradient-text-animated">BIM </span>
+          <span className="text-white">Services</span>
+        </h1>
 
-          {/* Subheadline */}
-          <p
-            ref={subheadlineRef}
-            className="text-xl md:text-2xl lg:text-3xl font-medium text-gray-200 transform translate-y-8 opacity-0 transition-all duration-1000 ease-out leading-relaxed max-w-2xl"
+        {/* Subheadline */}
+        <p
+          ref={subheadlineRef}
+          className="text-xl md:text-2xl lg:text-3xl font-medium text-gray-200 transform translate-y-8 opacity-0 transition-all duration-1000 ease-out leading-relaxed max-w-3xl mb-12"
+          style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}
+        >
+          Revolutionizing the construction industry with cutting-edge, AI-powered BIM solutions.
+          We deliver precision, efficiency, and innovation in every project.
+        </p>
+
+        {/* CTA Button */}
+        <div ref={ctaRef} className="transform translate-y-8 opacity-0 transition-all duration-1000 ease-out">
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-bold text-lg rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 hover-lift"
             style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}
           >
-            Revolutionizing the construction industry with cutting-edge, AI-powered BIM solutions.
-            We deliver precision, efficiency, and innovation in every project.
-          </p>
-
-          {/* CTA Button */}
-          <div ref={ctaRef} className="transform translate-y-8 opacity-0 transition-all duration-1000 ease-out">
-            <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-bold text-lg rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 hover-lift"
-              style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
-              Get Started Today
-              <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Right Column - Visual Content */}
-        <div className="relative flex items-center justify-center pt-20">
-          {/* Right column content removed */}
+            Get Started Today
+            <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -119,6 +114,11 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-1/4 left-10 w-2 h-2 bg-blue-400 rounded-full animate-ping" />
+      <div className="absolute bottom-1/4 right-10 w-3 h-3 bg-cyan-400 rounded-full animate-ping delay-1000" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-500" />
     </div>
   )
 }

@@ -187,11 +187,31 @@ const PricingSection: React.FC = () => {
 
                 {/* CTA Button */}
                 <div className="mt-auto">
-                  <button className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                    plan.popular
-                      ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:from-blue-600 hover:to-cyan-500 shadow-lg shadow-blue-500/25'
-                      : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-blue-400/30'
-                  }`}>
+                  <button 
+                    onClick={() => {
+                      console.log('Button clicked:', plan.cta);
+                      const contactElement = document.getElementById('contact');
+                      if (contactElement) {
+                        const offsetTop = contactElement.offsetTop;
+                        window.scrollTo({
+                          top: offsetTop,
+                          behavior: 'smooth'
+                        });
+                      } else {
+                        console.error('Contact section not found');
+                        // Fallback: scroll to bottom of page
+                        window.scrollTo({
+                          top: document.body.scrollHeight,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }}
+                    className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                      plan.popular
+                        ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:from-blue-600 hover:to-cyan-500 shadow-lg shadow-blue-500/25'
+                        : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-blue-400/30'
+                    }`}
+                  >
                     {plan.cta}
                   </button>
                 </div>
@@ -213,7 +233,27 @@ const PricingSection: React.FC = () => {
               Need a custom plan? We offer tailored solutions for unique project requirements, 
               enterprise clients, and long-term partnerships.
             </p>
-            <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
+            <button 
+              onClick={() => {
+                console.log('Request Custom Quote button clicked');
+                const contactElement = document.getElementById('contact');
+                if (contactElement) {
+                  const offsetTop = contactElement.offsetTop;
+                  window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  console.error('Contact section not found');
+                  // Fallback: scroll to bottom of page
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
+            >
               Request Custom Quote
               <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -226,8 +266,35 @@ const PricingSection: React.FC = () => {
         <div className="text-center mt-12">
           <p className="text-gray-400">
             Have questions about pricing? Check out our{' '}
-            <button className="text-blue-400 hover:underline">FAQ section</button> or{' '}
-            <button className="text-blue-400 hover:underline">contact our team</button>.
+            <button 
+              onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-blue-400 hover:underline"
+            >
+              FAQ section
+            </button> or{' '}
+            <button 
+              onClick={() => {
+                console.log('Contact our team link clicked');
+                const contactElement = document.getElementById('contact');
+                if (contactElement) {
+                  const offsetTop = contactElement.offsetTop;
+                  window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  console.error('Contact section not found');
+                  // Fallback: scroll to bottom of page
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className="text-blue-400 hover:underline"
+            >
+              contact our team
+            </button>.
           </p>
         </div>
       </div>

@@ -179,21 +179,42 @@ const TestimonialsSection: React.FC = () => {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-20">
           {[
-            { number: '98%', label: 'Client Satisfaction', icon: '😊' },
-            { number: '500+', label: 'Projects Completed', icon: '🏆' },
-            { number: '25+', label: 'Countries Served', icon: '🌍' },
-            { number: '10+', label: 'Years Experience', icon: '⏰' }
+            { number: '98%', label: 'Client Satisfaction', icon: 'smile' },
+            { number: '500+', label: 'Projects Completed', icon: 'trophy' },
+            { number: '25+', label: 'Countries Served', icon: 'globe' },
+            { number: '10+', label: 'Years Experience', icon: 'clock' }
           ].map((stat, index) => (
             <div key={index} className="text-center group">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-2">
-                                  <div className="text-4xl mb-3">{stat.icon}</div>
-                  <div className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-300 text-lg">
-                    {stat.label}
-                  </div>
+                <div className="mb-3">
+                  {stat.icon === 'smile' && (
+                    <svg className="w-8 h-8 mx-auto text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828A4 4 0 019.172 14.83M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                  {stat.icon === 'trophy' && (
+                    <svg className="w-8 h-8 mx-auto text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 21h8m-4-4v4m7-14h1a2 2 0 012 2 6 6 0 01-6 6H8a6 6 0 01-6-6 2 2 0 012-2h1m12 0V5a2 2 0 00-2-2H9a2 2 0 00-2 2v2m12 0a4 4 0 01-4 4H9a4 4 0 01-4-4" />
+                    </svg>
+                  )}
+                  {stat.icon === 'globe' && (
+                    <svg className="w-8 h-8 mx-auto text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c2.5 0 4.5-4 4.5-9S14.5 3 12 3 7.5 7 7.5 12 9.5 21 12 21zm-9-9h18" />
+                    </svg>
+                  )}
+                  {stat.icon === 'clock' && (
+                    <svg className="w-8 h-8 mx-auto text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
                 </div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                  {stat.number}
+                </div>
+                <div className="text-gray-300 text-lg">
+                  {stat.label}
+                </div>
+              </div>
             </div>
           ))}
         </div>
