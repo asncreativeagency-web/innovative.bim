@@ -13,6 +13,94 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Mobile cursor removal - highest priority -->
+    <style>
+      @media (max-width: 1024px) {
+        html, body, * {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+        
+        *::before, *::after {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+        
+        [class*="cursor-"] {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+        
+        .cursor-pointer, .cursor-default, .cursor-text, .cursor-move, .cursor-grab, .cursor-grabbing {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+      }
+      
+      @media (hover: none) and (pointer: coarse) {
+        html, body, * {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+      }
+      
+      @media (pointer: coarse) {
+        * {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+      }
+      
+      /* Force cursor removal on all mobile devices */
+      @media (max-width: 768px) {
+        html, body, * {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+      }
+      
+      /* Nuclear option - remove cursor completely */
+      @media (max-width: 1024px) {
+        html, body, div, span, button, a, input, img, p, h1, h2, h3, h4, h5, h6, nav, header, main, section, article, aside, footer, form, label, select, textarea, table, tr, td, th, ul, ol, li {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+          pointer-events: auto !important;
+        }
+        
+        /* Override any Tailwind cursor classes */
+        [class*="cursor-"] {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+        
+        /* Force remove cursor from any element with cursor style */
+        [style*="cursor"] {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

@@ -23,7 +23,7 @@ const TestimonialsSection: React.FC = () => {
       content: 'IBS transformed our construction process with their BIM expertise. The 3D coordination saved us 3 months and $500K in rework. Their team is professional, responsive, and truly understands construction workflows.',
       rating: 5,
       project: 'Commercial Complex - $25M',
-      image: '/hero-bg.jpg'
+      image: 'Robert Anderson.jpeg'
     },
     {
       id: '2',
@@ -33,7 +33,7 @@ const TestimonialsSection: React.FC = () => {
       content: 'Working with IBS has been a game-changer for our practice. Their BIM models are incredibly detailed and their clash detection prevented numerous issues before construction even began. Highly recommended!',
       rating: 5,
       project: 'Healthcare Facility - $18M',
-      image: '/hero-bg.jpg'
+      image: 'Maria Garicia.jpeg'
     },
     {
       id: '3',
@@ -43,7 +43,7 @@ const TestimonialsSection: React.FC = () => {
       content: 'The structural BIM models from IBS are exceptional. They caught several design conflicts early and their coordination with MEP systems was seamless. This level of detail is exactly what modern construction needs.',
       rating: 5,
       project: 'Residential Tower - $32M',
-      image: '/hero-bg.jpg'
+      image: 'David Thompson.jpeg'
     },
     {
       id: '4',
@@ -52,8 +52,8 @@ const TestimonialsSection: React.FC = () => {
       position: 'Development Director',
       content: 'IBS delivered our BIM project on time and under budget. Their quantity takeoff was accurate within 2%, and the 4D scheduling helped us optimize our construction sequence perfectly.',
       rating: 5,
-      project: 'Mixed-Use Development - $45M',
-      image: '/hero-bg.jpg'
+      project: 'Mixed-Use - $45M',
+      image: 'Sarah Williams.jpeg'
     }
   ]
 
@@ -131,29 +131,40 @@ const TestimonialsSection: React.FC = () => {
             </blockquote>
 
             {/* Project Info */}
-            <div className="mb-8">
-              <span className="px-6 py-3 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
-                {testimonials[currentTestimonial].project}
+            <div className="mb-8 flex justify-center">
+              <span className="px-3 md:px-4 lg:px-6 py-2 md:py-3 bg-blue-500/20 text-blue-300 text-xs md:text-sm rounded-full border border-blue-500/30 text-center max-w-[90%] md:max-w-full inline-block">
+                <div className="break-words whitespace-normal leading-tight">
+                  {testimonials[currentTestimonial].project}
+                </div>
               </span>
             </div>
 
             {/* Author */}
-            <div className="flex items-center justify-center space-x-6">
-              <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-blue-400/30 shadow-lg">
+            <div className="flex items-center justify-center space-x-4 md:space-x-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden border-4 border-blue-400/30 shadow-lg bg-gray-800 flex-shrink-0">
                 <img
                   src={testimonials[currentTestimonial].image}
                   alt={testimonials[currentTestimonial].name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
+                  onLoad={() => {
+                    console.log(`Image loaded successfully: ${testimonials[currentTestimonial].image}`);
+                  }}
+                  onError={(e) => {
+                    console.error(`Failed to load image: ${testimonials[currentTestimonial].image}`);
+                    // Fallback to a placeholder if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/placeholder.svg';
+                  }}
                 />
               </div>
-              <div className="text-left">
-                <h4 className="text-white font-semibold text-xl mb-1">
+              <div className="text-left flex-1 min-w-0">
+                <h4 className="text-white font-semibold text-lg md:text-xl mb-1">
                   {testimonials[currentTestimonial].name}
                 </h4>
-                <p className="text-blue-200 font-medium mb-1">
+                <p className="text-blue-200 font-medium text-sm md:text-base mb-1">
                   {testimonials[currentTestimonial].position}
                 </p>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-xs md:text-sm">
                   {testimonials[currentTestimonial].company}
                 </p>
               </div>

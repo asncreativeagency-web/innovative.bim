@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const AboutSection: React.FC = () => {
 	const workflowRef = useRef<HTMLDivElement>(null)
+	const [isBimModalOpen, setIsBimModalOpen] = useState(false)
 
 	// Custom CSS animations
 	useEffect(() => {
@@ -163,9 +164,20 @@ const AboutSection: React.FC = () => {
 					<h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
 						About <span className="text-blue-400">Us</span>
 					</h2>
-					<p className="text-xl text-gray-300 max-w-3xl mx-auto">
+					<p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
 						Pioneering the future of construction with innovative BIM solutions and global expertise
 					</p>
+					
+					{/* BIM Definition Button */}
+					<button
+						onClick={() => setIsBimModalOpen(true)}
+						className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+					>
+						<svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						What is BIM?
+					</button>
 				</div>
 
 				{/* Company Description */}
@@ -230,12 +242,12 @@ const AboutSection: React.FC = () => {
 				</div>
 
 				{/* Workflow Section */}
-				<div className="mb-20">
-					<h3 className="text-3xl font-bold text-white text-center mb-16">
+				<div className="mb-16 sm:mb-20">
+					<h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-12 sm:mb-16 px-4">
 						Our <span className="text-blue-400">Workflow</span>
 					</h3>
 					
-					<div ref={workflowRef} className="relative">
+					<div ref={workflowRef} className="relative px-4 sm:px-0">
 						{/* Connectors positioned between each step */}
 						<div className="absolute top-10 left-0 w-full hidden lg:flex justify-between px-16">
 							{Array.from({ length: 6 }).map((_, i) => (
@@ -247,7 +259,7 @@ const AboutSection: React.FC = () => {
 							))}
 						</div>
 
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8 lg:gap-6">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 sm:gap-8 lg:gap-6">
 							{workflowSteps.map((step, index) => (
 								<div
 									key={step.id}
@@ -255,19 +267,19 @@ const AboutSection: React.FC = () => {
 									style={{ transitionDelay: `${index * 100}ms` }}
 								>
 									{/* Step Circle */}
-									<div className="relative z-10 mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-400 border-4 border-white rounded-full flex items-center justify-center mb-6 group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transform group-hover:scale-110">
-										<span className="text-white font-bold text-2xl group-hover:text-white transition-colors duration-300">
+									<div className="relative z-10 mx-auto w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-cyan-400 border-4 border-white rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transform group-hover:scale-110">
+										<span className="text-white font-bold text-lg sm:text-2xl group-hover:text-white transition-colors duration-300">
 											{step.id}
 										</span>
 									</div>
 
 									{/* Step Content */}
 									<div className="text-center">
-										<div className="mb-3"><WorkflowIcon id={step.id} /></div>
-										<h4 className="text-lg font-semibold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">
+										<div className="mb-2 sm:mb-3"><WorkflowIcon id={step.id} /></div>
+										<h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3 group-hover:text-blue-300 transition-colors duration-300">
 											{step.title}
 										</h4>
-										<p className="text-sm text-gray-400 leading-relaxed">
+										<p className="text-xs sm:text-sm text-gray-400 leading-relaxed px-2">
 											{step.description}
 										</p>
 									</div>
@@ -283,13 +295,13 @@ const AboutSection: React.FC = () => {
 				{/* LOD Showcase Section */}
 				<div className="mb-20">
 					<h3 className="text-3xl font-bold text-white text-center mb-16">
-						Levels of <span className="text-blue-400">Detail (LOD)</span>
+						Levels of <span className="text-blue-400">Development (LOD)</span>
 					</h3>
 					
 					<div className="text-center mb-12">
 						<p className="text-xl text-gray-300 max-w-4xl mx-auto">
 							LOD defines the amount of detail and accuracy in our BIM models at different project stages. 
-							From initial concepts to construction-ready models, we provide the right level of detail for your needs.
+							From initial concepts to construction-ready models, we provide the right level of development for your needs.
 						</p>
 					</div>
 
@@ -503,6 +515,88 @@ const AboutSection: React.FC = () => {
 
 
 			</div>
+
+			{/* BIM Definition Modal */}
+			{isBimModalOpen && (
+				<div 
+					className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+					onClick={(e) => {
+						// Close modal when clicking on blank space
+						if (e.target === e.currentTarget) {
+							setIsBimModalOpen(false);
+						}
+					}}
+				>
+					{/* Close Button */}
+					<button
+						onClick={() => setIsBimModalOpen(false)}
+						className="absolute top-4 right-4 md:top-8 md:right-8 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 z-10"
+						aria-label="Close BIM modal"
+					>
+						<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+
+					{/* BIM Modal Content */}
+					<div className="relative max-w-4xl w-full bg-gradient-to-br from-blue-900/90 to-cyan-900/90 backdrop-blur-xl border border-blue-400/30 rounded-3xl shadow-2xl shadow-blue-500/20 overflow-hidden">
+						{/* Original BIM Background Image */}
+						<div className="absolute inset-0">
+							<img
+								src="/Original BIM Baground.jpg"
+								alt="BIM Background"
+								className="w-full h-full object-cover opacity-30"
+							/>
+						</div>
+
+						{/* 3D House Wireframe Background */}
+						<div className="absolute inset-0 opacity-10">
+							<div className="absolute top-1/4 left-1/4 w-32 h-32 border border-white/20 rounded-lg transform rotate-45"></div>
+							<div className="absolute top-1/3 right-1/4 w-24 h-24 border border-white/20 rounded-lg transform -rotate-12"></div>
+							<div className="absolute bottom-1/4 left-1/3 w-20 h-20 border border-white/20 rounded-lg transform rotate-30"></div>
+						</div>
+
+						<div className="relative z-10 p-8 md:p-12">
+							<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+								{/* Left Side - BIM Text */}
+								<div className="text-center lg:text-left">
+									<h3 className="text-7xl md:text-8xl font-black text-blue-400 mb-6 tracking-tight" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif" }}>
+										BIM
+									</h3>
+									<div className="space-y-3 text-white text-xl md:text-2xl font-semibold tracking-wide" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>
+										<div className="text-blue-200">Building</div>
+										<div className="text-blue-100">Information</div>
+										<div className="text-blue-300">Modeling</div>
+									</div>
+								</div>
+
+								{/* Right Side - Definition Box */}
+								<div className="bg-black/80 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8">
+									<h4 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>
+										Definition of BIM
+									</h4>
+									<div className="space-y-4 text-gray-200 text-base md:text-lg leading-relaxed" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
+										<p>
+											<strong className="text-blue-300 font-semibold">Building Information Modeling (BIM)</strong> is a digital representation of physical and functional characteristics of a facility.
+										</p>
+										<div className="flex justify-center my-3">
+											<svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+											</svg>
+										</div>
+										<p>
+											It serves as a shared knowledge resource for information about a facility, forming a reliable basis for decisions during its life-cycle from inception onward.
+										</p>
+										<p>
+											BIM integrates architecture, engineering, and construction into a unified digital workflow, enabling better collaboration, reduced errors, and improved project outcomes.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 
 			{/* Floating Elements */}
 			<div className="absolute top-20 right-20 w-2 h-2 bg-blue-400 rounded-full animate-ping" />

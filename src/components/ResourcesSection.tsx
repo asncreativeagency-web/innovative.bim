@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNewsletterForm } from '../hooks/useNewsletterForm'
 
 interface Resource {
   id: string
@@ -12,6 +13,14 @@ interface Resource {
 }
 
 const ResourcesSection: React.FC = () => {
+  const {
+    email,
+    isSubmitting,
+    submitStatus,
+    handleEmailChange,
+    handleSubmit
+  } = useNewsletterForm()
+
   const resources: Resource[] = [
     {
       id: '1',
@@ -230,16 +239,68 @@ const ResourcesSection: React.FC = () => {
             <p className="text-gray-300 mb-6">
               Get notified when we release new resources, industry insights, and BIM best practices.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={handleEmailChange}
                 className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/50 focus:outline-none"
+                required
               />
-              <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
-                Subscribe
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>
-            </div>
+            </form>
+            
+            {/* Success Message */}
+            {submitStatus === 'success' && (
+              <div className="mt-4 p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-xl backdrop-blur-sm">
+                <div className="flex items-center justify-center space-x-2 mb-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-green-400 font-medium">Successfully subscribed to our newsletter!</span>
+                </div>
+                <div className="text-center">
+                  <button
+                    onClick={() => {
+                      // Reset form manually
+                      const form = document.querySelector('form') as HTMLFormElement;
+                      if (form) form.reset();
+                      // Reset status
+                      window.location.reload();
+                    }}
+                    className="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    Subscribe Another Email
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <div className="mt-4 p-4 bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/30 rounded-xl backdrop-blur-sm">
+                <div className="flex items-center justify-center space-x-2">
+                  <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                  <span className="text-red-400 font-medium">Failed to subscribe. Please try again.</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -5,11 +5,12 @@ interface Service {
   title: string
   description: string
   icon: string
-  lodLevels?: string[]
   features: string[]
 }
 
 const IconSvg: React.FC<{ name: string }> = ({ name }) => {
+  console.log(`IconSvg called with name: ${name}`);
+  
   switch (name) {
     case '🏗️': // BIM Modeling
       return (
@@ -17,10 +18,23 @@ const IconSvg: React.FC<{ name: string }> = ({ name }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       )
-    case '🔍': // Clash Detection
+    case '🔧': // BIM Coordination
       return (
         <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      )
+    case '📐': // CAD Services
+      return (
+        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      )
+    case '🎨': // 3D Modeling
+      return (
+        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
         </svg>
       )
     case '⏰': // 4D Scheduling
@@ -29,94 +43,98 @@ const IconSvg: React.FC<{ name: string }> = ({ name }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       )
-    case '📊': // Quantity Takeoff
+    case '🎬': // Visualizations
       return (
         <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      )
-    case '🤝': // Coordination
-      return (
-        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 1.567-3 3.5S10.343 15 12 15s3-1.567 3-3.5S13.657 8 12 8zm0 0V5m0 10v4m7-9h2m-9-7V1M5 12H3m9 9v2" />
-        </svg>
-      )
-    case '🎓': // Training
-      return (
-        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9-4 9 4-9 4-9-4zm0 6l9 4 9-4M7 12v5a2 2 0 002 2h6a2 2 0 002-2v-5" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
         </svg>
       )
     default:
-      return null
+      console.warn(`No icon found for: ${name}, using default icon`);
+      return (
+        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      )
   }
 }
 
 const services: Service[] = [
   {
     id: '1',
-    title: 'BIM Modeling',
-    description: 'Comprehensive 3D modeling services including architectural, structural, and MEP systems with detailed LOD specifications.',
+    title: 'BIM SERVICES',
+    description: 'Comprehensive Building Information Modeling services for architecture, structural, and MEP systems.',
     icon: '🏗️',
-    lodLevels: ['LOD 200', 'LOD 350', 'LOD 500'],
-    features: ['3D Modeling', 'Parametric Design', 'Family Creation', 'Template Development']
+    features: [
+      'ARCHITECTURE BIM SERVICES',
+      'STRUCTURAL BIM SERVICES',
+      'MEP BIM SERVICES'
+    ]
   },
   {
     id: '2',
-    title: 'Clash Detection',
-    description: 'Advanced clash detection and resolution services to identify and resolve design conflicts before construction begins.',
-    icon: '🔍',
-    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-    features: ['Multi-discipline Coordination', 'Clash Resolution', 'Report Generation', 'Automated Detection']
+    title: 'BIM SERVICES',
+    description: 'Advanced BIM coordination and integration services for complex building projects.',
+    icon: '🔧',
+    features: [
+      'ARCHITECTURE BIM SERVICES',
+      'STRUCTURAL BIM SERVICES',
+      'MEP BIM SERVICES'
+    ]
   },
   {
     id: '3',
-    title: '4D Scheduling',
-    description: 'Time-based project scheduling and sequencing using BIM models to optimize construction workflows and timelines.',
-    icon: '⏰',
-    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-    features: ['Construction Sequencing', 'Resource Planning', 'Timeline Visualization', 'Progress Tracking']
+    title: 'CAD SERVICES',
+    description: 'Professional CAD drafting and conversion services for all your documentation needs.',
+    icon: '📐',
+    features: [
+      'DRAFTING SERVICES(2D)',
+      'CONVERTING HAND DRAWINGS TO AUTO CAD (2D) DRAWINGS',
+      'IMAGE TO CAD AND PDF TO CAD CONVERSION',
+      'POINT CLOUD DATA TO CAD DRAWINGS',
+      '2D TO 3D CONVERSION'
+    ]
   },
   {
     id: '4',
-    title: 'Quantity Takeoff',
-    description: 'Accurate material quantity calculations and cost estimation from BIM models for better project budgeting.',
-    icon: '📊',
-    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-    features: ['Material Quantities', 'Cost Estimation', 'Bill of Materials', 'Change Order Analysis']
+    title: '3D MODELLING',
+    description: 'Advanced 3D modeling services with parametric families and comprehensive documentation.',
+    icon: '🎨',
+    features: [
+      '3D MODELLING BASED ON LASER SCAN(POINT CLOUD)',
+      'PARAMETRIC FAMILY CREATION',
+      'DOCUMENTATION & PRESENTATION OF SHEETS'
+    ]
   },
   {
     id: '5',
-    title: 'BIM Coordination',
-    description: 'Multi-disciplinary coordination services ensuring seamless integration between all building systems and trades.',
-    icon: '🤝',
-    lodLevels: ['LOD 300', 'LOD 400', 'LOD 500'],
-    features: ['Trade Coordination', 'System Integration', 'Quality Assurance', 'Documentation']
+    title: '4D SCHEDULING',
+    description: 'Time-based project scheduling and quantity management for construction projects.',
+    icon: '⏰',
+    features: [
+      'BILL OF QUANTITY',
+      'QUANTITY TAKE OFF',
+      'BILL OF MATERIALS',
+      'SCHEDULED INFORMATION FOR ALL FAMILY TYPES'
+    ]
   },
   {
     id: '6',
-    title: 'BIM Training',
-    description: 'Comprehensive training programs for teams to effectively implement and utilize BIM in their projects.',
-    icon: '🎓',
-    lodLevels: ['All Levels'],
-    features: ['Software Training', 'Workflow Optimization', 'Best Practices', 'Ongoing Support']
+    title: 'VISUALIZATIONS',
+    description: 'High-quality rendering and visualization services for project presentation and marketing.',
+    icon: '🎬',
+    features: [
+      'RENDERINGS',
+      'WALKTHROUGHS',
+      'IMAGES',
+      'ANIMATIONS AND EXPLODED VIEWS'
+    ]
   }
 ]
 
 const ServicesSection: React.FC = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null)
 
-
-  const getLodDescription = (lod: string) => {
-    const descriptions: { [key: string]: string } = {
-      'LOD 200': 'Generic systems with approximate quantities and basic geometry. Suitable for schematic design and early planning.',
-      'LOD 300': 'Detailed geometry with specific quantities and system interfaces. Ideal for design development and construction documents.',
-      'LOD 350': 'Detailed geometry with interfaces to other building systems. Perfect for construction coordination and clash detection.',
-      'LOD 400': 'Fabrication-ready models with detailed geometry and assembly information. Used for fabrication and installation.',
-      'LOD 500': 'Field-verified models with actual quantities and precise geometry. Represents as-built conditions.'
-    }
-    return descriptions[lod] || 'Level of Development specification for BIM modeling.'
-  }
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
@@ -132,21 +150,21 @@ const ServicesSection: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
+        <div className="text-center mb-12 sm:mb-16 px-4">
+          <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-500/20 text-blue-300 text-xs sm:text-sm font-medium rounded-full mb-4">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             What We Offer
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Our <span className="text-blue-400">Services</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+            <span className="text-blue-400">WE OFFER</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl sm:max-w-3xl mx-auto">
             Comprehensive BIM and CAD solutions designed to streamline your construction projects
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
           {services.map((service, index) => (
             <div
               key={service.title}
@@ -154,58 +172,52 @@ const ServicesSection: React.FC = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
-                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20"
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 touch-manipulation"
               >
               {/* Glowing border effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Service Number */}
+              <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-lg z-20">
+                {service.id}
+              </div>
               
               {/* Service Icon */}
-              <div className="relative z-10 mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-cyan-400/30 transition-all duration-500">
-                  <IconSvg name={service.icon} />
+              <div className="relative z-10 mb-4 sm:mb-6 mt-2 sm:mt-4">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-cyan-400/30 transition-all duration-500">
+                  {(() => {
+                    console.log(`Rendering icon for service: ${service.title}, icon: ${service.icon}`);
+                    return <IconSvg name={service.icon} />;
+                  })()}
                 </div>
               </div>
 
               {/* Service Title */}
-                              <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
-                  {service.title}
-                </h3>
+              <h3 className="relative z-10 text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-blue-400 transition-colors duration-300 text-center">
+                {service.title}
+              </h3>
 
               {/* Service Description */}
-              <p className="relative z-10 text-gray-300 mb-4 leading-relaxed">
+              <p className="relative z-10 text-gray-300 mb-4 sm:mb-6 leading-relaxed text-center text-xs sm:text-sm">
                 {service.description}
               </p>
 
-              {/* Features */}
-              <div className="relative z-10 mb-4">
-                <div className="flex flex-wrap gap-2">
-                  {service.features.slice(0, 2).map((feature) => (
-                    <span
-                      key={feature}
-                      className="px-2 py-1 text-xs font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-lg"
-                    >
-                      {feature}
-                    </span>
+              {/* Features List */}
+              <div className="relative z-10">
+                <ul className="space-y-1.5 sm:space-y-2">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start space-x-2">
+                      <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+                      <span className="text-gray-300 text-xs sm:text-sm leading-relaxed">{feature}</span>
+                    </li>
                   ))}
-                </div>
-              </div>
-
-              {/* LOD Levels */}
-              <div className="relative z-10 flex flex-wrap gap-2">
-                {service.lodLevels?.map((level) => (
-                                      <span
-                      key={level}
-                      className="px-3 py-1 text-xs font-medium bg-white/10 text-white border border-white/20 rounded-full group-hover:bg-blue-500/20 group-hover:border-blue-500/30 group-hover:text-blue-300 transition-all duration-300"
-                    >
-                      {level}
-                    </span>
-                ))}
+                </ul>
               </div>
 
                               {/* Hover Indicator */}
-                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
@@ -216,13 +228,13 @@ const ServicesSection: React.FC = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-16 px-4">
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-medium rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-medium rounded-xl sm:rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1 touch-manipulation w-full sm:w-auto justify-center"
           >
             Get Started Today
-            <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
@@ -262,39 +274,37 @@ const ServicesSection: React.FC = () => {
             {/* Modal Content */}
             <div className="p-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* LOD Levels */}
-                <div>
-                  <h4 className="text-xl font-semibold text-white mb-6">LOD Levels Available</h4>
-                  <div className="space-y-4">
-                    {selectedService.lodLevels?.map((lod) => (
-                      <div key={lod} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-blue-500/30 transition-all duration-300">
-                        <h5 className="text-lg font-semibold text-blue-400 mb-2">{lod}</h5>
-                        <p className="text-gray-300 text-sm leading-relaxed">
-                          {getLodDescription(lod)}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
                 {/* Service Features */}
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-6">Key Features</h4>
+                  <h4 className="text-xl font-semibold text-white mb-6">Service Features</h4>
                   <div className="space-y-3">
-                    {selectedService.features.map((feature) => (
-                      <div key={feature} className="flex items-center space-x-3">
+                    {selectedService.features.map((feature, index) => (
+                      <div key={index} className="flex items-center space-x-3">
                         <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                         <span className="text-gray-300">{feature}</span>
                       </div>
                     ))}
                   </div>
-                  
-                  {/* Service Description */}
-                  <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
-                    <h5 className="text-lg font-semibold text-white mb-2">Service Overview</h5>
+                </div>
+
+                {/* Service Description */}
+                <div>
+                  <h4 className="text-xl font-semibold text-white mb-6">Service Overview</h4>
+                  <div className="p-4 bg-white/5 rounded-xl border border-white/10">
                     <p className="text-gray-300 text-sm leading-relaxed">
                       {selectedService.description}
                     </p>
+                  </div>
+                  
+                  {/* Service Icon */}
+                  <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
+                    <h5 className="text-lg font-semibold text-white mb-4">Service Category</h5>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-xl flex items-center justify-center">
+                        <IconSvg name={selectedService.icon} />
+                      </div>
+                      <span className="text-gray-300 font-medium">{selectedService.title}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -302,11 +312,6 @@ const ServicesSection: React.FC = () => {
           </div>
         </div>
       )}
-
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 right-20 w-2 h-2 bg-blue-500 rounded-full animate-ping" />
-      <div className="absolute bottom-1/4 left-20 w-3 h-3 bg-blue-500 rounded-full animate-ping delay-1000" />
-      <div className="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping delay-500" />
     </div>
   )
 }

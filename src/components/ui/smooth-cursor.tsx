@@ -53,6 +53,7 @@ export function SmoothCursor({
   },
 }: SmoothCursorProps) {
   const [isMoving, setIsMoving] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
   const velocity = useRef<Position>({ x: 0, y: 0 });
   const lastUpdateTime = useRef(Date.now());
@@ -72,7 +73,25 @@ export function SmoothCursor({
     mass: 0.6,
   });
 
+  // Check if device is mobile
   useEffect(() => {
+    const checkMobile = () => {
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    window.innerWidth <= 1024;
+      setIsMobile(mobile);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // If mobile, don't set up cursor functionality
+    if (isMobile) {
+      return;
+    }
+
     const updateVelocity = (currentPos: Position) => {
       const currentTime = Date.now();
       const deltaTime = currentTime - lastUpdateTime.current;
@@ -141,6 +160,11 @@ export function SmoothCursor({
       elements.forEach(el => {
         if (el instanceof HTMLElement) {
           el.style.cursor = 'none';
+          // Force remove cursor with !important
+          el.style.setProperty('cursor', 'none', 'important');
+          el.style.setProperty('-webkit-cursor', 'none', 'important');
+          el.style.setProperty('-moz-cursor', 'none', 'important');
+          el.style.setProperty('-ms-cursor', 'none', 'important');
         }
       });
     };
@@ -151,6 +175,22 @@ export function SmoothCursor({
     // Use MutationObserver to hide cursor on dynamically added elements
     const observer = new MutationObserver(hideCursorOnElements);
     observer.observe(document.body, { childList: true, subtree: true });
+    
+    // Also add a global style to override any cursor styles
+    let globalStyle = document.getElementById('smooth-cursor-override');
+    if (!globalStyle) {
+      globalStyle = document.createElement('style');
+      globalStyle.id = 'smooth-cursor-override';
+      globalStyle.textContent = `
+        * {
+          cursor: none !important;
+          -webkit-cursor: none !important;
+          -moz-cursor: none !important;
+          -ms-cursor: none !important;
+        }
+      `;
+      document.head.appendChild(globalStyle);
+    }
 
     window.addEventListener("mousemove", throttledMouseMove);
 
@@ -164,18 +204,34 @@ export function SmoothCursor({
         elements.forEach(el => {
           if (el instanceof HTMLElement) {
             el.style.cursor = '';
+            el.style.removeProperty('cursor');
+            el.style.removeProperty('-webkit-cursor');
+            el.style.removeProperty('-moz-cursor');
+            el.style.removeProperty('-ms-cursor');
           }
         });
       };
       restoreCursorOnElements();
       
+      // Remove global style
+      const globalStyle = document.getElementById('smooth-cursor-override');
+      if (globalStyle) {
+        globalStyle.remove();
+      }
+      
       if (rafId) cancelAnimationFrame(rafId);
       if (observer) observer.disconnect();
     };
-  }, [cursorX, cursorY, rotation, scale]);
+  }, [cursorX, cursorY, rotation, scale, isMobile]);
+
+  // If mobile, render an empty div instead of null to maintain hook consistency
+  if (isMobile) {
+    return <div style={{ display: 'none' }} />;
+  }
 
   return (
     <motion.div
+      data-smooth-cursor="true"
       style={{
         position: "fixed",
         left: cursorX,
