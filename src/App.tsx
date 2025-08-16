@@ -9,14 +9,13 @@ import TeamSection from './components/TeamSection'
 import TestimonialsSection from './components/TestimonialsSection'
 import CaseStudiesSection from './components/CaseStudiesSection'
 import FAQSection from './components/FAQSection'
-import ResourcesSection from './components/ResourcesSection'
 import BlogSection from './components/BlogSection'
 import ContactSection from './components/ContactSection'
 import Navigation from './components/Navigation'
 import { SmoothCursor } from './components/ui/smooth-cursor'
 import TechnologiesSection from './components/TechnologiesSection'
 
-const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'technologies', 'team', 'testimonials', 'case-studies', 'faq', 'resources', 'blog', 'contact']
+const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'technologies', 'team', 'testimonials', 'case-studies', 'faq', 'blog', 'contact']
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -213,10 +212,6 @@ function App() {
         
         <section id="faq" className="min-h-screen">
           <FAQSection />
-        </section>
-        
-        <section id="resources" className="min-h-screen">
-          <ResourcesSection />
         </section>
         
         <section id="blog" className="min-h-screen">

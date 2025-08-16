@@ -49,7 +49,6 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
     { id: 'testimonials', label: 'Reviews' },
     { id: 'case-studies', label: 'Cases' },
     { id: 'faq', label: 'FAQ' },
-    { id: 'resources', label: 'Resources' },
     { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' }
   ]
@@ -57,8 +56,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
   // Group navigation items for better organization
   const primaryNav = navItems.slice(0, 5) // Home, Showcase, Services, Projects, About
   const secondaryNav = navItems.slice(5, 8) // Technologies, Team, Reviews
-  const tertiaryNav = navItems.slice(8, 13) // Case Studies, FAQ, Resources, Blog
-  const contactNav = navItems.slice(13) // Contact
+  const tertiaryNav = navItems.slice(8, 11) // Case Studies, FAQ, Blog
+  const contactNav = navItems.slice(11) // Contact
 
   return (
     <nav className={`fixed top-2 sm:top-4 left-2 right-2 sm:left-4 sm:right-4 lg:left-16 lg:right-16 z-50 transition-all duration-700 rounded-2xl sm:rounded-3xl ${
@@ -286,7 +285,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
               {/* Tertiary Navigation */}
               <div>
-                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Services & Resources</h3>
+                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Services</h3>
                 <div className="space-y-2">
                   {tertiaryNav.map((item) => (
                     <button
