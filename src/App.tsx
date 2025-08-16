@@ -14,6 +14,8 @@ import ContactSection from './components/ContactSection'
 import Navigation from './components/Navigation'
 import { SmoothCursor } from './components/ui/smooth-cursor'
 import TechnologiesSection from './components/TechnologiesSection'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
+import { Toaster } from './components/ui/sonner'
 
 const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'technologies', 'team', 'testimonials', 'case-studies', 'faq', 'blog', 'contact']
 
@@ -172,6 +174,8 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
       <Navigation activeSection={activeSection} onNavigate={scrollToSection} />
       <SmoothCursor />
+      <FloatingWhatsApp />
+      <Toaster />
       
       <main>
         <section id="home" className="min-h-screen">

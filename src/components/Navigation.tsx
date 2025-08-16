@@ -88,7 +88,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
           <div className="flex items-center space-x-1 sm:space-x-2 xl:hidden">
             <button
               onClick={() => onNavigate('services')}
-              className={`px-2 sm:px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-none sm:cursor-pointer ${
+              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-none sm:cursor-pointer ${
                 activeSection === 'services'
                   ? 'text-blue-400 bg-blue-500/20'
                   : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
@@ -99,7 +99,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
             </button>
             <button
               onClick={() => onNavigate('about')}
-              className={`px-2 sm:px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-none sm:cursor-pointer ${
+              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-none sm:cursor-pointer ${
                 activeSection === 'about'
                   ? 'text-blue-400 bg-blue-500/20'
                   : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
@@ -110,7 +110,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
             </button>
             <button
               onClick={() => onNavigate('contact')}
-              className={`px-2 sm:px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation cursor-none sm:cursor-pointer ${
+              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation cursor-none sm:cursor-pointer ${
                 activeSection === 'contact'
                   ? 'from-blue-600 to-cyan-500'
                   : 'hover:from-blue-600 hover:to-cyan-500'
@@ -235,12 +235,12 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden bg-gray-900/95 backdrop-blur-2xl border border-white/20 mt-2 rounded-2xl shadow-2xl shadow-black/30 max-h-[80vh] overflow-y-auto">
-            <div className="px-4 py-6 space-y-4">
+          <div className="xl:hidden bg-gray-900/95 backdrop-blur-2xl border border-white/20 mt-2 rounded-2xl shadow-2xl shadow-black/30 max-h-[85vh] overflow-y-auto">
+            <div className="px-3 sm:px-4 py-4 sm:py-6 space-y-3 sm:space-y-4">
               {/* Primary Navigation */}
               <div>
-                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Main</h3>
-                <div className="space-y-2">
+                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-2 sm:mb-3 px-2">Main</h3>
+                <div className="space-y-1.5 sm:space-y-2">
                   {primaryNav.map((item) => (
                     <button
                       key={item.id}
@@ -248,7 +248,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                         onNavigate(item.id)
                         setIsMobileMenuOpen(false)
                       }}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation ${
+                      className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation ${
                         activeSection === item.id
                           ? 'text-white bg-blue-600/80 border border-blue-400/50'
                           : 'text-gray-200 hover:text-white hover:bg-gray-700/50'
@@ -262,8 +262,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
               {/* Secondary Navigation */}
               <div>
-                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Company & Blog</h3>
-                <div className="space-y-2">
+                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-2 sm:mb-3 px-2">Company & Blog</h3>
+                <div className="space-y-1.5 sm:space-y-2">
                   {secondaryNav.map((item) => (
                     <button
                       key={item.id}
@@ -271,7 +271,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                         onNavigate(item.id)
                         setIsMobileMenuOpen(false)
                       }}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation ${
+                      className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation ${
                         activeSection === item.id
                           ? 'text-white bg-blue-600/80 border border-blue-400/50'
                           : 'text-gray-200 hover:text-white hover:bg-gray-700/50'
@@ -285,8 +285,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
               {/* Tertiary Navigation */}
               <div>
-                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-3">Services</h3>
-                <div className="space-y-2">
+                <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-2 sm:mb-3 px-2">Services</h3>
+                <div className="space-y-1.5 sm:space-y-2">
                   {tertiaryNav.map((item) => (
                     <button
                       key={item.id}
@@ -294,7 +294,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                         onNavigate(item.id)
                         setIsMobileMenuOpen(false)
                       }}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation ${
+                      className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation ${
                         activeSection === item.id
                           ? 'text-white bg-blue-600/80 border border-blue-400/50'
                           : 'text-gray-200 hover:text-white hover:bg-gray-700/50'
@@ -308,7 +308,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
               {/* Contact Navigation */}
               <div>
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   {contactNav.map((item) => (
                     <button
                       key={item.id}
@@ -316,7 +316,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                         onNavigate(item.id)
                         setIsMobileMenuOpen(false)
                       }}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation ${
+                      className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation bg-gradient-to-r from-blue-500 to-cyan-400 text-white ${
                         activeSection === item.id
                           ? 'from-blue-600 to-cyan-500 shadow-lg shadow-blue-500/25'
                           : 'hover:from-blue-600 hover:to-cyan-500'
