@@ -47,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
     { id: 'technologies', label: 'Technologies' },
     { id: 'team', label: 'Team' },
     { id: 'testimonials', label: 'Reviews' },
-    { id: 'case-studies', label: 'Case Studies' },
+    { id: 'case-studies', label: 'Cases' },
     { id: 'faq', label: 'FAQ' },
     { id: 'resources', label: 'Resources' },
     { id: 'blog', label: 'Blog' },
@@ -57,7 +57,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
   // Group navigation items for better organization
   const primaryNav = navItems.slice(0, 5) // Home, Showcase, Services, Projects, About
   const secondaryNav = navItems.slice(5, 8) // Technologies, Team, Reviews
-  const tertiaryNav = navItems.slice(8, 13) // Case Studies, FAQ, Pricing, Resources, Blog
+  const tertiaryNav = navItems.slice(8, 13) // Case Studies, FAQ, Resources, Blog
   const contactNav = navItems.slice(13) // Contact
 
   return (

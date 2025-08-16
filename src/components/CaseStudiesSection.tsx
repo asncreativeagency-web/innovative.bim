@@ -44,7 +44,7 @@ const CaseStudiesSection: React.FC = () => {
         'Achieved LEED Gold certification'
       ],
       technologies: ['Revit', 'Navisworks', 'BIM 360', 'Dynamo', '4D Scheduling'],
-      image: '/project-1.jpg'
+      image: '/downtown commercial complex.avif'
     },
     {
       id: '2',
@@ -71,7 +71,7 @@ const CaseStudiesSection: React.FC = () => {
         'Completed 2 weeks ahead of schedule'
       ],
       technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Clash Detection', 'Quantity Takeoff'],
-      image: '/project-2.jpg'
+      image: '/healthcare facility expansion.jpg'
     },
     {
       id: '3',
@@ -98,7 +98,7 @@ const CaseStudiesSection: React.FC = () => {
         'Increased property value by 15%'
       ],
       technologies: ['Revit', 'Tekla', 'BIM 360', 'Structural Analysis', '3D Coordination'],
-      image: '/project-3.jpg'
+      image: '/Resedential Tower Complex.jpg'
     }
   ]
 
@@ -140,32 +140,48 @@ const CaseStudiesSection: React.FC = () => {
             >
               {/* Case Study Card */}
               <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20">
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                {/* Enhanced Image Section */}
+                <div className="relative h-64 sm:h-72 overflow-hidden">
                   <img
                     src={caseStudy.image}
                     alt={caseStudy.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/placeholder.svg';
+                      target.alt = 'Image not available';
+                    }}
                   />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Professional Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Project Type Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-blue-500/90 text-white text-xs font-medium rounded-full backdrop-blur-sm shadow-lg">
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 bg-blue-500/90 text-white text-xs font-medium rounded-full backdrop-blur-sm shadow-lg border border-blue-400/30">
                       {caseStudy.projectType}
+                    </span>
+                  </div>
+
+                  {/* Project Value Badge */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className="px-3 py-1 bg-green-500/90 text-white text-xs font-medium rounded-full backdrop-blur-sm shadow-lg border border-green-400/30">
+                      {caseStudy.value}
                     </span>
                   </div>
 
                   {/* View Details Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="bg-white text-blue-600 px-4 py-2 rounded-full font-medium shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="bg-white/95 backdrop-blur-sm text-blue-600 px-6 py-3 rounded-full font-semibold shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 border border-white/20">
                       View Details
                     </div>
                   </div>
+
+                  {/* Image Hover Effect */}
+                  <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Content */}
+                {/* Enhanced Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">
                     {caseStudy.title}
@@ -175,18 +191,14 @@ const CaseStudiesSection: React.FC = () => {
                   </p>
                   
                   {/* Project Details */}
-                  <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm">
+                  <div className="space-y-3 mb-4">
+                    <div className="flex justify-between items-center text-sm">
                       <span className="text-gray-400">Client:</span>
                       <span className="text-blue-200 font-medium">{caseStudy.client}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-400">Value:</span>
-                      <span className="text-white font-semibold text-green-400">{caseStudy.value}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between items-center text-sm">
                       <span className="text-gray-400">Duration:</span>
-                      <span className="text-white">{caseStudy.duration}</span>
+                      <span className="text-white font-medium">{caseStudy.duration}</span>
                     </div>
                   </div>
 
@@ -195,21 +207,18 @@ const CaseStudiesSection: React.FC = () => {
                     {caseStudy.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-lg border border-blue-500/30"
+                        className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-lg border border-blue-500/30 backdrop-blur-sm"
                       >
                         {tech}
                       </span>
                     ))}
                     {caseStudy.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-white/10 text-white/70 text-xs rounded-lg border border-white/20">
+                      <span className="px-2 py-1 bg-gray-500/20 text-gray-300 text-xs rounded-lg border border-gray-500/30">
                         +{caseStudy.technologies.length - 3} more
                       </span>
                     )}
                   </div>
                 </div>
-
-                {/* Hover Glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
           ))}
@@ -248,12 +257,40 @@ const CaseStudiesSection: React.FC = () => {
 
             {/* Project Image */}
             <div className="p-8 pb-6">
-              <div className="relative h-80 rounded-2xl overflow-hidden border border-white/10">
+              <div className="relative h-96 rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
                 <img
                   src={selectedCase.image}
                   alt={selectedCase.title}
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/placeholder.svg';
+                    target.alt = 'Image not available';
+                  }}
                 />
+                
+                {/* Image Overlay with Project Info */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                
+                {/* Project Type and Value Overlay */}
+                <div className="absolute top-6 left-6 flex items-center space-x-3">
+                  <span className="px-4 py-2 bg-blue-500/90 text-white text-sm font-semibold rounded-full backdrop-blur-sm border border-blue-400/30">
+                    {selectedCase.projectType}
+                  </span>
+                  <span className="px-4 py-2 bg-green-500/90 text-white text-sm font-semibold rounded-full backdrop-blur-sm border border-green-400/30">
+                    {selectedCase.value}
+                  </span>
+                </div>
+                
+                {/* Project Title Overlay */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">
+                    {selectedCase.title}
+                  </h3>
+                  <p className="text-blue-200 text-lg drop-shadow-lg">
+                    {selectedCase.client}
+                  </p>
+                </div>
               </div>
             </div>
 

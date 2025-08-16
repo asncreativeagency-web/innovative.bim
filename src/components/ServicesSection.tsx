@@ -6,6 +6,10 @@ interface Service {
   description: string
   icon: string
   features: string[]
+  benefits: string[]
+  category: 'core' | 'advanced' | 'specialized'
+  technologies: string[]
+  duration: string
 }
 
 const IconSvg: React.FC<{ name: string }> = ({ name }) => {
@@ -62,79 +66,152 @@ const IconSvg: React.FC<{ name: string }> = ({ name }) => {
 const services: Service[] = [
   {
     id: '1',
-    title: 'BIM SERVICES',
-    description: 'Comprehensive Building Information Modeling services for architecture, structural, and MEP systems.',
+    title: 'BIM MODELING & COORDINATION',
+    description: 'Comprehensive Building Information Modeling services for architecture, structural, and MEP systems with advanced coordination.',
     icon: '🏗️',
+    category: 'core',
     features: [
       'ARCHITECTURE BIM SERVICES',
       'STRUCTURAL BIM SERVICES',
-      'MEP BIM SERVICES'
-    ]
+      'MEP BIM SERVICES',
+      'Multi-discipline coordination',
+      'Clash detection & resolution'
+    ],
+    benefits: [
+      'Reduced construction errors by 90%',
+      'Improved project coordination',
+      'Enhanced visualization for stakeholders'
+    ],
+    technologies: ['Revit', 'Navisworks', 'BIM 360', 'AutoCAD'],
+    duration: '8-12 months'
   },
   {
     id: '2',
-    title: 'BIM SERVICES',
-    description: 'Advanced BIM coordination and integration services for complex building projects.',
+    title: 'BIM COORDINATION & INTEGRATION',
+    description: 'Advanced BIM coordination and integration services for complex building projects with real-time collaboration.',
     icon: '🔧',
+    category: 'core',
     features: [
       'ARCHITECTURE BIM SERVICES',
       'STRUCTURAL BIM SERVICES',
-      'MEP BIM SERVICES'
-    ]
+      'MEP BIM SERVICES',
+      'Real-time collaboration',
+      'Workflow optimization'
+    ],
+    benefits: [
+      'Streamlined construction process',
+      'Enhanced team collaboration',
+      'Improved project timeline'
+    ],
+    technologies: ['Revit', 'BIM 360', 'Dynamo', 'Navisworks'],
+    duration: '6-10 months'
   },
   {
     id: '3',
-    title: 'CAD SERVICES',
-    description: 'Professional CAD drafting and conversion services for all your documentation needs.',
+    title: 'CAD SERVICES & DRAFTING',
+    description: 'Professional CAD drafting and conversion services for all your documentation needs with precision and accuracy.',
     icon: '📐',
+    category: 'core',
     features: [
       'DRAFTING SERVICES(2D)',
       'CONVERTING HAND DRAWINGS TO AUTO CAD (2D) DRAWINGS',
       'IMAGE TO CAD AND PDF TO CAD CONVERSION',
       'POINT CLOUD DATA TO CAD DRAWINGS',
       '2D TO 3D CONVERSION'
-    ]
+    ],
+    benefits: [
+      'Accurate documentation',
+      'Standardized drawings',
+      'Improved project clarity'
+    ],
+    technologies: ['AutoCAD', 'Civil 3D', 'BIM 360', 'Bluebeam'],
+    duration: '2-6 months'
   },
   {
     id: '4',
-    title: '3D MODELLING',
-    description: 'Advanced 3D modeling services with parametric families and comprehensive documentation.',
+    title: '3D MODELING & PARAMETRIC FAMILIES',
+    description: 'Advanced 3D modeling services with parametric families and comprehensive documentation for complex projects.',
     icon: '🎨',
+    category: 'advanced',
     features: [
       '3D MODELLING BASED ON LASER SCAN(POINT CLOUD)',
       'PARAMETRIC FAMILY CREATION',
-      'DOCUMENTATION & PRESENTATION OF SHEETS'
-    ]
+      'DOCUMENTATION & PRESENTATION OF SHEETS',
+      'Custom component development',
+      'Performance optimization'
+    ],
+    benefits: [
+      'Increased design flexibility',
+      'Improved project consistency',
+      'Enhanced reusability'
+    ],
+    technologies: ['Revit', 'Dynamo', 'BIM 360', 'Family Editor'],
+    duration: '4-8 months'
   },
   {
     id: '5',
-    title: '4D SCHEDULING',
-    description: 'Time-based project scheduling and quantity management for construction projects.',
+    title: '4D SCHEDULING & QUANTITY MANAGEMENT',
+    description: 'Time-based project scheduling and quantity management for construction projects with advanced analytics.',
     icon: '⏰',
+    category: 'advanced',
     features: [
       'BILL OF QUANTITY',
       'QUANTITY TAKE OFF',
       'BILL OF MATERIALS',
-      'SCHEDULED INFORMATION FOR ALL FAMILY TYPES'
-    ]
+      'SCHEDULED INFORMATION FOR ALL FAMILY TYPES',
+      'Construction sequencing'
+    ],
+    benefits: [
+      'Improved cost control',
+      'Enhanced project planning',
+      'Better resource allocation'
+    ],
+    technologies: ['Revit', 'Navisworks', 'BIM 360', 'Project'],
+    duration: '3-6 months'
   },
   {
     id: '6',
-    title: 'VISUALIZATIONS',
-    description: 'High-quality rendering and visualization services for project presentation and marketing.',
+    title: 'VISUALIZATIONS & RENDERING',
+    description: 'High-quality rendering and visualization services for project presentation and marketing with photorealistic output.',
     icon: '🎬',
+    category: 'specialized',
     features: [
       'RENDERINGS',
       'WALKTHROUGHS',
       'IMAGES',
-      'ANIMATIONS AND EXPLODED VIEWS'
-    ]
+      'ANIMATIONS AND EXPLODED VIEWS',
+      'Virtual reality experiences'
+    ],
+    benefits: [
+      'Enhanced project presentation',
+      'Improved stakeholder communication',
+      'Better marketing materials'
+    ],
+    technologies: ['3ds Max', 'V-Ray', 'Enscape', 'Twinmotion'],
+    duration: '2-4 months'
   }
 ]
 
 const ServicesSection: React.FC = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null)
 
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'core': return 'from-blue-500 to-cyan-400'
+      case 'advanced': return 'from-purple-500 to-pink-400'
+      case 'specialized': return 'from-orange-500 to-red-400'
+      default: return 'from-gray-500 to-gray-400'
+    }
+  }
+
+  const getCategoryBadge = (category: string) => {
+    switch (category) {
+      case 'core': return 'Core Service'
+      case 'advanced': return 'Advanced'
+      case 'specialized': return 'Specialized'
+      default: return 'Service'
+    }
+  }
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
@@ -156,162 +233,213 @@ const ServicesSection: React.FC = () => {
             What We Offer
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-            <span className="text-blue-400">WE OFFER</span>
+            Professional <span className="text-blue-400">BIM Services</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-2xl sm:max-w-3xl mx-auto">
-            Comprehensive BIM and CAD solutions designed to streamline your construction projects
+            Comprehensive BIM and CAD solutions designed to streamline your construction projects with precision, efficiency, and innovation.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0 mb-16">
           {services.map((service, index) => (
             <div
               key={service.title}
-              onClick={() => setSelectedService(service)}
+              onClick={() => {
+                setSelectedService(selectedService?.id === service.id ? null : service)
+                // Scroll to details section if opening
+                if (selectedService?.id !== service.id) {
+                  setTimeout(() => {
+                    document.getElementById('service-details')?.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    })
+                  }, 100)
+                }
+              }}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
-                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 touch-manipulation"
+                className={`group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 touch-manipulation ${
+                  selectedService?.id === service.id ? 'ring-2 ring-blue-400 bg-white/10' : ''
+                }`}
               >
-              {/* Glowing border effect */}
-              <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Service Number */}
-              <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-lg z-20">
-                {service.id}
-              </div>
-              
-              {/* Service Icon */}
-              <div className="relative z-10 mb-4 sm:mb-6 mt-2 sm:mt-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-cyan-400/30 transition-all duration-500">
-                  {(() => {
-                    console.log(`Rendering icon for service: ${service.title}, icon: ${service.icon}`);
-                    return <IconSvg name={service.icon} />;
-                  })()}
+                {/* Glowing border effect */}
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Category Badge */}
+                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20">
+                  <span className={`px-2 py-1 text-xs font-semibold rounded-full bg-gradient-to-r ${getCategoryColor(service.category)} text-white`}>
+                    {getCategoryBadge(service.category)}
+                  </span>
                 </div>
-              </div>
+                
+                {/* Service Number */}
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-lg z-20">
+                  {service.id}
+                </div>
+                
+                {/* Service Icon */}
+                <div className="relative z-10 mb-4 sm:mb-6 mt-2 sm:mt-4">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-cyan-400/30 transition-all duration-500">
+                    {(() => {
+                      console.log(`Rendering icon for service: ${service.title}, icon: ${service.icon}`);
+                      return <IconSvg name={service.icon} />;
+                    })()}
+                  </div>
+                </div>
 
-              {/* Service Title */}
-              <h3 className="relative z-10 text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-blue-400 transition-colors duration-300 text-center">
-                {service.title}
-              </h3>
+                {/* Service Title */}
+                <h3 className="relative z-10 text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-blue-400 transition-colors duration-300 text-center">
+                  {service.title}
+                </h3>
 
-              {/* Service Description */}
-              <p className="relative z-10 text-gray-300 mb-4 sm:mb-6 leading-relaxed text-center text-xs sm:text-sm">
-                {service.description}
-              </p>
+                {/* Service Description */}
+                <p className="relative z-10 text-gray-300 text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed text-center">
+                  {service.description}
+                </p>
 
-              {/* Features List */}
-              <div className="relative z-10">
-                <ul className="space-y-1.5 sm:space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start space-x-2">
-                      <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
-                      <span className="text-gray-300 text-xs sm:text-sm leading-relaxed">{feature}</span>
-                    </li>
+                {/* Features Preview */}
+                <div className="relative z-10 space-y-2 mb-4">
+                  {service.features.slice(0, 3).map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm text-gray-400">
+                      <svg className="w-4 h-4 text-blue-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {feature}
+                    </div>
                   ))}
-                </ul>
-              </div>
+                  {service.features.length > 3 && (
+                    <div className="text-blue-400 text-sm font-medium text-center">
+                      +{service.features.length - 3} more features
+                    </div>
+                  )}
+                </div>
 
-                              {/* Hover Indicator */}
-                <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                {/* Click to Expand Indicator */}
+                <div className="text-center">
+                  <div className={`inline-flex items-center text-sm font-medium transition-colors ${
+                    selectedService?.id === service.id ? 'text-blue-400' : 'text-gray-400 group-hover:text-blue-300'
+                  }`}>
+                    {selectedService?.id === service.id ? 'Hide Details' : 'View Details'}
+                    <svg className={`w-4 h-4 ml-1 transition-transform duration-300 ${
+                      selectedService?.id === service.id ? 'rotate-180' : ''
+                    }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
-            </div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-12 sm:mt-16 px-4">
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-medium rounded-xl sm:rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1 touch-manipulation w-full sm:w-auto justify-center"
-          >
-            Get Started Today
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Enhanced LOD Modal */}
-      {selectedService && (
-        <div 
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedService(null)}
-        >
-          <div 
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-white/10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="flex justify-between items-start p-8 border-b border-white/10">
+        {/* Detailed Service View */}
+        {selectedService && (
+          <div id="service-details" className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Service Details */}
               <div>
-                <h3 className="text-3xl font-bold text-white mb-2">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {selectedService.title}
                 </h3>
-                <p className="text-gray-300 text-lg">
-                  Level of Development (LOD) Specifications
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  {selectedService.description}
                 </p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-lg font-semibold text-blue-400 mb-3">Key Features</h4>
+                    <ul className="space-y-2">
+                      {selectedService.features.map((feature, index) => (
+                        <li key={index} className="flex items-start text-gray-300">
+                          <svg className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <button
-                onClick={() => setSelectedService(null)}
-                className="text-gray-400 hover:text-white transition-colors duration-300 bg-white/5 hover:bg-white/10 rounded-full p-2"
-              >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
 
-            {/* Modal Content */}
-            <div className="p-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Service Features */}
-                <div>
-                  <h4 className="text-xl font-semibold text-white mb-6">Service Features</h4>
-                  <div className="space-y-3">
-                    {selectedService.features.map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span className="text-gray-300">{feature}</span>
+              {/* Benefits & Technical Info */}
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-3">Project Benefits</h4>
+                <div className="space-y-3 mb-6">
+                  {selectedService.benefits.map((benefit, index) => (
+                    <div key={index} className="bg-white/5 rounded-lg p-4 border border-white/10">
+                      <div className="flex items-center">
+                        <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
+                          <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
+                        <span className="text-gray-200 text-sm">{benefit}</span>
                       </div>
-                    ))}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Technical Information */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <h5 className="text-blue-400 font-semibold text-sm mb-2">Technologies</h5>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedService.technologies.map((tech, index) => (
+                        <span key={index} className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <h5 className="text-blue-400 font-semibold text-sm mb-2">Duration</h5>
+                    <p className="text-gray-200 text-sm">{selectedService.duration}</p>
                   </div>
                 </div>
 
-                {/* Service Description */}
+                {/* CTA Button */}
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-6">Service Overview</h4>
-                  <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      {selectedService.description}
-                    </p>
-                  </div>
-                  
-                  {/* Service Icon */}
-                  <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
-                    <h5 className="text-lg font-semibold text-white mb-4">Service Category</h5>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-xl flex items-center justify-center">
-                        <IconSvg name={selectedService.icon} />
-                      </div>
-                      <span className="text-gray-300 font-medium">{selectedService.title}</span>
-                    </div>
-                  </div>
+                  <button 
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1"
+                  >
+                    Get This Service
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+        )}
+
+        {/* Bottom CTA */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-blue-500/10 to-cyan-400/10 border border-blue-400/20 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ready to Transform Your Projects?
+            </h3>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Let our BIM experts help you achieve precision, efficiency, and innovation in your construction projects.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1"
+              >
+                Start Your BIM Journey
+              </button>
+              <button 
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-4 border-2 border-blue-400/50 text-blue-300 font-semibold rounded-xl hover:bg-blue-400/10 hover:border-blue-400 transition-all duration-300"
+              >
+                View Our Projects
+              </button>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
