@@ -225,6 +225,34 @@ const AboutSection: React.FC = () => {
 						</div>
 					</div>
 
+					{/* Specialized Expertise Section */}
+					<div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-2xl p-8 shadow-2xl shadow-green-500/20">
+						<h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+							<svg className="w-6 h-6 mr-3 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+							</svg>
+							Specialized Expertise
+						</h3>
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div className="space-y-3">
+								<h4 className="text-lg font-semibold text-green-300 flex items-center">
+									🍽️ Food Service BIM
+								</h4>
+								<p className="text-gray-300 text-sm">
+									Industry-leading expertise in commercial kitchen design, custom equipment modeling, and MEP coordination for food service facilities.
+								</p>
+							</div>
+							<div className="space-y-3">
+								<h4 className="text-lg font-semibold text-green-300 flex items-center">
+									📡 Scan-to-BIM Services
+								</h4>
+								<p className="text-gray-300 text-sm">
+									Advanced point cloud processing and as-built modeling for heritage, renovation, and facility documentation projects.
+								</p>
+							</div>
+						</div>
+					</div>
+
 					<div className="relative">
 						<div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-8 shadow-2xl shadow-blue-500/20">
 							<h3 className="text-2xl font-bold text-white mb-8 text-center">Global Reach</h3>

@@ -229,7 +229,7 @@ const Index: React.FC = () => {
           <a href="tel:+10000000000" className="brand-frame glass rounded-lg p-5 flex items-center gap-3 hover-scale">
             <Phone className="text-primary" /> <span>+1 (000) 000-0000</span>
           </a>
-          <a href="#" className="brand-frame glass rounded-lg p-5 flex items-center gap-3 hover-scale">
+          <a href="https://www.linkedin.com/company/innovativebimservices/" target="_blank" rel="noopener noreferrer" className="brand-frame glass rounded-lg p-5 flex items-center gap-3 hover-scale">
             <Linkedin className="text-primary" /> <span>LinkedIn</span>
           </a>
         </div>
@@ -242,6 +242,17 @@ const Index: React.FC = () => {
             <span>© {new Date().getFullYear()} Innovative BIM Services</span>
           </div>
           <p>Built with love and precision. All rights reserved.</p>
+          <div className="mt-4 flex items-center justify-center gap-4">
+            <a 
+              href="https://www.linkedin.com/company/innovativebimservices/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+            >
+              <Linkedin className="h-4 w-4" />
+              <span>Follow us on LinkedIn</span>
+            </a>
+          </div>
         </div>
       </footer>
     </main>

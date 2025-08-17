@@ -53,6 +53,24 @@ const IconSvg: React.FC<{ name: string }> = ({ name }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
         </svg>
       )
+    case '🍽️': // Food Service BIM
+      return (
+        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01M9 5h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V7a2 2 0 012-2z" />
+        </svg>
+      )
+    case '📡': // Scan-to-BIM
+      return (
+        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+        </svg>
+      )
+    case '🎓': // BIM Implementation
+      return (
+        <svg className="w-10 h-10 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      )
     default:
       console.warn(`No icon found for: ${name}, using default icon`);
       return (
@@ -189,6 +207,75 @@ const services: Service[] = [
     ],
     technologies: ['3ds Max', 'V-Ray', 'Enscape', 'Twinmotion'],
     duration: '2-4 months'
+  },
+  {
+    id: '7',
+    title: 'FOOD SERVICE BIM SPECIALIZATION',
+    description: 'Specialized BIM services for commercial kitchens, restaurants, and food service facilities with custom equipment modeling.',
+    icon: '🍽️',
+    category: 'specialized',
+    features: [
+      'Commercial Kitchen Design & Modeling',
+      'Custom Equipment Revit Families',
+      'Kitchen MEP Coordination',
+      'Laundry System Layouts',
+      'Custom Fabrication Modeling',
+      'Shop Drawings & MEP Extractions'
+    ],
+    benefits: [
+      'Industry-specific expertise',
+      'Custom equipment integration',
+      'Manufacturer-ready BIM models',
+      'Enhanced kitchen functionality'
+    ],
+    technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Custom Families'],
+    duration: '3-6 months'
+  },
+  {
+    id: '8',
+    title: 'SCAN-TO-BIM & POINT CLOUD SERVICES',
+    description: 'Advanced point cloud processing and as-built modeling for renovation, heritage, and facility documentation projects.',
+    icon: '📡',
+    category: 'advanced',
+    features: [
+      'Point Cloud to 3D Model Conversion',
+      'As-Built Modeling (LOD 400-500)',
+      'Heritage & Renovation Projects',
+      'Retrofit Planning & Documentation',
+      'Structural & MEP Element Capture',
+      'Facility Management Models'
+    ],
+    benefits: [
+      'Accurate existing condition modeling',
+      'Reduced site visits',
+      'Enhanced renovation planning',
+      'Improved facility management'
+    ],
+    technologies: ['Revit', 'AutoCAD', 'Point Cloud Processing', 'BIM 360'],
+    duration: '4-8 months'
+  },
+  {
+    id: '9',
+    title: 'BIM IMPLEMENTATION & TRAINING',
+    description: 'Comprehensive BIM implementation services including execution planning, standards development, and team training.',
+    icon: '🎓',
+    category: 'specialized',
+    features: [
+      'BIM Execution Planning (BEP)',
+      'Standards Development & Implementation',
+      'Team Training & Certification',
+      'Process Optimization',
+      'Workflow Integration',
+      'Quality Control Systems'
+    ],
+    benefits: [
+      'Streamlined BIM adoption',
+      'Improved team efficiency',
+      'Standardized processes',
+      'Enhanced project quality'
+    ],
+    technologies: ['Revit', 'BIM 360', 'Process Management', 'Training Tools'],
+    duration: '6-12 months'
   }
 ]
 

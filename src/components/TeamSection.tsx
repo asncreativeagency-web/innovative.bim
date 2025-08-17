@@ -14,24 +14,33 @@ const TeamSection: React.FC = () => {
   const teamMembers: TeamMember[] = [
     {
       id: '1',
-      name: 'Sarah Chen',
-      position: 'Senior BIM Manager',
-      expertise: ['Revit', 'BIM 360', 'Project Coordination'],
-      experience: '8+ years',
-      image: '/hero-bg.jpg', // Placeholder - you can add actual team photos
-      linkedin: '#'
+      name: 'Hari Prasad Bhoga',
+      position: 'Founder & BIM Manager',
+      expertise: ['Revit', 'AutoCAD', 'Navisworks', 'BIM', 'Food Service Industry', 'Architecture', 'Structure', 'Scan-to-BIM'],
+      experience: '10+ years',
+      image: '/Team Photos/Hari Prasad Bhoga.jpeg',
+      linkedin: 'https://www.linkedin.com/in/hari-prasad-bhoga-1aa155118/'
     },
     {
       id: '2',
+      name: 'Sathish Mamidoju',
+      position: 'BIM Modeler',
+      expertise: ['Revit', 'BIM', '3D Modeling', 'AutoCAD', 'Navisworks', 'Clash Detection'],
+      experience: '6+ years',
+      image: '/Team Photos/Sathish.jpeg',
+      linkedin: 'https://www.linkedin.com/in/sathish-mamidoju-49b4b2145/'
+    },
+    {
+      id: '3',
       name: 'Michael Rodriguez',
       position: 'BIM Specialist',
       expertise: ['AutoCAD', 'Navisworks', 'Clash Detection'],
       experience: '6+ years',
-      image: '/hero-bg.jpg',
+      image: '/Team Photos/Unknown.jpeg',
       linkedin: '#'
     },
     {
-      id: '3',
+      id: '4',
       name: 'Emily Watson',
       position: 'Structural BIM Engineer',
       expertise: ['Tekla', 'Structural Analysis', 'Steel Modeling'],
@@ -40,7 +49,7 @@ const TeamSection: React.FC = () => {
       linkedin: '#'
     },
     {
-      id: '4',
+      id: '5',
       name: 'David Kim',
       position: 'MEP BIM Coordinator',
       expertise: ['MEP Systems', 'Coordination', 'BIM Standards'],
@@ -49,7 +58,7 @@ const TeamSection: React.FC = () => {
       linkedin: '#'
     },
     {
-      id: '5',
+      id: '6',
       name: 'Lisa Thompson',
       position: 'BIM Consultant',
       expertise: ['BIM Implementation', 'Training', 'Standards'],
@@ -58,7 +67,7 @@ const TeamSection: React.FC = () => {
       linkedin: '#'
     },
     {
-      id: '6',
+      id: '7',
       name: 'James Wilson',
       position: 'Technical Director',
       expertise: ['Project Management', 'Quality Control', 'Innovation'],
@@ -143,13 +152,34 @@ const TeamSection: React.FC = () => {
                   ))}
                 </div>
 
+                {/* Certification Badge - For Hari Prasad Bhoga and Sathish Mamidoju */}
+                {(member.id === '1' || member.id === '2') && (
+                  <div className="mb-4 flex justify-center">
+                    <div className="relative group">
+                      <img
+                        src="/autodesk-certification-badge.png"
+                        alt="Autodesk Certified Professional - Revit Architectural Design"
+                        className="w-32 h-32 object-contain rounded-lg shadow-lg border border-blue-500/30 group-hover:border-blue-400/50 transition-all duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+                )}
+
                 {/* LinkedIn */}
                 {member.linkedin && (
                   <a
                     href={member.linkedin}
-                    className="inline-flex items-center justify-center w-10 h-10 bg-blue-500/20 rounded-full hover:bg-blue-500/40 transition-all duration-300 group-hover:scale-110 border border-blue-500/30"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-110 border-2 border-blue-400/50 hover:border-blue-300 shadow-lg hover:shadow-blue-500/25 cursor-pointer z-10 relative"
+                    title={`Connect with ${member.name} on LinkedIn`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open(member.linkedin, '_blank', 'noopener,noreferrer');
+                    }}
                   >
-                    <svg className="w-5 h-5 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
                   </a>

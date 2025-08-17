@@ -79,7 +79,7 @@ const HeroSection: React.FC = () => {
           style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}
         >
           Revolutionizing the construction industry with cutting-edge, AI-powered BIM solutions.
-          We deliver precision, efficiency, and innovation in every project.
+          Specializing in Food Service BIM, Scan-to-BIM, and comprehensive architectural modeling.
         </p>
 
         {/* CTA Button */}

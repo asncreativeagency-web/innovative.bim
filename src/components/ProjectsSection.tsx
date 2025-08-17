@@ -19,6 +19,28 @@ const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
       id: '1',
+      title: 'Commercial Kitchen BIM Design',
+      description: 'Specialized commercial kitchen design with comprehensive MEP coordination and custom equipment modeling.',
+      category: 'Food Service BIM',
+      image: '/Projects/BIM Projects/05_3D Kitchen View.jpg',
+      details: 'This specialized commercial kitchen BIM project demonstrates our expertise in food service industry modeling. The project includes custom equipment Revit families, comprehensive MEP coordination, and detailed shop drawings for manufacturers and contractors.',
+      technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Custom Families'],
+      duration: '6 months',
+      teamSize: '5 specialists'
+    },
+    {
+      id: '2',
+      title: 'Heritage Building Scan-to-BIM',
+      description: 'Advanced point cloud processing and as-built modeling for heritage building renovation and documentation.',
+      category: 'Scan-to-BIM',
+      image: '/Projects/BIM Projects/01_BIM sample model.jpg',
+      details: 'This heritage building project showcases our scan-to-BIM expertise, converting point cloud data into detailed as-built models. The project demonstrates LOD 400-500 modeling capabilities for renovation planning and facility documentation.',
+      technologies: ['Revit', 'Point Cloud Processing', 'BIM 360', 'AutoCAD'],
+      duration: '8 months',
+      teamSize: '6 specialists'
+    },
+    {
+      id: '3',
       title: 'BIM Sample Model',
       description: 'Comprehensive BIM model showcasing advanced 3D coordination and detailed building information modeling.',
       category: 'BIM',
