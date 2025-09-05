@@ -224,35 +224,6 @@ export function SmoothCursor({
     };
   }, [cursorX, cursorY, rotation, scale, isMobile]);
 
-  // If mobile, render an empty div instead of null to maintain hook consistency
-  if (isMobile) {
-    return <div style={{ display: 'none' }} />;
-  }
-
-  return (
-    <motion.div
-      data-smooth-cursor="true"
-      style={{
-        position: "fixed",
-        left: cursorX,
-        top: cursorY,
-        translateX: "-50%",
-        translateY: "-50%",
-        rotate: rotation,
-        scale: scale,
-        zIndex: 100,
-        pointerEvents: "none",
-        willChange: "transform",
-      }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 400,
-        damping: 30,
-      }}
-    >
-      {cursor}
-    </motion.div>
-  );
+  // Disable smooth cursor completely
+  return null;
 }

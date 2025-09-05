@@ -3,21 +3,35 @@ import React, { useEffect, useRef, useState } from 'react'
 const AboutSection: React.FC = () => {
 	const workflowRef = useRef<HTMLDivElement>(null)
 	const [isBimModalOpen, setIsBimModalOpen] = useState(false)
+	const [currentTechIndex, setCurrentTechIndex] = useState(0)
 
 	// Custom CSS animations
 	useEffect(() => {
 		const style = document.createElement('style')
 		style.textContent = `
-			@keyframes slide {
-				0%, 100% { transform: translateX(-100%); }
-				50% { transform: translateX(100%); }
-			}
 			@keyframes float {
 				0%, 100% { transform: translateY(0px); }
 				50% { transform: translateY(-10px); }
 			}
+			@keyframes scroll {
+				0% { transform: translateX(0); }
+				100% { transform: translateX(-33.333%); }
+			}
 			.animate-float {
 				animation: float 3s ease-in-out infinite;
+			}
+			.animate-scroll {
+				animation: scroll 10s linear infinite;
+			}
+			.animate-scroll:hover {
+				animation-play-state: paused;
+			}
+			.tech-logo {
+				filter: grayscale(100%) brightness(0.8);
+				transition: filter 0.3s ease;
+			}
+			.tech-logo:hover {
+				filter: grayscale(0%) brightness(1);
 			}
 		`
 		document.head.appendChild(style)
@@ -37,11 +51,38 @@ const AboutSection: React.FC = () => {
 		{ id: 7, title: 'Feedback & Updates', description: 'Iterative improvements and client collaboration' }
 	]
 
-	const stats = [
-		{ label: 'Projects Completed', value: '500+', icon: 'trophy' },
-		{ label: 'Countries Served', value: '25+', icon: 'globe' },
-		{ label: 'Client Satisfaction', value: '98%', icon: 'smile' },
-		{ label: 'Years Experience', value: '10+', icon: 'clock' }
+
+	const technologies = [
+		{
+			name: 'Autodesk Revit',
+			icon: '/Technologies Used/autodesk-revit transperent.png',
+			category: 'BIM Software'
+		},
+		{
+			name: 'AutoCAD',
+			icon: '/Technologies Used/auto cad transparent.png',
+			category: 'CAD Software'
+		},
+		{
+			name: 'ArchiCAD',
+			icon: '/Technologies Used/archicad transparent.png',
+			category: 'Architecture'
+		},
+		{
+			name: '3ds Max',
+			icon: '/Technologies Used/3d_max transparent.jpg',
+			category: '3D Modeling'
+		},
+		{
+			name: 'SketchUp',
+			icon: '/Technologies Used/sketch up transparent.png',
+			category: '3D Design'
+		},
+		{
+			name: 'Recap',
+			icon: '/Technologies Used/recap transparent.png',
+			category: 'Reality Capture'
+		}
 	]
 
 	const WorkflowIcon: React.FC<{ id: number }> = ({ id }) => {
@@ -91,36 +132,6 @@ const AboutSection: React.FC = () => {
 		}
 	}
 
-	const StatIcon: React.FC<{ name: string }> = ({ name }) => {
-		switch (name) {
-			case 'trophy':
-				return (
-					<svg className="w-8 h-8 mx-auto text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 21h8m-4-4v4m7-14h1a2 2 0 012 2 6 6 0 01-6 6H8a6 6 0 01-6-6 2 2 0 012-2h1m12 0V5a2 2 0 00-2-2H9a2 2 0 00-2 2v2m12 0a4 4 0 01-4 4H9a4 4 0 01-4-4" />
-					</svg>
-				)
-			case 'globe':
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c2.5 0 4.5-4 4.5-9S14.5 3 12 3 7.5 7 7.5 12 9.5 21 12 21zm-9-9h18" />
-					</svg>
-				)
-			case 'smile':
-				return (
-					<svg className="w-8 h-8 mx-auto text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828A4 4 0 019.172 14.83M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-					</svg>
-				)
-			case 'clock':
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-					</svg>
-				)
-			default:
-				return null
-		}
-	}
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -142,6 +153,7 @@ const AboutSection: React.FC = () => {
 		return () => observer.disconnect()
 	}, [])
 
+
 	return (
 		<div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
 			{/* Background Pattern */}
@@ -157,10 +169,6 @@ const AboutSection: React.FC = () => {
 			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 				{/* Section Header */}
 				<div className="text-center mb-20">
-					<div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
-						<span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-						Who We Are
-					</div>
 					<h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
 						About <span className="text-blue-400">Us</span>
 					</h2>
@@ -181,8 +189,8 @@ const AboutSection: React.FC = () => {
 				</div>
 
 				{/* Company Description */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-					<div className="space-y-8">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+					{/* Our Mission Card */}
 						<div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
 							<h3 className="text-2xl font-bold text-white mb-4 flex items-center">
 								<svg className="w-6 h-6 mr-3 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -197,6 +205,7 @@ const AboutSection: React.FC = () => {
 							</p>
 						</div>
 						
+					{/* Why Choose Us Card */}
 						<div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
 							<h3 className="text-2xl font-bold text-white mb-4 flex items-center">
 								<svg className="w-6 h-6 mr-3 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -225,100 +234,6 @@ const AboutSection: React.FC = () => {
 						</div>
 					</div>
 
-					{/* Specialized Expertise Section */}
-					<div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-2xl p-8 shadow-2xl shadow-green-500/20">
-						<h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-							<svg className="w-6 h-6 mr-3 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-							</svg>
-							Specialized Expertise
-						</h3>
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-							<div className="space-y-3">
-								<h4 className="text-lg font-semibold text-green-300 flex items-center">
-									🍽️ Food Service BIM
-								</h4>
-								<p className="text-gray-300 text-sm">
-									Industry-leading expertise in commercial kitchen design, custom equipment modeling, and MEP coordination for food service facilities.
-								</p>
-							</div>
-							<div className="space-y-3">
-								<h4 className="text-lg font-semibold text-green-300 flex items-center">
-									📡 Scan-to-BIM Services
-								</h4>
-								<p className="text-gray-300 text-sm">
-									Advanced point cloud processing and as-built modeling for heritage, renovation, and facility documentation projects.
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div className="relative">
-						<div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-8 shadow-2xl shadow-blue-500/20">
-							<h3 className="text-2xl font-bold text-white mb-8 text-center">Global Reach</h3>
-							<div className="grid grid-cols-2 gap-6">
-								{stats.map((stat) => (
-									<div key={stat.label} className="text-center">
-										<StatIcon name={stat.icon} />
-										<div className="text-white font-bold text-2xl mb-1">{stat.value}</div>
-										<div className="text-blue-300 text-sm">{stat.label}</div>
-									</div>
-								))}
-							</div>
-						</div>
-					</div>
-				</div>
-
-				{/* Workflow Section */}
-				<div className="mb-16 sm:mb-20">
-					<h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-12 sm:mb-16 px-4">
-						Our <span className="text-blue-400">Workflow</span>
-					</h3>
-					
-					<div ref={workflowRef} className="relative px-4 sm:px-0">
-						{/* Connectors positioned between each step */}
-						<div className="absolute top-10 left-0 w-full hidden lg:flex justify-between px-16">
-							{Array.from({ length: 6 }).map((_, i) => (
-								<div key={i} className="flex items-center space-x-1 opacity-60">
-									<span className="w-1 h-1 rounded-full bg-blue-300"></span>
-									<span className="w-1 h-1 rounded-full bg-blue-300/70"></span>
-									<span className="w-1 h-1 rounded-full bg-blue-300/50"></span>
-								</div>
-							))}
-						</div>
-
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 sm:gap-8 lg:gap-6">
-							{workflowSteps.map((step, index) => (
-								<div
-									key={step.id}
-									className={`workflow-step relative group opacity-0 transform translate-y-8 transition-all duration-700 ease-out`}
-									style={{ transitionDelay: `${index * 100}ms` }}
-								>
-									{/* Step Circle */}
-									<div className="relative z-10 mx-auto w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-cyan-400 border-4 border-white rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:from-blue-400 group-hover:to-cyan-300 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transform group-hover:scale-110">
-										<span className="text-white font-bold text-lg sm:text-2xl group-hover:text-white transition-colors duration-300">
-											{step.id}
-										</span>
-									</div>
-
-									{/* Step Content */}
-									<div className="text-center">
-										<div className="mb-2 sm:mb-3"><WorkflowIcon id={step.id} /></div>
-										<h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3 group-hover:text-blue-300 transition-colors duration-300">
-											{step.title}
-										</h4>
-										<p className="text-xs sm:text-sm text-gray-400 leading-relaxed px-2">
-											{step.description}
-										</p>
-									</div>
-
-									{/* Hover Glow */}
-									<div className="absolute inset-0 rounded-2xl bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
 
 				{/* LOD Showcase Section */}
 				<div className="mb-20">
@@ -333,28 +248,13 @@ const AboutSection: React.FC = () => {
 						</p>
 					</div>
 
-					{/* LOD Progress Bar */}
-					<div className="relative mb-16">
-						<div className="flex justify-between items-center mb-8">
-							{['Concept', 'Planning', 'Design', 'Construction', 'Fabrication'].map((stage, index) => (
-								<div key={stage} className="text-center">
-									<div className="w-3 h-3 bg-blue-400 rounded-full mb-2 animate-pulse"></div>
-									<span className="text-sm text-blue-300 font-medium">{stage}</span>
-								</div>
-							))}
-						</div>
-						<div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
-							<div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 rounded-full animate-pulse"></div>
-							<div className="relative h-full bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 rounded-full transform translate-x-0" style={{animation: 'slide 3s ease-in-out infinite'}}></div>
-						</div>
-					</div>
 
 					{/* Enhanced LOD Cards Grid */}
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-16">
 						{/* LOD 100 */}
-						<div className="group perspective-1000">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500">
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
 									{/* Glowing Border Effect */}
 									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 									
@@ -382,19 +282,14 @@ const AboutSection: React.FC = () => {
 										Basic shapes and approximate quantities for initial planning and feasibility studies.
 									</p>
 									
-									{/* Progress Indicator */}
-									<div className="w-full bg-gray-700 rounded-full h-2 mb-3">
-										<div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full w-1/5 animate-pulse"></div>
-									</div>
-									<span className="text-xs text-blue-300">20% Complete</span>
 								</div>
 							</div>
 						</div>
 
 						{/* LOD 200 */}
-						<div className="group perspective-1000">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500">
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
 									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 									
 									<div className="relative mb-6">
@@ -420,18 +315,14 @@ const AboutSection: React.FC = () => {
 										Generic elements with approximate quantities for schematic design and cost estimation.
 									</p>
 									
-									<div className="w-full bg-gray-700 rounded-full h-2 mb-3">
-										<div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full w-2/5 animate-pulse"></div>
-									</div>
-									<span className="text-xs text-blue-300">40% Complete</span>
 								</div>
 							</div>
 						</div>
 
 						{/* LOD 300 */}
-						<div className="group perspective-1000">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500">
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
 									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 									
 									<div className="relative mb-6">
@@ -457,18 +348,14 @@ const AboutSection: React.FC = () => {
 										Specific elements with accurate quantities for detailed design and construction planning.
 									</p>
 									
-									<div className="w-full bg-gray-700 rounded-full h-2 mb-3">
-										<div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full w-3/5 animate-pulse"></div>
-									</div>
-									<span className="text-xs text-blue-300">60% Complete</span>
 								</div>
 							</div>
 						</div>
 
 						{/* LOD 350 */}
-						<div className="group perspective-1000">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500">
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
 									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 									
 									<div className="relative mb-6">
@@ -494,18 +381,14 @@ const AboutSection: React.FC = () => {
 										Detailed elements with fabrication-ready information for construction documentation.
 									</p>
 									
-									<div className="w-full bg-gray-700 rounded-full h-2 mb-3">
-										<div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full w-4/5 animate-pulse"></div>
-									</div>
-									<span className="text-xs text-blue-300">80% Complete</span>
 								</div>
 							</div>
 						</div>
 
 						{/* LOD 400 */}
-						<div className="group perspective-1000">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500">
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
 									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 									
 									<div className="relative mb-6">
@@ -531,17 +414,63 @@ const AboutSection: React.FC = () => {
 										Detailed elements ready for manufacturing, assembly, and installation.
 									</p>
 									
-									<div className="w-full bg-gray-700 rounded-full h-2 mb-3">
-										<div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full w-full animate-pulse"></div>
-									</div>
-									<span className="text-xs text-blue-300">100% Complete</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
+			</div>
 
+			{/* Technologies Slider Section - Full Width */}
+			<div className="relative w-full py-20">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+					<h3 className="text-3xl font-bold text-white text-center mb-8">
+						Technologies We <span className="text-blue-400">Use</span>
+					</h3>
+					
+					<div className="text-center">
+						<p className="text-xl text-gray-300 max-w-4xl mx-auto">
+							We leverage cutting-edge BIM and CAD technologies to deliver exceptional results for our clients worldwide.
+						</p>
+					</div>
+				</div>
+
+				{/* Continuous Technologies Slider - Full Width */}
+				<div className="relative overflow-hidden w-full">
+					<div className="flex animate-scroll">
+						{/* First set of logos */}
+						{technologies.map((tech, index) => (
+							<div key={`first-${index}`} className="flex-shrink-0 mx-16 flex items-center justify-center">
+								<img 
+									src={tech.icon} 
+									alt={tech.name}
+									className="w-48 h-48 object-contain hover:scale-110 transition-all duration-300 tech-logo"
+								/>
+							</div>
+						))}
+						{/* Duplicate set for seamless loop */}
+						{technologies.map((tech, index) => (
+							<div key={`second-${index}`} className="flex-shrink-0 mx-16 flex items-center justify-center">
+								<img 
+									src={tech.icon} 
+									alt={tech.name}
+									className="w-48 h-48 object-contain hover:scale-110 transition-all duration-300 tech-logo"
+								/>
+							</div>
+						))}
+						{/* Third set for extra smoothness */}
+						{technologies.map((tech, index) => (
+							<div key={`third-${index}`} className="flex-shrink-0 mx-16 flex items-center justify-center">
+								<img 
+									src={tech.icon} 
+									alt={tech.name}
+									className="w-48 h-48 object-contain hover:scale-110 transition-all duration-300 tech-logo"
+								/>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 
 			{/* BIM Definition Modal */}

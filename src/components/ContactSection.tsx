@@ -29,10 +29,6 @@ const ContactSection: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mb-16 sm:mb-20">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16 px-3 sm:px-4">
-          <div className="inline-flex items-center px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-blue-500/20 text-blue-300 text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full mr-1.5 sm:mr-2"></span>
-            Let's Connect
-          </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6">
             Get In <span className="text-blue-400">Touch</span>
           </h2>

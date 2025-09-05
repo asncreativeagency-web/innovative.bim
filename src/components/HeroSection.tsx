@@ -97,23 +97,6 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Statistics Section */}
-      <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full px-3 sm:px-4">
-        <div className="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-12 xl:space-x-16 text-center">
-          <div className="animate-fade-in-up stagger-1">
-            <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white mb-1 sm:mb-2" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif" }}>500+</div>
-            <div className="text-xs sm:text-sm text-gray-200 font-semibold tracking-wide" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>Projects Completed</div>
-          </div>
-          <div className="animate-fade-in-up stagger-2">
-            <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white mb-1 sm:mb-2" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif" }}>98%</div>
-            <div className="text-xs sm:text-sm text-gray-200 font-semibold tracking-wide" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>Client Satisfaction</div>
-          </div>
-          <div className="animate-fade-in-up stagger-3">
-            <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white mb-1 sm:mb-2" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif" }}>24/7</div>
-            <div className="text-xs sm:text-sm text-gray-200 font-semibold tracking-wide" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>Support Available</div>
-          </div>
-        </div>
-      </div>
 
       {/* Floating Elements - Hidden on mobile for better performance */}
       <div className="hidden sm:block absolute top-1/4 left-10 w-2 h-2 bg-blue-400 rounded-full animate-ping" />

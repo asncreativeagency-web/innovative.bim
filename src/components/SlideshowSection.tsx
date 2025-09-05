@@ -218,10 +218,6 @@ const SlideshowSection: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-500/20 text-blue-300 text-xs sm:text-sm font-medium rounded-full mb-4">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-            Project Showcase
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
             Our <span className="text-blue-400">Projects</span>
           </h2>
@@ -320,13 +316,6 @@ const SlideshowSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mt-4 bg-white/20 rounded-full h-1 overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-1000 ease-out"
-            style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
-          />
-        </div>
 
         {/* CTA Button */}
         <div className="text-center mt-8">

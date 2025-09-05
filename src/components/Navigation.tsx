@@ -44,9 +44,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
     { id: 'services', label: 'Services' },
     { id: 'projects', label: 'Projects' },
     { id: 'about', label: 'About' },
-    { id: 'technologies', label: 'Technologies' },
     { id: 'team', label: 'Team' },
-    { id: 'testimonials', label: 'Reviews' },
     { id: 'case-studies', label: 'Cases' },
     { id: 'faq', label: 'FAQ' },
     { id: 'blog', label: 'Blog' },
@@ -68,18 +66,17 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
           {/* Logo */}
           <div className="flex-shrink-0 mr-2 sm:mr-3 lg:mr-6">
             <div 
-              className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity touch-manipulation cursor-none sm:cursor-pointer"
+              className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity touch-manipulation"
               onClick={() => {
                 console.log('Logo clicked! Navigating to home section...');
                 onNavigate('home');
               }}
-              style={{ cursor: 'none' }}
             >
               <img
                 src="/logo.png"
                 alt="BIM Arcana Logo"
-                className="h-10 w-auto sm:h-14 lg:h-24 object-contain touch-manipulation cursor-none sm:cursor-pointer"
-                style={{ mixBlendMode: 'multiply', cursor: 'none' }}
+                className="h-10 w-auto sm:h-14 lg:h-24 object-contain touch-manipulation cursor-pointer"
+                style={{ mixBlendMode: 'multiply' }}
               />
             </div>
           </div>
@@ -88,34 +85,31 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
           <div className="flex items-center space-x-1 sm:space-x-2 xl:hidden">
             <button
               onClick={() => onNavigate('services')}
-              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-none sm:cursor-pointer ${
+              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-pointer ${
                 activeSection === 'services'
                   ? 'text-blue-400 bg-blue-500/20'
                   : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
               }`}
-              style={{ cursor: 'none' }}
             >
               Services
             </button>
             <button
               onClick={() => onNavigate('about')}
-              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-none sm:cursor-pointer ${
+              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-pointer ${
                 activeSection === 'about'
                   ? 'text-blue-400 bg-blue-500/20'
                   : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
               }`}
-              style={{ cursor: 'none' }}
             >
               About
             </button>
             <button
               onClick={() => onNavigate('contact')}
-              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation cursor-none sm:cursor-pointer ${
+              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation cursor-pointer ${
                 activeSection === 'contact'
                   ? 'from-blue-600 to-cyan-500'
                   : 'hover:from-blue-600 hover:to-cyan-500'
               }`}
-              style={{ cursor: 'none' }}
             >
               Contact
             </button>
@@ -222,9 +216,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
           <div className="xl:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-blue-300 p-2 transition-colors duration-300 touch-manipulation cursor-none sm:cursor-pointer"
+              className="text-gray-300 hover:text-blue-300 p-2 transition-colors duration-300 touch-manipulation cursor-pointer"
               aria-label="Toggle mobile menu"
-              style={{ cursor: 'none' }}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />

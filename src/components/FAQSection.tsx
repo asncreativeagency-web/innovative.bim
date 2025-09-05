@@ -86,10 +86,6 @@ const FAQSection: React.FC = () => {
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-full mb-4">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-            Common Questions
-          </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Frequently Asked <span className="text-blue-400">Questions</span>
           </h2>
