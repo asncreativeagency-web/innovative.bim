@@ -44,8 +44,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
     { id: 'services', label: 'Services' },
     { id: 'projects', label: 'Projects' },
     { id: 'about', label: 'About' },
-    { id: 'team', label: 'Team' },
-    { id: 'case-studies', label: 'Cases' },
+    { id: 'case-studies', label: 'Case Studies' },
     { id: 'faq', label: 'FAQ' },
     { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' }
@@ -53,9 +52,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
   // Group navigation items for better organization
   const primaryNav = navItems.slice(0, 5) // Home, Showcase, Services, Projects, About
-  const secondaryNav = navItems.slice(5, 8) // Technologies, Team, Reviews
-  const tertiaryNav = navItems.slice(8, 11) // Case Studies, FAQ, Blog
-  const contactNav = navItems.slice(11) // Contact
+  const secondaryNav = navItems.slice(5, 8) // Case Studies, FAQ, Blog
+  const contactNav = navItems.slice(8) // Contact
 
   return (
     <nav className={`fixed top-2 sm:top-4 left-2 right-2 sm:left-4 sm:right-4 lg:left-16 lg:right-16 z-50 transition-all duration-700 rounded-2xl sm:rounded-3xl ${
@@ -66,7 +64,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
           {/* Logo */}
           <div className="flex-shrink-0 mr-2 sm:mr-3 lg:mr-6">
             <div 
-              className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity touch-manipulation"
+              className="flex items-center space-x-2 cursor-pointer touch-manipulation"
               onClick={() => {
                 console.log('Logo clicked! Navigating to home section...');
                 onNavigate('home');
@@ -75,7 +73,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               <img
                 src="/logo.png"
                 alt="BIM Arcana Logo"
-                className="h-10 w-auto sm:h-14 lg:h-24 object-contain touch-manipulation cursor-pointer"
+                className="h-12 w-auto sm:h-16 lg:h-28 object-contain touch-manipulation cursor-pointer"
                 style={{ mixBlendMode: 'multiply' }}
               />
             </div>
@@ -146,31 +144,6 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               {/* Secondary Navigation */}
               <div className="flex items-center space-x-2">
                 {secondaryNav.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => onNavigate(item.id)}
-                    className={`px-2 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group touch-manipulation ${
-                      activeSection === item.id
-                        ? 'text-blue-400'
-                        : 'text-gray-400 hover:text-blue-300'
-                    }`}
-                  >
-                    <div className={`absolute inset-0 rounded-lg transition-all duration-500 ${
-                      activeSection === item.id
-                        ? 'bg-blue-500/20 shadow-lg shadow-blue-500/25 scale-105'
-                        : 'bg-transparent group-hover:bg-blue-500/10 group-hover:scale-105'
-                    }`} />
-                    <span className="relative z-10">{item.label}</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Separator */}
-              <div className="w-px h-6 bg-white/20 mx-1"></div>
-
-              {/* Tertiary Navigation */}
-              <div className="flex items-center space-x-2">
-                {tertiaryNav.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => onNavigate(item.id)}
@@ -276,11 +249,11 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                 </div>
               </div>
 
-              {/* Tertiary Navigation */}
+              {/* Secondary Navigation */}
               <div>
                 <h3 className="text-xs font-semibold text-blue-300 uppercase tracking-wider mb-2 sm:mb-3 px-2">Services</h3>
                 <div className="space-y-1.5 sm:space-y-2">
-                  {tertiaryNav.map((item) => (
+                  {secondaryNav.map((item) => (
                     <button
                       key={item.id}
                       onClick={() => {

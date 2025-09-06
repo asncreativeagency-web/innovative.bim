@@ -214,27 +214,25 @@ const SlideshowSection: React.FC = () => {
       {/* Brand color overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10" />
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-            Our <span className="text-blue-400">Projects</span>
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl sm:max-w-3xl mx-auto">
-            Explore our comprehensive portfolio of BIM projects showcasing architectural excellence and technical innovation
-          </p>
-        </div>
+      {/* Section Header */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 sm:mb-16">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+          Our <span className="text-blue-400">Projects</span>
+        </h2>
+        <p className="text-lg sm:text-xl text-gray-300 max-w-2xl sm:max-w-3xl mx-auto">
+          Explore our comprehensive portfolio of BIM projects showcasing architectural excellence and technical innovation
+        </p>
+      </div>
 
-        {/* Slideshow Container */}
-        <div className="relative mb-8 sm:mb-12">
-          <div 
-            ref={containerRef}
-            className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 h-[300px] md:h-[500px] lg:h-[600px] min-h-[250px] md:min-h-[450px] lg:min-h-[550px]"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
+      {/* Slideshow Container - Full Width */}
+      <div className="relative mb-8 sm:mb-12">
+        <div 
+          ref={containerRef}
+          className="relative overflow-hidden bg-white/5 backdrop-blur-sm border-y border-white/10 h-[300px] md:h-[500px] lg:h-[600px] min-h-[250px] md:min-h-[450px] lg:min-h-[550px]"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
             {/* Slides */}
             {slides.map((slide, index) => (
               <div
@@ -317,23 +315,22 @@ const SlideshowSection: React.FC = () => {
         </div>
 
 
-        {/* CTA Button */}
-        <div className="text-center mt-8">
-          <button 
-            onClick={() => {
-              const projectsSection = document.getElementById('projects');
-              if (projectsSection) {
-                projectsSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl sm:rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 touch-manipulation w-full sm:w-auto justify-center"
-          >
-            Explore Our Work
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
-        </div>
+      {/* CTA Button */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
+        <button 
+          onClick={() => {
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+              projectsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl sm:rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 touch-manipulation w-full sm:w-auto justify-center"
+        >
+          Explore Our Work
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </button>
       </div>
 
       {/* Lightbox Modal */}

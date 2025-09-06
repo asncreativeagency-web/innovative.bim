@@ -420,6 +420,41 @@ const AboutSection: React.FC = () => {
 					</div>
 				</div>
 
+				{/* Team Section */}
+				<div className="mb-20">
+					<h3 className="text-3xl font-bold text-white text-center mb-16">
+						Meet Our <span className="text-blue-400">Expert Team</span>
+					</h3>
+					
+					<div className="text-center">
+						<div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto">
+							<h4 className="text-2xl font-bold text-white mb-6">
+								Our <span className="text-blue-400">Expert Team</span>
+							</h4>
+							<p className="text-lg text-gray-300 leading-relaxed">
+								Our team of certified BIM professionals brings years of experience and deep expertise to every project. 
+								We combine technical excellence with innovative solutions to deliver exceptional results for our clients worldwide.
+							</p>
+						</div>
+					</div>
+
+					{/* Team CTA */}
+					<div className="text-center mt-12">
+						<p className="text-gray-300 mb-6 text-lg">
+							Ready to work with our expert team?
+						</p>
+						<button 
+							onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+							className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
+						>
+							Join Our Team
+							<svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+							</svg>
+						</button>
+					</div>
+				</div>
+
 			</div>
 
 			{/* Technologies Slider Section - Full Width */}

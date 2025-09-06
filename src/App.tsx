@@ -5,7 +5,6 @@ import SlideshowSection from './components/SlideshowSection'
 import ServicesSection from './components/ServicesSection'
 import ProjectsSection from './components/ProjectsSection'
 import AboutSection from './components/AboutSection'
-import TeamSection from './components/TeamSection'
 import CaseStudiesSection from './components/CaseStudiesSection'
 import FAQSection from './components/FAQSection'
 import BlogSection from './components/BlogSection'
@@ -86,10 +85,6 @@ function App() {
         
         <section id="about" className="min-h-screen">
           <AboutSection />
-        </section>
-        
-        <section id="team" className="min-h-screen">
-          <TeamSection />
         </section>
         
         <section id="case-studies" className="min-h-screen">

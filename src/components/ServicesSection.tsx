@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 interface Service {
   id: string
@@ -280,7 +280,12 @@ const services: Service[] = [
 ]
 
 const ServicesSection: React.FC = () => {
-  const [selectedService, setSelectedService] = useState<Service | null>(null)
+  const [selectedService, setSelectedService] = useState<Service | null>(services[0])
+  const [activeServiceIndex, setActiveServiceIndex] = useState(0)
+  const [hoveredServiceIndex, setHoveredServiceIndex] = useState<number | null>(null)
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const servicesRef = useRef<HTMLDivElement>(null)
+  const detailsRef = useRef<HTMLDivElement>(null)
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -299,6 +304,45 @@ const ServicesSection: React.FC = () => {
       default: return 'Service'
     }
   }
+
+  // Scroll detection for service highlighting
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!servicesRef.current) return
+
+      const scrollTop = window.scrollY
+      const sectionTop = servicesRef.current.offsetTop
+      const sectionHeight = servicesRef.current.offsetHeight
+      const viewportHeight = window.innerHeight
+
+      // Calculate which service should be active based on scroll position
+      const scrollProgress = Math.max(0, Math.min(1, (scrollTop - sectionTop + viewportHeight * 0.3) / (sectionHeight * 0.7)))
+      const newIndex = Math.floor(scrollProgress * services.length)
+      const clampedIndex = Math.max(0, Math.min(services.length - 1, newIndex))
+
+      if (clampedIndex !== activeServiceIndex) {
+        setActiveServiceIndex(clampedIndex)
+        setSelectedService(services[clampedIndex])
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [activeServiceIndex])
+
+  // Initialize with first service
+  useEffect(() => {
+    setSelectedService(services[0])
+  }, [])
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current)
+      }
+    }
+  }, [])
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-20">
@@ -323,153 +367,160 @@ const ServicesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0 mb-16">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              onClick={() => {
-                setSelectedService(selectedService?.id === service.id ? null : service)
-                // Scroll to details section if opening
-                if (selectedService?.id !== service.id) {
-                  setTimeout(() => {
-                    document.getElementById('service-details')?.scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start'
-                    })
-                  }, 100)
-                }
-              }}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div
-                className={`group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 touch-manipulation ${
-                  selectedService?.id === service.id ? 'ring-2 ring-blue-400 bg-white/10' : ''
-                }`}
-              >
-                {/* Glowing border effect */}
-                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Category Badge */}
-                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20">
-                  <span className={`px-2 py-1 text-xs font-semibold rounded-full bg-gradient-to-r ${getCategoryColor(service.category)} text-white`}>
-                    {getCategoryBadge(service.category)}
-                  </span>
-                </div>
-                
-                {/* Service Number */}
-                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-6 h-6 sm:w-8 sm:h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-lg z-20">
-                  {service.id}
-                </div>
-                
-                {/* Service Icon */}
-                <div className="relative z-10 mb-4 sm:mb-6 mt-2 sm:mt-4">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-cyan-400/30 transition-all duration-500">
-                    {(() => {
-                      console.log(`Rendering icon for service: ${service.title}, icon: ${service.icon}`);
-                      return <IconSvg name={service.icon} />;
-                    })()}
-                  </div>
-                </div>
-
-                {/* Service Title */}
-                <h3 className="relative z-10 text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-blue-400 transition-colors duration-300 text-center">
-                  {service.title}
-                </h3>
-
-                {/* Service Description */}
-                <p className="relative z-10 text-gray-300 text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed text-center">
-                  {service.description}
-                </p>
-
-                {/* Features Preview */}
-                <div className="relative z-10 space-y-2 mb-4">
-                  {service.features.slice(0, 3).map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm text-gray-400">
-                      <svg className="w-4 h-4 text-blue-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {feature}
-                    </div>
-                  ))}
-                  {service.features.length > 3 && (
-                    <div className="text-blue-400 text-sm font-medium text-center">
-                      +{service.features.length - 3} more features
-                    </div>
-                  )}
-                </div>
-
-                {/* Click to Expand Indicator */}
-                <div className="text-center">
-                  <div className={`inline-flex items-center text-sm font-medium transition-colors ${
-                    selectedService?.id === service.id ? 'text-blue-400' : 'text-gray-400 group-hover:text-blue-300'
-                  }`}>
-                    {selectedService?.id === service.id ? 'Hide Details' : 'View Details'}
-                    <svg className={`w-4 h-4 ml-1 transition-transform duration-300 ${
-                      selectedService?.id === service.id ? 'rotate-180' : ''
-                    }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Detailed Service View */}
-        {selectedService && (
-          <div id="service-details" className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Service Details */}
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {selectedService.title}
-                </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  {selectedService.description}
-                </p>
-                
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-lg font-semibold text-blue-400 mb-3">Key Features</h4>
-                    <ul className="space-y-2">
-                      {selectedService.features.map((feature, index) => (
-                        <li key={index} className="flex items-start text-gray-300">
-                          <svg className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Benefits & Technical Info */}
-              <div>
-                <h4 className="text-lg font-semibold text-blue-400 mb-3">Project Benefits</h4>
-                <div className="space-y-3 mb-6">
-                  {selectedService.benefits.map((benefit, index) => (
-                    <div key={index} className="bg-white/5 rounded-lg p-4 border border-white/10">
-                      <div className="flex items-center">
-                        <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
-                          <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-200 text-sm">{benefit}</span>
+        {/* Two Column Layout */}
+        <div ref={servicesRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 min-h-[80vh]">
+          {/* Left Column - Services List */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-white mb-6">Our Services</h3>
+            <div className="space-y-3">
+              {services.map((service, index) => (
+                <div
+                  key={service.id}
+                  onClick={() => {
+                    setSelectedService(service)
+                    setActiveServiceIndex(index)
+                  }}
+                  onMouseEnter={() => {
+                    if (hoverTimeoutRef.current) {
+                      clearTimeout(hoverTimeoutRef.current)
+                    }
+                    setHoveredServiceIndex(index)
+                    setSelectedService(service)
+                  }}
+                  onMouseLeave={() => {
+                    hoverTimeoutRef.current = setTimeout(() => {
+                      setHoveredServiceIndex(null)
+                      setSelectedService(services[activeServiceIndex])
+                    }, 100)
+                  }}
+                  className={`group cursor-pointer p-4 rounded-lg transition-all duration-300 ${
+                    activeServiceIndex === index 
+                      ? 'bg-blue-500/20 border-l-4 border-blue-400 shadow-lg shadow-blue-500/20' 
+                      : hoveredServiceIndex === index
+                      ? 'bg-blue-500/10 border-l-4 border-blue-300 shadow-md shadow-blue-500/10'
+                      : 'bg-white/5 hover:bg-white/10 border-l-4 border-transparent'
+                  }`}
+                >
+                  <div className="flex items-center space-x-4">
+                    {/* Service Icon */}
+                    <div className="flex-shrink-0">
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                        activeServiceIndex === index 
+                          ? 'bg-blue-500/30' 
+                          : hoveredServiceIndex === index
+                          ? 'bg-blue-500/20'
+                          : 'bg-white/10 group-hover:bg-white/20'
+                      }`}>
+                        <IconSvg name={service.icon} />
                       </div>
                     </div>
-                  ))}
+                    
+                    {/* Service Info */}
+                    <div className="flex-1 min-w-0">
+                      <h4 className={`text-lg font-semibold transition-colors duration-300 ${
+                        activeServiceIndex === index 
+                          ? 'text-blue-400' 
+                          : hoveredServiceIndex === index
+                          ? 'text-blue-300'
+                          : 'text-white group-hover:text-blue-300'
+                      }`}>
+                        {service.title}
+                      </h4>
+                      <p className="text-sm text-gray-400 mt-1 line-clamp-2">
+                        {service.description}
+                      </p>
+                      <div className="mt-2">
+                        <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                          activeServiceIndex === index 
+                            ? 'bg-blue-500/30 text-blue-300' 
+                            : hoveredServiceIndex === index
+                            ? 'bg-blue-500/20 text-blue-200'
+                            : 'bg-white/10 text-gray-400'
+                        }`}>
+                          {getCategoryBadge(service.category)}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Active/Hover Indicator */}
+                    {(activeServiceIndex === index || hoveredServiceIndex === index) && (
+                      <div className="flex-shrink-0">
+                        <div className={`w-2 h-2 rounded-full ${
+                          activeServiceIndex === index 
+                            ? 'bg-blue-400 animate-pulse' 
+                            : 'bg-blue-300'
+                        }`}></div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column - Service Details */}
+          <div ref={detailsRef} className="lg:sticky lg:top-20">
+            {selectedService && (
+              <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-6 lg:p-8 h-fit transition-all duration-500 ease-in-out">
+                {/* Service Header */}
+                <div className="mb-6 animate-fadeIn">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-400/20 rounded-xl flex items-center justify-center">
+                      <IconSvg name={selectedService.icon} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        {selectedService.title}
+                      </h3>
+                      <span className={`px-3 py-1 text-sm font-medium rounded-full bg-gradient-to-r ${getCategoryColor(selectedService.category)} text-white`}>
+                        {getCategoryBadge(selectedService.category)}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 leading-relaxed">
+                    {selectedService.description}
+                  </p>
                 </div>
 
-                {/* Technical Information */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                {/* Key Features */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-blue-400 mb-4">Key Features</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {selectedService.features.map((feature, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-gray-300 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Benefits */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-blue-400 mb-4">Project Benefits</h4>
+                  <div className="space-y-3">
+                    {selectedService.benefits.map((benefit, index) => (
+                      <div key={index} className="bg-white/5 rounded-lg p-4 border border-white/10">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          </div>
+                          <span className="text-gray-200 text-sm">{benefit}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Technical Info */}
+                <div className="mb-6">
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <h5 className="text-blue-400 font-semibold text-sm mb-2">Technologies</h5>
-                    <div className="flex flex-wrap gap-1">
+                    <h5 className="text-blue-400 font-semibold text-sm mb-3">Technologies</h5>
+                    <div className="flex flex-wrap gap-2">
                       {selectedService.technologies.map((tech, index) => (
                         <span key={index} className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">
                           {tech}
@@ -477,28 +528,22 @@ const ServicesSection: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <h5 className="text-blue-400 font-semibold text-sm mb-2">Duration</h5>
-                    <p className="text-gray-200 text-sm">{selectedService.duration}</p>
-                  </div>
                 </div>
 
                 {/* CTA Button */}
-                <div>
-                  <button 
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1"
-                  >
-                    Get This Service
-                  </button>
-                </div>
+                <button 
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1"
+                >
+                  Get This Service
+                </button>
               </div>
-            </div>
+            )}
           </div>
-        )}
+        </div>
 
         {/* Bottom CTA */}
-        <div className="text-center">
+        <div className="text-center mt-16 lg:mt-20">
           <div className="bg-gradient-to-r from-blue-500/10 to-cyan-400/10 border border-blue-400/20 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-white mb-4">
               Ready to Transform Your Projects?
