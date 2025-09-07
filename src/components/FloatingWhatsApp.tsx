@@ -25,7 +25,6 @@ const FloatingWhatsApp: React.FC = () => {
         </svg>
         
         {/* Pulse Animation Ring */}
-        <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20"></div>
         
         {/* Tooltip - Hidden on mobile, visible on larger screens */}
         <div className="hidden sm:block absolute right-20 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">

@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 
 const AboutSection: React.FC = () => {
 	const workflowRef = useRef<HTMLDivElement>(null)
-	const [isBimModalOpen, setIsBimModalOpen] = useState(false)
 	const [currentTechIndex, setCurrentTechIndex] = useState(0)
 
 	// Custom CSS animations
@@ -168,28 +167,17 @@ const AboutSection: React.FC = () => {
 
 			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 				{/* Section Header */}
-				<div className="text-center mb-20">
+				<div className="text-center mb-12">
 					<h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
 						About <span className="text-blue-400">Us</span>
 					</h2>
 					<p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
 						Pioneering the future of construction with innovative BIM solutions and global expertise
 					</p>
-					
-					{/* BIM Definition Button */}
-					<button
-						onClick={() => setIsBimModalOpen(true)}
-						className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
-					>
-						<svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-						</svg>
-						What is BIM?
-					</button>
 				</div>
 
 				{/* Company Description */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
 					{/* Our Mission Card */}
 						<div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
 							<h3 className="text-2xl font-bold text-white mb-4 flex items-center">
@@ -234,195 +222,9 @@ const AboutSection: React.FC = () => {
 						</div>
 					</div>
 
-
-				{/* LOD Showcase Section */}
-				<div className="mb-20">
-					<h3 className="text-3xl font-bold text-white text-center mb-16">
-						Levels of <span className="text-blue-400">Development (LOD)</span>
-					</h3>
-					
-					<div className="text-center mb-12">
-						<p className="text-xl text-gray-300 max-w-4xl mx-auto">
-							LOD defines the amount of detail and accuracy in our BIM models at different project stages. 
-							From initial concepts to construction-ready models, we provide the right level of development for your needs.
-						</p>
-					</div>
-
-
-					{/* Enhanced LOD Cards Grid */}
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-16">
-						{/* LOD 100 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									{/* Glowing Border Effect */}
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 100.png" 
-												alt="LOD 100 - Conceptual Design" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 100
-										</div>
-										{/* Floating Elements */}
-										<div className="absolute top-4 left-4 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
-										<div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-300"></div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Conceptual Design
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Basic shapes and approximate quantities for initial planning and feasibility studies.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 200 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 200.png" 
-												alt="LOD 200 - Schematic Design" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 200
-										</div>
-										<div className="absolute top-4 left-4 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-200"></div>
-										<div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-500"></div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Schematic Design
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Generic elements with approximate quantities for schematic design and cost estimation.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 300 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 300.png" 
-												alt="LOD 300 - Detailed Design" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 300
-										</div>
-										<div className="absolute top-4 left-4 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-400"></div>
-										<div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-700"></div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Detailed Design
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Specific elements with accurate quantities for detailed design and construction planning.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 350 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 350.png" 
-												alt="LOD 350 - Construction Documentation" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 350
-										</div>
-										<div className="absolute top-4 left-4 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-600"></div>
-										<div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-900"></div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Construction Docs
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Detailed elements with fabrication-ready information for construction documentation.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 400 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 400.png" 
-												alt="LOD 400 - Fabrication & Assembly" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 400
-										</div>
-										<div className="absolute top-4 left-4 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-800"></div>
-										<div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-700"></div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Fabrication Ready
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Detailed elements ready for manufacturing, assembly, and installation.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				{/* Team Section */}
-				<div className="mb-20">
-					<h3 className="text-3xl font-bold text-white text-center mb-16">
+				<div className="mb-12">
+					<h3 className="text-3xl font-bold text-white text-center mb-8">
 						Meet Our <span className="text-blue-400">Expert Team</span>
 					</h3>
 					
@@ -439,7 +241,7 @@ const AboutSection: React.FC = () => {
 					</div>
 
 					{/* Team CTA */}
-					<div className="text-center mt-12">
+					<div className="text-center mt-8">
 						<p className="text-gray-300 mb-6 text-lg">
 							Ready to work with our expert team?
 						</p>
@@ -458,9 +260,9 @@ const AboutSection: React.FC = () => {
 			</div>
 
 			{/* Technologies Slider Section - Full Width */}
-			<div className="relative w-full py-20">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-					<h3 className="text-3xl font-bold text-white text-center mb-8">
+			<div className="relative w-full py-12">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+					<h3 className="text-3xl font-bold text-white text-center mb-6">
 						Technologies We <span className="text-blue-400">Use</span>
 					</h3>
 					
@@ -508,54 +310,34 @@ const AboutSection: React.FC = () => {
 				</div>
 			</div>
 
-			{/* BIM Definition Modal */}
-			{isBimModalOpen && (
-				<div 
-					className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
-					onClick={(e) => {
-						// Close modal when clicking on blank space
-						if (e.target === e.currentTarget) {
-							setIsBimModalOpen(false);
-						}
-					}}
-				>
-					{/* Close Button */}
-					<button
-						onClick={() => setIsBimModalOpen(false)}
-						className="absolute top-4 right-4 md:top-8 md:right-8 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 z-10"
-						aria-label="Close BIM modal"
-					>
-						<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-						</svg>
-					</button>
-
-					{/* BIM Modal Content */}
-					<div className="relative max-w-4xl w-full bg-gradient-to-br from-blue-900/90 to-cyan-900/90 backdrop-blur-xl border border-blue-400/30 rounded-3xl shadow-2xl shadow-blue-500/20 overflow-hidden">
-						{/* Original BIM Background Image */}
+			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+				{/* BIM Definition Section */}
+				<div className="mb-12">
+					<div className="bg-gradient-to-br from-blue-900/40 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-8 md:p-12 shadow-2xl shadow-blue-500/20 overflow-hidden relative">
+						{/* Background Image */}
 						<div className="absolute inset-0">
 							<img
 								src="/Original BIM Baground.jpg"
 								alt="BIM Background"
-								className="w-full h-full object-cover opacity-30"
+								className="w-full h-full object-cover opacity-20"
 							/>
 						</div>
 
-						{/* 3D House Wireframe Background */}
+						{/* 3D Wireframe Elements */}
 						<div className="absolute inset-0 opacity-10">
 							<div className="absolute top-1/4 left-1/4 w-32 h-32 border border-white/20 rounded-lg transform rotate-45"></div>
 							<div className="absolute top-1/3 right-1/4 w-24 h-24 border border-white/20 rounded-lg transform -rotate-12"></div>
 							<div className="absolute bottom-1/4 left-1/3 w-20 h-20 border border-white/20 rounded-lg transform rotate-30"></div>
 						</div>
 
-						<div className="relative z-10 p-8 md:p-12">
+						<div className="relative z-10">
 							<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 								{/* Left Side - BIM Text */}
 								<div className="text-center lg:text-left">
-									<h3 className="text-7xl md:text-8xl font-black text-blue-400 mb-6 tracking-tight" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif" }}>
+									<h3 className="text-6xl md:text-7xl font-black text-blue-400 mb-6 tracking-tight" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif" }}>
 										BIM
 									</h3>
-									<div className="space-y-3 text-white text-xl md:text-2xl font-semibold tracking-wide" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>
+									<div className="space-y-2 text-white text-lg md:text-xl font-semibold tracking-wide" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>
 										<div className="text-blue-200">Building</div>
 										<div className="text-blue-100">Information</div>
 										<div className="text-blue-300">Modeling</div>
@@ -563,7 +345,7 @@ const AboutSection: React.FC = () => {
 								</div>
 
 								{/* Right Side - Definition Box */}
-								<div className="bg-black/80 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8">
+								<div className="bg-black/60 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8">
 									<h4 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>
 										Definition of BIM
 									</h4>
@@ -588,13 +370,186 @@ const AboutSection: React.FC = () => {
 						</div>
 					</div>
 				</div>
-			)}
 
-			{/* Floating Elements */}
-			<div className="absolute top-20 right-20 w-2 h-2 bg-blue-400 rounded-full animate-ping" />
-			<div className="absolute bottom-20 left-20 w-3 h-3 bg-cyan-400 rounded-full animate-ping delay-1000" />
-			<div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-500" />
-			<div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 bg-cyan-300 rounded-full animate-ping delay-1500" />
+
+				{/* LOD Showcase Section */}
+				<div className="mb-20">
+					<h3 className="text-3xl font-bold text-white text-center mb-16">
+						Levels of <span className="text-blue-400">Development (LOD)</span>
+					</h3>
+					
+					<div className="text-center mb-12">
+						<p className="text-xl text-gray-300 max-w-4xl mx-auto">
+							LOD defines the amount of detail and accuracy in our BIM models at different project stages. 
+							From initial concepts to construction-ready models, we provide the right level of development for your needs.
+						</p>
+					</div>
+
+
+					{/* Enhanced LOD Cards Grid */}
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-16">
+						{/* LOD 100 */}
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
+									{/* Glowing Border Effect */}
+									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+									
+									<div className="relative mb-6">
+										<div className="relative overflow-hidden rounded-2xl">
+											<img 
+												src="/LOD/LOD/LOD 100.png" 
+												alt="LOD 100 - Conceptual Design" 
+												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+										</div>
+										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
+											LOD 100
+										</div>
+										{/* Floating Elements */}
+									</div>
+									
+									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
+										Conceptual Design
+									</h4>
+									<p className="text-gray-300 leading-relaxed mb-4">
+										Basic shapes and approximate quantities for initial planning and feasibility studies.
+									</p>
+									
+								</div>
+							</div>
+						</div>
+
+						{/* LOD 200 */}
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
+									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+									
+									<div className="relative mb-6">
+										<div className="relative overflow-hidden rounded-2xl">
+											<img 
+												src="/LOD/LOD/LOD 200.png" 
+												alt="LOD 200 - Schematic Design" 
+												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+										</div>
+										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
+											LOD 200
+										</div>
+									</div>
+									
+									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
+										Schematic Design
+									</h4>
+									<p className="text-gray-300 leading-relaxed mb-4">
+										Generic elements with approximate quantities for schematic design and cost estimation.
+									</p>
+									
+								</div>
+							</div>
+						</div>
+
+						{/* LOD 300 */}
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
+									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+									
+									<div className="relative mb-6">
+										<div className="relative overflow-hidden rounded-2xl">
+											<img 
+												src="/LOD/LOD/LOD 300.png" 
+												alt="LOD 300 - Detailed Design" 
+												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+										</div>
+										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
+											LOD 300
+										</div>
+									</div>
+									
+									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
+										Detailed Design
+									</h4>
+									<p className="text-gray-300 leading-relaxed mb-4">
+										Specific elements with accurate quantities for detailed design and construction planning.
+									</p>
+									
+								</div>
+							</div>
+						</div>
+
+						{/* LOD 350 */}
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
+									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+									
+									<div className="relative mb-6">
+										<div className="relative overflow-hidden rounded-2xl">
+											<img 
+												src="/LOD/LOD/LOD 350.png" 
+												alt="LOD 350 - Construction Documentation" 
+												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+										</div>
+										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
+											LOD 350
+										</div>
+									</div>
+									
+									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
+										Construction Docs
+									</h4>
+									<p className="text-gray-300 leading-relaxed mb-4">
+										Detailed elements with fabrication-ready information for construction documentation.
+									</p>
+									
+								</div>
+							</div>
+						</div>
+
+						{/* LOD 400 */}
+						<div className="group perspective-1000 h-full">
+							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
+								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
+									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+									
+									<div className="relative mb-6">
+										<div className="relative overflow-hidden rounded-2xl">
+											<img 
+												src="/LOD/LOD/LOD 400.png" 
+												alt="LOD 400 - Fabrication & Assembly" 
+												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+										</div>
+										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
+											LOD 400
+										</div>
+									</div>
+									
+									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
+										Fabrication Ready
+									</h4>
+									<p className="text-gray-300 leading-relaxed mb-4">
+										Detailed elements ready for manufacturing, assembly, and installation.
+									</p>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
 		</div>
 	)
 }

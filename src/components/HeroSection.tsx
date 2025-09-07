@@ -98,10 +98,6 @@ const HeroSection: React.FC = () => {
       </div>
 
 
-      {/* Floating Elements - Hidden on mobile for better performance */}
-      <div className="hidden sm:block absolute top-1/4 left-10 w-2 h-2 bg-blue-400 rounded-full animate-ping" />
-      <div className="hidden sm:block absolute bottom-1/4 right-10 w-3 h-3 bg-cyan-400 rounded-full animate-ping delay-1000" />
-      <div className="hidden sm:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-500" />
     </div>
   )
 }

@@ -2,11 +2,13 @@ import React, { useState, useEffect, useCallback, useRef } from 'react'
 
 const SlideshowSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
+  const mouseStartX = useRef<number>(0)
+  const mouseEndX = useRef<number>(0)
+  const isDragging = useRef<boolean>(false)
 
   const slides = [
     {
@@ -162,45 +164,40 @@ const SlideshowSection: React.FC = () => {
     }
   }, [nextSlide, prevSlide])
 
-  // Lightbox functions
-  const openLightbox = (index: number) => {
-    setCurrentSlide(index)
-    setIsLightboxOpen(true)
-  }
+  // Mouse drag functionality
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    isDragging.current = true
+    mouseStartX.current = e.clientX
+    e.preventDefault()
+  }, [])
 
-  const closeLightbox = () => {
-    setIsLightboxOpen(false)
-  }
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging.current) return
+    mouseEndX.current = e.clientX
+  }, [])
 
-  const nextLightboxSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
-  }
+  const handleMouseUp = useCallback(() => {
+    if (!isDragging.current) return
+    
+    const dragThreshold = 50
+    const diff = mouseStartX.current - mouseEndX.current
 
-  const prevLightboxSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-  }
-
-  // Keyboard controls for lightbox
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isLightboxOpen) return
-      
-      switch (e.key) {
-        case 'Escape':
-          closeLightbox()
-          break
-        case 'ArrowLeft':
-          prevLightboxSlide()
-          break
-        case 'ArrowRight':
-          nextLightboxSlide()
-          break
+    if (Math.abs(diff) > dragThreshold) {
+      if (diff > 0) {
+        nextSlide()
+      } else {
+        prevSlide()
       }
     }
+    
+    isDragging.current = false
+  }, [nextSlide, prevSlide])
 
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [isLightboxOpen])
+  const handleMouseLeave = useCallback(() => {
+    isDragging.current = false
+  }, [])
+
+
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-16 sm:py-20">
@@ -228,10 +225,14 @@ const SlideshowSection: React.FC = () => {
       <div className="relative mb-8 sm:mb-12">
         <div 
           ref={containerRef}
-          className="relative overflow-hidden bg-white/5 backdrop-blur-sm border-y border-white/10 h-[300px] md:h-[500px] lg:h-[600px] min-h-[250px] md:min-h-[450px] lg:min-h-[550px]"
+          className="relative overflow-hidden bg-white/5 backdrop-blur-sm border-y border-white/10 h-[300px] md:h-[500px] lg:h-[600px] min-h-[250px] md:min-h-[450px] lg:min-h-[550px] cursor-grab active:cursor-grabbing select-none"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
         >
             {/* Slides */}
             {slides.map((slide, index) => (
@@ -240,18 +241,13 @@ const SlideshowSection: React.FC = () => {
                 className={`absolute inset-0 transition-all duration-700 ease-in-out ${
                   index === currentSlide ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
                 }`}
-                onClick={() => openLightbox(index)}
               >
                 {/* Slide Image */}
-                <div className="relative w-full h-full cursor-pointer">
+                <div className="relative w-full h-full">
                   <img
                     src={slide.image}
                     alt={slide.title}
                     className="w-full h-full object-cover sm:object-contain md:object-cover lg:object-cover"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      openLightbox(index)
-                    }}
                   />
                   
                   {/* Slide Overlay */}
@@ -280,32 +276,33 @@ const SlideshowSection: React.FC = () => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-2 sm:left-4 md:left-6 lg:left-8 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-20 touch-manipulation"
+              className="absolute left-2 sm:left-4 md:left-6 lg:left-8 top-1/2 transform -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-20 touch-manipulation"
               aria-label="Previous slide"
             >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute right-2 sm:right-4 md:right-6 lg:right-8 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-20 touch-manipulation"
+              className="absolute right-2 sm:right-4 md:right-6 lg:right-8 top-1/2 transform -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-20 touch-manipulation"
               aria-label="Next slide"
             >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
 
+
           {/* Dot Indicators */}
-          <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mt-4 sm:mt-6 md:mt-8">
+          <div className="flex justify-center space-x-1.5 sm:space-x-2 md:space-x-3 mt-2 sm:mt-3 md:mt-4">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
+                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
                   index === currentSlide ? 'bg-blue-400 scale-125' : 'bg-gray-400 hover:bg-gray-300'
                 } touch-manipulation`}
                 aria-label={`Go to slide ${index + 1}`}
@@ -333,68 +330,7 @@ const SlideshowSection: React.FC = () => {
         </button>
       </div>
 
-      {/* Lightbox Modal */}
-      {isLightboxOpen && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              closeLightbox();
-            }
-          }}
-        >
-          {/* Close Button */}
-          <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 sm:top-8 sm:right-8 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 z-10"
-            aria-label="Close lightbox"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevLightboxSlide}
-            className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 z-10"
-            aria-label="Previous slide"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={nextLightboxSlide}
-            className="absolute right-4 sm:right-8 top-1/2 transform -translate-y-1/2 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 z-10"
-            aria-label="Next slide"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Main Image */}
-          <div className="relative max-w-full max-h-full">
-            <img
-              src={slides[currentSlide].image}
-              alt={slides[currentSlide].title}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            />
-          </div>
-
-          {/* Slide Counter */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
-            {currentSlide + 1} / {slides.length}
-          </div>
-        </div>
-      )}
-
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 left-10 w-2 h-2 bg-blue-400 rounded-full animate-ping" />
-      <div className="absolute bottom-1/4 right-10 w-3 h-3 bg-cyan-400 rounded-full animate-ping delay-1000" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-500" />
     </div>
   )
 }

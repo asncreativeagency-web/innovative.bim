@@ -161,10 +161,6 @@ const FAQSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 right-20 w-2 h-2 bg-blue-400 rounded-full animate-ping" />
-      <div className="absolute bottom-1/4 left-20 w-3 h-3 bg-cyan-400 rounded-full animate-ping delay-1000" />
-      <div className="absolute top-1/2 left-1/4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping delay-500" />
     </div>
   )
 }
