@@ -1,4 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
+import commercialKitchen from '@/assets/Commercial Kitchen BIM Design.jpg'
+import heritageBuilding from '@/assets/Heritage Building Scan-to-BIM.jpg'
+import bimSample from '@/assets/BIM Sample Model.jpeg'
+import planView from '@/assets/3D Plan View - Level 1.jpeg'
+import kitchenView from '@/assets/3D Kitchen View.jpeg'
+import sheetPlan from '@/assets/Sheet View - Plan.png'
+import sheetSection from '@/assets/Sheet View - Section.jpg'
+import windowFamily from '@/assets/Window Parametric Family.jpg'
+import structureSample from '@/assets/Structure Sample Model.png'
+import advancedStructure from '@/assets/Advanced Structure Model.jpg'
 
 interface Project {
   id: string
@@ -72,7 +82,7 @@ const ProjectsSection: React.FC = () => {
       title: 'Commercial Kitchen BIM Design',
       description: 'Specialized commercial kitchen design with comprehensive MEP coordination and custom equipment modeling.',
       category: 'Food Service BIM',
-      image: '/Projects/BIM Projects/05_3D Kitchen View.jpg',
+      image: commercialKitchen,
       details: 'This specialized commercial kitchen BIM project demonstrates our expertise in food service industry modeling. The project includes custom equipment Revit families, comprehensive MEP coordination, and detailed shop drawings for manufacturers and contractors.',
       technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Custom Families'],
       duration: '6 months',
@@ -97,7 +107,7 @@ const ProjectsSection: React.FC = () => {
       title: 'Heritage Building Scan-to-BIM',
       description: 'Advanced point cloud processing and as-built modeling for heritage building renovation and documentation.',
       category: 'Scan-to-BIM',
-      image: '/Projects/BIM Projects/01_BIM sample model.jpg',
+      image: heritageBuilding,
       details: 'This heritage building project showcases our scan-to-BIM expertise, converting point cloud data into detailed as-built models. The project demonstrates LOD 400-500 modeling capabilities for renovation planning and facility documentation.',
       technologies: ['Revit', 'Point Cloud Processing', 'BIM 360', 'AutoCAD'],
       duration: '8 months',
@@ -122,7 +132,7 @@ const ProjectsSection: React.FC = () => {
       title: 'BIM Sample Model',
       description: 'Comprehensive BIM model showcasing advanced 3D coordination and detailed building information modeling.',
       category: 'BIM',
-      image: '/Projects/BIM Projects/01_BIM sample model.jpg',
+      image: bimSample,
       details: 'This comprehensive BIM model demonstrates our expertise in creating detailed 3D building information models. The project showcases advanced coordination between architectural, structural, and MEP systems, achieving optimal clash detection and construction sequencing.',
       technologies: ['Revit', 'Navisworks', 'BIM 360', 'AutoCAD'],
       duration: '12 months',
@@ -147,7 +157,7 @@ const ProjectsSection: React.FC = () => {
       title: '3D Plan View - Level 1',
       description: 'Detailed 3D plan view showing comprehensive floor layout with all building systems integrated.',
       category: 'BIM',
-      image: '/Projects/BIM Projects/03_3D Plan View.jpg',
+      image: planView,
       details: 'Advanced 3D plan view demonstrating our ability to create detailed floor layouts with integrated building systems. This view shows comprehensive coordination between structural elements, MEP systems, and architectural features.',
       technologies: ['Revit', 'BIM 360', 'Dynamo', 'Navisworks'],
       duration: '8 months',
@@ -172,7 +182,7 @@ const ProjectsSection: React.FC = () => {
       title: '3D Kitchen View',
       description: 'Specialized 3D kitchen design with detailed MEP coordination and custom cabinetry integration.',
       category: 'BIM',
-      image: '/Projects/BIM Projects/05_3D Kitchen View.jpg',
+      image: kitchenView,
       details: 'Detailed 3D kitchen view showcasing our expertise in specialized space design. The model includes comprehensive MEP coordination, custom cabinetry details, and precise equipment placement for optimal functionality.',
       technologies: ['Revit', 'AutoCAD', 'BIM 360', 'SketchUp'],
       duration: '6 months',
@@ -197,7 +207,7 @@ const ProjectsSection: React.FC = () => {
       title: 'Sheet View - Plan',
       description: 'Professional construction documentation sheet with detailed plan views and specifications.',
       category: 'BIM',
-      image: '/Projects/BIM Projects/06_Sheet view-plan.jpg',
+      image: sheetPlan,
       details: 'Professional construction documentation sheet demonstrating our expertise in creating detailed plan views. This sheet includes comprehensive annotations, dimensions, and specifications for construction teams.',
       technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Bluebeam'],
       duration: '4 months',
@@ -222,7 +232,7 @@ const ProjectsSection: React.FC = () => {
       title: 'Sheet View - Section',
       description: 'Detailed section view sheet showing building cross-sections with comprehensive annotations.',
       category: 'BIM',
-      image: '/Projects/BIM Projects/07_Sheet view-Section.jpg',
+      image: sheetSection,
       details: 'Detailed section view sheet showcasing our ability to create comprehensive building cross-sections. The sheet includes detailed annotations, material specifications, and construction details for accurate implementation.',
       technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Bluebeam'],
       duration: '4 months',
@@ -247,7 +257,7 @@ const ProjectsSection: React.FC = () => {
       title: 'Window Parametric Family',
       description: 'Custom parametric window family with adjustable parameters for various project requirements.',
       category: 'Parametric Family',
-      image: '/Projects/Parametric Family_s/01_Window.jpg',
+      image: windowFamily,
       details: 'Custom parametric window family demonstrating our expertise in creating flexible, reusable BIM components. The family includes adjustable parameters for width, height, materials, and performance specifications.',
       technologies: ['Revit', 'Dynamo', 'BIM 360', 'Family Editor'],
       duration: '3 months',
@@ -272,7 +282,7 @@ const ProjectsSection: React.FC = () => {
       title: 'Structure Sample Model',
       description: 'Comprehensive structural model with detailed analysis and construction coordination.',
       category: 'Structure',
-      image: '/Projects/Structure Projects/01_Structure sample model.jpg',
+      image: structureSample,
       details: 'Comprehensive structural model showcasing our expertise in structural engineering and BIM coordination. The model includes detailed structural analysis, construction sequencing, and coordination with architectural and MEP systems.',
       technologies: ['Revit', 'Tekla', 'Robot Structural Analysis', 'BIM 360'],
       duration: '10 months',
@@ -297,7 +307,7 @@ const ProjectsSection: React.FC = () => {
       title: 'Advanced Structure Model',
       description: 'Complex structural system with innovative design solutions and advanced analysis.',
       category: 'Structure',
-      image: '/Projects/Structure Projects/02_Structure sample model.jpg',
+      image: advancedStructure,
       details: 'Advanced structural model featuring innovative design solutions and complex structural systems. The project demonstrates our ability to handle challenging structural requirements while maintaining BIM coordination standards.',
       technologies: ['Revit', 'Tekla', 'Robot Structural Analysis', 'Dynamo'],
       duration: '14 months',
