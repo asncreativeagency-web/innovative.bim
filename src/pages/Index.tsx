@@ -13,10 +13,6 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ArrowRight, ChevronLeft, ChevronRight, Mail, Phone, Linkedin, Globe } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import slide1 from "@/assets/slide-1.jpg";
-import slide2 from "@/assets/slide-2.jpg";
-import slide3 from "@/assets/slide-3.jpg";
-import slide4 from "@/assets/slide-4.jpg";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
@@ -43,7 +39,7 @@ const Section: React.FC<SectionProps> = ({ id, title, subtitle, className, child
 );
 
 const Index: React.FC = () => {
-  const slides = useMemo(() => [slide1, slide2, slide3, slide4], []);
+  const slides = useMemo(() => [p1, p2, p3, p4, p5, p6], []);
   const projects = useMemo(
     () => [
       { img: p1, title: "Interior Coordination" },

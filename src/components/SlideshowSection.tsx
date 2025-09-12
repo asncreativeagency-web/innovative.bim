@@ -13,99 +13,51 @@ const SlideshowSection: React.FC = () => {
   const slides = [
     {
       id: 1,
-      title: 'BIM 3D Model Excellence',
+      title: 'Interior Coordination',
       subtitle: 'Advanced Architectural Visualization',
       description: 'Comprehensive 3D BIM models showcasing architectural precision and design innovation.',
-      image: '/Slideshow Photos/01-BIM Mdel 3D View.jpg',
+      image: '/project-1.jpg',
       category: '3D Modeling'
     },
     {
       id: 2,
-      title: 'Structural BIM Innovation',
+      title: 'Structural Framing',
       subtitle: 'Engineering Excellence in 3D',
       description: 'Detailed structural BIM models demonstrating advanced engineering solutions and coordination.',
-      image: '/Slideshow Photos/02-BIM Mdel 3D View.jpg',
+      image: '/project-2.jpg',
       category: 'Structural Design'
     },
     {
       id: 3,
-      title: 'Comprehensive BIM Coordination',
+      title: 'Clash Detection',
       subtitle: 'Multi-Disciplinary Integration',
       description: 'Integrated BIM models showing seamless coordination between architectural, structural, and MEP systems.',
-      image: '/Slideshow Photos/03-BIM Mdel 3D View.jpg',
+      image: '/project-3.jpg',
       category: 'BIM Coordination'
     },
     {
       id: 4,
-      title: 'Detailed BIM Visualization',
+      title: 'Night Exterior',
       subtitle: 'High-Resolution 3D Models',
       description: 'High-quality BIM visualizations with detailed geometry and realistic material representation.',
-      image: '/Slideshow Photos/04-BIM Mdel 3D View.jpg',
+      image: '/project-4.jpg',
       category: 'Visualization'
     },
     {
       id: 5,
-      title: '3D Plan View Mastery',
+      title: 'LOD 500 Equipment',
       subtitle: 'Comprehensive Floor Planning',
       description: 'Advanced 3D plan views demonstrating spatial relationships and functional layouts.',
-      image: '/Slideshow Photos/05-3D Plan View.jpg',
+      image: '/project-5.jpg',
       category: 'Planning'
     },
     {
       id: 6,
-      title: 'Detailed Plan Analysis',
+      title: 'Infrastructure Bridge',
       subtitle: 'Precision in Every Detail',
       description: 'Detailed 3D plan views with comprehensive analysis and optimization capabilities.',
-      image: '/Slideshow Photos/06-3D Plan View.jpg',
+      image: '/project-6.jpg',
       category: 'Analysis'
-    },
-    {
-      id: 7,
-      title: 'Kitchen Design Innovation',
-      subtitle: 'Functional Space Optimization',
-      description: 'Specialized 3D kitchen views showcasing ergonomic design and efficient space utilization.',
-      image: '/Slideshow Photos/07-3D Kitchen View.jpg',
-      category: 'Interior Design'
-    },
-    {
-      id: 8,
-      title: 'Technical Drawing Excellence',
-      subtitle: 'Professional Documentation',
-      description: 'High-quality technical drawings and plans with precise measurements and specifications.',
-      image: '/Slideshow Photos/08-Sheet view-plan.jpg',
-      category: 'Documentation'
-    },
-    {
-      id: 9,
-      title: 'Section View Precision',
-      subtitle: 'Detailed Cross-Sections',
-      description: 'Comprehensive section views revealing internal structure and construction details.',
-      image: '/Slideshow Photos/09-Sheet view-Section.png',
-      category: 'Technical Drawing'
-    },
-    {
-      id: 10,
-      title: 'Section Analysis',
-      subtitle: 'Structural Understanding',
-      description: 'Detailed section views providing insights into building construction and material assembly.',
-      image: '/Slideshow Photos/10-Sheet view-Section.jpg',
-      category: 'Analysis'
-    },
-    {
-      id: 11,
-      title: 'Elevation Mastery',
-      subtitle: 'Architectural Facades',
-      description: 'Professional elevation drawings showcasing building exteriors and architectural details.',
-      image: '/Slideshow Photos/11-Sheet view-Elevataion.jpg',
-      category: 'Architecture'
-    },
-    {
-      id: 12,
-      title: 'Elevation Analysis',
-      subtitle: 'Detailed Facade Study',
-      description: 'Comprehensive elevation analysis with detailed architectural elements and material specifications.',
-      image: '/Slideshow Photos/12-Sheet view-elevation.jpg',
-      category: 'Architecture'
     }
   ]
 
