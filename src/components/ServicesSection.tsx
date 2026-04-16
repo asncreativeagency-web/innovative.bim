@@ -2,12 +2,13 @@ import React, { useState, useRef } from 'react'
 
 // --- Tool Logo Component (using real logos from /Technologies Used/) ---
 const toolLogos: Record<string, string> = {
-  'Revit': '/Technologies Used/autodesk-revit transperent.png',
-  'AutoCAD': '/Technologies Used/auto cad transparent.png',
-  'Recap': '/Technologies Used/recap transparent.png',
-  'Navisworks': '',
+  'Revit': '/logos/revit_white.png',
+  'AutoCAD': '/logos/autocad_white.png',
+  'Recap': '/logos/recap.png',
+  'Navisworks': '/logos/navisworks_white.png',
   'Cyclone': '',
-  'ACC/BIM 360': '',
+  'ACC/BIM 360': '/logos/bim360_white.png',
+  'TruView': '/logos/truview_white.png',
 }
 
 const ToolLogo: React.FC<{ tool: string }> = ({ tool }) => {
