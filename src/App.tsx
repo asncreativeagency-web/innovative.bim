@@ -77,39 +77,41 @@ function App() {
         <FloatingWhatsApp />
         <Toaster />
         
-        <main>
-        <section id="home">
-          <HeroSection />
-        </section>
+        <main className="relative">
+          {/* Section 1: Fixed in background */}
+          <section id="home" className="fixed top-0 left-0 w-full h-screen z-0">
+            <HeroSection />
+          </section>
 
-        <SlideshowSection />
-        
-        <section id="services">
-          <ServicesSection />
-        </section>
+          {/* Section 2 and beyond: Scroll over Section 1 */}
+          <div className="relative z-10 mt-[100vh] bg-[#0A0F1C] shadow-[0_-50px_100px_rgba(0,0,0,0.5)]">
+            <SlideshowSection />
+            
+            <section id="services">
+              <ServicesSection />
+            </section>
 
-        <section id="workflow">
-          <WorkflowSection />
-        </section>
-        
-        <section id="projects">
-          <ProjectsSection />
-        </section>
+            <section id="workflow">
+              <WorkflowSection />
+            </section>
+            
+            <section id="projects">
+              <ProjectsSection />
+            </section>
 
-        <section id="lod">
-          <LODSection />
-        </section>
-        
-        <section id="about">
-          <AboutSection />
-        </section>
-
-
-        
-        <section id="contact">
-          <ContactSection />
-        </section>
-      </main>
+            <section id="lod">
+              <LODSection />
+            </section>
+            
+            <section id="about">
+              <AboutSection />
+            </section>
+            
+            <section id="contact">
+              <ContactSection />
+            </section>
+          </div>
+        </main>
     </div>
     </div>
   )

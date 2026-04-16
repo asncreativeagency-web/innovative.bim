@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const HeroSection: React.FC = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null)
   const subheadlineRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
   const [currentBg, setCurrentBg] = useState(0)
+  
+  const { scrollY } = useScroll()
+  
+  // Only use opacity for parallax-like fade effect, but keep position stationary
+  const opacity = useTransform(scrollY, [0, 500], [1, 0])
 
   const backgrounds = [
     '/hero-bg-arch.png',
@@ -48,8 +54,11 @@ const HeroSection: React.FC = () => {
       id="hero-section" 
       className="relative min-h-screen overflow-hidden bg-[#0A0F1C]"
     >
-      {/* Background Layer - High Visibility & Discrete */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Layer - Static position */}
+      <motion.div 
+        style={{ opacity }}
+        className="absolute inset-0 z-0"
+      >
         {backgrounds.map((bg, index) => (
           <div
             key={bg}
@@ -70,10 +79,13 @@ const HeroSection: React.FC = () => {
         {/* Left-Anchored Atmospheric Gradient (Clear on right for image visibility) */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1C] via-[#0A0F1C]/80 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/40 via-transparent to-[#0A0F1C]/60" />
-      </div>
+      </motion.div>
 
-      {/* Main Content - Corporate Grid */}
-      <div className="relative z-20 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 min-h-screen flex flex-col justify-center pt-24 pb-12">
+      {/* Main Content - Stationary */}
+      <motion.div 
+        style={{ opacity }}
+        className="relative z-20 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 min-h-screen flex flex-col justify-center pt-24 pb-12"
+      >
         <div className="max-w-5xl">
           {/* Primary Headline - High Contrast & Precision with subtle shadow for legibility */}
           <h1
@@ -139,7 +151,7 @@ const HeroSection: React.FC = () => {
             Precision Engineering &bull; 2026
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

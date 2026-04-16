@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const SlideshowSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
   const mouseStartX = useRef<number>(0)
@@ -149,6 +150,14 @@ const SlideshowSection: React.FC = () => {
     }
   ]
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  })
+
+  const imageY = useTransform(scrollYProgress, [0, 1], [-100, 100])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -50])
+
   // Auto-play and swipe logic... (keeping existing logic for brevity)
   const startAutoPlay = useCallback(() => {
     if (intervalRef.current) return
@@ -202,7 +211,7 @@ const SlideshowSection: React.FC = () => {
   }, [])
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-xl aspect-[16/9] shadow-2xl">
           
@@ -247,15 +256,23 @@ const SlideshowSection: React.FC = () => {
                   }`}
                   style={{ transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)' }}
                 >
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <motion.div 
+                    style={{ y: imageY }}
+                    className="absolute inset-0 w-full h-full"
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-full h-full object-cover scale-125" // Scale up to allow for parallax movement
+                    />
+                  </motion.div>
                   
                   {/* Content Panel Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex items-center">
-                    <div className="max-w-xl pl-8 sm:pl-16 lg:pl-24 pr-8">
+                    <motion.div 
+                      style={{ y: contentY }}
+                      className="max-w-xl pl-8 sm:pl-16 lg:pl-24 pr-8"
+                    >
                       <div className={`transition-all duration-700 delay-300 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <span className="inline-block px-4 py-1.5 bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-black rounded-lg shadow-lg uppercase tracking-widest border border-white/20 mb-6 font-mono">
                           {slide.category}
@@ -270,7 +287,7 @@ const SlideshowSection: React.FC = () => {
                           {slide.description}
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               )
