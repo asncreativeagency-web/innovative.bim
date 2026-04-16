@@ -299,9 +299,10 @@ const AboutSection: React.FC = () => {
               ))}
             </div>
           </div>
+        </div>
       </div>
     </div>
 	)
 }
 
-export default AboutSection 
+export default AboutSection
