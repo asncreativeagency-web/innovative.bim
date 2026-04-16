@@ -75,7 +75,8 @@ const AboutSection: React.FC = () => {
 		{
 			name: 'TruView',
 			icon: '/logos/truview_white.png',
-			category: 'Point Cloud'
+			category: 'Point Cloud',
+			scale: 1.8
 		},
 		{
 			name: 'Autodesk',
@@ -288,6 +289,7 @@ const AboutSection: React.FC = () => {
                         }
                       }}
                       className="w-full h-full object-contain tech-logo group-hover/logo:scale-110 transition-transform duration-300"
+                      style={{ transform: `scale(${tech.scale || 1})` }}
                     />
                   </div>
                 </div>
