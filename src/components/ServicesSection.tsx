@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react'
 const toolLogos: Record<string, string> = {
   'Revit': '/logos/revit_white.png',
   'AutoCAD': '/logos/autocad_white.png',
-  'Recap': '/logos/recap.png',
+  'Recap': '/logos/autodesk_white.png',
   'Navisworks': '/logos/navisworks_white.png',
   'Cyclone': '',
   'BIM 360': '/logos/bim360_white.png',
