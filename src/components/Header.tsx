@@ -6,8 +6,9 @@ import BrandLogo from "@/components/BrandLogo";
 const navItems = [
   { id: "home", label: "Home" },
   { id: "services", label: "Services" },
+  { id: "workflow", label: "Workflow" },
   { id: "projects", label: "Projects" },
-  { id: "about", label: "About Us" },
+  { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
 ];
 

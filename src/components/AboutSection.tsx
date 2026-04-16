@@ -154,403 +154,132 @@ const AboutSection: React.FC = () => {
 
 
 	return (
-		<div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
-			{/* Background Pattern */}
-			<div className="absolute inset-0 opacity-10">
-				<div className="absolute inset-0" style={{
-					backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-				}} />
-			</div>
+		    <div className="relative min-h-screen overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        {/* Section Header */}
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            About <span className="text-blue-400">Us</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+            Delivering coordinated, construction-ready BIM solutions across architecture, structure, and specialized food service projects.
+          </p>
+        </div>
 
-			{/* Brand color overlay */}
-			<div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+          {/* Who We Are */}
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 md:p-12 hover:bg-white/10 transition-all duration-500 group">
+            <h3 className="text-3xl font-bold text-white mb-8 flex items-center group-hover:text-blue-400 transition-colors">
+              <span className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center mr-5 border border-blue-500/30">
+                <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </span>
+              Who We Are
+            </h3>
+            <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+              <p>
+                <span className="text-blue-400 font-bold">Innovative BIM Services</span> focuses on delivering high-quality BIM modeling and coordination aligned with real construction workflows.
+              </p>
+              <p>
+                With experience across architecture, structure, scan-to-BIM (as-built), and food service projects, we support contractors and consultants in developing accurate, coordinated models ready for execution.
+              </p>
+            </div>
+          </div>
 
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-				{/* Section Header */}
-				<div className="text-center mb-12">
-					<h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-						About <span className="text-blue-400">Us</span>
-					</h2>
-					<p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-						Pioneering the future of construction with innovative BIM solutions and global expertise
-					</p>
-				</div>
+          {/* Why Work With Us */}
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 md:p-12 hover:bg-white/10 transition-all duration-500 group">
+            <h3 className="text-3xl font-bold text-white mb-8 flex items-center group-hover:text-amber-400 transition-colors">
+              <span className="w-12 h-12 bg-amber-600/20 rounded-xl flex items-center justify-center mr-5 border border-amber-500/30">
+                <svg className="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </span>
+              Why Work With Us
+            </h3>
+            <ul className="space-y-6">
+              {[
+                'Construction-ready BIM delivery approach',
+                'Strong coordination and issue resolution focus',
+                'Experience across AEC and food service projects',
+                'Flexible and scalable project support'
+              ].map((bullet, i) => (
+                <li key={i} className="flex items-center space-x-5 text-lg text-gray-300">
+                  <span className="flex-shrink-0 w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center border border-green-500/30">
+                    <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-				{/* Company Description */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-					{/* Our Mission Card */}
-						<div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-							<h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-								<svg className="w-6 h-6 mr-3 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7H7m6 4H7m6 4H7m10 4H7a2 2 0 01-2-2V5a2 2 0 012-2h8l4 4v12a2 2 0 01-2 2z" />
-								</svg>
-								Our Mission
-							</h3>
-							<p className="text-gray-300 leading-relaxed text-lg">
-								To revolutionize the construction industry by providing cutting-edge BIM services that enhance 
-								efficiency, reduce costs, and improve project outcomes. We leverage the latest technology and 
-								industry best practices to deliver exceptional results.
-							</p>
-						</div>
-						
-					{/* Why Choose Us Card */}
-						<div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-							<h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-								<svg className="w-6 h-6 mr-3 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81H7.03a1 1 0 00.95-.69l1.07-3.292z" />
-								</svg>
-								Why Choose Us
-							</h3>
-							<ul className="space-y-4 text-gray-300">
-								<li className="flex items-center space-x-4">
-									<div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-									<span className="text-lg">Advanced AI-powered modeling and analysis</span>
-								</li>
-								<li className="flex items-center space-x-4">
-									<div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-									<span className="text-lg">Experienced team of BIM specialists</span>
-								</li>
-								<li className="flex items-center space-x-4">
-									<div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-									<span className="text-lg">Global project delivery capabilities</span>
-								</li>
-								<li className="flex items-center space-x-4">
-									<div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-									<span className="text-lg">24/7 support and collaboration</span>
-								</li>
-							</ul>
-						</div>
-					</div>
+        {/* Our Approach */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-blue-600/10 to-transparent backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 md:p-16 text-center group transition-all duration-700 hover:bg-white/5">
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-4xl font-black text-white mb-8">
+              Our <span className="text-blue-400">Approach</span>
+            </h3>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-2xl md:text-3xl font-medium text-blue-100 mb-8 italic leading-snug">
+                "We focus on delivering BIM that works on site — not just on screen."
+              </p>
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                From model development to coordination and IFC delivery, our approach is built around reducing site issues, improving collaboration, and ensuring smooth project execution.
+              </p>
+            </div>
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] group-hover:bg-blue-500/20 transition-all duration-700" />
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-[100px] group-hover:bg-cyan-500/20 transition-all duration-700" />
+        </div>
 
-				{/* Team Section */}
-				<div className="mb-12">
-					<h3 className="text-3xl font-bold text-white text-center mb-8">
-						Meet Our <span className="text-blue-400">Expert Team</span>
-					</h3>
-					
-					<div className="text-center">
-						<div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto">
-							<h4 className="text-2xl font-bold text-white mb-6">
-								Our <span className="text-blue-400">Expert Team</span>
-							</h4>
-							<p className="text-lg text-gray-300 leading-relaxed">
-								Our team of certified BIM professionals brings years of experience and deep expertise to every project. 
-								We combine technical excellence with innovative solutions to deliver exceptional results for our clients worldwide.
-							</p>
-						</div>
-					</div>
+        {/* Missing line and button from screenshot */}
+        <div className="mt-12 text-center">
+          <p className="text-xl md:text-2xl font-bold text-blue-400/90 mb-10 tracking-tight">
+            Supporting contractors, consultants, and food service specialists across global projects.
+          </p>
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-12 py-5 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/50 transform hover:-translate-y-1 transition-all duration-300"
+          >
+            Let's Work Together →
+          </button>
+        </div>
 
-					{/* Team CTA */}
-					<div className="text-center mt-8">
-						<p className="text-gray-300 mb-6 text-lg">
-							Ready to work with our expert team?
-						</p>
-						<button 
-							onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-							className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
-						>
-							Join Our Team
-							<svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-							</svg>
-						</button>
-					</div>
-				</div>
-
-			</div>
-
-			{/* Technologies Slider Section - Full Width */}
-			<div className="relative w-full py-12">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-					<h3 className="text-3xl font-bold text-white text-center mb-6">
-						Technologies We <span className="text-blue-400">Use</span>
-					</h3>
-					
-					<div className="text-center">
-						<p className="text-xl text-gray-300 max-w-4xl mx-auto">
-							We leverage cutting-edge BIM and CAD technologies to deliver exceptional results for our clients worldwide.
-						</p>
-					</div>
-				</div>
-
-				{/* Continuous Technologies Slider - Full Width */}
-				<div className="relative overflow-hidden w-full">
-					<div className="flex animate-scroll">
-						{/* First set of logos */}
-						{technologies.map((tech, index) => (
-							<div key={`first-${index}`} className="flex-shrink-0 mx-16 flex items-center justify-center">
-								<img 
-									src={tech.icon} 
-									alt={tech.name}
-									className="w-48 h-48 object-contain hover:scale-110 transition-all duration-300 tech-logo"
-								/>
-							</div>
-						))}
-						{/* Duplicate set for seamless loop */}
-						{technologies.map((tech, index) => (
-							<div key={`second-${index}`} className="flex-shrink-0 mx-16 flex items-center justify-center">
-								<img 
-									src={tech.icon} 
-									alt={tech.name}
-									className="w-48 h-48 object-contain hover:scale-110 transition-all duration-300 tech-logo"
-								/>
-							</div>
-						))}
-						{/* Third set for extra smoothness */}
-						{technologies.map((tech, index) => (
-							<div key={`third-${index}`} className="flex-shrink-0 mx-16 flex items-center justify-center">
-								<img 
-									src={tech.icon} 
-									alt={tech.name}
-									className="w-48 h-48 object-contain hover:scale-110 transition-all duration-300 tech-logo"
-								/>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
-
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-				{/* BIM Definition Section */}
-				<div className="mb-12">
-					<div className="bg-gradient-to-br from-blue-900/40 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-8 md:p-12 shadow-2xl shadow-blue-500/20 overflow-hidden relative">
-						{/* Background Image */}
-						<div className="absolute inset-0">
-							<img
-								src="/Original BIM Baground.jpg"
-								alt="BIM Background"
-								className="w-full h-full object-cover opacity-20"
-							/>
-						</div>
-
-						{/* 3D Wireframe Elements */}
-						<div className="absolute inset-0 opacity-10">
-							<div className="absolute top-1/4 left-1/4 w-32 h-32 border border-white/20 rounded-lg transform rotate-45"></div>
-							<div className="absolute top-1/3 right-1/4 w-24 h-24 border border-white/20 rounded-lg transform -rotate-12"></div>
-							<div className="absolute bottom-1/4 left-1/3 w-20 h-20 border border-white/20 rounded-lg transform rotate-30"></div>
-						</div>
-
-						<div className="relative z-10">
-							<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-								{/* Left Side - BIM Text */}
-								<div className="text-center lg:text-left">
-									<h3 className="text-6xl md:text-7xl font-black text-blue-400 mb-6 tracking-tight" style={{ fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif" }}>
-										BIM
-									</h3>
-									<div className="space-y-2 text-white text-lg md:text-xl font-semibold tracking-wide" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>
-										<div className="text-blue-200">Building</div>
-										<div className="text-blue-100">Information</div>
-										<div className="text-blue-300">Modeling</div>
-									</div>
-								</div>
-
-								{/* Right Side - Definition Box */}
-								<div className="bg-black/60 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8">
-									<h4 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center" style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}>
-										Definition of BIM
-									</h4>
-									<div className="space-y-4 text-gray-200 text-base md:text-lg leading-relaxed" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
-										<p>
-											<strong className="text-blue-300 font-semibold">Building Information Modeling (BIM)</strong> is a digital representation of physical and functional characteristics of a facility.
-										</p>
-										<div className="flex justify-center my-3">
-											<svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-											</svg>
-										</div>
-										<p>
-											It serves as a shared knowledge resource for information about a facility, forming a reliable basis for decisions during its life-cycle from inception onward.
-										</p>
-										<p>
-											BIM integrates architecture, engineering, and construction into a unified digital workflow, enabling better collaboration, reduced errors, and improved project outcomes.
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				{/* LOD Showcase Section */}
-				<div className="mb-20">
-					<h3 className="text-3xl font-bold text-white text-center mb-16">
-						Levels of <span className="text-blue-400">Development (LOD)</span>
-					</h3>
-					
-					<div className="text-center mb-12">
-						<p className="text-xl text-gray-300 max-w-4xl mx-auto">
-							LOD defines the amount of detail and accuracy in our BIM models at different project stages. 
-							From initial concepts to construction-ready models, we provide the right level of development for your needs.
-						</p>
-					</div>
-
-
-					{/* Enhanced LOD Cards Grid */}
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-16">
-						{/* LOD 100 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									{/* Glowing Border Effect */}
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 100.png" 
-												alt="LOD 100 - Conceptual Design" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 100
-										</div>
-										{/* Floating Elements */}
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Conceptual Design
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Basic shapes and approximate quantities for initial planning and feasibility studies.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 200 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 200.png" 
-												alt="LOD 200 - Schematic Design" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 200
-										</div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Schematic Design
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Generic elements with approximate quantities for schematic design and cost estimation.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 300 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 300.png" 
-												alt="LOD 300 - Detailed Design" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 300
-										</div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Detailed Design
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Specific elements with accurate quantities for detailed design and construction planning.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 350 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 350.png" 
-												alt="LOD 350 - Construction Documentation" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 350
-										</div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Construction Docs
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Detailed elements with fabrication-ready information for construction documentation.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-
-						{/* LOD 400 */}
-						<div className="group perspective-1000 h-full">
-							<div className="relative transform transition-all duration-700 group-hover:rotate-y-12 group-hover:scale-110 h-full">
-								<div className="bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-cyan-900/40 backdrop-blur-xl border border-blue-400/30 rounded-3xl p-6 shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/40 transition-all duration-500 h-full flex flex-col">
-									<div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-cyan-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-									
-									<div className="relative mb-6">
-										<div className="relative overflow-hidden rounded-2xl">
-											<img 
-												src="/LOD/LOD/LOD 400.png" 
-												alt="LOD 400 - Fabrication & Assembly" 
-												className="w-full h-auto max-h-48 object-contain transform group-hover:scale-110 transition-transform duration-700"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-										</div>
-										<div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg">
-											LOD 400
-										</div>
-									</div>
-									
-									<h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-										Fabrication Ready
-									</h4>
-									<p className="text-gray-300 leading-relaxed mb-4">
-										Detailed elements ready for manufacturing, assembly, and installation.
-									</p>
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-
-		</div>
+        {/* Technologies Used - Logo Slider */}
+        <div className="mt-20">
+          <h3 className="text-center text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-10">
+            Technologies We Use
+          </h3>
+          <div className="relative overflow-hidden py-6">
+            {/* Gradient fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0A0F1C] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0A0F1C] to-transparent z-10 pointer-events-none" />
+            
+            <div className="flex items-center animate-scroll" style={{ width: 'max-content' }}>
+              {/* Triple the logos for seamless infinite scroll */}
+              {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+                <div
+                  key={`${tech.name}-${index}`}
+                  className="flex items-center justify-center mx-10 sm:mx-14 flex-shrink-0 cursor-pointer"
+                >
+                  <img
+                    src={tech.icon}
+                    alt={tech.name}
+                    className="w-28 h-28 sm:w-36 sm:h-36 object-contain tech-logo hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 	)
 }
 

@@ -11,131 +11,102 @@ const ContactSection: React.FC = () => {
   } = useContactForm()
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
-
-      {/* Brand color overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10" />
+    <div className="relative min-h-screen">
 
       {/* Navigation Spacer */}
       <div className="h-20"></div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mb-16 sm:mb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 px-3 sm:px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6">
-            Get In <span className="text-blue-400">Touch</span>
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-3xl mx-auto">
-            Ready to transform your BIM projects? Let's discuss how we can help you achieve excellence in construction.
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Let’s <span className="text-blue-400">Discuss Your Project</span>
+          </h2>          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-4">
+            Share your project requirements, and we’ll get back with a structured BIM approach aligned with your scope, timeline, and coordination needs.
+          </p>
+          <p className="text-lg text-blue-400 font-semibold italic">
+            Supporting clients across international AEC and food service projects.
           </p>
         </div>
 
         {/* Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-8 sm:mb-12 md:mb-16 px-3 sm:px-4 md:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
           {/* Contact Information */}
-          <div className="space-y-4 sm:space-y-6 md:space-y-8">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6">Contact Information</h3>
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-10 md:p-12 shadow-2xl">
+            <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
+              <span className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mr-4">
+                <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              Contact Information
+            </h3>
             
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
-              <div className="flex items-center space-x-2.5 sm:space-x-3 md:space-x-4 group">
-                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="space-y-8">
+              <div className="flex items-center space-x-6 group">
+                <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-blue-600/20 transition-all">
+                  <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <div>
-                  <a 
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=hari@innovativebimservices.com&su=BIM%20Services%20Inquiry&body=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20BIM%20services."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-200 text-xs sm:text-sm md:text-base hover:text-blue-300 transition-colors duration-300 cursor-pointer break-words"
-                  >
-                    hari@innovativebimservices.com
-                  </a>
-                </div>
+                <a href="mailto:hari@innovativebimservices.com" className="text-xl text-gray-300 hover:text-blue-400 transition-colors">
+                  hari@innovativebimservices.com
+                </a>
               </div>
 
-              <div className="flex items-center space-x-2.5 sm:space-x-3 md:space-x-4 group">
-                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="flex items-center space-x-6 group">
+                <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-blue-600/20 transition-all">
+                  <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <div>
-                  <a 
-                    href="tel:+918142380902"
-                    className="text-blue-200 text-xs sm:text-sm md:text-base hover:text-blue-300 transition-colors duration-300 cursor-pointer"
-                  >
-                    +91 81423 80902
-                  </a>
-                </div>
+                <a href="tel:+918142380902" className="text-xl text-gray-300 hover:text-blue-400 transition-colors">
+                  +91 81423 80902
+                </a>
               </div>
 
-              <div className="flex items-center space-x-2.5 sm:space-x-3 md:space-x-4 group">
-                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="flex items-center space-x-6 group">
+                <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-blue-600/20 transition-all">
+                  <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <div>
-                  <p className="text-blue-200 text-xs sm:text-sm md:text-base">Hyderabad, India</p>
-                </div>
+                <span className="text-xl text-gray-300">Hyderabad, India</span>
               </div>
             </div>
 
-            {/* Social Media */}
-            <div className="pt-3 sm:pt-4 md:pt-6">
-              <h4 className="font-semibold text-white text-sm sm:text-base md:text-lg mb-2 sm:mb-3 md:mb-4">Follow Us</h4>
-              <div className="flex space-x-2 sm:space-x-3 md:space-x-4">
-                <a href="https://www.linkedin.com/company/innovativebimservices/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg sm:rounded-xl flex items-center justify-center text-blue-400 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20 touch-manipulation">
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl shadow-blue-500/20">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Send us a Message</h3>
+          {/* Project Inquiry Form */}
+          <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl flex flex-col justify-center border border-white">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">Project Inquiry</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-blue-200 mb-2">
-                    First Name
-                  </label>
+                  <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
                   <input
                     type="text"
                     id="firstName"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl focus:border-blue-400 focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400"
                     placeholder="John"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-blue-200 mb-2">
-                    Last Name
-                  </label>
+                  <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
                   <input
                     type="text"
                     id="lastName"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl focus:border-blue-400 focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400"
                     placeholder="Doe"
                     required
                   />
@@ -143,47 +114,67 @@ const ContactSection: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-blue-200 mb-2">
-                  Email
-                </label>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">Work Email</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl focus:border-blue-400 focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
+                  className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400"
                   placeholder="john@example.com"
                   required
                 />
               </div>
 
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-blue-200 mb-2">
-                  Company
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl focus:border-blue-400 focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
-                  placeholder="Your Company"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-2">Company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400"
+                    placeholder="Your Company"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="projectType" className="block text-sm font-semibold text-gray-700 mb-2">Project Type</label>
+                  <div className="relative">
+                    <select
+                      id="projectType"
+                      name="projectType"
+                      className="w-full px-5 py-4 bg-gray-50 border-2 border-blue-100 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-900 appearance-none font-semibold cursor-pointer"
+                      required
+                    >
+                      <option value="">Select a category</option>
+                      <option value="Architecture">Architecture</option>
+                      <option value="Structure">Structure</option>
+                      <option value="Scan-to-BIM">Scan-to-BIM</option>
+                      <option value="Food Service BIM">Food Service BIM</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                      <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-blue-200 mb-2">
-                  Message
-                </label>
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">Tell us about your project</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl focus:border-blue-400 focus:ring-2 focus:ring-blue-400/50 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base resize-none"
+                  className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400 resize-none"
                   placeholder="Tell us about your project..."
                   required
                 />
@@ -192,11 +183,16 @@ const ContactSection: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-lg sm:rounded-xl hover:from-blue-600 hover:to-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-xl shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold py-5 px-6 rounded-xl hover:shadow-2xl hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1 disabled:opacity-50 text-xl"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Submit Project Details →'}
               </button>
               
+              <p className="text-center text-xs text-gray-500 mt-6 leading-relaxed">
+                We typically respond within 24–48 hours for project-related inquiries.<br />
+                All information shared through this form is treated as confidential and handled in accordance with standard project NDA practices.
+              </p>
+
               {submitStatus === 'success' && (
                 <div className="mt-4 sm:mt-6 p-4 sm:p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-xl sm:rounded-2xl backdrop-blur-sm">
                   <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-3 mb-3 sm:mb-4">
@@ -248,6 +244,13 @@ const ContactSection: React.FC = () => {
             </form>
           </div>
         </div>
+
+        {/* NDA/Support Power Line */}
+        <div className="text-center animate-fade-in">
+          <p className="text-xl md:text-2xl font-medium text-blue-400 italic">
+            "Supporting clients across international AEC and food service projects."
+          </p>
+        </div>
       </div>
 
       {/* Footer */}
@@ -255,19 +258,17 @@ const ContactSection: React.FC = () => {
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center">
             {/* Logo and Company Name */}
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 mb-4 sm:mb-6">
+            <div className="flex flex-col items-center justify-center mb-6">
               <img
                 src="/logo.png"
                 alt="BIM Arcana Logo"
-                className="h-20 w-auto sm:h-24 md:h-28 object-contain"
+                className="h-40 w-auto object-contain opacity-100 transition-all duration-500 mb-2"
               />
-              <span className="text-white font-bold text-lg sm:text-xl">Innovative BIM Services</span>
             </div>
             
             {/* Company Description */}
-            <p className="text-gray-300 mb-4 sm:mb-6 max-w-xs sm:max-w-sm md:max-w-2xl mx-auto text-sm sm:text-base">
-              Revolutionizing the construction industry with cutting-edge, AI-powered BIM solutions. 
-              We deliver precision, efficiency, and innovation in every project.
+            <p className="text-gray-300 font-bold mb-8 max-w-xs sm:max-w-sm md:max-w-4xl mx-auto text-sm sm:text-base md:text-xl leading-relaxed">
+              Delivering coordinated, construction-ready BIM solutions across architecture, structure, scan-to-BIM, and food service projects.
             </p>
             
             {/* Social Links */}
@@ -286,8 +287,9 @@ const ContactSection: React.FC = () => {
             </div>
             
             {/* Copyright */}
-            <p className="text-gray-400 text-xs sm:text-sm">
-              © 2025 Innovative BIM Services. All rights reserved.
+            <p className="text-gray-400 text-xs sm:text-sm font-medium">
+              © 2026 Innovative BIM Services. All rights reserved. <br className="sm:hidden" />
+              Built for global AEC and food service BIM delivery.
             </p>
           </div>
         </div>

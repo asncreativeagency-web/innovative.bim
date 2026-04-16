@@ -5,15 +5,15 @@ import SlideshowSection from './components/SlideshowSection'
 import ServicesSection from './components/ServicesSection'
 import ProjectsSection from './components/ProjectsSection'
 import AboutSection from './components/AboutSection'
-import CaseStudiesSection from './components/CaseStudiesSection'
-import FAQSection from './components/FAQSection'
-import BlogSection from './components/BlogSection'
+
 import ContactSection from './components/ContactSection'
 import Navigation from './components/Navigation'
+import WorkflowSection from './components/WorkflowSection'
+import LODSection from './components/LODSection'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import { Toaster } from './components/ui/sonner'
 
-const sections = ['home', 'slideshow', 'services', 'projects', 'about', 'team', 'case-studies', 'faq', 'blog', 'contact']
+const sections = ['home', 'services', 'workflow', 'projects', 'lod', 'about', 'contact']
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -61,48 +61,56 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
-      <Navigation activeSection={activeSection} onNavigate={scrollToSection} />
-      <FloatingWhatsApp />
-      <Toaster />
-      
-      <main>
-        <section id="home" className="min-h-screen">
+    <div className="min-h-screen bg-[#0A0F1C] text-white overflow-x-hidden relative">
+      {/* Centralized Global Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0F1C] via-[#0D1528] to-[#0A0F1C]" />
+        <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+        <div className="absolute top-[20%] -left-[10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[20%] -right-[10%] w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative z-10">
+        <Navigation activeSection={activeSection} onNavigate={scrollToSection} />
+        <FloatingWhatsApp />
+        <Toaster />
+        
+        <main>
+        <section id="home">
           <HeroSection />
         </section>
+
+        <SlideshowSection />
         
-        <section id="slideshow" className="min-h-screen">
-          <SlideshowSection />
-        </section>
-        
-        <section id="services" className="min-h-screen">
+        <section id="services">
           <ServicesSection />
         </section>
+
+        <section id="workflow">
+          <WorkflowSection />
+        </section>
         
-        <section id="projects" className="min-h-screen">
+        <section id="projects">
           <ProjectsSection />
         </section>
+
+        <section id="lod">
+          <LODSection />
+        </section>
         
-        <section id="about" className="min-h-screen">
+        <section id="about">
           <AboutSection />
         </section>
+
+
         
-        <section id="case-studies" className="min-h-screen">
-          <CaseStudiesSection />
-        </section>
-        
-        <section id="faq" className="min-h-screen">
-          <FAQSection />
-        </section>
-        
-        <section id="blog" className="min-h-screen">
-          <BlogSection />
-        </section>
-        
-        <section id="contact" className="min-h-screen">
+        <section id="contact">
           <ContactSection />
         </section>
       </main>
+    </div>
     </div>
   )
 }
