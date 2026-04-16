@@ -54,32 +54,32 @@ const AboutSection: React.FC = () => {
 	const technologies = [
 		{
 			name: 'Revit',
-			icon: '/logos/Revit_log-removebg-preview.png',
+			icon: '/logos/revit.png',
 			category: 'BIM Software'
 		},
 		{
 			name: 'Navisworks',
-			icon: '/logos/logo-navisworks-removebg-preview.png',
+			icon: '/logos/navisworks.png',
 			category: 'Coordination'
 		},
 		{
 			name: 'AutoCAD',
-			icon: '/logos/AutoCad_new_logo.svg-removebg-preview.png',
+			icon: '/logos/autocad.png',
 			category: 'CAD Software'
 		},
 		{
 			name: 'TruView',
-			icon: '/logos/dwg-trueview-lockup-1200x132-removebg-preview.png',
+			icon: '/logos/truview.png',
 			category: 'Point Cloud'
 		},
 		{
 			name: 'Autodesk',
-			icon: '/logos/Autodesk-logo-removebg-preview.png',
+			icon: '/logos/autodesk.png',
 			category: 'Ecosystem'
 		},
 		{
 			name: 'Recap',
-			icon: '/logos/1620545713696-removebg-preview (1).png',
+			icon: '/logos/recap.png',
 			category: 'Reality Capture'
 		}
 	]
