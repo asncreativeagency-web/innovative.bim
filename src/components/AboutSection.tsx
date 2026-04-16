@@ -26,11 +26,11 @@ const AboutSection: React.FC = () => {
 				animation-play-state: paused;
 			}
 			.tech-logo {
-				filter: grayscale(100%) brightness(0.8);
-				transition: filter 0.3s ease;
+				filter: brightness(1.1);
+				transition: all 0.3s ease;
 			}
 			.tech-logo:hover {
-				filter: grayscale(0%) brightness(1);
+				filter: brightness(1.3) scale(1.05);
 			}
 		`
 		document.head.appendChild(style)
