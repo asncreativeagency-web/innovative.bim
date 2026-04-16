@@ -7,7 +7,7 @@ const toolLogos: Record<string, string> = {
   'Recap': '/logos/recap.png',
   'Navisworks': '/logos/navisworks_white.png',
   'Cyclone': '',
-  'ACC/BIM 360': '/logos/bim360_white.png',
+  'BIM 360': '/logos/bim360_white.png',
   'TruView': '/logos/truview_white.png',
 }
 
@@ -203,7 +203,7 @@ const services: Service[] = [
       'Standardized deliverables',
       'Scalable BIM processes'
     ],
-    tools: ['Revit', 'Navisworks', 'ACC/BIM 360']
+    tools: ['Revit', 'Navisworks', 'BIM 360']
   }
 ]
 
