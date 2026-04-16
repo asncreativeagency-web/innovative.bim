@@ -20,6 +20,7 @@ const ToolLogo: React.FC<{ tool: string }> = ({ tool }) => {
         alt={tool}
         title={tool}
         className="h-12 w-auto object-contain hover:scale-110 transition-transform duration-300"
+        style={{ filter: 'brightness(0) invert(1)' }}
       />
     )
   }
