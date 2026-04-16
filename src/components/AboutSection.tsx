@@ -53,9 +53,14 @@ const AboutSection: React.FC = () => {
 
 	const technologies = [
 		{
-			name: 'Autodesk Revit',
+			name: 'Revit',
 			icon: '/Technologies Used/autodesk-revit transperent.png',
 			category: 'BIM Software'
+		},
+		{
+			name: 'Navisworks',
+			icon: '/Technologies Used/navisworks.png',
+			category: 'Coordination'
 		},
 		{
 			name: 'AutoCAD',
@@ -63,24 +68,24 @@ const AboutSection: React.FC = () => {
 			category: 'CAD Software'
 		},
 		{
-			name: 'ArchiCAD',
-			icon: '/Technologies Used/archicad transparent.png',
-			category: 'Architecture'
-		},
-		{
-			name: '3ds Max',
-			icon: '/Technologies Used/3d_max transparent.jpg',
-			category: '3D Modeling'
-		},
-		{
-			name: 'SketchUp',
-			icon: '/Technologies Used/sketch up transparent.png',
-			category: '3D Design'
+			name: 'BIM 360 / ACC',
+			icon: '/Technologies Used/bim360.png',
+			category: 'Collaboration'
 		},
 		{
 			name: 'Recap',
 			icon: '/Technologies Used/recap transparent.png',
 			category: 'Reality Capture'
+		},
+		{
+			name: 'TruView',
+			icon: '/Technologies Used/truview.png',
+			category: 'Point Cloud'
+		},
+		{
+			name: 'Cyclone',
+			icon: '/Technologies Used/cyclone.png',
+			category: 'Scan Processing'
 		}
 	]
 
@@ -253,9 +258,14 @@ const AboutSection: React.FC = () => {
 
         {/* Technologies Used - Logo Slider */}
         <div className="mt-20">
-          <h3 className="text-center text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-10">
-            Technologies We Use
-          </h3>
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Technologies & <span className="text-blue-400">Tools We Work With</span>
+            </h3>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Industry-standard BIM tools used for modeling, coordination, and project delivery.
+            </p>
+          </div>
           <div className="relative overflow-hidden py-6">
             {/* Gradient fade edges */}
             <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0A0F1C] to-transparent z-10 pointer-events-none" />
@@ -266,18 +276,29 @@ const AboutSection: React.FC = () => {
               {[...technologies, ...technologies, ...technologies].map((tech, index) => (
                 <div
                   key={`${tech.name}-${index}`}
-                  className="flex items-center justify-center mx-10 sm:mx-14 flex-shrink-0 cursor-pointer"
+                  className="flex flex-col items-center justify-center mx-12 sm:mx-20 flex-shrink-0 cursor-pointer group/logo"
                 >
-                  <img
-                    src={tech.icon}
-                    alt={tech.name}
-                    className="w-28 h-28 sm:w-36 sm:h-36 object-contain tech-logo hover:scale-110 transition-transform duration-300"
-                  />
+                  <div className="relative w-40 h-40 sm:w-52 sm:h-52 flex items-center justify-center transition-all duration-300">
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                        const parent = (e.target as HTMLImageElement).parentElement;
+                        if (parent) {
+                          const fallback = document.createElement('div');
+                          fallback.className = 'text-blue-400 font-black text-center text-sm px-2 break-words';
+                          fallback.innerText = tech.name;
+                          parent.appendChild(fallback);
+                        }
+                      }}
+                      className="w-full h-full object-contain tech-logo group-hover/logo:scale-110 transition-transform duration-300"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
       </div>
     </div>
 	)
