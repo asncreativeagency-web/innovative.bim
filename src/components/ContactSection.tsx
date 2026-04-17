@@ -308,17 +308,23 @@ const ContactSection: React.FC = () => {
       <footer className="mt-48 border-t border-white/5 pt-32 pb-24 bg-black/60 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
           {/* Logo ONLY */}
-          <img src="/logo.png" alt="BIM Arcana" className="h-32 mx-auto mb-12 brightness-0 invert opacity-100" />
+          <img src="/logo.png" alt="BIM Arcana" className="h-44 mx-auto mb-12 brightness-0 invert opacity-100 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]" />
           
           <p className="text-gray-300 font-bold mb-16 max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed tracking-tight">
             Delivering coordinated, construction-ready BIM solutions across architecture, structure, scan-to-BIM, and food service projects.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-8 mb-16 border-t border-white/5 pt-12">
-            <a href="https://www.linkedin.com/company/innovativebimservices/" target="_blank" className="flex items-center gap-4 text-white font-black uppercase tracking-[0.4em] text-[10px] hover:text-blue-400 transition-colors">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <motion.a 
+              href="https://www.linkedin.com/company/innovativebimservices/" 
+              target="_blank" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-6 px-10 py-5 bg-blue-600/10 backdrop-blur-md border border-blue-500/30 rounded-full text-white font-black uppercase tracking-[0.4em] text-[12px] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.1)] group"
+            >
+              <svg className="w-6 h-6 text-blue-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               Follow us on Linked.In
-            </a>
+            </motion.a>
           </div>
 
           <p className="text-gray-600 font-bold text-[10px] tracking-[0.6em] uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>

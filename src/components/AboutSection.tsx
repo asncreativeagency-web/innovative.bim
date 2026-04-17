@@ -75,10 +75,10 @@ const AboutSection: React.FC = () => {
 			category: 'Collaboration'
 		},
 		{
-			name: 'TruView',
-			icon: '/logos/truview_white.png',
+			name: 'DWG TrueView',
+			icon: '/logos/dwg_trueview_white.png',
 			category: 'Point Cloud',
-			scale: 1.8
+			scale: 1.5
 		},
 		{
 			name: 'Autodesk',

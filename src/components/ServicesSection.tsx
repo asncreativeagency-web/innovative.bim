@@ -8,7 +8,7 @@ const toolLogos: Record<string, string> = {
   'Recap': '/logos/autodesk_white.png',
   'Navisworks': '/logos/navisworks_white.png',
   'BIM 360': '/logos/BIM360_white.png',
-  'TruView': '/logos/truview_white.png',
+  'TruView': '/logos/dwg_trueview_white.png',
 }
 
 const ToolLogo: React.FC<{ tool: string }> = ({ tool }) => {
