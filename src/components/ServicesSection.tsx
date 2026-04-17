@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import ArcanaButton from './ArcanaButton'
 
 // --- Tool Logo Component (using real logos from /Technologies Used/) ---
 const toolLogos: Record<string, string> = {
@@ -370,15 +371,12 @@ const ServicesSection: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  <button 
+                  <ArcanaButton 
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl shadow-blue-500/20 w-full sm:w-auto justify-center"
+                    className="w-full sm:w-auto"
                   >
-                    <span>Request a Proposal</span>
-                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </button>
+                    Request a Proposal
+                  </ArcanaButton>
                 </div>
               </div>
             )}

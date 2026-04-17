@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import ArcanaButton from './ArcanaButton'
 
 interface NavigationProps {
   activeSection: string
@@ -134,16 +135,14 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               {/* Contact Navigation */}
               <div className="flex items-center">
                 {contactNav.map((item) => (
-                  <button
+                  <ArcanaButton
                     key={item.id}
+                    icon={false}
                     onClick={() => onNavigate(item.id)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/25 touch-manipulation ${activeSection === item.id
-                      ? 'from-blue-600 to-cyan-500 shadow-xl shadow-blue-500/40'
-                      : 'hover:from-blue-600 hover:to-cyan-500 hover:shadow-xl hover:shadow-blue-500/40'
-                      }`}
+                    className="!px-6 !py-2.5 !text-[11px]"
                   >
-                    <span className="relative z-10">{item.label}</span>
-                  </button>
+                    {item.label}
+                  </ArcanaButton>
                 ))}
               </div>
             </div>
@@ -212,19 +211,17 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               <div>
                 <div className="space-y-1.5 sm:space-y-2">
                   {contactNav.map((item) => (
-                    <button
+                    <ArcanaButton
                       key={item.id}
+                      icon={false}
                       onClick={() => {
                         onNavigate(item.id)
                         setIsMobileMenuOpen(false)
                       }}
-                      className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 touch-manipulation bg-gradient-to-r from-blue-500 to-cyan-400 text-white ${activeSection === item.id
-                        ? 'from-blue-600 to-cyan-500 shadow-lg shadow-blue-500/25'
-                        : 'hover:from-blue-600 hover:to-cyan-500'
-                        }`}
+                      className="w-full !py-3 !text-sm"
                     >
                       {item.label}
-                    </button>
+                    </ArcanaButton>
                   ))}
                 </div>
               </div>

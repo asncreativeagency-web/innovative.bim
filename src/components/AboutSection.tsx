@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import ArcanaButton from './ArcanaButton'
+
 const AboutSection: React.FC = () => {
 	const workflowRef = useRef<HTMLDivElement>(null)
 	const [currentTechIndex, setCurrentTechIndex] = useState(0)
@@ -244,12 +246,13 @@ const AboutSection: React.FC = () => {
           <p className="text-xl md:text-2xl font-bold text-blue-400/90 mb-10 tracking-tight">
             Supporting contractors, consultants, and food service specialists across global projects.
           </p>
-          <button 
+          <ArcanaButton 
+            primary 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-12 py-5 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/50 transform hover:-translate-y-1 transition-all duration-300"
+            className="!px-16 !py-8 !text-xl !font-black"
           >
-            Let's Work Together →
-          </button>
+            Let's Work Together
+          </ArcanaButton>
         </div>
 
         {/* Technologies Used - Logo Slider */}

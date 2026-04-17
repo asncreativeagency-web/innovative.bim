@@ -105,25 +105,46 @@ function LiquidButton({
       <Comp
         data-slot="button"
         className={cn(
-          "relative",
+          "relative group overflow-hidden active:scale-95 transition-transform duration-200",
           liquidbuttonVariants({ variant, size, className })
         )}
         {...props}
       >
-        <div className="absolute top-0 left-0 z-0 h-full w-full rounded-full 
-            shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(255,255,255,0.15)] 
-        transition-all 
-        dark:shadow-[0_0_8px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3.5px_rgba(255,255,255,0.09),inset_-3px_-3px_0.5px_-3.5px_rgba(255,255,255,0.85),inset_1px_1px_1px_-0.5px_rgba(255,255,255,0.6),inset_-1px_-1px_1px_-0.5px_rgba(255,255,255,0.6),inset_0_0_6px_6px_rgba(255,255,255,0.12),inset_0_0_2px_2px_rgba(255,255,255,0.06),0_0_12px_rgba(0,0,0,0.15)]" />
+        {/* Animated Background Pulse */}
+        <div className="absolute inset-0 z-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
+
+        {/* Liquid Glass Body */}
+        <div className="absolute top-0 left-0 z-0 h-full w-full rounded-xl 
+            shadow-[0_0_15px_rgba(59,130,246,0.2),inset_0_0_10px_rgba(255,255,255,0.05)] 
+            border border-white/10 group-hover:border-blue-500/50 transition-all duration-300
+            bg-white/[0.03] backdrop-blur-md" 
+        />
+        
+        {/* The "Glint" Beam Animation */}
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <div className="absolute -inset-x-[100%] top-0 bottom-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[35deg] group-hover:animate-glint transition-all" />
+        </div>
+
         <div
-          className="absolute top-0 left-0 isolate -z-10 h-full w-full overflow-hidden rounded-md"
+          className="absolute top-0 left-0 isolate -z-10 h-full w-full overflow-hidden rounded-xl"
           style={{ backdropFilter: 'url("#container-glass")' }}
         />
 
-        <div className="pointer-events-none z-10 ">
+        <div className="relative z-20 text-white font-bold tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
           {children}
         </div>
         <GlassFilter />
       </Comp>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes glint {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(200%); }
+        }
+        .group:hover .group-hover\\:animate-glint {
+          animation: glint 0.8s ease-in-out infinite;
+        }
+      `}} />
     </>
   )
 }

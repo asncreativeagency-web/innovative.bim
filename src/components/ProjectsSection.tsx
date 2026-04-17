@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import ArcanaButton from './ArcanaButton'
 
 interface ProjectHighlight {
   id: number
@@ -189,18 +190,18 @@ const ProjectsSection: React.FC = () => {
                 We bridge the gap between complex designs and site-ready execution. Let's discuss how our BIM workflows can support your specific project requirements.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button 
+                <ArcanaButton 
+                  primary
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-10 py-5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-all duration-300 shadow-xl shadow-blue-600/20"
                 >
-                  Request Project References
-                </button>
-                <button 
+                  Request References
+                </ArcanaButton>
+                <ArcanaButton 
+                  icon={false}
                   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-10 py-5 border border-white/20 text-white font-bold rounded-lg hover:bg-white/5 transition-all duration-300"
                 >
                   View Services
-                </button>
+                </ArcanaButton>
               </div>
             </div>
             

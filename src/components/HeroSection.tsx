@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import ArcanaButton from './ArcanaButton'
 
 const HeroSection: React.FC = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null)
@@ -112,18 +113,19 @@ const HeroSection: React.FC = () => {
             ref={ctaRef}
             className="flex flex-wrap gap-8 transform translate-y-12 opacity-0 transition-all duration-1000 delay-500"
           >
-            <button 
+            <ArcanaButton 
+              primary
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-12 py-5 bg-blue-600 text-white rounded-sm text-lg font-bold hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest shadow-xl shadow-blue-600/10"
             >
               Request a Proposal
-            </button>
-            <button 
+            </ArcanaButton>
+
+            <ArcanaButton 
+              icon={false}
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-12 py-5 border border-white/20 text-white rounded-sm text-lg font-bold hover:bg-white/10 transition-all duration-300 uppercase tracking-widest"
             >
               Our Showcase
-            </button>
+            </ArcanaButton>
           </div>
         </div>
 
