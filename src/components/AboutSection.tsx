@@ -34,6 +34,16 @@ const AboutSection: React.FC = () => {
 			.tech-logo:hover {
 				filter: brightness(1.3) scale(1.05);
 			}
+			@keyframes slide-up {
+				from { opacity: 0; transform: translateY(30px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+			.workflow-step {
+				opacity: 0;
+			}
+			.animate-workflow-step {
+				animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+			}
 		`
 		document.head.appendChild(style)
 		
@@ -255,7 +265,48 @@ const AboutSection: React.FC = () => {
           </ArcanaButton>
         </div>
 
+        {/* Our BIM Delivery Workflow */}
+        <div className="mt-32 mb-32" ref={workflowRef}>
+          <div className="text-center mb-20">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Our BIM <span className="text-blue-400">Delivery Workflow</span>
+            </h3>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              A structured, 7-step approach designed to ensure precision, coordination, and construction-ready model delivery.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {workflowSteps.map((step, index) => (
+              <div 
+                key={step.id} 
+                className={`workflow-step relative p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl hover:bg-white/10 transition-all duration-500 group shadow-2xl shadow-black/40 ${index === workflowSteps.length - 1 ? 'lg:col-span-1' : ''}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Step Number */}
+                <div className="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black italic shadow-lg shadow-blue-600/30 z-20 group-hover:scale-110 transition-transform">
+                  {step.id}
+                </div>
+                
+                {/* Connector Line (Desktop) */}
+                {index < workflowSteps.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-blue-500/50 to-transparent z-0" />
+                )}
+
+                <div className="relative z-10 text-center">
+                  <div className="mb-6 transform group-hover:scale-110 transition-transform duration-500">
+                    <WorkflowIcon id={step.id} />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">{step.title}</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Technologies Used - Logo Slider */}
+
         <div className="mt-20">
           <div className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
