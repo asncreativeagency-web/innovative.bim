@@ -266,39 +266,42 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Our BIM Delivery Workflow */}
-        <div className="mt-32 mb-32" ref={workflowRef}>
-          <div className="text-center mb-20">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Our BIM <span className="text-blue-400">Delivery Workflow</span>
+        <div className="mt-40 mb-40" ref={workflowRef}>
+          <div className="text-center mb-24">
+            <h3 className="text-4xl md:text-5xl font-black text-white mb-8 uppercase italic tracking-tighter">
+              BIM Delivery <span className="text-blue-500 not-italic">Workflow</span>
             </h3>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              A structured, 7-step approach designed to ensure precision, coordination, and construction-ready model delivery.
+            <div className="h-1.5 w-24 bg-blue-600 mx-auto mb-10 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+            <p className="text-gray-400 max-w-3xl mx-auto text-xl font-light leading-relaxed">
+              A precise, data-driven methodology engineered for <span className="text-white font-medium">zero-clash delivery</span> and construction readiness.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             {workflowSteps.map((step, index) => (
               <div 
                 key={step.id} 
-                className={`workflow-step relative p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl hover:bg-white/10 transition-all duration-500 group shadow-2xl shadow-black/40 ${index === workflowSteps.length - 1 ? 'lg:col-span-1' : ''}`}
+                className={`workflow-step group relative w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] p-10 bg-[#0d1528]/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] hover:border-blue-500/50 transition-all duration-700 shadow-[0_0_50px_rgba(0,0,0,0.3)] hover:shadow-blue-500/10 ${index >= 4 ? 'lg:w-[calc(33.333%-1.5rem)]' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Step Number */}
-                <div className="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black italic shadow-lg shadow-blue-600/30 z-20 group-hover:scale-110 transition-transform">
-                  {step.id}
-                </div>
-                
-                {/* Connector Line (Desktop) */}
-                {index < workflowSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-blue-500/50 to-transparent z-0" />
-                )}
+                {/* Technical Grid Overlay */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 rounded-[2.5rem] overflow-hidden pointer-events-none" 
+                  style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.5) 1px, transparent 0)`, backgroundSize: '20px 20px' }} />
 
-                <div className="relative z-10 text-center">
-                  <div className="mb-6 transform group-hover:scale-110 transition-transform duration-500">
+                {/* Step ID Badge */}
+                <div className="mb-10 flex items-center justify-between">
+                  <div className="w-12 h-12 bg-blue-600/10 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 font-black italic text-xl shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                    {step.id}
+                  </div>
+                  <div className="h-px flex-1 bg-gradient-to-r from-blue-500/20 to-transparent mx-4" />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="mb-8 w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500/10 transition-colors duration-500">
                     <WorkflowIcon id={step.id} />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">{step.title}</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+                  <h4 className="text-2xl font-black text-white mb-4 uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">{step.title}</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed font-medium">{step.description}</p>
                 </div>
               </div>
             ))}
