@@ -277,63 +277,36 @@ const AboutSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 relative">
-            {/* SVG Path Connections (Desktop) */}
-            <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
-              <svg className="w-full h-full" fill="none" preserveAspectRatio="none">
-                {/* Horizontal connections Row 1 */}
-                <path d="M22% 25% H28% M47% 25% H53% M72% 25% H78%" stroke="url(#line-grad)" strokeWidth="2" strokeDasharray="8 4" className="animate-pulse" />
-                {/* Connection 4 -> 5 */}
-                <path d="M87.5% 35% V45% H16.666% V55%" stroke="url(#line-grad)" strokeWidth="2" strokeDasharray="8 4" />
-                {/* Horizontal connections Row 2 */}
-                <path d="M30% 75% H36% M63% 75% H69%" stroke="url(#line-grad)" strokeWidth="2" strokeDasharray="8 4" className="animate-pulse" />
-                
-                <defs>
-                  <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
-                    <stop offset="50%" stopColor="rgba(59, 130, 246, 0.5)" />
-                    <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
+          <div className="flex flex-wrap justify-center gap-y-16 gap-x-8 relative">
             {workflowSteps.map((step, index) => (
               <div 
                 key={step.id} 
-                className={`workflow-step group relative w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] p-10 bg-[#0d1528]/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] hover:border-blue-500/50 transition-all duration-700 shadow-[0_0_50px_rgba(0,0,0,0.3)] hover:shadow-blue-500/10 z-10 ${index >= 4 ? 'lg:w-[calc(33.333%-1.5rem)]' : ''}`}
+                className={`workflow-step group relative w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2.5rem)] p-10 bg-[#0d1528]/60 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] hover:border-blue-500/50 transition-all duration-700 shadow-2xl z-10 ${index >= 4 ? 'lg:w-[calc(33.333%-2.5rem)]' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Arrow indicator for small screens */}
-                {index < workflowSteps.length - 1 && (
-                  <div className="lg:hidden absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center z-30 shadow-lg">
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-                  </div>
+                {/* Connection Line (Desktop) */}
+                {((index >= 0 && index < 3) || (index >= 4 && index < 6)) && (
+                  <div className="hidden lg:block absolute top-16 -right-9 w-10 h-[2px] bg-gradient-to-r from-blue-500/40 to-blue-500/10 z-0" />
+                )}
+
+                {/* Vertical Bridge (Desktop - Step 4 to 5) */}
+                {index === 3 && (
+                  <>
+                    <div className="hidden lg:block absolute top-16 -right-9 w-12 h-[2px] bg-blue-500/20" />
+                    <div className="hidden lg:block absolute top-16 -right-9 w-[2px] h-[calc(100%+4rem)] bg-gradient-to-b from-blue-500/20 to-transparent" />
+                  </>
                 )}
                 
                 {/* Technical Grid Overlay */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 rounded-[2.5rem] overflow-hidden pointer-events-none" 
                   style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.5) 1px, transparent 0)`, backgroundSize: '20px 20px' }} />
 
-                {/* Step ID Badge */}
-                <div className="mb-10 flex items-center justify-between">
+                {/* Step Header */}
+                <div className="mb-10 flex items-center gap-4">
                   <div className="w-12 h-12 bg-blue-600/10 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 font-black italic text-xl shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
                     {step.id}
                   </div>
-                  <div className="h-px flex-1 bg-gradient-to-r from-blue-500/20 to-transparent mx-4" />
-                  
-                  {/* Next Step Arrow (Desktop Row 1) */}
-                  {index < 3 && (
-                    <div className="hidden lg:block text-blue-500 animate-pulse">
-                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                    </div>
-                  )}
-                  {/* Next Step Arrow (Desktop Row 2) */}
-                  {index >= 4 && index < 6 && (
-                    <div className="hidden lg:block text-blue-500 animate-pulse">
-                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                    </div>
-                  )}
+                  <div className="h-[2px] flex-1 bg-gradient-to-r from-blue-500/30 to-transparent" />
                 </div>
 
                 <div className="relative z-10">
