@@ -6,8 +6,7 @@ const toolLogos: Record<string, string> = {
   'AutoCAD': '/logos/autocad_white.png',
   'Recap': '/logos/autodesk_white.png',
   'Navisworks': '/logos/navisworks_white.png',
-  'Cyclone': '',
-  'BIM 360': '/logos/bim360_white.png',
+  'BIM 360': '/logos/BIM360_white.png',
   'TruView': '/logos/truview_white.png',
 }
 
@@ -161,7 +160,7 @@ const services: Service[] = [
       'Reduced site verification effort',
       'Improved planning accuracy'
     ],
-    tools: ['Recap', 'Cyclone', 'Revit']
+    tools: ['Recap', 'Revit', 'BIM 360']
   },
   {
     id: '5',

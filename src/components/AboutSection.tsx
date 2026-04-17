@@ -69,7 +69,7 @@ const AboutSection: React.FC = () => {
 		},
 		{
 			name: 'BIM 360',
-			icon: '/logos/bim360_white.png',
+			icon: '/logos/BIM360_white.png',
 			category: 'Collaboration'
 		},
 		{
