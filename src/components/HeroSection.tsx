@@ -74,8 +74,22 @@ const HeroSection: React.FC = () => {
             />
           </div>
         ))}
-        {/* Technical Grid Overlay */}
-        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        
+        {/* Advanced Technical Overlays */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Static Technical Grid */}
+          <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          
+          {/* Moving Scanline Effect */}
+          <motion.div 
+            animate={{ y: ['0%', '100%'] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-x-0 h-1 bg-blue-500/10 blur-sm z-10"
+          />
+
+          {/* Grain/Noise Texture */}
+          <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        </div>
         
         {/* Left-Anchored Atmospheric Gradient (Clear on right for image visibility) */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1C] via-[#0A0F1C]/80 to-transparent" />
@@ -85,24 +99,24 @@ const HeroSection: React.FC = () => {
       {/* Main Content - Stationary */}
       <motion.div 
         style={{ opacity }}
-        className="relative z-20 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 min-h-screen flex flex-col justify-center pt-24 pb-12"
+        className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 min-h-screen flex flex-col justify-center pt-24 pb-12"
       >
         <div className="max-w-5xl">
           {/* Primary Headline - High Contrast & Precision with subtle shadow for legibility */}
           <h1
             ref={headlineRef}
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white leading-[1.05] tracking-tight mb-10 transform translate-y-12 opacity-0 transition-all duration-1000 ease-out drop-shadow-2xl"
+            className="text-[2.2rem] sm:text-7xl md:text-8xl lg:text-9xl font-black text-white leading-[1.05] tracking-tighter sm:tracking-tight mb-8 sm:mb-10 transform translate-y-12 opacity-0 transition-all duration-1000 ease-out drop-shadow-2xl"
             style={{ fontFamily: "'Inter', sans-serif", textShadow: '0 0 40px rgba(0,0,0,0.5)' }}
           >
             CONSTRUCTION <br />
-            <span className="text-blue-600">READY</span> MODELS
+            <span className="text-blue-500">READY</span> MODELS
           </h1>
 
           {/* Subtext - Professional & Direct */}
-          <div className="flex flex-col md:flex-row gap-12 items-start mb-16 px-1 border-l-2 border-blue-600/20 py-2">
+          <div className="flex flex-col md:flex-row gap-6 sm:gap-12 items-start mb-10 sm:mb-16 px-4 sm:px-1 border-l-2 border-blue-600/30 py-2 bg-blue-600/5 backdrop-blur-[2px] rounded-r-lg">
             <p
               ref={subheadlineRef}
-              className="text-lg md:text-xl font-medium text-gray-400 leading-relaxed max-w-3xl transform translate-y-12 opacity-0 transition-all duration-1000 delay-300"
+              className="text-base sm:text-lg md:text-xl font-medium text-gray-300 sm:text-gray-400 leading-relaxed max-w-3xl transform translate-y-12 opacity-0 transition-all duration-1000 delay-300 drop-shadow-sm"
             >
               Delivering high-fidelity, construction-ready BIM coordination (LOD 100-500) for Architectural, Structural, and Food Service sectors. Engineered for seamless execution on site.
             </p>
@@ -111,10 +125,11 @@ const HeroSection: React.FC = () => {
           {/* Action Row - Clean & Impactful */}
           <div 
             ref={ctaRef}
-            className="flex flex-wrap gap-8 transform translate-y-12 opacity-0 transition-all duration-1000 delay-500"
+            className="flex flex-wrap gap-4 sm:gap-8 transform translate-y-12 opacity-0 transition-all duration-1000 delay-500"
           >
             <ArcanaButton 
               primary
+              className="w-full sm:w-auto"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Request a Proposal
@@ -122,6 +137,7 @@ const HeroSection: React.FC = () => {
 
             <ArcanaButton 
               icon={false}
+              className="w-full sm:w-auto"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Our Showcase
@@ -129,30 +145,6 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Technical Indicators */}
-        <div className="absolute bottom-16 right-6 sm:right-10 lg:right-16 flex items-center space-x-12">
-          {/* Slideshow Progress (Technical style) */}
-          <div className="flex items-center space-x-6">
-            <span className="text-[10px] font-black text-gray-600 uppercase tracking-widest">Projection Phase:</span>
-            <div className="flex space-x-3">
-              {backgrounds.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentBg(index)}
-                  className={`h-2 w-2 rounded-full transition-all duration-500 ${
-                    index === currentBg ? 'bg-blue-600 scale-125' : 'bg-gray-800 hover:bg-gray-700'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-          
-          <div className="hidden sm:block h-12 w-[1px] bg-white/10" />
-          
-          <div className="hidden sm:block text-[10px] font-black text-gray-500 uppercase tracking-[0.3em]">
-            Precision Engineering &bull; 2026
-          </div>
-        </div>
       </motion.div>
     </div>
   )

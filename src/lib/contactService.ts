@@ -21,6 +21,7 @@ export class ContactService {
             last_name: inquiry.last_name,
             email: inquiry.email,
             company: inquiry.company || null,
+            project_type: inquiry.project_type || null,
             message: inquiry.message,
             status: 'new'
           }

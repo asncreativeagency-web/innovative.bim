@@ -40,18 +40,18 @@ const ContactSection: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 px-4">
+        <div className="text-center mb-10 sm:mb-16 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase italic tracking-tighter">
+            <h2 className="text-3xl md:text-6xl font-black text-white mb-4 sm:mb-6 uppercase italic tracking-tighter">
               Let's <span className="text-blue-500 not-italic">Discuss Your Project</span>
             </h2>
-            <div className="h-1.5 w-32 bg-blue-500 mx-auto mb-8 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-6 font-light tracking-tight">
+            <div className="h-1.5 w-24 sm:w-32 bg-blue-500 mx-auto mb-6 sm:mb-8 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+            <p className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-4 sm:mb-6 font-light tracking-tight">
               Share your project requirements, and we’ll get back with a <span className="text-white font-medium">structured BIM approach</span> aligned with your scope, timeline, and coordination needs.
             </p>
           </motion.div>
@@ -59,24 +59,23 @@ const ContactSection: React.FC = () => {
 
         {/* Contact Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-          
-          {/* Col 5: Contact Nodes */}
+                   {/* Col 5: Contact Nodes */}
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-5"
           >
-            <div className="relative h-full bg-blue-900/10 backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 md:p-16 overflow-hidden flex flex-col justify-between">
+            <div className="relative h-full bg-blue-900/10 backdrop-blur-3xl border border-white/5 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-16 overflow-hidden flex flex-col justify-between">
               <CornerAccents />
               
               <div>
-                <h3 className="text-3xl font-black text-white mb-16 tracking-tight flex items-center gap-4 uppercase italic">
-                  <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                <h3 className="text-2xl sm:text-3xl font-black text-white mb-10 sm:mb-16 tracking-tight flex items-center gap-4 uppercase italic">
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
                   Contact Info
                 </h3>
                 
-                <div className="space-y-16">
+                <div className="space-y-10 sm:space-y-16">
                   {[
                     { 
                       id: '01',
@@ -99,37 +98,36 @@ const ContactSection: React.FC = () => {
                       icon: <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     }
                   ].map((node) => (
-                    <div key={node.id} className="flex gap-8 group items-center">
+                    <div key={node.id} className="flex gap-4 sm:gap-8 group items-center">
                       <div className="relative flex-shrink-0">
                         {/* Hexagon Container */}
                         <div 
-                          className="w-16 h-16 bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 group-hover:border-blue-500 transition-all duration-500 shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+                          className="w-12 h-12 sm:w-16 h-16 bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 group-hover:border-blue-500 transition-all duration-500 shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] scale-90 sm:scale-100"
                           style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }}
                         >
-                          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                             {node.icon}
                           </svg>
                         </div>
                       </div>
                       
                       <div>
-                        <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-2 truncate" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{node.label}</p>
+                        <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-1 sm:mb-2 truncate" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{node.label}</p>
                         {node.href ? (
-                          <a href={node.href} className="text-xl font-bold text-gray-200 hover:text-blue-400 transition-all tracking-tight block">
+                          <a href={node.href} className="text-base sm:text-xl font-bold text-gray-200 hover:text-blue-400 transition-all tracking-tight block break-all sm:break-normal">
                             {node.value}
                           </a>
                         ) : (
-                          <span className="text-xl font-bold text-gray-200 block tracking-tight">{node.value}</span>
+                          <span className="text-base sm:text-xl font-bold text-gray-200 block tracking-tight">{node.value}</span>
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-
-
             </div>
           </motion.div>
+
 
           {/* Col 7: Inquiry Console */}
           <motion.div 
@@ -138,33 +136,33 @@ const ContactSection: React.FC = () => {
             viewport={{ once: true }}
             className="lg:col-span-7 flex flex-col"
           >
-            <div className="relative h-full bg-[#0d1528]/40 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-12 md:p-16 shadow-[0_0_80px_rgba(59,130,246,0.05)] overflow-hidden">
+            <div className="relative h-full bg-[#0d1528]/40 backdrop-blur-3xl border border-white/10 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-16 shadow-[0_0_80px_rgba(59,130,246,0.05)] overflow-hidden">
               <CornerAccents />
               
-              <h3 className="text-3xl font-black text-white mb-12 tracking-tight uppercase italic">Project Inquiry</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-10 sm:mb-12 tracking-tight uppercase italic">Project Inquiry</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+              <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
                   <div className="relative group">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>First Name</label>
+                    <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>First Name</label>
                     <input
                       type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-lg"
+                      className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-base sm:text-lg"
                       placeholder="John"
                       required
                     />
                   </div>
                   <div className="relative group">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Last Name</label>
+                    <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Last Name</label>
                     <input
                       type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-lg"
+                      className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-base sm:text-lg"
                       placeholder="Doe"
                       required
                     />
@@ -172,37 +170,37 @@ const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="relative group">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Work Email</label>
+                  <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Work Email</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-lg"
+                    className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-base sm:text-lg"
                     placeholder="john@example.com"
                     required
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
                   <div className="relative group">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Company</label>
+                    <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Company</label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-lg"
+                      className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-base sm:text-lg"
                       placeholder="Your Company"
                       required
                     />
                   </div>
                   <div className="relative group">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Project Type</label>
+                    <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Project Type</label>
                     <div className="relative">
                       <div 
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none transition-all font-bold tracking-tight text-lg cursor-pointer flex justify-between items-center group/dropdown"
+                        className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none transition-all font-bold tracking-tight text-base sm:text-lg cursor-pointer flex justify-between items-center group/dropdown"
                       >
                         <span className={formData.projectType ? 'text-white' : 'text-gray-400'}>
                           {formData.projectType || 'Select a category'}
@@ -253,31 +251,31 @@ const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="relative group">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Tell us about your project</label>
+                  <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Tell us about your project</label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-medium tracking-tight text-base resize-none"
+                    className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-medium tracking-tight text-sm sm:text-base resize-none"
                     placeholder="Tell us about your project..."
                     required
                   />
                 </div>
 
-                <div className="pt-8 text-center p-1">
-                  <ArcanaButton primary className="w-full !py-7 !text-lg !font-black uppercase italic tracking-tighter" icon={true}>
+                <div className="pt-6 sm:pt-8 text-center p-1">
+                  <ArcanaButton primary className="w-full !py-5 sm:!py-7 !text-base sm:!text-lg !font-black uppercase italic tracking-tighter" icon={true}>
                     {isSubmitting ? 'Transmitting...' : 'Submit Inquiry'}
                   </ArcanaButton>
                 </div>
 
                 {/* Response & NDA Block */}
-                <div className="pt-10 space-y-4 text-center">
-                  <p className="text-gray-400 text-[10px] font-bold leading-relaxed uppercase tracking-[0.2em]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <div className="pt-6 sm:pt-10 space-y-3 sm:space-y-4 text-center">
+                  <p className="text-gray-400 text-[9px] sm:text-[10px] font-bold leading-relaxed uppercase tracking-[0.2em]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     We typically respond within 24–48 hours.
                   </p>
-                  <div className="h-px w-16 bg-blue-500/20 mx-auto" />
-                  <p className="text-gray-500 text-[11px] font-medium leading-relaxed px-6 opacity-60">
+                  <div className="h-px w-12 sm:w-16 bg-blue-500/20 mx-auto" />
+                  <p className="text-gray-500 text-[10px] sm:text-[11px] font-medium leading-relaxed px-4 sm:px-6 opacity-60">
                     All data is treated as confidential and handled per standard project NDA practices.
                   </p>
                 </div>
@@ -305,29 +303,29 @@ const ContactSection: React.FC = () => {
       </div>
 
       {/* Corporate Footer */}
-      <footer className="mt-48 border-t border-white/5 pt-32 pb-24 bg-black/60 relative z-10">
+      <footer className="mt-24 sm:mt-48 border-t border-white/5 pt-16 sm:pt-32 pb-16 sm:pb-24 bg-black/60 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
           {/* Logo ONLY */}
-          <img src="/logo.png" alt="BIM Arcana" className="h-44 mx-auto mb-12 brightness-0 invert opacity-100 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]" />
+          <img src="/logo.png" alt="BIM Arcana" className="h-24 sm:h-44 mx-auto mb-10 sm:mb-12 brightness-0 invert opacity-100 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]" />
           
-          <p className="text-gray-300 font-bold mb-16 max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed tracking-tight">
+          <p className="text-gray-300 font-bold mb-10 sm:mb-16 max-w-4xl mx-auto text-lg sm:text-2xl leading-relaxed tracking-tight px-4">
             Delivering coordinated, construction-ready BIM solutions across architecture, structure, scan-to-BIM, and food service projects.
           </p>
 
-          <div className="flex flex-col items-center justify-center gap-8 mb-16 border-t border-white/5 pt-12">
+          <div className="flex flex-col items-center justify-center gap-6 sm:gap-8 mb-12 sm:mb-16 border-t border-white/5 pt-10 sm:pt-12">
             <motion.a 
               href="https://www.linkedin.com/company/innovativebimservices/" 
               target="_blank" 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-6 px-10 py-5 bg-blue-600/10 backdrop-blur-md border border-blue-500/30 rounded-full text-white font-black uppercase tracking-[0.4em] text-[12px] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.1)] group"
+              className="flex items-center gap-4 sm:gap-6 px-8 py-4 sm:px-10 sm:py-5 bg-blue-600/10 backdrop-blur-md border border-blue-500/30 rounded-full text-white font-black uppercase tracking-[0.4em] text-[10px] sm:text-[12px] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.1)] group"
             >
-              <svg className="w-6 h-6 text-blue-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               Follow us on LinkedIn
             </motion.a>
           </div>
 
-          <p className="text-gray-600 font-bold text-[10px] tracking-[0.6em] uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <p className="text-gray-600 font-bold text-[8px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.6em] uppercase px-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             © 2026 Innovative BIM Services. All rights reserved. Built for global AEC and food service BIM delivery.
           </p>
         </div>

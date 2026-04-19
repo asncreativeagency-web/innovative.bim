@@ -13,6 +13,7 @@ export interface ContactInquiry {
   last_name: string
   email: string
   company?: string
+  project_type?: string
   message: string
   created_at?: string
   status?: 'new' | 'read' | 'replied'

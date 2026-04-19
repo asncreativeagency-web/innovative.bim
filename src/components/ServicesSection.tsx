@@ -247,11 +247,11 @@ const ServicesSection: React.FC = () => {
     <div className="relative min-h-screen py-20 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-10 sm:mb-16 px-4">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
             Core <span className="text-blue-400">BIM Capabilities</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Delivering end-to-end BIM modeling, coordination, and construction documentation with a focus on accuracy, collaboration, and construction-ready output.
           </p>
         </div>
@@ -259,45 +259,45 @@ const ServicesSection: React.FC = () => {
         {/* Two Column Layout */}
         <div ref={servicesRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 min-h-[85vh] items-start">
           {/* Left Column - Services List */}
-          <div className="space-y-5">
-            <h3 className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-8">Core Capabilities</h3>
-            <div className="space-y-4">
+          <div className="space-y-4 sm:space-y-5">
+            <h3 className="text-xs sm:text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4 sm:mb-8">Core Capabilities</h3>
+            <div className="space-y-3 sm:space-y-4">
               {services.map((service, index) => (
                 <div
                   key={service.id}
                   onClick={() => handleServiceClick(service, index)}
                   onMouseEnter={() => setHoveredServiceIndex(index)}
                   onMouseLeave={() => setHoveredServiceIndex(null)}
-                  className={`group relative cursor-pointer p-6 rounded-2xl transition-all duration-500 border-2 ${
+                  className={`group relative cursor-pointer p-4 sm:p-6 rounded-2xl transition-all duration-500 border-2 ${
                     activeServiceIndex === index 
-                      ? 'bg-blue-600/30 border-blue-400/60 shadow-2xl shadow-blue-500/20 scale-[1.02] z-10' 
+                      ? 'bg-blue-600/30 border-blue-400/60 shadow-2xl shadow-blue-500/20 scale-[1.01] sm:scale-[1.02] z-10' 
                       : hoveredServiceIndex === index
-                      ? 'bg-white/10 border-blue-400/30 translate-x-2'
+                      ? 'bg-white/10 border-blue-400/30 sm:translate-x-2'
                       : 'bg-white/5 border-white/5'
                   }`}
                 >
                   {/* Category Badge on left top */}
-                  <div className="absolute top-3 right-4">
-                    <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${
+                  <div className="absolute top-2 sm:top-3 right-3 sm:right-4">
+                    <span className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${
                       activeServiceIndex === index ? 'text-blue-200 border-blue-400/50' : 'text-gray-500 border-white/10'
                     }`}>
                       {service.category}
                     </span>
                   </div>
 
-                  <div className="flex items-start space-x-6">
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 ${
+                  <div className="flex items-start space-x-4 sm:space-x-6">
+                    <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 flex-shrink-0 ${
                       activeServiceIndex === index ? 'bg-blue-500/30 ring-2 ring-blue-400/50' : 'bg-white/10'
                     }`}>
                       <IconSvg name={service.icon} />
                     </div>
-                    <div className="flex-1 pr-16">
-                      <h4 className={`text-xl font-bold mb-2 transition-colors duration-300 ${
+                    <div className="flex-1 pr-12 sm:pr-16">
+                      <h4 className={`text-base sm:text-xl font-bold mb-1 sm:mb-2 transition-colors duration-300 ${
                         activeServiceIndex === index ? 'text-white' : 'text-gray-300 group-hover:text-blue-300'
                       }`}>
                         {service.title}
                       </h4>
-                      <p className={`text-sm transition-colors duration-300 ${
+                      <p className={`text-xs sm:text-sm transition-colors duration-300 line-clamp-2 ${
                         activeServiceIndex === index ? 'text-gray-200' : 'text-gray-500 group-hover:text-gray-400'
                       }`}>
                         {service.description}
@@ -312,59 +312,59 @@ const ServicesSection: React.FC = () => {
           {/* Right Column - Service Details */}
           <div className="lg:sticky lg:top-24">
             {selectedService && (
-              <div className={`bg-[#0F172A]/80 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-12 shadow-2xl transition-opacity duration-300 min-h-[600px] flex flex-col ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+              <div className={`bg-[#0F172A]/80 backdrop-blur-xl border border-white/20 rounded-[2rem] sm:rounded-3xl p-6 sm:p-12 shadow-2xl transition-opacity duration-300 min-h-[400px] sm:min-h-[600px] flex flex-col ${isFading ? 'opacity-0' : 'opacity-100'}`}>
                 {/* Service Header */}
-                <div className="mb-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-20 h-20 bg-blue-500/20 rounded-2xl flex items-center justify-center">
+                <div className="mb-6 sm:mb-10">
+                  <div className="flex items-center justify-between mb-4 sm:mb-6">
+                    <div className="w-14 h-14 sm:w-20 sm:h-20 bg-blue-500/20 rounded-2xl flex items-center justify-center">
                       <IconSvg name={selectedService.icon} />
                     </div>
-                    <span className={`px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r ${getCategoryColor(selectedService.category)} text-white shadow-lg`}>
+                    <span className={`px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold rounded-full bg-gradient-to-r ${getCategoryColor(selectedService.category)} text-white shadow-lg`}>
                       {getCategoryBadge(selectedService.category)}
                     </span>
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-6 leading-tight">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                     {selectedService.title}
                   </h3>
-                  <p className="text-lg text-gray-300 leading-relaxed italic">
+                  <p className="text-base sm:text-lg text-gray-300 leading-relaxed italic">
                     {selectedService.description}
                   </p>
                 </div>
 
                 {/* Key Capabilities */}
-                <div className="mb-10">
-                  <h4 className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-6 border-l-4 border-blue-500 pl-4">Key Capabilities</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="mb-6 sm:mb-10">
+                  <h4 className="text-xs sm:text-sm font-bold text-blue-400 uppercase tracking-widest mb-4 sm:mb-6 border-l-4 border-blue-500 pl-4">Key Capabilities</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {selectedService.keyCapabilities.map((feature, index) => (
                       <div key={index} className="flex items-start space-x-3 group">
-                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5 group-hover:bg-blue-500/40 transition-colors">
-                          <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5 group-hover:bg-blue-500/40 transition-colors flex-shrink-0">
+                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
-                        <span className="text-gray-300 text-base">{feature}</span>
+                        <span className="text-gray-300 text-sm sm:text-base">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* What You Get */}
-                <div className="mb-10">
-                  <h4 className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-6 border-l-4 border-blue-500 pl-4">What You Get</h4>
-                  <div className="space-y-4">
+                <div className="mb-6 sm:mb-10">
+                  <h4 className="text-xs sm:text-sm font-bold text-blue-400 uppercase tracking-widest mb-4 sm:mb-6 border-l-4 border-blue-500 pl-4">What You Get</h4>
+                  <div className="space-y-3 sm:space-y-4">
                     {selectedService.whatYouGet.map((benefit, index) => (
-                      <div key={index} className="flex items-center space-x-4 bg-white/5 rounded-xl p-4 border border-white/5 hover:bg-white/10 transition-colors">
-                        <div className="w-2 h-2 rounded-full bg-blue-500" />
-                        <span className="text-gray-200 text-base">{benefit}</span>
+                      <div key={index} className="flex items-center space-x-3 sm:space-x-4 bg-white/5 rounded-xl p-3 sm:p-4 border border-white/5 hover:bg-white/10 transition-colors">
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500 flex-shrink-0" />
+                        <span className="text-gray-200 text-sm sm:text-base">{benefit}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Technical Info & CTA */}
-                <div className="mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
-                  <div className="bg-blue-500/10 rounded-xl px-6 py-4 border border-blue-500/20 w-full sm:w-auto">
-                    <p className="text-xs font-bold text-blue-300 uppercase tracking-wider mb-2">Tools Used</p>
+                <div className="mt-auto pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+                  <div className="bg-blue-500/10 rounded-xl px-4 py-3 sm:px-6 sm:py-4 border border-blue-500/20 w-full sm:w-auto">
+                    <p className="text-[10px] sm:text-xs font-bold text-blue-300 uppercase tracking-wider mb-2">Tools Used</p>
                     <div className="flex flex-wrap gap-2 mt-1">
                       {selectedService.tools.map((tech, index) => (
                         <ToolLogo key={index} tool={tech} />
@@ -373,7 +373,7 @@ const ServicesSection: React.FC = () => {
                   </div>
                   <ArcanaButton 
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full sm:w-auto"
+                    className="w-full sm:w-auto !py-4"
                   >
                     Request a Proposal
                   </ArcanaButton>

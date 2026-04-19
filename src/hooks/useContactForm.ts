@@ -6,6 +6,7 @@ interface ContactFormData {
   lastName: string
   email: string
   company: string
+  projectType: string
   message: string
 }
 
@@ -24,6 +25,7 @@ export const useContactForm = (): UseContactFormReturn => {
     lastName: '',
     email: '',
     company: '',
+    projectType: '',
     message: ''
   })
   
@@ -48,6 +50,7 @@ export const useContactForm = (): UseContactFormReturn => {
         last_name: formData.lastName,
         email: formData.email,
         company: formData.company,
+        project_type: formData.projectType,
         message: formData.message
       })
       
@@ -80,6 +83,7 @@ export const useContactForm = (): UseContactFormReturn => {
       lastName: '',
       email: '',
       company: '',
+      projectType: '',
       message: ''
     })
     setSubmitStatus('idle')

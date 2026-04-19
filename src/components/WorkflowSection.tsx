@@ -143,11 +143,11 @@ const WorkflowSection: React.FC = () => {
     <section id="workflow" className="relative py-24 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
             Our <span className="text-blue-400">BIM Delivery Workflow</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
             A structured approach to BIM modeling, coordination, and construction-ready delivery, aligned with real project workflows across AEC and food service projects.
           </p>
         </div>
@@ -155,9 +155,9 @@ const WorkflowSection: React.FC = () => {
         {/* Workflow Steps - Vertical Timeline */}
         <div className="relative max-w-4xl mx-auto">
           {/* Connecting Line */}
-          <div className="absolute left-8 sm:left-10 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent" />
+          <div className="absolute left-7 sm:left-10 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent" />
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {workflowSteps.map((step, index) => {
               const isVisible = visibleSteps.has(index)
               const isHovered = hoveredStep === index
@@ -181,19 +181,19 @@ const WorkflowSection: React.FC = () => {
                   {/* Step Number Circle on the line */}
                   <div className="relative z-10 flex-shrink-0">
                     <div
-                      className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 border ${
+                      className={`w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 border ${
                         isHovered
-                          ? 'bg-blue-500/20 border-blue-400/60 scale-110 shadow-xl shadow-blue-500/20'
+                          ? 'bg-blue-500/20 border-blue-400/60 sm:scale-110 shadow-xl shadow-blue-500/20'
                           : 'bg-white/5 border-white/10'
                       }`}
                     >
-                      <div className={`transition-colors duration-300 ${isHovered ? iconColor : 'text-gray-500'}`}>
+                      <div className={`transition-colors duration-300 scale-75 sm:scale-100 ${isHovered ? iconColor : 'text-gray-500'}`}>
                         {step.icon}
                       </div>
                     </div>
                     {/* Step number badge */}
                     <div
-                      className={`absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                      className={`absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold transition-all duration-300 ${
                         isHovered
                           ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/40'
                           : 'bg-white/10 text-gray-400 border border-white/10'
@@ -205,20 +205,20 @@ const WorkflowSection: React.FC = () => {
 
                   {/* Step Content Card */}
                   <div
-                    className={`flex-1 rounded-2xl p-6 sm:p-8 transition-all duration-500 border ${
+                    className={`flex-1 rounded-2xl p-5 sm:p-8 transition-all duration-500 border ${
                       isHovered
                         ? 'bg-white/10 border-blue-400/30 shadow-lg shadow-blue-500/5'
                         : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
                     }`}
                   >
                     <h3
-                      className={`text-lg sm:text-xl font-bold mb-3 transition-colors duration-300 ${
+                      className={`text-base sm:text-xl font-bold mb-2 sm:mb-3 transition-colors duration-300 ${
                         isHovered ? 'text-blue-300' : 'text-white'
                       }`}
                     >
                       {step.title}
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+                    <p className="text-xs sm:text-base text-gray-400 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -242,11 +242,11 @@ const WorkflowSection: React.FC = () => {
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
           </svg>
 
-          <p className="text-xl sm:text-2xl text-gray-200 italic leading-relaxed mb-6 font-light">
+          <p className="text-lg sm:text-2xl text-gray-200 italic leading-relaxed mb-6 font-light">
             "A great resource for production drawing and BIM support. Highly responsive, aligned well with our team's standards, and consistently delivered on time. I would definitely recommend their services."
           </p>
 
-          <p className="text-sm text-gray-500 font-medium tracking-wide">
+          <p className="text-xs sm:text-sm text-gray-500 font-medium tracking-wide">
             — FCSI Consultant, Principal & Creative Director
           </p>
         </div>

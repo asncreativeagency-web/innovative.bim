@@ -170,27 +170,27 @@ const AboutSection: React.FC = () => {
 		    <div className="relative min-h-screen overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Section Header */}
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-12 sm:mb-20 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
             About <span className="text-blue-400">Us</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
             Delivering coordinated, construction-ready BIM solutions across architecture, structure, and specialized food service projects.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           {/* Who We Are */}
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 md:p-12 hover:bg-white/10 transition-all duration-500 group">
-            <h3 className="text-3xl font-bold text-white mb-8 flex items-center group-hover:text-blue-400 transition-colors">
-              <span className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center mr-5 border border-blue-500/30">
-                <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-12 hover:bg-white/10 transition-all duration-500 group">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 flex items-center group-hover:text-blue-400 transition-colors">
+              <span className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600/20 rounded-xl flex items-center justify-center mr-4 sm:mr-5 border border-blue-500/30">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </span>
               Who We Are
             </h3>
-            <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-gray-300 leading-relaxed">
               <p>
                 <span className="text-blue-400 font-bold">Innovative BIM Services</span> focuses on delivering high-quality BIM modeling and coordination aligned with real construction workflows.
               </p>
@@ -201,25 +201,25 @@ const AboutSection: React.FC = () => {
           </div>
 
           {/* Why Work With Us */}
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 md:p-12 hover:bg-white/10 transition-all duration-500 group">
-            <h3 className="text-3xl font-bold text-white mb-8 flex items-center group-hover:text-amber-400 transition-colors">
-              <span className="w-12 h-12 bg-amber-600/20 rounded-xl flex items-center justify-center mr-5 border border-amber-500/30">
-                <svg className="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-12 hover:bg-white/10 transition-all duration-500 group">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 flex items-center group-hover:text-amber-400 transition-colors">
+              <span className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-600/20 rounded-xl flex items-center justify-center mr-4 sm:mr-5 border border-amber-500/30">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </span>
               Why Work With Us
             </h3>
-            <ul className="space-y-6">
+            <ul className="space-y-4 sm:space-y-6">
               {[
                 'Construction-ready BIM delivery approach',
                 'Strong coordination and issue resolution focus',
                 'Experience across AEC and food service projects',
                 'Flexible and scalable project support'
               ].map((bullet, i) => (
-                <li key={i} className="flex items-center space-x-5 text-lg text-gray-300">
-                  <span className="flex-shrink-0 w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center border border-green-500/30">
-                    <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <li key={i} className="flex items-center space-x-3 sm:space-x-5 text-base sm:text-lg text-gray-300">
+                  <span className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 bg-green-500/20 rounded-full flex items-center justify-center border border-green-500/30">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </span>
@@ -231,16 +231,16 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Our Approach */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-blue-600/10 to-transparent backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 md:p-16 text-center group transition-all duration-700 hover:bg-white/5">
+        <div className="relative overflow-hidden bg-gradient-to-br from-blue-600/10 to-transparent backdrop-blur-xl border border-white/10 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-16 text-center group transition-all duration-700 hover:bg-white/5">
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl font-black text-white mb-8">
+            <h3 className="text-2xl md:text-4xl font-black text-white mb-6 sm:mb-8">
               Our <span className="text-blue-400">Approach</span>
             </h3>
             <div className="max-w-4xl mx-auto">
-              <p className="text-2xl md:text-3xl font-medium text-blue-100 mb-8 italic leading-snug">
+              <p className="text-lg sm:text-2xl md:text-3xl font-medium text-blue-100 mb-6 sm:mb-8 italic leading-snug">
                 "We focus on delivering BIM that works on site — not just on screen."
               </p>
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+              <p className="text-sm sm:text-lg md:text-xl text-gray-300 leading-relaxed">
                 From model development to coordination and IFC delivery, our approach is built around reducing site issues, improving collaboration, and ensuring smooth project execution.
               </p>
             </div>
@@ -252,36 +252,36 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Missing line and button from screenshot */}
-        <div className="mt-12 text-center">
-          <p className="text-xl md:text-2xl font-bold text-blue-400/90 mb-10 tracking-tight">
+        <div className="mt-12 text-center px-4">
+          <p className="text-lg sm:text-2xl font-bold text-blue-400/90 mb-8 sm:mb-10 tracking-tight">
             Supporting contractors, consultants, and food service specialists across global projects.
           </p>
           <ArcanaButton 
             primary 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="!px-16 !py-8 !text-xl !font-black"
+            className="w-full sm:w-auto !px-10 sm:!px-16 !py-6 sm:!py-8 !text-base sm:!text-xl !font-black"
           >
             Let's Work Together
           </ArcanaButton>
         </div>
 
         {/* Our BIM Delivery Workflow */}
-        <div className="mt-40 mb-40" ref={workflowRef}>
-          <div className="text-center mb-24">
-            <h3 className="text-4xl md:text-5xl font-black text-white mb-8 uppercase italic tracking-tighter">
+        <div className="mt-24 sm:mt-40 mb-24 sm:mb-40" ref={workflowRef}>
+          <div className="text-center mb-16 sm:mb-24 px-4">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-6 sm:mb-8 uppercase italic tracking-tighter">
               BIM Delivery <span className="text-blue-500 not-italic">Workflow</span>
             </h3>
-            <div className="h-1.5 w-24 bg-blue-600 mx-auto mb-10 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
-            <p className="text-gray-400 max-w-3xl mx-auto text-xl font-light leading-relaxed">
+            <div className="h-1.5 w-20 sm:w-24 bg-blue-600 mx-auto mb-8 sm:mb-10 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+            <p className="text-gray-400 max-w-3xl mx-auto text-base sm:text-xl font-light leading-relaxed">
               A precise, data-driven methodology engineered for <span className="text-white font-medium">zero-clash delivery</span> and construction readiness.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-y-16 gap-x-8 relative">
+          <div className="flex flex-wrap justify-center gap-y-8 sm:gap-y-16 gap-x-8 relative">
             {workflowSteps.map((step, index) => (
               <div 
                 key={step.id} 
-                className={`workflow-step group relative w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2.5rem)] p-10 bg-[#0d1528]/60 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] hover:border-blue-500/50 transition-all duration-700 shadow-2xl z-10 ${index >= 4 ? 'lg:w-[calc(33.333%-2.5rem)]' : ''}`}
+                className={`workflow-step group relative w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2.5rem)] p-8 sm:p-10 bg-[#0d1528]/60 backdrop-blur-3xl border border-white/10 rounded-[2rem] sm:rounded-[2.5rem] hover:border-blue-500/50 transition-all duration-700 shadow-2xl z-10 ${index >= 4 ? 'lg:w-[calc(33.333%-2.5rem)]' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Connection Line (Desktop) */}
@@ -310,11 +310,11 @@ const AboutSection: React.FC = () => {
                 </div>
 
                 <div className="relative z-10">
-                  <div className="mb-8 w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500/10 transition-colors duration-500">
+                  <div className="mb-6 sm:mb-8 w-14 h-14 sm:w-16 sm:h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500/10 transition-colors duration-500">
                     <WorkflowIcon id={step.id} />
                   </div>
-                  <h4 className="text-2xl font-black text-white mb-4 uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">{step.title}</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed font-medium">{step.description}</p>
+                  <h4 className="text-xl sm:text-2xl font-black text-white mb-3 sm:mb-4 uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">{step.title}</h4>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -324,11 +324,11 @@ const AboutSection: React.FC = () => {
         {/* Technologies Used - Logo Slider */}
 
         <div className="mt-20">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <div className="text-center mb-10 sm:mb-12 px-4">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
               Technologies & <span className="text-blue-400">Tools We Work With</span>
             </h3>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
               Industry-standard BIM tools used for modeling, coordination, and project delivery.
             </p>
           </div>
@@ -342,9 +342,9 @@ const AboutSection: React.FC = () => {
               {[...technologies, ...technologies, ...technologies].map((tech, index) => (
                 <div
                   key={`${tech.name}-${index}`}
-                  className="flex flex-col items-center justify-center mx-12 sm:mx-20 flex-shrink-0 cursor-pointer group/logo"
+                  className="flex flex-col items-center justify-center mx-6 sm:mx-12 md:mx-20 flex-shrink-0 cursor-pointer group/logo"
                 >
-                  <div className="relative w-40 h-40 sm:w-52 sm:h-52 flex items-center justify-center transition-all duration-300">
+                  <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-52 md:h-52 flex items-center justify-center transition-all duration-300">
                     <img
                       src={tech.icon}
                       alt={tech.name}

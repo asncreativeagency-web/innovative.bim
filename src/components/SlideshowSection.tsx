@@ -211,28 +211,43 @@ const SlideshowSection: React.FC = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-xl aspect-[16/9] shadow-2xl">
+    <section ref={sectionRef} className="relative py-16 sm:py-24 overflow-hidden bg-[#050810]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative group overflow-hidden rounded-3xl sm:rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-xl aspect-[4/5] sm:aspect-[16/9] shadow-2xl">
           
+          {/* Progress Bar for Auto-play */}
+          <div className="absolute top-0 left-0 w-full h-1 z-40 bg-white/5">
+            <motion.div 
+              key={currentSlide}
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 5, ease: "linear" }}
+              className="h-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]"
+            />
+          </div>
           {/* Navigation Arrows */}
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 sm:px-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <button
               onClick={prevSlide}
-              className="w-12 h-12 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto border border-white/10"
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-black/60 hover:bg-blue-600/40 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto border border-white/10 group/btn"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover/btn:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
               onClick={nextSlide}
-              className="w-12 h-12 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto border border-white/10"
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-black/60 hover:bg-blue-600/40 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto border border-white/10 group/btn"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
+          </div>
+
+          {/* Slide Counter (Technical style) */}
+          <div className="absolute top-8 right-8 z-40 bg-black/40 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 font-mono text-[10px] text-gray-400">
+            <span className="text-blue-500 font-black">{String(currentSlide + 1).padStart(2, '0')}</span> / {slides.length}
           </div>
 
           {/* Slides */}
@@ -268,24 +283,31 @@ const SlideshowSection: React.FC = () => {
                   </motion.div>
                   
                   {/* Content Panel Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex items-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex items-center">
                     <motion.div 
                       style={{ y: contentY }}
-                      className="max-w-xl pl-8 sm:pl-16 lg:pl-24 pr-8"
+                      className="max-w-xl pl-6 sm:pl-16 lg:pl-24 pr-8 pt-10 sm:pt-0"
                     >
                       <div className={`transition-all duration-700 delay-300 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        <span className="inline-block px-4 py-1.5 bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-black rounded-lg shadow-lg uppercase tracking-widest border border-white/20 mb-6 font-mono">
-                          {slide.category}
-                        </span>
-                        <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 leading-none tracking-tighter">
+                        <div className="flex items-center gap-3 mb-6">
+                          <span className="inline-block px-3 py-1 bg-blue-600/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-black rounded shadow-lg uppercase tracking-widest border border-white/20 font-mono">
+                            {slide.category}
+                          </span>
+                          <span className="text-[8px] sm:text-[9px] text-gray-500 font-mono uppercase tracking-widest">ARC_ID: {slide.id + 1000}</span>
+                        </div>
+                        
+                        <h3 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white mb-3 sm:mb-4 leading-[1.1] tracking-tighter italic">
                           {slide.title}
                         </h3>
-                        <p className="text-xl sm:text-2xl text-blue-400 font-bold mb-6 tracking-tight">
+                        <p className="text-lg sm:text-2xl text-blue-400 font-bold mb-4 sm:mb-6 tracking-tight">
                           {slide.subtitle}
                         </p>
-                        <p className="text-base sm:text-lg text-gray-300 leading-relaxed font-medium">
+                        <p className="text-sm sm:text-lg text-gray-300 leading-relaxed font-medium line-clamp-3 sm:line-clamp-none">
                           {slide.description}
                         </p>
+
+                        {/* Technical Accent Line */}
+                        <div className="mt-8 sm:mt-10 h-1 w-12 sm:w-16 bg-blue-500 rounded-full opacity-50" />
                       </div>
                     </motion.div>
                   </div>
@@ -295,13 +317,13 @@ const SlideshowSection: React.FC = () => {
           </div>
 
           {/* Indicators Line */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center space-x-2 z-30">
+          <div className="absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 flex items-center space-x-1.5 sm:space-x-2 z-30">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`transition-all duration-500 rounded-full h-1.5 ${
-                  index === currentSlide ? 'w-12 bg-blue-500' : 'w-4 bg-white/20 hover:bg-white/40'
+                className={`transition-all duration-500 rounded-full h-1 sm:h-1.5 ${
+                  index === currentSlide ? 'w-8 sm:w-12 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]' : 'w-2 sm:w-4 bg-white/20 hover:bg-white/40'
                 }`}
               />
             ))}
