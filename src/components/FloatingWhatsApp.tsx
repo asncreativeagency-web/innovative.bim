@@ -30,7 +30,7 @@ const FloatingWhatsApp: React.FC = () => {
         
         {/* Tooltip - Hidden on mobile, visible on larger screens */}
         <div className="hidden sm:block absolute right-20 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
-          Chat on WhatsApp
+          Chat with us
           <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1 w-2 h-2 bg-gray-900 rotate-45"></div>
         </div>
       </button>

@@ -70,7 +70,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               <img
                 src="/logo.png"
                 alt="BIM Arcana Logo"
-                className="h-16 w-auto sm:h-24 lg:h-36 object-contain touch-manipulation cursor-pointer brightness-110 sm:brightness-100"
+                className="h-20 w-auto sm:h-28 lg:h-40 object-contain touch-manipulation cursor-pointer brightness-110 sm:brightness-100"
                 style={{
                   mixBlendMode: 'multiply',
                 }}

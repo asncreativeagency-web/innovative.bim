@@ -6,9 +6,9 @@ type BrandLogoProps = {
 };
 
 const sizes = {
-  sm: { img: "h-6", pad: "px-2 py-1" },
-  md: { img: "h-8", pad: "px-3 py-2" },
-  lg: { img: "h-14", pad: "px-4 py-3" },
+  sm: { img: "h-9", pad: "px-3 py-1.5" },
+  md: { img: "h-12", pad: "px-4 py-2.5" },
+  lg: { img: "h-20", pad: "px-6 py-5" },
 };
 
 const BrandLogo: React.FC<BrandLogoProps> = ({ size = "md", className }) => {

@@ -211,6 +211,15 @@
   }
 }
 
+@keyframes hero-zoom {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.05) rotate(0.5deg); }
+}
+
+.animate-hero-bg {
+  animation: hero-zoom 15s ease-in-out infinite;
+}
+
 @keyframes slideInUp {
   from {
     opacity: 0;

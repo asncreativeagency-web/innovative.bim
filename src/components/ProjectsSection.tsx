@@ -112,12 +112,12 @@ const ProjectsSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 uppercase tracking-tighter italic">
-              Project <span className="text-blue-500 not-italic">Showcase</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 uppercase tracking-tight">
+              Project Experience Across <span className="text-blue-500">Global AEC & Food Service Projects</span>
             </h2>
             <div className="h-1 w-20 sm:w-24 bg-blue-600 mx-auto mb-6 sm:mb-8 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
-            <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
-              A selection of high-fidelity BIM coordination and modeling projects across architecture, structure, and food service sectors.
+            <p className="text-base sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light">
+              Due to confidentiality and NDA requirements, detailed project information is not publicly displayed. We have supported multiple projects across architecture, structure, and food service BIM workflows.
             </p>
           </motion.div>
         </div>
@@ -181,47 +181,28 @@ const ProjectsSection: React.FC = () => {
 
         {/* Global CTA Section */}
         <div className="mt-32 border-t border-white/5 pt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h3 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 sm:mb-8 leading-tight">
-                Ready to coordinate your next <span className="text-blue-400">global project?</span>
-              </h3>
-              <p className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 leading-relaxed">
-                We bridge the gap between complex designs and site-ready execution. Let's discuss how our BIM workflows can support your specific project requirements.
-              </p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                <ArcanaButton 
-                  primary
-                  className="w-full sm:w-auto"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Request References
-                </ArcanaButton>
-                <ArcanaButton 
-                  icon={false}
-                  className="w-full sm:w-auto"
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  View Services
-                </ArcanaButton>
-              </div>
-            </div>
-            
-            <div className="relative group">
-              <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full group-hover:bg-blue-500/20 transition-all duration-1000" />
-              <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-sm">
-                <p className="text-xl sm:text-2xl font-bold text-blue-300 mb-4 sm:mb-6 font-mono tracking-tighter">
-                  // PROJECT FOCUS
-                </p>
-                <ul className="space-y-4 sm:space-y-6">
-                  {['LOD 100-500 Modeling', 'Multi-Discipline Coordination', 'Scan-to-BIM Implementation', 'Food Service & Kitchen Detail'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 sm:gap-4 text-gray-400 text-base sm:text-lg">
-                      <span className="w-2 h-px bg-blue-500" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 sm:mb-8 leading-tight">
+              Have a Project That Needs <span className="text-blue-400">Coordinated BIM Delivery?</span>
+            </h3>
+            <p className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 leading-relaxed mx-auto max-w-3xl">
+              Let’s support your project with construction-ready BIM modeling, coordination, and IFC documentation aligned with your workflow and timelines. Flexible support based on your project scope, timeline, and BIM requirements.
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+              <ArcanaButton 
+                primary
+                className="w-full sm:w-auto"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Request Project References 
+              </ArcanaButton>
+              <ArcanaButton 
+                icon={false}
+                className="w-full sm:w-auto"
+                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Services
+              </ArcanaButton>
             </div>
           </div>
         </div>

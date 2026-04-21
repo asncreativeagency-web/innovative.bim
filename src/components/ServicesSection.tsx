@@ -146,7 +146,7 @@ const services: Service[] = [
   {
     id: '4',
     title: 'Scan to BIM',
-    description: 'Conversion of point cloud data into accurate BIM models for renovation, retrofit, and as-built documentation.',
+    description: 'Conversion of point cloud data into precise as-built BIM models for renovation and as-built documentation.',
     icon: '📡',
     category: 'advanced',
     keyCapabilities: [
@@ -161,7 +161,7 @@ const services: Service[] = [
       'Reduced site verification effort',
       'Improved planning accuracy'
     ],
-    tools: ['Recap', 'Revit', 'BIM 360']
+    tools: ['Recap', 'Cyclone', 'Revit']
   },
   {
     id: '5',
@@ -248,10 +248,10 @@ const ServicesSection: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-16 px-4">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-            Core <span className="text-blue-400">BIM Capabilities</span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 uppercase tracking-tight">
+            Core <span className="text-blue-500">BIM Capabilities</span>
           </h2>
-          <p className="text-base sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
             Delivering end-to-end BIM modeling, coordination, and construction documentation with a focus on accuracy, collaboration, and construction-ready output.
           </p>
         </div>
@@ -276,14 +276,7 @@ const ServicesSection: React.FC = () => {
                       : 'bg-white/5 border-white/5'
                   }`}
                 >
-                  {/* Category Badge on left top */}
-                  <div className="absolute top-2 sm:top-3 right-3 sm:right-4">
-                    <span className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${
-                      activeServiceIndex === index ? 'text-blue-200 border-blue-400/50' : 'text-gray-500 border-white/10'
-                    }`}>
-                      {service.category}
-                    </span>
-                  </div>
+
 
                   <div className="flex items-start space-x-4 sm:space-x-6">
                     <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 flex-shrink-0 ${
