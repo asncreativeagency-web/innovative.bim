@@ -39,7 +39,7 @@ interface Service {
   keyCapabilities: string[]
   whatYouGet: string[]
   tools: string[]
-  category: 'core' | 'advanced' | 'specialized'
+  category?: 'core' | 'advanced' | 'specialized'
 }
 
 const IconSvg: React.FC<{ name: string }> = ({ name }) => {
@@ -231,23 +231,7 @@ const ServicesSection: React.FC = () => {
     }, 300);
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'core': return 'from-blue-500 to-cyan-400'
-      case 'advanced': return 'from-purple-500 to-pink-400'
-      case 'specialized': return 'from-orange-500 to-red-400'
-      default: return 'from-gray-500 to-gray-400'
-    }
-  }
 
-  const getCategoryBadge = (category: string) => {
-    switch (category) {
-      case 'core': return 'Core Service'
-      case 'advanced': return 'Advanced'
-      case 'specialized': return 'Specialized'
-      default: return 'Service'
-    }
-  }
 
   return (
     <div className="relative min-h-screen py-20 overflow-hidden">
@@ -318,9 +302,6 @@ const ServicesSection: React.FC = () => {
                     <div className="w-14 h-14 sm:w-20 sm:h-20 bg-blue-500/20 rounded-2xl flex items-center justify-center">
                       <IconSvg name={selectedService.icon} />
                     </div>
-                    <span className={`px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold rounded-full bg-gradient-to-r ${getCategoryColor(selectedService.category)} text-white shadow-lg`}>
-                      {getCategoryBadge(selectedService.category)}
-                    </span>
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                     {selectedService.title}
