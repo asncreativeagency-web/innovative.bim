@@ -93,9 +93,7 @@ const workflowSteps = [
 const WorkflowSection: React.FC = () => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null)
   const [visibleSteps, setVisibleSteps] = useState<Set<number>>(new Set())
-  const [testimonialVisible, setTestimonialVisible] = useState(false)
   const stepsRef = useRef<(HTMLDivElement | null)[]>([])
-  const testimonialRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -122,22 +120,7 @@ const WorkflowSection: React.FC = () => {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setTestimonialVisible(true)
-        }
-      },
-      { threshold: 0.3 }
-    )
 
-    if (testimonialRef.current) {
-      observer.observe(testimonialRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section id="workflow" className="relative py-24 overflow-hidden">
@@ -228,28 +211,7 @@ const WorkflowSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Testimonial */}
-        <div
-          ref={testimonialRef}
-          className={`mt-24 max-w-3xl mx-auto text-center transition-all duration-1000 ${
-            testimonialVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-8'
-          }`}
-        >
-          {/* Quote icon */}
-          <svg className="w-10 h-10 text-blue-500/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
-          </svg>
 
-          <p className="text-lg sm:text-2xl text-gray-200 italic leading-relaxed mb-6 font-light">
-            "A great resource for production drawing and BIM support. Highly responsive, aligned well with our team's standards, and consistently delivered on time. I would definitely recommend their services."
-          </p>
-
-          <p className="text-xs sm:text-sm text-gray-500 font-medium tracking-wide">
-            — FCSI Consultant, Principal & Creative Director
-          </p>
-        </div>
       </div>
     </section>
   )

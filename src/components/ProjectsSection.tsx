@@ -180,6 +180,33 @@ const ProjectsSection: React.FC = () => {
         </div>
 
 
+        {/* Testimonial */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="mt-24 sm:mt-32 max-w-4xl mx-auto text-center"
+        >
+          {/* Quote icon */}
+          <div className="mb-8">
+            <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-500/30 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
+            </svg>
+          </div>
+
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-200 italic leading-relaxed mb-8 font-light px-4">
+            "A great resource for production drawing and BIM support. Highly responsive, aligned well with our team's standards, and consistently delivered on time. I would definitely recommend their services."
+          </p>
+
+          <div className="flex items-center justify-center gap-4">
+            <div className="h-px w-8 bg-blue-500/30" />
+            <p className="text-xs sm:text-sm text-blue-400 font-bold tracking-[0.2em] uppercase">
+              FCSI Consultant, Principal & Creative Director
+            </p>
+            <div className="h-px w-8 bg-blue-500/30" />
+          </div>
+        </motion.div>
       </div>
     </div>
   )
