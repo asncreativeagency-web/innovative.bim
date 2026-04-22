@@ -226,6 +226,46 @@ const ProjectsSection: React.FC = () => {
             We don’t just create models — we deliver coordinated, construction-ready BIM aligned with real project workflows.
           </motion.p>
         </motion.div>
+
+        {/* Global CTA Section */}
+        <div className="mt-24 sm:mt-32 border-t border-white/5 pt-20 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 sm:mb-8 leading-tight">
+              Have a Project That Needs <span className="text-blue-400">Coordinated BIM Delivery?</span>
+            </h3>
+            <p className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 leading-relaxed mx-auto max-w-3xl">
+              Let’s support your project with construction-ready BIM modeling, coordination, and IFC documentation aligned with your workflow and timelines. Flexible support based on your project scope, timeline, and BIM requirements.
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+              <ArcanaButton 
+                primary
+                className="w-full sm:w-auto"
+                onClick={() => {
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+              >
+                Request Project References 
+              </ArcanaButton>
+              <ArcanaButton 
+                icon={false}
+                className="w-full sm:w-auto"
+                onClick={() => {
+                  const element = document.getElementById('about');
+                  if (element) {
+                    const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }}
+              >
+                Learn More About Us
+              </ArcanaButton>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
