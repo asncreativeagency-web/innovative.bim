@@ -212,8 +212,7 @@ const ServicesSection: React.FC = () => {
   const [activeServiceIndex, setActiveServiceIndex] = useState(0)
   const [hoveredServiceIndex, setHoveredServiceIndex] = useState<number | null>(null)
   const [isFading, setIsFading] = useState(false)
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-  const servicesRef = useRef<HTMLDivElement>(null)
+  const detailsRef = useRef<HTMLDivElement>(null)
 
   const handleServiceClick = (service: Service, index: number) => {
     if (index === activeServiceIndex) return;
@@ -222,6 +221,13 @@ const ServicesSection: React.FC = () => {
       setSelectedService(service);
       setActiveServiceIndex(index);
       setIsFading(false);
+      
+      // Auto-scroll to details on mobile/tablet
+      if (window.innerWidth < 1024 && detailsRef.current) {
+        const yOffset = -100; // Offset to account for fixed header if any
+        const y = detailsRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }, 300);
   };
 
@@ -257,7 +263,7 @@ const ServicesSection: React.FC = () => {
         </div>
 
         {/* Two Column Layout */}
-        <div ref={servicesRef} className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 min-h-[85vh] items-start">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 min-h-[85vh] items-start">
           {/* Left Column - Services List */}
           <div className="w-full space-y-4 sm:space-y-5">
             <h3 className="text-xs sm:text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4 sm:mb-8">Core Capabilities</h3>
@@ -303,7 +309,7 @@ const ServicesSection: React.FC = () => {
           </div>
 
           {/* Right Column - Service Details */}
-          <div className="lg:sticky lg:top-24">
+          <div ref={detailsRef} className="lg:sticky lg:top-24">
             {selectedService && (
               <div className={`bg-[#0F172A]/80 backdrop-blur-xl border border-white/20 rounded-[2rem] sm:rounded-3xl p-6 sm:p-12 shadow-2xl transition-opacity duration-300 min-h-[400px] sm:min-h-[600px] flex flex-col ${isFading ? 'opacity-0' : 'opacity-100'}`}>
                 {/* Service Header */}

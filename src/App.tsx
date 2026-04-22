@@ -54,7 +54,9 @@ function App() {
     const element = document.getElementById(sectionId)
     if (element) {
       console.log(`Element found, scrolling to:`, element);
-      element.scrollIntoView({ behavior: 'smooth' })
+      const yOffset = -80; // Offset for fixed navigation header
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     } else {
       console.warn(`Element with id "${sectionId}" not found`);
     }

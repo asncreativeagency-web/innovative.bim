@@ -264,7 +264,13 @@ const SlideshowSection: React.FC = () => {
 
                           <ArcanaButton 
                             className="!py-3 sm:!py-4 !px-6 sm:!px-8 !text-sm sm:!text-base"
-                            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={() => {
+                              const element = document.getElementById('projects');
+                              if (element) {
+                                const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                                window.scrollTo({ top: y, behavior: 'smooth' });
+                              }
+                            }}
                           >
                             View Detailed Work
                           </ArcanaButton>

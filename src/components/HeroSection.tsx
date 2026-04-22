@@ -113,7 +113,13 @@ const HeroSection: React.FC = () => {
             <ArcanaButton 
               primary
               className="w-full sm:w-auto"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) {
+                  const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }}
             >
               Request a Proposal 
             </ArcanaButton>
@@ -121,7 +127,13 @@ const HeroSection: React.FC = () => {
             <ArcanaButton 
               icon={false}
               className="w-full sm:w-auto"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const element = document.getElementById('projects');
+                if (element) {
+                  const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }}
             >
               View Our Work
             </ArcanaButton>

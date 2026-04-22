@@ -182,7 +182,13 @@ const AboutSection: React.FC = () => {
           </p>
           <ArcanaButton 
             primary 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) {
+                const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
+            }}
             className="w-full sm:w-auto !px-10 sm:!px-16 !py-6 sm:!py-8 !text-base sm:!text-xl !font-black"
           >
             Let's Work Together
