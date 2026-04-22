@@ -216,6 +216,15 @@ const ProjectsSection: React.FC = () => {
             </p>
             <div className="h-px w-8 bg-blue-500/30" />
           </div>
+
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="mt-12 text-sm sm:text-base font-bold text-blue-400/90 tracking-tight"
+          >
+            We don’t just create models — we deliver coordinated, construction-ready BIM aligned with real project workflows.
+          </motion.p>
         </motion.div>
       </div>
     </div>
