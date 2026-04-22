@@ -257,18 +257,20 @@ const ServicesSection: React.FC = () => {
         </div>
 
         {/* Two Column Layout */}
-        <div ref={servicesRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 min-h-[85vh] items-start">
+        <div ref={servicesRef} className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 min-h-[85vh] items-start">
           {/* Left Column - Services List */}
-          <div className="space-y-4 sm:space-y-5">
+          <div className="w-full space-y-4 sm:space-y-5">
             <h3 className="text-xs sm:text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4 sm:mb-8">Core Capabilities</h3>
-            <div className="space-y-3 sm:space-y-4">
+            
+            {/* Horizontal Scroll on Mobile, Vertical Stack on Desktop */}
+            <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-3 sm:gap-4 snap-x no-scrollbar">
               {services.map((service, index) => (
                 <div
                   key={service.id}
                   onClick={() => handleServiceClick(service, index)}
                   onMouseEnter={() => setHoveredServiceIndex(index)}
                   onMouseLeave={() => setHoveredServiceIndex(null)}
-                  className={`group relative cursor-pointer p-4 sm:p-6 rounded-2xl transition-all duration-500 border-2 ${
+                  className={`group relative cursor-pointer p-4 sm:p-6 rounded-2xl transition-all duration-500 border-2 min-w-[280px] sm:min-w-[350px] lg:min-w-0 snap-center ${
                     activeServiceIndex === index 
                       ? 'bg-blue-600/30 border-blue-400/60 shadow-2xl shadow-blue-500/20 scale-[1.01] sm:scale-[1.02] z-10' 
                       : hoveredServiceIndex === index
@@ -276,21 +278,19 @@ const ServicesSection: React.FC = () => {
                       : 'bg-white/5 border-white/5'
                   }`}
                 >
-
-
                   <div className="flex items-start space-x-4 sm:space-x-6">
                     <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 flex-shrink-0 ${
                       activeServiceIndex === index ? 'bg-blue-500/30 ring-2 ring-blue-400/50' : 'bg-white/10'
                     }`}>
                       <IconSvg name={service.icon} />
                     </div>
-                    <div className="flex-1 pr-12 sm:pr-16">
-                      <h4 className={`text-base sm:text-xl font-bold mb-1 sm:mb-2 transition-colors duration-300 ${
+                    <div className="flex-1 pr-4 sm:pr-16">
+                      <h4 className={`text-sm sm:text-xl font-bold mb-1 sm:mb-2 transition-colors duration-300 ${
                         activeServiceIndex === index ? 'text-white' : 'text-gray-300 group-hover:text-blue-300'
                       }`}>
                         {service.title}
                       </h4>
-                      <p className={`text-xs sm:text-sm transition-colors duration-300 line-clamp-2 ${
+                      <p className={`text-[10px] sm:text-sm transition-colors duration-300 line-clamp-2 ${
                         activeServiceIndex === index ? 'text-gray-200' : 'text-gray-500 group-hover:text-gray-400'
                       }`}>
                         {service.description}
@@ -373,6 +373,34 @@ const ServicesSection: React.FC = () => {
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      </div>
+
+      {/* Global CTA Section */}
+      <div className="mt-20 sm:mt-32 border-t border-white/5 pt-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 sm:mb-8 leading-tight">
+            Have a Project That Needs <span className="text-blue-400">Coordinated BIM Delivery?</span>
+          </h3>
+          <p className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 leading-relaxed mx-auto max-w-3xl">
+            Let’s support your project with construction-ready BIM modeling, coordination, and IFC documentation aligned with your workflow and timelines. Flexible support based on your project scope, timeline, and BIM requirements.
+          </p>
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+            <ArcanaButton 
+              primary
+              className="w-full sm:w-auto"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Request Project References 
+            </ArcanaButton>
+            <ArcanaButton 
+              icon={false}
+              className="w-full sm:w-auto"
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Learn More About Us
+            </ArcanaButton>
           </div>
         </div>
       </div>

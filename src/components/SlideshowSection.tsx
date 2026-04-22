@@ -165,34 +165,34 @@ const SlideshowSection: React.FC = () => {
         <div className="relative group overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/10 bg-[#0A0F1C] shadow-2xl aspect-[4/5] sm:aspect-[16/9]">
           
           {/* Progress Indicators (Left Side) */}
-          <div className="absolute left-6 sm:left-12 top-1/2 -translate-y-1/2 flex flex-col space-y-3 z-40">
+          <div className="absolute left-4 sm:left-12 top-1/2 -translate-y-1/2 flex flex-col space-y-2 sm:space-y-3 z-40">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`transition-all duration-500 rounded-full ${
-                  index === currentSlide ? 'h-10 w-1.5 bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.8)]' : 'h-3 w-1.5 bg-white/20 hover:bg-white/40'
+                  index === currentSlide ? 'h-8 sm:h-10 w-1 bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.8)]' : 'h-2 sm:h-3 w-1 bg-white/20 hover:bg-white/40'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="absolute inset-x-0 bottom-8 sm:bottom-12 right-8 sm:right-16 flex justify-end gap-4 z-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {/* Navigation Arrows - Always visible on mobile, hover on desktop */}
+          <div className="absolute inset-x-0 bottom-6 sm:bottom-12 right-6 sm:right-16 flex justify-end gap-3 sm:gap-4 z-40 xl:opacity-0 xl:group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={prevSlide}
-              className="w-10 h-10 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10"
+              className="w-9 h-9 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
               onClick={nextSlide}
-              className="w-10 h-10 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10"
+              className="w-9 h-9 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -236,33 +236,34 @@ const SlideshowSection: React.FC = () => {
                     
                     {/* Content Panel Overlay - Left Sided Gradient as per PDF */}
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent flex items-center">
-                      <div className="max-w-2xl pl-16 sm:pl-24 lg:pl-32 pr-8">
+                      <div className="max-w-2xl pl-12 sm:pl-24 lg:pl-32 pr-6 sm:pr-8">
                         <motion.div
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 }}
                         >
-                          <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+                          <h3 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight tracking-tight">
                             {slide.title}
                           </h3>
-                          <p className="text-base sm:text-xl text-gray-300 mb-8 leading-relaxed max-w-lg">
+                          <p className="text-sm sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed max-w-lg">
                             {slide.description}
                           </p>
 
                           {/* Dynamic Tags Pill System */}
-                          <div className="flex flex-wrap gap-3 mb-10">
+                          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
                             {slide.tags.map((tag, tagIndex) => (
                               <span 
                                 key={tagIndex}
-                                className="flex items-center gap-2 px-4 py-1.5 bg-blue-500/20 backdrop-blur-md border border-blue-500/30 rounded-full text-[10px] sm:text-xs font-bold text-blue-300 uppercase tracking-widest"
+                                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-500/20 backdrop-blur-md border border-blue-500/30 rounded-full text-[9px] sm:text-xs font-bold text-blue-300 uppercase tracking-widest"
                               >
-                                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,1)]" />
+                                <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,1)]" />
                                 {tag}
                               </span>
                             ))}
                           </div>
 
                           <ArcanaButton 
+                            className="!py-3 sm:!py-4 !px-6 sm:!px-8 !text-sm sm:!text-base"
                             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                           >
                             View Detailed Work

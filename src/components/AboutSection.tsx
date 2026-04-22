@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import ArcanaButton from './ArcanaButton'
 
 const AboutSection: React.FC = () => {
-	const workflowRef = useRef<HTMLDivElement>(null)
+
 	const [currentTechIndex, setCurrentTechIndex] = useState(0)
 
 	// Custom CSS animations
@@ -38,12 +38,7 @@ const AboutSection: React.FC = () => {
 				from { opacity: 0; transform: translateY(30px); }
 				to { opacity: 1; transform: translateY(0); }
 			}
-			.workflow-step {
-				opacity: 0;
-			}
-			.animate-workflow-step {
-				animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-			}
+
 		`
 		document.head.appendChild(style)
 		
@@ -52,15 +47,7 @@ const AboutSection: React.FC = () => {
 		}
 	}, [])
 
-	const workflowSteps = [
-		{ id: 1, title: 'Client Inputs', description: 'Requirements gathering and project scope definition' },
-		{ id: 2, title: 'Review', description: 'Analysis and feasibility assessment' },
-		{ id: 3, title: 'Planning', description: 'Strategic planning and resource allocation' },
-		{ id: 4, title: 'Production', description: 'BIM modeling and development' },
-		{ id: 5, title: 'Quality Check', description: 'Comprehensive review and validation' },
-		{ id: 6, title: 'Output', description: 'Final deliverables and documentation' },
-		{ id: 7, title: 'Feedback & Updates', description: 'Iterative improvements and client collaboration' }
-	]
+
 
 
 	const technologies = [
@@ -97,73 +84,10 @@ const AboutSection: React.FC = () => {
 		}
 	]
 
-	const WorkflowIcon: React.FC<{ id: number }> = ({ id }) => {
-		switch (id) {
-			case 1:
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-					</svg>
-				)
-			case 2:
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-					</svg>
-				)
-			case 3:
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-					</svg>
-				)
-			case 4:
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-					</svg>
-				)
-			case 5:
-				return (
-					<svg className="w-8 h-8 mx-auto text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-					</svg>
-				)
-			case 6:
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-					</svg>
-				)
-			default:
-				return (
-					<svg className="w-8 h-8 mx-auto text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-					</svg>
-				)
-		}
-	}
 
 
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('animate-workflow-step')
-					}
-				})
-			},
-			{ threshold: 0.1 }
-		)
 
-		if (workflowRef.current) {
-			const steps = workflowRef.current.querySelectorAll('.workflow-step')
-			steps.forEach((step) => observer.observe(step))
-		}
 
-		return () => observer.disconnect()
-	}, [])
 
 
 	return (
@@ -265,61 +189,7 @@ const AboutSection: React.FC = () => {
           </ArcanaButton>
         </div>
 
-        {/* Our BIM Delivery Workflow */}
-        <div className="mt-24 sm:mt-40 mb-24 sm:mb-40" ref={workflowRef}>
-          <div className="text-center mb-16 sm:mb-24 px-4">
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-6 sm:mb-8 uppercase italic tracking-tighter">
-              BIM Delivery <span className="text-blue-500 not-italic">Workflow</span>
-            </h3>
-            <div className="h-1.5 w-20 sm:w-24 bg-blue-600 mx-auto mb-8 sm:mb-10 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
-            <p className="text-gray-400 max-w-3xl mx-auto text-base sm:text-xl font-light leading-relaxed">
-              A precise, data-driven methodology engineered for <span className="text-white font-medium">zero-clash delivery</span> and construction readiness.
-            </p>
-          </div>
 
-          <div className="flex flex-wrap justify-center gap-y-8 sm:gap-y-16 gap-x-8 relative">
-            {workflowSteps.map((step, index) => (
-              <div 
-                key={step.id} 
-                className={`workflow-step group relative w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2.5rem)] p-8 sm:p-10 bg-[#0d1528]/60 backdrop-blur-3xl border border-white/10 rounded-[2rem] sm:rounded-[2.5rem] hover:border-blue-500/50 transition-all duration-700 shadow-2xl z-10 ${index >= 4 ? 'lg:w-[calc(33.333%-2.5rem)]' : ''}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* Connection Line (Desktop) */}
-                {((index >= 0 && index < 3) || (index >= 4 && index < 6)) && (
-                  <div className="hidden lg:block absolute top-16 -right-9 w-10 h-[2px] bg-gradient-to-r from-blue-500/40 to-blue-500/10 z-0" />
-                )}
-
-                {/* Vertical Bridge (Desktop - Step 4 to 5) */}
-                {index === 3 && (
-                  <>
-                    <div className="hidden lg:block absolute top-16 -right-9 w-12 h-[2px] bg-blue-500/20" />
-                    <div className="hidden lg:block absolute top-16 -right-9 w-[2px] h-[calc(100%+4rem)] bg-gradient-to-b from-blue-500/20 to-transparent" />
-                  </>
-                )}
-                
-                {/* Technical Grid Overlay */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 rounded-[2.5rem] overflow-hidden pointer-events-none" 
-                  style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.5) 1px, transparent 0)`, backgroundSize: '20px 20px' }} />
-
-                {/* Step Header */}
-                <div className="mb-10 flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-600/10 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 font-black italic text-xl shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
-                    {step.id}
-                  </div>
-                  <div className="h-[2px] flex-1 bg-gradient-to-r from-blue-500/30 to-transparent" />
-                </div>
-
-                <div className="relative z-10">
-                  <div className="mb-6 sm:mb-8 w-14 h-14 sm:w-16 sm:h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500/10 transition-colors duration-500">
-                    <WorkflowIcon id={step.id} />
-                  </div>
-                  <h4 className="text-xl sm:text-2xl font-black text-white mb-3 sm:mb-4 uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">{step.title}</h4>
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Technologies Used - Logo Slider */}
 
@@ -342,9 +212,9 @@ const AboutSection: React.FC = () => {
               {[...technologies, ...technologies, ...technologies].map((tech, index) => (
                 <div
                   key={`${tech.name}-${index}`}
-                  className="flex flex-col items-center justify-center mx-6 sm:mx-12 md:mx-20 flex-shrink-0 cursor-pointer group/logo"
+                  className="flex flex-col items-center justify-center mx-4 sm:mx-12 md:mx-20 flex-shrink-0 cursor-pointer group/logo"
                 >
-                  <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-52 md:h-52 flex items-center justify-center transition-all duration-300">
+                  <div className="relative w-20 h-20 sm:w-40 sm:h-40 md:w-52 md:h-52 flex items-center justify-center transition-all duration-300">
                     <img
                       src={tech.icon}
                       alt={tech.name}
@@ -353,7 +223,7 @@ const AboutSection: React.FC = () => {
                         const parent = (e.target as HTMLImageElement).parentElement;
                         if (parent) {
                           const fallback = document.createElement('div');
-                          fallback.className = 'text-blue-400 font-black text-center text-sm px-2 break-words';
+                          fallback.className = 'text-blue-400 font-black text-center text-xs px-1 break-words';
                           fallback.innerText = tech.name;
                           parent.appendChild(fallback);
                         }
