@@ -114,7 +114,7 @@ const ContactSection: React.FC = () => {
                       <div>
                         <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-1 sm:mb-2 truncate" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{node.label}</p>
                         {node.href ? (
-                          <a href={node.href} className="text-base sm:text-xl font-bold text-gray-200 hover:text-blue-400 transition-all tracking-tight block break-all sm:break-normal">
+                          <a href={node.href} className="text-[13px] min-[390px]:text-base sm:text-xl font-bold text-gray-200 hover:text-blue-400 transition-all tracking-tight block whitespace-nowrap">
                             {node.value}
                           </a>
                         ) : (
