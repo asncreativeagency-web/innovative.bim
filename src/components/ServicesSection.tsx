@@ -252,15 +252,15 @@ const ServicesSection: React.FC = () => {
           <div className="w-full space-y-4 sm:space-y-5">
             <h3 className="text-xs sm:text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4 sm:mb-8">Core Capabilities</h3>
             
-            {/* Horizontal Scroll on Mobile, Vertical Stack on Desktop */}
-            <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-3 sm:gap-4 snap-x no-scrollbar">
+            {/* Vertical Stack on all devices */}
+            <div className="flex flex-col gap-3 sm:gap-4">
               {services.map((service, index) => (
                 <div
                   key={service.id}
                   onClick={() => handleServiceClick(service, index)}
                   onMouseEnter={() => setHoveredServiceIndex(index)}
                   onMouseLeave={() => setHoveredServiceIndex(null)}
-                  className={`group relative cursor-pointer p-4 sm:p-6 rounded-2xl transition-all duration-500 border-2 min-w-[280px] sm:min-w-[350px] lg:min-w-0 snap-center ${
+                  className={`group relative cursor-pointer p-4 sm:p-6 rounded-2xl transition-all duration-500 border-2 ${
                     activeServiceIndex === index 
                       ? 'bg-blue-600/30 border-blue-400/60 shadow-2xl shadow-blue-500/20 scale-[1.01] sm:scale-[1.02] z-10' 
                       : hoveredServiceIndex === index
