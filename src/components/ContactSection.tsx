@@ -25,7 +25,7 @@ const ContactSection: React.FC = () => {
   const categories = ['Architecture', 'Structure', 'Scan-to-BIM', 'Food Service BIM', 'Other']
 
   return (
-    <div id="contact" className="relative bg-[#050810] overflow-hidden pt-32 pb-0" style={{ fontFamily: "'Outfit', sans-serif" }}>
+    <div id="contact" className="relative bg-[#050810] overflow-hidden pt-32 pb-0">
       {/* Technical Master Grid */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div 
@@ -47,10 +47,10 @@ const ContactSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-6xl font-black text-white mb-4 sm:mb-6 uppercase italic tracking-tighter">
-              Let's <span className="text-blue-500 not-italic">Discuss Your Project</span>
+            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 sm:mb-6 uppercase tracking-tighter">
+              Let's <span className="text-blue-500">Discuss Your Project</span>
             </h2>
-            <div className="h-1.5 w-24 sm:w-32 bg-blue-500 mx-auto mb-6 sm:mb-8 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+
             <p className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-4 sm:mb-6 font-light tracking-tight">
               Share your project requirements, and we’ll get back with a <span className="text-white font-medium">structured BIM approach</span> aligned with your scope, timeline, and coordination needs.
             </p>
@@ -70,12 +70,11 @@ const ContactSection: React.FC = () => {
               <CornerAccents />
               
               <div>
-                <h3 className="text-2xl sm:text-3xl font-black text-white mb-10 sm:mb-16 tracking-tight flex items-center gap-4 uppercase italic">
-                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-10 sm:mb-16 tracking-tight uppercase">
                   Contact Info
                 </h3>
                 
-                <div className="space-y-10 sm:space-y-16">
+                <div className="space-y-12 sm:space-y-20">
                   {[
                     { 
                       id: '01',
@@ -98,27 +97,23 @@ const ContactSection: React.FC = () => {
                       icon: <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     }
                   ].map((node) => (
-                    <div key={node.id} className="flex gap-4 sm:gap-8 group items-center">
+                    <div key={node.id} className="flex gap-6 sm:gap-10 group items-center">
                       <div className="relative flex-shrink-0">
-                        {/* Hexagon Container */}
-                        <div 
-                          className="w-12 h-12 sm:w-16 h-16 bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 group-hover:border-blue-500 transition-all duration-500 shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] scale-90 sm:scale-100"
-                          style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }}
-                        >
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 group-hover:border-blue-500 transition-all duration-500 shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] scale-90 sm:scale-100">
                           <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                             {node.icon}
                           </svg>
                         </div>
                       </div>
                       
-                      <div>
-                        <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.4em] text-gray-500 mb-1 sm:mb-2 truncate" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{node.label}</p>
+                      <div className="min-w-0">
+                        <p className="text-[9px] uppercase tracking-[0.4em] text-gray-500 mb-1 truncate" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{node.label}</p>
                         {node.href ? (
-                          <a href={node.href} className="text-[13px] min-[390px]:text-base sm:text-xl font-bold text-gray-200 hover:text-blue-400 transition-all tracking-tight block whitespace-nowrap">
+                          <a href={node.href} className="text-[13px] min-[390px]:text-base sm:text-lg font-bold text-gray-200 hover:text-blue-400 transition-all tracking-tight block whitespace-nowrap">
                             {node.value}
                           </a>
                         ) : (
-                          <span className="text-base sm:text-xl font-bold text-gray-200 block tracking-tight">{node.value}</span>
+                          <span className="text-base sm:text-lg font-bold text-gray-200 block tracking-tight whitespace-nowrap">{node.value}</span>
                         )}
                       </div>
                     </div>
@@ -139,7 +134,9 @@ const ContactSection: React.FC = () => {
             <div className="relative h-full bg-[#0d1528]/40 backdrop-blur-3xl border border-white/10 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-16 shadow-[0_0_80px_rgba(59,130,246,0.05)] overflow-hidden">
               <CornerAccents />
               
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-10 sm:mb-12 tracking-tight uppercase italic">Project Inquiry</h3>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-10 sm:mb-12 tracking-tight uppercase">
+                Project Inquiry
+              </h3>
               
               <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10 relative z-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
@@ -275,7 +272,7 @@ const ContactSection: React.FC = () => {
                     We typically respond within 24–48 hours.
                   </p>
                   <div className="h-px w-12 sm:w-16 bg-blue-500/20 mx-auto" />
-                  <p className="text-gray-500 text-[10px] sm:text-[11px] font-medium leading-relaxed px-4 sm:px-6 opacity-60">
+                  <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed px-4 sm:px-6">
                     All data is treated as confidential and handled per standard project NDA practices.
                   </p>
                 </div>
@@ -290,7 +287,9 @@ const ContactSection: React.FC = () => {
                       <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
                         <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                       </div>
-                      <h4 className="text-3xl font-black text-white mb-2 uppercase italic tracking-tighter">Transmission Successful</h4>
+                      <h4 className="text-3xl font-bold text-white mb-2 uppercase tracking-tighter">
+                        Transmission Successful
+                      </h4>
                       <p className="text-blue-100 text-lg">System has logged your project inquiry.</p>
                       <button onClick={() => window.location.reload()} className="mt-8 text-blue-400 font-bold text-xs tracking-widest uppercase hover:text-white transition-colors">{" >> "} New Inquiry</button>
                     </div>
