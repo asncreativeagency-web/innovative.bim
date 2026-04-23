@@ -23,13 +23,14 @@ const technologies = [
   },
   {
     name: 'ReCap',
-    icon: '/logos/recap.png',
+    icon: '/logos/Autodesk-logo-removebg-preview_white.png',
     category: 'Reality Capture'
   },
   {
     name: 'TruView',
-    icon: '/logos/truview_white.png',
-    category: 'Point Cloud'
+    icon: '/logos/truview_new.png', // This is 1667469363593-removebg-preview.png
+    category: 'Point Cloud',
+    cropEdges: true
   },
   {
     name: 'Enscape',
@@ -58,6 +59,9 @@ const TechSlider: React.FC = () => {
       }
       .tech-logo:hover {
         filter: brightness(1.3) scale(1.05);
+      }
+      .crop-marks-removal {
+        clip-path: inset(8% 8% 8% 8%);
       }
     `
     document.head.appendChild(style)
@@ -90,7 +94,7 @@ const TechSlider: React.FC = () => {
                 key={`${tech.name}-${index}`}
                 className="flex flex-col items-center justify-center mx-10 sm:mx-12 md:mx-20 flex-shrink-0 cursor-pointer group/logo"
               >
-                <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-52 md:h-52 flex items-center justify-center transition-all duration-300">
+                <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-52 md:h-52 flex items-center justify-center transition-all duration-300 overflow-hidden">
                   <img
                     src={tech.icon}
                     alt={tech.name}
@@ -104,7 +108,7 @@ const TechSlider: React.FC = () => {
                         parent.appendChild(fallback);
                       }
                     }}
-                    className="w-full h-full object-contain tech-logo group-hover/logo:scale-110 transition-transform duration-300"
+                    className={`w-full h-full object-contain tech-logo group-hover/logo:scale-110 transition-transform duration-300 ${tech.cropEdges ? 'crop-marks-removal scale-[1.15]' : ''}`}
                   />
                 </div>
               </div>
