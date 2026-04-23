@@ -8,9 +8,6 @@ const SlideshowSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
-  const mouseStartX = useRef<number>(0)
-  const mouseEndX = useRef<number>(0)
-  const isDragging = useRef<boolean>(false)
 
   const slides = [
     {
@@ -104,7 +101,6 @@ const SlideshowSection: React.FC = () => {
     offset: ["start end", "end start"]
   })
 
-  // Subtle parallax for the image
   const imageY = useTransform(scrollYProgress, [0, 1], [-20, 20])
 
   const startAutoPlay = useCallback(() => {
@@ -130,13 +126,14 @@ const SlideshowSection: React.FC = () => {
   const prevSlide = useCallback(() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length), [slides.length])
   const goToSlide = useCallback((index: number) => setCurrentSlide(index), [])
 
-  // Swipe logic
   const handleTouchStart = useCallback((e: React.TouchEvent) => touchStartX.current = e.touches[0].clientX, [])
   const handleTouchMove = useCallback((e: React.TouchEvent) => touchEndX.current = e.touches[0].clientX, [])
   const handleTouchEnd = useCallback(() => {
     const diff = touchStartX.current - touchEndX.current
     if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide()
   }, [nextSlide, prevSlide])
+
+  const slide = slides[currentSlide]
 
   return (
     <section 
@@ -164,7 +161,7 @@ const SlideshowSection: React.FC = () => {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative group overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/10 bg-[#0A0F1C] shadow-2xl aspect-[4/5] sm:aspect-[16/9]">
           
-          {/* Progress Indicators (Left Side) */}
+          {/* Progress Indicators */}
           <div className="absolute left-4 sm:left-12 top-1/2 -translate-y-1/2 flex flex-col space-y-2 sm:space-y-3 z-40">
             {slides.map((_, index) => (
               <button
@@ -178,116 +175,104 @@ const SlideshowSection: React.FC = () => {
             ))}
           </div>
 
-          {/* Navigation Arrows - Always visible on mobile, hover on desktop */}
+          {/* Navigation Arrows */}
           <div className="absolute inset-x-0 bottom-6 sm:bottom-12 right-6 sm:right-16 flex justify-end gap-3 sm:gap-4 z-40 xl:opacity-0 xl:group-hover:opacity-100 transition-opacity duration-300">
-            <button
-              onClick={prevSlide}
-              className="w-9 h-9 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10"
-            >
+            <button onClick={prevSlide} className="w-9 h-9 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <button
-              onClick={nextSlide}
-              className="w-9 h-9 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10"
-            >
+            <button onClick={nextSlide} className="w-9 h-9 sm:w-14 sm:h-14 bg-black/40 hover:bg-blue-600/60 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-all duration-300 border border-white/10">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
 
-          {/* Slides */}
           <div 
             className="relative h-full select-none"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
+            {/* Image Layer - Always changes */}
             <AnimatePresence mode="wait">
-              {slides.map((slide, index) => {
-                const isActive = index === currentSlide
-                if (!isActive) return null
-
-                return (
-                  <motion.div
-                    key={slide.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
-                    className="absolute inset-0"
-                  >
-                    {/* Background Image with slight zoom effect */}
-                    <motion.div 
-                      className="absolute inset-0 w-full h-full overflow-hidden"
-                      initial={{ scale: 1.05 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 6, ease: "linear" }}
-                    >
-                      <motion.img
-                        style={{ y: imageY }}
-                        src={slide.image}
-                        alt={slide.title}
-                        className="w-full h-full object-cover opacity-90"
-                      />
-                    </motion.div>
-                    
-                    {/* Content Panel Overlay - Left Sided Gradient as per PDF */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent flex items-center">
-                      <div className="max-w-2xl pl-12 sm:pl-24 lg:pl-32 pr-6 sm:pr-8">
-                        <motion.div
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.8, delay: 0.3 }}
-                        >
-                          <h3 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-                            {slide.title}
-                          </h3>
-                          <p className="text-sm sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed max-w-lg">
-                            {slide.description}
-                          </p>
-
-                          {/* Dynamic Tags Pill System */}
-                          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
-                            {slide.tags.map((tag, tagIndex) => (
-                              <span 
-                                key={tagIndex}
-                                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-500/20 backdrop-blur-md border border-blue-500/30 rounded-full text-[9px] sm:text-xs font-bold text-blue-300 uppercase tracking-widest"
-                              >
-                                <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,1)]" />
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-
-                          <ArcanaButton 
-                            className="!py-3 sm:!py-4 !px-6 sm:!px-8 !text-sm sm:!text-base"
-                            onClick={() => {
-                              const element = document.getElementById('projects');
-                              if (element) {
-                                const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
-                                window.scrollTo({ top: y, behavior: 'smooth' });
-                              }
-                            }}
-                          >
-                            View Detailed Work
-                          </ArcanaButton>
-                        </motion.div>
-                      </div>
-                    </div>
-                  </motion.div>
-                )
-              })}
+              <motion.div
+                key={slide.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                <motion.div 
+                  className="absolute inset-0 w-full h-full overflow-hidden"
+                  initial={{ scale: 1.05 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 6, ease: "linear" }}
+                >
+                  <motion.img
+                    style={{ y: imageY }}
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover opacity-90"
+                  />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
+              </motion.div>
             </AnimatePresence>
+
+            {/* Content Layer - Only changes when text is different */}
+            <div className="absolute inset-0 flex items-center pointer-events-none">
+              <div className="max-w-2xl pl-12 sm:pl-24 lg:pl-32 pr-6 sm:pr-8 pointer-events-auto">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={slide.title + slide.description}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                  >
+                    <h3 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight tracking-tight">
+                      {slide.title}
+                    </h3>
+                    <p className="text-sm sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed max-w-lg">
+                      {slide.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
+                      {slide.tags.map((tag, tagIndex) => (
+                        <span 
+                          key={tagIndex}
+                          className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-500/20 backdrop-blur-md border border-blue-500/30 rounded-full text-[9px] sm:text-xs font-bold text-blue-300 uppercase tracking-widest"
+                        >
+                          <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,1)]" />
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <ArcanaButton 
+                      className="!py-3 sm:!py-4 !px-6 sm:!px-8 !text-sm sm:!text-base"
+                      onClick={() => {
+                        const element = document.getElementById('projects');
+                        if (element) {
+                          const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      View Detailed Work
+                    </ArcanaButton>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         </div>
-
-
       </div>
     </section>
   )
 }
 
-export default SlideshowSection 
+export default SlideshowSection
