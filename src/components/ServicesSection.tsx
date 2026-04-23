@@ -7,7 +7,7 @@ const toolLogos: Record<string, string> = {
   'AutoCAD': '/logos/autocad_white.png',
   'Recap': '/logos/autodesk_white.png',
   'Navisworks': '/logos/navisworks_white.png',
-  'BIM 360': '/logos/BIM360_white.png',
+  'Forma': '/logos/autodesk-forma-badge-removebg-preview.png',
   'TruView': '/logos/dwg_trueview_white.png',
 }
 
@@ -15,12 +15,16 @@ const ToolLogo: React.FC<{ tool: string }> = ({ tool }) => {
   const logoSrc = toolLogos[tool]
   if (logoSrc) {
     return (
-      <img
-        src={logoSrc}
-        alt={tool}
-        title={tool}
-        className="h-12 w-auto object-contain hover:scale-110 transition-transform duration-300"
-      />
+      <div className="h-8 sm:h-10 flex items-center">
+        <img
+          src={logoSrc}
+          alt={tool}
+          title={tool}
+          className={`h-full w-auto object-contain hover:scale-110 transition-transform duration-300 ${
+            tool === 'Revit' ? 'scale-[1.4] origin-left' : ''
+          }`}
+        />
+      </div>
     )
   }
   // Fallback for tools without an image
@@ -161,7 +165,7 @@ const services: Service[] = [
       'Reduced site verification effort',
       'Improved planning accuracy'
     ],
-    tools: ['Recap', 'Cyclone', 'Revit']
+    tools: ['Recap', 'Revit']
   },
   {
     id: '5',
@@ -203,7 +207,7 @@ const services: Service[] = [
       'Standardized deliverables',
       'Scalable BIM processes'
     ],
-    tools: ['Revit', 'Navisworks', 'BIM 360']
+    tools: ['Revit', 'Navisworks', 'Forma']
   }
 ]
 
@@ -292,75 +296,74 @@ const ServicesSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column - Service Details */}
-          <div ref={detailsRef} className="lg:sticky lg:top-24">
-            {selectedService && (
-              <div className={`bg-[#0F172A]/80 backdrop-blur-xl border border-white/20 rounded-[2rem] sm:rounded-3xl p-6 sm:p-12 shadow-2xl transition-opacity duration-300 min-h-[400px] sm:min-h-[600px] flex flex-col ${isFading ? 'opacity-0' : 'opacity-100'}`}>
-                {/* Service Header */}
-                <div className="mb-6 sm:mb-10">
-                  <div className="flex items-center justify-between mb-4 sm:mb-6">
-                    <div className="w-14 h-14 sm:w-20 sm:h-20 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-                      <IconSvg name={selectedService.icon} />
+            <div ref={detailsRef} className="lg:sticky lg:top-24 h-full">
+              {selectedService && (
+                <div className={`bg-[#0F172A]/80 backdrop-blur-xl border border-white/20 rounded-2xl p-5 sm:p-8 shadow-2xl transition-opacity duration-300 flex flex-col ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+                  {/* Service Header */}
+                  <div className="mb-4 sm:mb-6">
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center">
+                        <IconSvg name={selectedService.icon} />
+                      </div>
                     </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4 leading-tight">
+                      {selectedService.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                      {selectedService.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                    {selectedService.title}
-                  </h3>
-                  <p className="text-base sm:text-lg text-gray-300 leading-relaxed italic">
-                    {selectedService.description}
-                  </p>
-                </div>
 
-                {/* Key Capabilities */}
-                <div className="mb-6 sm:mb-10">
-                  <h4 className="text-xs sm:text-sm font-bold text-blue-400 uppercase tracking-widest mb-4 sm:mb-6 border-l-4 border-blue-500 pl-4">Key Capabilities</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    {selectedService.keyCapabilities.map((feature, index) => (
-                      <div key={index} className="flex items-start space-x-3 group">
-                        <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5 group-hover:bg-blue-500/40 transition-colors flex-shrink-0">
-                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                  {/* Key Capabilities */}
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="text-[10px] sm:text-xs font-bold text-blue-400 uppercase tracking-widest mb-3 sm:mb-4 border-l-4 border-blue-500 pl-4">Key Capabilities</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                      {selectedService.keyCapabilities.map((feature, index) => (
+                        <div key={index} className="flex items-start space-x-2 group">
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5 group-hover:bg-blue-500/40 transition-colors flex-shrink-0">
+                            <svg className="w-2 h-2 sm:w-3 sm:h-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="text-gray-300 text-xs sm:text-sm">{feature}</span>
                         </div>
-                        <span className="text-gray-300 text-sm sm:text-base">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* What You Get */}
-                <div className="mb-6 sm:mb-10">
-                  <h4 className="text-xs sm:text-sm font-bold text-blue-400 uppercase tracking-widest mb-4 sm:mb-6 border-l-4 border-blue-500 pl-4">What You Get</h4>
-                  <div className="space-y-3 sm:space-y-4">
-                    {selectedService.whatYouGet.map((benefit, index) => (
-                      <div key={index} className="flex items-center space-x-3 sm:space-x-4 bg-white/5 rounded-xl p-3 sm:p-4 border border-white/5 hover:bg-white/10 transition-colors">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500 flex-shrink-0" />
-                        <span className="text-gray-200 text-sm sm:text-base">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Technical Info & CTA */}
-                <div className="mt-auto pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-                  <div className="bg-blue-500/10 rounded-xl px-4 py-3 sm:px-6 sm:py-4 border border-blue-500/20 w-full sm:w-auto">
-                    <p className="text-[10px] sm:text-xs font-bold text-blue-300 uppercase tracking-wider mb-2">Tools Used</p>
-                    <div className="flex flex-wrap gap-2 mt-1">
-                      {selectedService.tools.map((tech, index) => (
-                        <ToolLogo key={index} tool={tech} />
                       ))}
                     </div>
                   </div>
-                  <ArcanaButton 
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full sm:w-auto !py-4"
-                  >
-                    Request a Proposal
-                  </ArcanaButton>
+
+                  {/* What You Get */}
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="text-[10px] sm:text-xs font-bold text-blue-400 uppercase tracking-widest mb-3 sm:mb-4 border-l-4 border-blue-500 pl-4">What You Get</h4>
+                    <div className="space-y-2 sm:space-y-3">
+                      {selectedService.whatYouGet.map((benefit, index) => (
+                        <div key={index} className="flex items-center space-x-2 sm:space-x-3 bg-white/5 rounded-xl p-2 sm:p-3 border border-white/5 hover:bg-white/10 transition-colors">
+                          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                          <span className="text-gray-200 text-xs sm:text-sm">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Technical Info & CTA */}
+                  <div className="mt-auto pt-4 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+                    <div className="bg-blue-500/10 rounded-xl px-3 py-2 sm:px-4 sm:py-3 border border-blue-500/20 w-full sm:w-auto">
+                      <p className="text-[9px] sm:text-[10px] font-bold text-blue-300 uppercase tracking-wider mb-1.5">Tools Used</p>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedService.tools.map((tech, index) => (
+                          <ToolLogo key={index} tool={tech} />
+                        ))}
+                      </div>
+                    </div>
+                    <ArcanaButton 
+                      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="w-full sm:w-auto !py-3 !text-sm"
+                    >
+                      Request a Proposal
+                    </ArcanaButton>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
         </div>
       </div>
 
