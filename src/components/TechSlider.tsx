@@ -43,7 +43,7 @@ const TechSlider: React.FC = () => {
         100% { transform: translateX(-33.333%); }
       }
       .animate-scroll {
-        animation: scroll 10s linear infinite;
+        animation: scroll 12s linear infinite;
       }
       .animate-scroll:hover {
         animation-play-state: paused;
@@ -84,9 +84,9 @@ const TechSlider: React.FC = () => {
             {[...technologies, ...technologies, ...technologies].map((tech, index) => (
               <div
                 key={`${tech.name}-${index}`}
-                className="flex flex-col items-center justify-center mx-4 sm:mx-12 md:mx-20 flex-shrink-0 cursor-pointer group/logo"
+                className="flex flex-col items-center justify-center mx-10 sm:mx-12 md:mx-20 flex-shrink-0 cursor-pointer group/logo"
               >
-                <div className="relative w-20 h-20 sm:w-40 sm:h-40 md:w-52 md:h-52 flex items-center justify-center transition-all duration-300">
+                <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-52 md:h-52 flex items-center justify-center transition-all duration-300">
                   <img
                     src={tech.icon}
                     alt={tech.name}
