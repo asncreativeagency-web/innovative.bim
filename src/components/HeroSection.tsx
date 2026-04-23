@@ -12,7 +12,7 @@ const HeroSection: React.FC = () => {
   const { scrollY } = useScroll()
 
   // Only use opacity for parallax-like fade effect, but keep position stationary
-  const opacity = useTransform(scrollY, [0, 500], [1, 0])
+  const opacity = useTransform(scrollY, [0, 800], [1, 0.4])
 
   const heroImage = '/hero-main.png'
 
