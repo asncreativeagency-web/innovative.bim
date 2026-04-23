@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface LODLevel {
@@ -11,47 +11,59 @@ interface LODLevel {
 const LODSection: React.FC = () => {
   const [activeDiscipline, setActiveDiscipline] = useState<'architecture' | 'structure' | 'kitchen'>('architecture')
 
-  const disciplines = [
+  const disciplines: { id: 'architecture' | 'structure' | 'kitchen'; label: string; image: string }[] = [
     { id: 'architecture', label: 'Architecture', image: '/slideshow-images/2.lod window 1.png' },
     { id: 'structure', label: 'Structure', image: '/slideshow-images/2.lod beam 2.png' },
     { id: 'kitchen', label: 'Food Service', image: '/slideshow-images/3.lod kitchen 3.png' }
   ]
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveDiscipline((prev) => {
+        const currentIndex = disciplines.findIndex(d => d.id === prev)
+        const nextIndex = (currentIndex + 1) % disciplines.length
+        return disciplines[nextIndex].id
+      })
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   const lodLevels: LODLevel[] = [
     {
       level: 'LOD 100',
-      title: 'Conceptual',
-      description: 'Basic massing and conceptual geometry for early feasibility.',
+      title: 'Conceptual Design',
+      description: 'Basic massing and geometry for early-stage planning and feasibility.',
       position: '0% 0%'
     },
     {
       level: 'LOD 200',
-      title: 'Schematic',
-      description: 'Generalized elements with approximate quantities and design development.',
+      title: 'Schematic Design',
+      description: 'Generalized elements with approximate quantities for design development.',
       position: '50% 0%'
     },
     {
       level: 'LOD 300',
       title: 'Detailed Design',
-      description: 'Accurate geometry and quantities suitable for multi-discipline coordination.',
+      description: 'Accurate geometry and quantities suitable for coordination and documentation.',
       position: '100% 0%'
     },
     {
       level: 'LOD 350',
-      title: 'Construction',
-      description: 'Detailed elements with interfaces for coordination and on-site assembly.',
+      title: 'Coordination Level',
+      description: 'Detailed elements with interfaces to support multi-discipline coordination.',
       position: '0% 100%'
     },
     {
       level: 'LOD 400',
-      title: 'Fabrication',
-      description: 'High-precision models for shop drawings, fabrication, and installation.',
+      title: 'Fabrication Ready',
+      description: 'Highly detailed elements ready for fabrication, installation, and execution.',
       position: '50% 100%'
     },
     {
       level: 'LOD 500',
-      title: 'As-Built',
-      description: 'Verified models based on site data and scan-to-BIM accurate conditions.',
+      title: 'As-Built Model ⭐',
+      description: 'Verified as-built BIM models based on site data and scan-to-BIM workflows.',
       position: '100% 100%'
     }
   ]
@@ -78,8 +90,8 @@ const LODSection: React.FC = () => {
             We deliver BIM models from concept to construction-ready and as-built levels, aligned with project requirements and coordination needs.
           </motion.p>
 
-          {/* Discipline Selector */}
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {/* Discipline Selector - Hidden but keeps the logic for auto-slide */}
+          <div className="hidden flex flex-wrap justify-center gap-4 mb-16">
             {disciplines.map((d) => (
               <button
                 key={d.id}
@@ -97,20 +109,21 @@ const LODSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="wait">
-            {lodLevels.map((lod, index) => (
-              <motion.div 
-                key={`${activeDiscipline}-${lod.level}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group relative bg-[#0D1528]/40 backdrop-blur-xl border border-white/5 rounded-3xl p-4 transition-all duration-700 hover:bg-[#111A30] hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] hover:-translate-y-2"
-              >
-                {/* Image Vessel with CSS Cropping */}
-                <div className="relative aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 mb-6">
-                  <div 
-                    className="w-full h-full transition-transform duration-1000 ease-out group-hover:scale-110"
+          {lodLevels.map((lod, index) => (
+            <div 
+              key={lod.level}
+              className="group relative bg-[#0D1528]/40 backdrop-blur-xl border border-white/5 rounded-3xl p-4 transition-all duration-700 hover:bg-[#111A30] hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] hover:-translate-y-2"
+            >
+              {/* Image Vessel with CSS Cropping */}
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 mb-6">
+                <AnimatePresence mode="wait">
+                  <motion.div 
+                    key={activeDiscipline}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="absolute inset-0"
                     style={{
                       backgroundImage: `url("${activeImage}")`,
                       backgroundSize: '300% 200%',
@@ -118,23 +131,27 @@ const LODSection: React.FC = () => {
                       backgroundRepeat: 'no-repeat'
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/40 via-transparent to-transparent" />
-                </div>
-   
-                <div className="px-2 pb-4 text-center">
-                  <h3 className="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-blue-300 transition-colors">
-                    {lod.title}
-                  </h3>
-                  <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">
-                    {lod.description}
-                  </p>
-                </div>
-   
-                {/* Bottom accent glow */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm" />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                </AnimatePresence>
+                {/* Overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/40 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Hover Scale Overlay (Always present, affects the container on group hover) */}
+                <div className="absolute inset-0 transition-transform duration-1000 ease-out group-hover:scale-110 pointer-events-none" />
+              </div>
+  
+              <div className="px-2 pb-4 text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight group-hover:text-blue-300 transition-colors">
+                  {lod.title}
+                </h3>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                  {lod.description}
+                </p>
+              </div>
+  
+              {/* Bottom accent glow */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm" />
+            </div>
+          ))}
         </div>
       </div>
     </section>
