@@ -116,7 +116,7 @@ const ProjectsSection: React.FC = () => {
               Project Experience Across <span className="text-blue-500">Global AEC & Food Service Projects</span>
             </h2>
             <p className="text-base sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light">
-              Due to confidentiality and NDA requirements, detailed project information is not publicly displayed. We have supported multiple projects across architecture, structure, and food service BIM workflows. <span className="text-blue-400 font-medium">To request specific project samples or case studies, please reach out to us via the contact section below.</span>
+              Due to confidentiality and NDA requirements, detailed project information is not publicly displayed. We have supported multiple projects across architecture, structure, and food service BIM workflows. <span className="text-blue-400 font-medium">To view our sample work, please get in touch.</span>
             </p>
           </motion.div>
         </div>
@@ -160,12 +160,6 @@ const ProjectsSection: React.FC = () => {
                   {/* Geometric Decoration */}
                   <div className="absolute -bottom-8 -right-8 w-16 h-16 border-r border-b border-white/5 group-hover:border-blue-500/30 transition-colors duration-500" />
                 </div>
-
-                {/* Corner Accents */}
-                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 group-hover:border-blue-400 transition-colors" />
-                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-blue-400 transition-colors" />
-                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-blue-400 transition-colors" />
-                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-blue-400 transition-colors" />
               </div>
             </motion.div>
           ))}
