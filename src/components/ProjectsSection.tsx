@@ -116,7 +116,7 @@ const ProjectsSection: React.FC = () => {
               Project Experience Across <span className="text-blue-500">Global AEC & Food Service Projects</span>
             </h2>
             <p className="text-base sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light">
-              Due to confidentiality and NDA requirements, detailed project information is not publicly displayed. We have supported multiple projects across architecture, structure, and food service BIM workflows.
+              Due to confidentiality and NDA requirements, detailed project information is not publicly displayed. We have supported multiple projects across architecture, structure, and food service BIM workflows. <span className="text-blue-400 font-medium">To request specific project samples or case studies, please reach out to us via the contact section below.</span>
             </p>
           </motion.div>
         </div>
@@ -159,13 +159,6 @@ const ProjectsSection: React.FC = () => {
 
                   {/* Geometric Decoration */}
                   <div className="absolute -bottom-8 -right-8 w-16 h-16 border-r border-b border-white/5 group-hover:border-blue-500/30 transition-colors duration-500" />
-                  
-                  {project.featured && (
-                    <div className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold text-blue-400 uppercase tracking-widest px-3 py-1 bg-blue-500/10 border border-blue-500/20">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                      Core Specialty
-                    </div>
-                  )}
                 </div>
 
                 {/* Corner Accents */}
