@@ -3,22 +3,22 @@ import React, { useEffect, useState } from 'react'
 const technologies = [
   {
     name: 'Revit',
-    icon: '/logos/revit_white.png',
+    icon: '/logos/Revit_log-removebg-preview_white.png',
     category: 'BIM Software'
   },
   {
     name: 'AutoCAD',
-    icon: '/logos/autocad_white.png',
+    icon: '/logos/AutoCad_new_logo.svg-removebg-preview_white.png',
     category: 'CAD Software'
   },
   {
     name: 'Navisworks',
-    icon: '/logos/navisworks_white.png',
+    icon: '/logos/logo-navisworks-removebg-preview_white.png',
     category: 'Coordination'
   },
   {
     name: 'Forma',
-    icon: '/logos/forma_white.png',
+    icon: '/logos/autodesk-forma-badge-removebg-preview.png',
     category: 'BIM Planning'
   },
   {
@@ -33,7 +33,7 @@ const technologies = [
   },
   {
     name: 'Enscape',
-    icon: '/logos/enscape_white.png',
+    icon: '/logos/enscape_logo-white-rgb-900x277px-768x236.webp',
     category: 'Visualization'
   }
 ]
