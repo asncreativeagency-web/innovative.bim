@@ -188,11 +188,8 @@ const ProjectsSection: React.FC = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="mt-24 sm:mt-32 max-w-4xl mx-auto text-center"
         >
-          {/* Section Sub-heading */}
+          {/* Section Heading */}
           <div className="mb-4">
-            <h3 className="text-xs sm:text-sm font-black text-blue-500 uppercase tracking-[0.3em] mb-2">
-              Feedback
-            </h3>
             <h2 className="text-2xl sm:text-4xl font-bold text-white mb-8 sm:mb-12 uppercase tracking-tight">
               Client <span className="text-blue-500">Testimonials</span>
             </h2>
