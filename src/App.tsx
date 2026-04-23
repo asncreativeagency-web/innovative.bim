@@ -10,10 +10,11 @@ import ContactSection from './components/ContactSection'
 import Navigation from './components/Navigation'
 import WorkflowSection from './components/WorkflowSection'
 import LODSection from './components/LODSection'
+import TechSlider from './components/TechSlider'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import { Toaster } from './components/ui/sonner'
 
-const sections = ['home', 'services', 'workflow', 'projects', 'lod', 'about', 'contact']
+const sections = ['home', 'services', 'lod', 'workflow', 'projects', 'about', 'contact']
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -93,16 +94,18 @@ function App() {
               <ServicesSection />
             </section>
 
+            <section id="lod">
+              <LODSection />
+            </section>
+
             <section id="workflow">
               <WorkflowSection />
             </section>
             
+            <TechSlider />
+
             <section id="projects">
               <ProjectsSection />
-            </section>
-
-            <section id="lod">
-              <LODSection />
             </section>
             
             <section id="about">
