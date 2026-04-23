@@ -43,7 +43,6 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services' },
-    { id: 'lod', label: 'LOD' },
     { id: 'workflow', label: 'Workflow' },
     { id: 'projects', label: 'Projects' },
     { id: 'about', label: 'About' },
@@ -51,8 +50,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
   ]
 
   // Single navigation group for simplicity as requested in the visuals
-  const primaryNav = navItems.slice(0, 6) // Home, Services, LOD, Workflow, Projects, About
-  const contactNav = navItems.slice(6) // Contact
+  const primaryNav = navItems.slice(0, 5) // Home, Services, Workflow, Projects, About
+  const contactNav = navItems.slice(5) // Contact
 
   return (
     <nav className={`fixed top-2 sm:top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 rounded-3xl w-auto min-w-max max-w-[98vw] ${isScrolled ? 'bg-gray-900/40 backdrop-blur-2xl shadow-2xl shadow-black/30 border border-white/20' : 'bg-gray-900/20 backdrop-blur-xl border border-white/10'

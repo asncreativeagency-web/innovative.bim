@@ -14,7 +14,7 @@ import TechSlider from './components/TechSlider'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import { Toaster } from './components/ui/sonner'
 
-const sections = ['home', 'services', 'lod', 'workflow', 'projects', 'about', 'contact']
+const sections = ['home', 'services', 'workflow', 'projects', 'about', 'contact']
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
