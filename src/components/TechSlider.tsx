@@ -7,30 +7,34 @@ const technologies = [
     category: 'BIM Software'
   },
   {
-    name: 'Navisworks',
-    icon: '/logos/navisworks_white.png',
-    category: 'Coordination'
-  },
-  {
     name: 'AutoCAD',
     icon: '/logos/autocad_white.png',
     category: 'CAD Software'
   },
   {
-    name: 'BIM 360',
-    icon: '/logos/BIM360_white.png',
-    category: 'Collaboration'
+    name: 'Navisworks',
+    icon: '/logos/navisworks_white.png',
+    category: 'Coordination'
   },
   {
-    name: 'DWG TrueView',
-    icon: '/logos/dwg_trueview_white.png',
-    category: 'Point Cloud',
-    scale: 1.5
+    name: 'Forma',
+    icon: '/logos/forma_white.png',
+    category: 'BIM Planning'
   },
   {
-    name: 'Autodesk',
-    icon: '/logos/autodesk_white.png',
-    category: 'Ecosystem'
+    name: 'ReCap',
+    icon: '/logos/recap.png',
+    category: 'Reality Capture'
+  },
+  {
+    name: 'TruView',
+    icon: '/logos/truview_white.png',
+    category: 'Point Cloud'
+  },
+  {
+    name: 'Enscape',
+    icon: '/logos/enscape_white.png',
+    category: 'Visualization'
   }
 ]
 
@@ -43,7 +47,7 @@ const TechSlider: React.FC = () => {
         100% { transform: translateX(-33.333%); }
       }
       .animate-scroll {
-        animation: scroll 12s linear infinite;
+        animation: scroll 15s linear infinite;
       }
       .animate-scroll:hover {
         animation-play-state: paused;
@@ -95,13 +99,12 @@ const TechSlider: React.FC = () => {
                       const parent = (e.target as HTMLImageElement).parentElement;
                       if (parent) {
                         const fallback = document.createElement('div');
-                        fallback.className = 'text-blue-400 font-black text-center text-xs px-1 break-words';
+                        fallback.className = 'text-blue-400 font-bold text-center text-sm px-2 break-words uppercase tracking-widest';
                         fallback.innerText = tech.name;
                         parent.appendChild(fallback);
                       }
                     }}
                     className="w-full h-full object-contain tech-logo group-hover/logo:scale-110 transition-transform duration-300"
-                    style={{ transform: `scale(${tech.scale || 1})` }}
                   />
                 </div>
               </div>
