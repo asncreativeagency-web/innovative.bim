@@ -75,7 +75,7 @@ const LODSection: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-12"
           >
-            Explore our BIM precision across different disciplines. Select a discipline to see the LOD progression from concept to construction-ready.
+            We deliver BIM models from concept to construction-ready and as-built levels, aligned with project requirements and coordination needs.
           </motion.p>
 
           {/* Discipline Selector */}
