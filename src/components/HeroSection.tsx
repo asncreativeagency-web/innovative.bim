@@ -77,9 +77,9 @@ const HeroSection: React.FC = () => {
           <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
 
-        {/* Balanced Atmospheric Gradient for Centered Text - Lightened Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/30 via-transparent to-[#0A0F1C]/60" />
-        <div className="absolute inset-0 bg-[#0A0F1C]/20 backdrop-blur-[0.5px]" />
+        {/* Balanced Atmospheric Gradient for Centered Text - Enhanced for Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/50 via-[#0A0F1C]/20 to-[#0A0F1C]/90" />
+        <div className="absolute inset-0 bg-[#0A0F1C]/30 backdrop-blur-[1px]" />
       </motion.div>
 
       {/* Main Content - Stationary & Centered */}
@@ -101,8 +101,8 @@ const HeroSection: React.FC = () => {
           {/* Primary Headline - High Contrast & Precision with subtle shadow for legibility */}
           <h1
             ref={headlineRef}
-            className="text-[2rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black text-white leading-[1.1] tracking-tighter sm:tracking-tight mb-6 sm:mb-8 transform translate-y-12 opacity-0 transition-all duration-1000 ease-out drop-shadow-2xl"
-            style={{ fontFamily: "'Inter', sans-serif", textShadow: '0 0 40px rgba(0,0,0,0.5)' }}
+            className="text-[2rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black text-white leading-[1.1] tracking-tighter sm:tracking-tight mb-6 sm:mb-8 transform translate-y-12 opacity-0 transition-all duration-1000 ease-out drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+            style={{ fontFamily: "'Inter', sans-serif", textShadow: '0 0 50px rgba(0,0,0,0.7)' }}
           >
             Construction-Ready <br />
             <span className="text-blue-500">BIM Modeling & Coordination</span>
