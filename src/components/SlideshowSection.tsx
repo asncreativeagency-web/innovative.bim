@@ -107,7 +107,7 @@ const SlideshowSection: React.FC = () => {
     if (intervalRef.current) return
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 6000)
+    }, 4000)
   }, [slides.length])
 
   const stopAutoPlay = useCallback(() => {
