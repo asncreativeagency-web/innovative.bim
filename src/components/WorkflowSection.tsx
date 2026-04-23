@@ -190,7 +190,7 @@ const WorkflowSection: React.FC = () => {
                   <div
                     className={`flex-1 rounded-2xl p-5 sm:p-8 transition-all duration-500 border ${
                       isHovered
-                        ? 'bg-white/10 border-blue-400/30 shadow-lg shadow-blue-500/5'
+                        ? 'bg-blue-600/10 border-blue-400/40 shadow-xl shadow-blue-500/10'
                         : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
                     }`}
                   >
@@ -201,7 +201,7 @@ const WorkflowSection: React.FC = () => {
                     >
                       {step.title}
                     </h3>
-                    <p className="text-xs sm:text-base text-gray-400 leading-relaxed">
+                    <p className="text-xs sm:text-base text-gray-400 leading-relaxed transition-colors duration-300">
                       {step.description}
                     </p>
                   </div>
