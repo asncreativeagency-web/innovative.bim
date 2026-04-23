@@ -261,7 +261,7 @@ const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="pt-6 sm:pt-8 text-center p-1">
-                  <ArcanaButton primary className="w-full !py-5 sm:!py-7 !text-base sm:!text-lg !font-black uppercase italic tracking-tighter" icon={true}>
+                  <ArcanaButton primary className="w-full !py-4 sm:!py-6 sm:!text-base uppercase tracking-[0.2em]" icon={true}>
                     {isSubmitting ? 'Transmitting...' : 'Submit Inquiry'}
                   </ArcanaButton>
                 </div>
