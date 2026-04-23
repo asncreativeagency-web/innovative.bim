@@ -112,10 +112,9 @@ const ProjectsSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 sm:mb-12 uppercase tracking-tight">
               Project Experience Across <span className="text-blue-500">Global AEC & Food Service Projects</span>
             </h2>
-            <div className="h-1 w-20 sm:w-24 bg-blue-600 mx-auto mb-6 sm:mb-8 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
             <p className="text-base sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light">
               Due to confidentiality and NDA requirements, detailed project information is not publicly displayed. We have supported multiple projects across architecture, structure, and food service BIM workflows.
             </p>
