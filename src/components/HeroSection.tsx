@@ -4,12 +4,13 @@ import ArcanaButton from './ArcanaButton'
 
 const HeroSection: React.FC = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null)
+  const brandRef = useRef<HTMLDivElement>(null)
   const subheadlineRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
   const [currentBg, setCurrentBg] = useState(0)
-  
+
   const { scrollY } = useScroll()
-  
+
   // Only use opacity for parallax-like fade effect, but keep position stationary
   const opacity = useTransform(scrollY, [0, 500], [1, 0])
 
@@ -17,6 +18,10 @@ const HeroSection: React.FC = () => {
 
   useEffect(() => {
     const animateIn = () => {
+      if (brandRef.current) {
+        brandRef.current.style.transform = 'translateY(0)'
+        brandRef.current.style.opacity = '1'
+      }
       if (headlineRef.current) {
         headlineRef.current.style.transform = 'translateY(0)'
         headlineRef.current.style.opacity = '1'
@@ -39,30 +44,30 @@ const HeroSection: React.FC = () => {
   }, [])
 
   return (
-    <div 
-      id="hero-section" 
+    <div
+      id="hero-section"
       className="relative min-h-screen overflow-hidden bg-[#0A0F1C]"
     >
       {/* Background Layer - Static position */}
-      <motion.div 
+      <motion.div
         style={{ opacity }}
         className="absolute inset-0 z-0"
       >
         <div className="absolute inset-0 opacity-80">
-          <img 
-            src={heroImage} 
-            alt="BIM Presentation" 
+          <img
+            src={heroImage}
+            alt="BIM Presentation"
             className="w-full h-full object-cover animate-hero-bg"
           />
         </div>
-        
+
         {/* Advanced Technical Overlays */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Static Technical Grid */}
           <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-          
+
           {/* Moving Scanline Effect */}
-          <motion.div 
+          <motion.div
             animate={{ y: ['0%', '100%'] }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             className="absolute inset-x-0 h-1 bg-blue-500/10 blur-sm z-10"
@@ -71,18 +76,28 @@ const HeroSection: React.FC = () => {
           {/* Grain/Noise Texture */}
           <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
-        
+
         {/* Balanced Atmospheric Gradient for Centered Text */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/60 via-[#0A0F1C]/40 to-[#0A0F1C]" />
         <div className="absolute inset-0 bg-[#0A0F1C]/40 backdrop-blur-[1px]" />
       </motion.div>
 
       {/* Main Content - Stationary & Centered */}
-      <motion.div 
+      <motion.div
         style={{ opacity }}
         className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 min-h-[100dvh] flex flex-col justify-center items-center text-center pt-20 pb-10"
       >
         <div className="max-w-5xl flex flex-col items-center">
+          {/* Brand Name */}
+          <div
+            ref={brandRef}
+            className="mb-6 transform translate-y-12 opacity-0 transition-all duration-1000"
+          >
+            <span className="text-blue-400 text-xs sm:text-sm font-black uppercase tracking-[0.4em] sm:tracking-[0.6em]">
+              Innovative BIM Services
+            </span>
+          </div>
+
           {/* Primary Headline - High Contrast & Precision with subtle shadow for legibility */}
           <h1
             ref={headlineRef}
@@ -106,11 +121,11 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Action Row - Clean & Impactful */}
-          <div 
+          <div
             ref={ctaRef}
             className="flex flex-wrap justify-center gap-4 sm:gap-6 transform translate-y-12 opacity-0 transition-all duration-1000 delay-500"
           >
-            <ArcanaButton 
+            <ArcanaButton
               primary
               className="w-full sm:w-auto"
               onClick={() => {
@@ -121,10 +136,10 @@ const HeroSection: React.FC = () => {
                 }
               }}
             >
-              Request a Proposal 
+              Request a Proposal
             </ArcanaButton>
 
-            <ArcanaButton 
+            <ArcanaButton
               icon={false}
               className="w-full sm:w-auto"
               onClick={() => {
