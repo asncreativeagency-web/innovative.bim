@@ -12,6 +12,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isNavigating, setIsNavigating] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,12 +26,14 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
       }
 
       // Fade out when scrolling down, fade in when scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        setIsVisible(false)
-      } else if (currentScrollY < lastScrollY) {
-        // Scrolling up
-        setIsVisible(true)
+      if (!isNavigating) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling down
+          setIsVisible(false)
+        } else if (currentScrollY < lastScrollY) {
+          // Scrolling up
+          setIsVisible(true)
+        }
       }
 
       setLastScrollY(currentScrollY)
@@ -38,12 +41,23 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  }, [lastScrollY, isNavigating])
+
+  const handleNavClick = (sectionId: string) => {
+    setIsNavigating(true)
+    setIsVisible(true)
+    onNavigate(sectionId)
+    
+    // Reset isNavigating after scroll completion (approx 800ms)
+    setTimeout(() => {
+      setIsNavigating(false)
+    }, 1000)
+  }
 
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services' },
-    { id: 'workflow', label: 'Workflow' },
+    { id: 'lod', label: 'Workflow' },
     { id: 'projects', label: 'Projects' },
     { id: 'about', label: 'About' },
     { id: 'contact', label: 'Contact' }
@@ -64,7 +78,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               className="flex items-center cursor-pointer touch-manipulation"
               onClick={() => {
                 console.log('Logo clicked! Navigating to home section...');
-                onNavigate('home');
+                handleNavClick('home');
               }}
             >
               <img
@@ -81,7 +95,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
           {/* Mobile Navigation Quick Links - Hidden on very small screens, visible on tablets/mid-size */}
           <div className="hidden sm:flex items-center space-x-1 sm:space-x-2 xl:hidden">
             <button
-              onClick={() => onNavigate('services')}
+              onClick={() => handleNavClick('services')}
               className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-pointer ${activeSection === 'services'
                 ? 'text-blue-400 bg-blue-500/20'
                 : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
@@ -90,7 +104,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               Services
             </button>
             <button
-              onClick={() => onNavigate('about')}
+              onClick={() => handleNavClick('about')}
               className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-pointer ${activeSection === 'about'
                 ? 'text-blue-400 bg-blue-500/20'
                 : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
@@ -99,7 +113,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               About
             </button>
             <button
-              onClick={() => onNavigate('contact')}
+              onClick={() => handleNavClick('contact')}
               className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation cursor-pointer ${activeSection === 'contact'
                 ? 'from-blue-600 to-cyan-500'
                 : 'hover:from-blue-600 hover:to-cyan-500'
@@ -114,7 +128,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
             {primaryNav.map((item) => (
               <button
                 key={item.id}
-                onClick={() => onNavigate(item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className={`px-2 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 relative group touch-manipulation ${activeSection === item.id
                   ? 'text-blue-400'
                   : 'text-gray-300 hover:text-blue-300'
@@ -136,7 +150,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
               <ArcanaButton
                 key={item.id}
                 icon={false}
-                onClick={() => onNavigate(item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className="!px-4 !py-1.5 !text-[10px] uppercase tracking-widest font-black"
               >
                 {item.label}
@@ -194,7 +208,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                       <button
                         key={item.id}
                         onClick={() => {
-                          onNavigate(item.id)
+                          handleNavClick(item.id)
                           setIsMobileMenuOpen(false)
                         }}
                         className={`w-full text-left px-4 py-3.5 rounded-xl text-sm font-bold transition-all duration-300 touch-manipulation flex items-center justify-between group ${activeSection === item.id
@@ -220,7 +234,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                         key={item.id}
                         icon={false}
                         onClick={() => {
-                          onNavigate(item.id)
+                          handleNavClick(item.id)
                           setIsMobileMenuOpen(false)
                         }}
                         className="w-full !py-4 !text-sm !font-black !tracking-widest uppercase !rounded-xl shadow-lg shadow-blue-500/10"
