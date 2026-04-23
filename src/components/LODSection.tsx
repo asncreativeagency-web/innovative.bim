@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 interface LODLevel {
   level: string
+  label: string
   title: string
   description: string
   position: string // CSS background position
@@ -14,7 +15,7 @@ const LODSection: React.FC = () => {
   const disciplines: { id: 'architecture' | 'structure' | 'kitchen'; label: string; image: string }[] = [
     { id: 'architecture', label: 'Architecture', image: '/slideshow-images/2.lod window 1.png' },
     { id: 'structure', label: 'Structure', image: '/slideshow-images/2.lod beam 2.png' },
-    { id: 'kitchen', label: 'Food Service', image: '/slideshow-images/3.lod kitchen 3.png' }
+    { id: 'kitchen', label: 'Food Service', image: '/images/lod kitchen.png' }
   ]
 
   useEffect(() => {
@@ -32,36 +33,42 @@ const LODSection: React.FC = () => {
   const lodLevels: LODLevel[] = [
     {
       level: 'LOD 100',
+      label: 'CONCEPTUAL',
       title: 'Conceptual Design',
       description: 'Basic massing and geometry for early-stage planning and feasibility.',
       position: '0% 0%'
     },
     {
       level: 'LOD 200',
+      label: 'SCHEMATIC',
       title: 'Schematic Design',
       description: 'Generalized elements with approximate quantities for design development.',
       position: '50% 0%'
     },
     {
       level: 'LOD 300',
+      label: 'DETAILED DESIGN',
       title: 'Detailed Design',
       description: 'Accurate geometry and quantities suitable for coordination and documentation.',
       position: '100% 0%'
     },
     {
       level: 'LOD 350',
+      label: 'COORDINATION',
       title: 'Coordination Level',
       description: 'Detailed elements with interfaces to support multi-discipline coordination.',
       position: '0% 100%'
     },
     {
       level: 'LOD 400',
+      label: 'FABRICATION',
       title: 'Fabrication Ready',
       description: 'Highly detailed elements ready for fabrication, installation, and execution.',
       position: '50% 100%'
     },
     {
       level: 'LOD 500',
+      label: 'AS-BUILT',
       title: 'As-Built Model ⭐',
       description: 'Verified as-built BIM models based on site data and scan-to-BIM workflows.',
       position: '100% 100%'
@@ -119,10 +126,10 @@ const LODSection: React.FC = () => {
                 <AnimatePresence mode="wait">
                   <motion.div 
                     key={activeDiscipline}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
                     className="absolute inset-0"
                     style={{
                       backgroundImage: `url("${activeImage}")`,
@@ -132,8 +139,9 @@ const LODSection: React.FC = () => {
                     }}
                   />
                 </AnimatePresence>
-                {/* Overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/40 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Overlay for depth and text background */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/60 via-transparent to-transparent pointer-events-none" />
                 
                 {/* Hover Scale Overlay (Always present, affects the container on group hover) */}
                 <div className="absolute inset-0 transition-transform duration-1000 ease-out group-hover:scale-110 pointer-events-none" />
