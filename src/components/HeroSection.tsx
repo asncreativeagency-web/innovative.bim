@@ -53,7 +53,7 @@ const HeroSection: React.FC = () => {
         style={{ opacity }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 opacity-80">
+        <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="BIM Presentation"
@@ -77,9 +77,9 @@ const HeroSection: React.FC = () => {
           <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
 
-        {/* Balanced Atmospheric Gradient for Centered Text */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/60 via-[#0A0F1C]/40 to-[#0A0F1C]" />
-        <div className="absolute inset-0 bg-[#0A0F1C]/40 backdrop-blur-[1px]" />
+        {/* Balanced Atmospheric Gradient for Centered Text - Lightened Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/30 via-transparent to-[#0A0F1C]/60" />
+        <div className="absolute inset-0 bg-[#0A0F1C]/20 backdrop-blur-[0.5px]" />
       </motion.div>
 
       {/* Main Content - Stationary & Centered */}
