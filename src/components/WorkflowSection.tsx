@@ -138,7 +138,7 @@ const WorkflowSection: React.FC = () => {
         {/* Workflow Steps - Vertical Timeline */}
         <div className="relative max-w-4xl mx-auto">
           {/* Connecting Line */}
-          <div className="absolute left-7 sm:left-10 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent" />
+          <div className="absolute left-7 sm:left-10 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent z-0" />
 
           <div className="space-y-4 sm:space-y-6">
             {workflowSteps.map((step, index) => {
@@ -164,10 +164,10 @@ const WorkflowSection: React.FC = () => {
                   {/* Step Number Circle on the line */}
                   <div className="relative z-10 flex-shrink-0">
                     <div
-                      className={`w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 border ${
+                      className={`w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 border shadow-lg ${
                         isHovered
-                          ? 'bg-blue-500/20 border-blue-400/60 sm:scale-110 shadow-xl shadow-blue-500/20'
-                          : 'bg-white/5 border-white/10'
+                          ? 'bg-blue-900/40 border-blue-400/60 sm:scale-110 shadow-blue-500/20'
+                          : 'bg-[#0A0F1C] border-white/10'
                       }`}
                     >
                       <div className={`transition-colors duration-300 scale-75 sm:scale-100 ${isHovered ? iconColor : 'text-gray-500'}`}>
@@ -176,7 +176,7 @@ const WorkflowSection: React.FC = () => {
                     </div>
                     {/* Step number badge */}
                     <div
-                      className={`absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold transition-all duration-300 ${
+                      className={`absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold transition-all duration-300 z-20 ${
                         isHovered
                           ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/40'
                           : 'bg-white/10 text-gray-400 border border-white/10'
