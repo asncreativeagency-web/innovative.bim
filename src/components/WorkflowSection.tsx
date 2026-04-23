@@ -166,11 +166,11 @@ const WorkflowSection: React.FC = () => {
                     <div
                       className={`w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 border shadow-lg ${
                         isHovered
-                          ? 'bg-blue-900/40 border-blue-400/60 sm:scale-110 shadow-blue-500/20'
+                          ? 'bg-blue-600 border-blue-400/60 sm:scale-110 shadow-blue-500/40'
                           : 'bg-[#0A0F1C] border-white/10'
                       }`}
                     >
-                      <div className={`transition-colors duration-300 scale-75 sm:scale-100 ${isHovered ? iconColor : 'text-gray-500'}`}>
+                      <div className={`transition-colors duration-300 scale-75 sm:scale-100 ${isHovered ? 'text-white' : 'text-gray-500'}`}>
                         {step.icon}
                       </div>
                     </div>
