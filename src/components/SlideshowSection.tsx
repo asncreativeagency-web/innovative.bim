@@ -6,7 +6,6 @@ const SlideshowSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
-  const imageIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
@@ -65,21 +64,14 @@ const SlideshowSection: React.FC = () => {
 
   const stopAutoPlay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current)
-    if (imageIntervalRef.current) clearInterval(imageIntervalRef.current)
     intervalRef.current = null
-    imageIntervalRef.current = null
   }, [])
 
   const startAutoPlay = useCallback(() => {
     stopAutoPlay()
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-      setCurrentImageIndex(0)
-    }, 4000)
-
-    imageIntervalRef.current = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % 2)
-    }, 2000)
+    }, 8000) // 3s for first image + 5s for second image
   }, [slides.length, stopAutoPlay])
 
   useEffect(() => {
@@ -87,16 +79,23 @@ const SlideshowSection: React.FC = () => {
     return () => stopAutoPlay()
   }, [startAutoPlay, stopAutoPlay])
 
+  // Handle internal image timing synchronized with slide changes
+  useEffect(() => {
+    setCurrentImageIndex(0)
+    const timer = setTimeout(() => {
+      setCurrentImageIndex(1)
+    }, 3000) // Change to second image after 3 seconds
+    return () => clearTimeout(timer)
+  }, [currentSlide])
+
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
-    setCurrentImageIndex(0)
-    startAutoPlay() // Reset timer on manual navigation
+    startAutoPlay() // Reset main timer
   }, [slides.length, startAutoPlay])
 
   const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-    setCurrentImageIndex(0)
-    startAutoPlay() // Reset timer on manual navigation
+    startAutoPlay() // Reset main timer
   }, [slides.length, startAutoPlay])
 
   const goToSlide = useCallback((index: number) => {
