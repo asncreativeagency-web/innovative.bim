@@ -89,7 +89,7 @@ const IconSvg: React.FC<{ name: string }> = ({ name }) => {
 const services: Service[] = [
   {
     id: '1',
-    title: 'BIM Modeling (Architecture & Structure)',
+    title: 'BIM Modeling (Architecture | Structure)',
     description: 'Development of accurate BIM models from concept to detailed levels (LOD 100–500), ensuring alignment with design intent and construction requirements.',
     icon: '🏗️',
     category: 'core',

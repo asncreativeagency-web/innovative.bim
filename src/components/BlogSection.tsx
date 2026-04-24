@@ -49,10 +49,10 @@ AI in BIM enables predictive maintenance by analysing historical data and sensor
 
 5 Leading BIM Software and Their Unique AI Features
 
-1. BIM 360
-- Cloud-based platform with AI technology for design review and collaboration
-- Intelligent AI assistant "Assemble" for model consolidation
-- AI-driven clash detection capabilities
+1. Autodesk Forma
+- Next-generation cloud platform for early-stage planning and design
+- AI-driven insights for environmental and site analysis
+- Seamless integration with Revit for streamlined workflows
 
 2. SketchUp Pro
 - AI-powered "Smart Components" plugin

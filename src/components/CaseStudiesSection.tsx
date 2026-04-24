@@ -43,7 +43,7 @@ const CaseStudiesSection: React.FC = () => {
         'Saved $2.3M in rework costs',
         'Achieved LEED Gold certification'
       ],
-      technologies: ['Revit', 'Navisworks', 'BIM 360', 'Dynamo', '4D Scheduling'],
+      technologies: ['Revit', 'Navisworks', 'Forma', 'Dynamo', '4D Scheduling'],
       image: '/downtown commercial complex.avif'
     },
     {
@@ -70,7 +70,7 @@ const CaseStudiesSection: React.FC = () => {
         'Improved patient flow and staff efficiency',
         'Completed 2 weeks ahead of schedule'
       ],
-      technologies: ['Revit', 'AutoCAD', 'BIM 360', 'Clash Detection', 'Quantity Takeoff'],
+      technologies: ['Revit', 'AutoCAD', 'Forma', 'Clash Detection', 'Quantity Takeoff'],
       image: '/healthcare facility expansion.jpg'
     },
     {
@@ -97,7 +97,7 @@ const CaseStudiesSection: React.FC = () => {
         'Reduced material waste by 30%',
         'Increased property value by 15%'
       ],
-      technologies: ['Revit', 'Tekla', 'BIM 360', 'Structural Analysis', '3D Coordination'],
+      technologies: ['Revit', 'Tekla', 'Forma', 'Structural Analysis', '3D Coordination'],
       image: '/Resedential Tower Complex.jpg'
     }
   ]

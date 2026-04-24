@@ -92,29 +92,29 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
             </div>
           </div>
 
-          {/* Mobile Navigation Quick Links - Hidden on very small screens, visible on tablets/mid-size */}
+          {/* Mobile Navigation Quick Links - Enhanced Hover */}
           <div className="hidden sm:flex items-center space-x-1 sm:space-x-2 xl:hidden">
             <button
               onClick={() => handleNavClick('services')}
-              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-pointer ${activeSection === 'services'
-                ? 'text-blue-400 bg-blue-500/20'
-                : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
+              className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 touch-manipulation cursor-pointer ${activeSection === 'services'
+                ? 'text-white bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.3)]'
+                : 'text-gray-300 hover:text-white hover:bg-white/10 hover:scale-110 hover:shadow-lg'
                 }`}
             >
               Services
             </button>
             <button
               onClick={() => handleNavClick('about')}
-              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 touch-manipulation cursor-pointer ${activeSection === 'about'
-                ? 'text-blue-400 bg-blue-500/20'
-                : 'text-gray-300 hover:text-blue-300 hover:bg-blue-500/10'
+              className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 touch-manipulation cursor-pointer ${activeSection === 'about'
+                ? 'text-white bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.3)]'
+                : 'text-gray-300 hover:text-white hover:bg-white/10 hover:scale-110 hover:shadow-lg'
                 }`}
             >
               About
             </button>
             <button
               onClick={() => handleNavClick('contact')}
-              className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation cursor-pointer ${activeSection === 'contact'
+              className={`px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-400 text-white touch-manipulation cursor-pointer ${activeSection === 'contact'
                 ? 'from-blue-600 to-cyan-500'
                 : 'hover:from-blue-600 hover:to-cyan-500'
                 }`}
@@ -123,20 +123,20 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
             </button>
           </div>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links - Premium Hover */}
           <div className="hidden xl:flex items-center space-x-2">
             {primaryNav.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-2 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 relative group touch-manipulation ${activeSection === item.id
-                  ? 'text-blue-400'
-                  : 'text-gray-300 hover:text-blue-300'
+                className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 relative group touch-manipulation ${activeSection === item.id
+                  ? 'text-white'
+                  : 'text-gray-400 hover:text-blue-300'
                   }`}
               >
-                <div className={`absolute inset-0 rounded-lg transition-all duration-500 ${activeSection === item.id
-                  ? 'bg-blue-500/20 shadow-lg shadow-blue-500/25 scale-105'
-                  : 'bg-transparent group-hover:bg-blue-500/10 group-hover:scale-105'
+                <div className={`absolute inset-0 rounded-xl transition-all duration-300 ${activeSection === item.id
+                  ? 'bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.4)] scale-100'
+                  : 'bg-white/0 group-hover:bg-white/10 group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)]'
                   }`} />
                 <span className="relative z-10">{item.label}</span>
               </button>
@@ -212,13 +212,17 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigate }) =>
                           setIsMobileMenuOpen(false)
                         }}
                         className={`w-full text-left px-4 py-3.5 rounded-xl text-sm font-bold transition-all duration-300 touch-manipulation flex items-center justify-between group ${activeSection === item.id
-                          ? 'text-white bg-blue-600/40 border border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.15)]'
-                          : 'text-gray-400 hover:text-white hover:bg-white/5'
+                          ? 'text-white bg-blue-600/40 border border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.15)] pl-6'
+                          : 'text-gray-400 hover:text-white hover:bg-white/10 hover:pl-6'
                           }`}
                       >
                         <span>{item.label}</span>
-                        {activeSection === item.id && (
+                        {activeSection === item.id ? (
                           <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]" />
+                        ) : (
+                          <svg className="w-4 h-4 text-white/0 group-hover:text-blue-400 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                          </svg>
                         )}
                       </button>
                     ))}

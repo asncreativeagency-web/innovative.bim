@@ -32,7 +32,7 @@ const FAQSection: React.FC = () => {
     {
       id: '4',
       question: 'What software and technologies do you use?',
-      answer: 'We use industry-leading software including Autodesk Revit, AutoCAD, Navisworks, Tekla, and BIM 360. We also leverage advanced tools for clash detection, 4D scheduling, quantity takeoff, and virtual reality visualization. Our team stays updated with the latest BIM technologies and industry standards.',
+      answer: 'We use industry-leading software including Autodesk Revit, AutoCAD, Navisworks, Tekla, and Forma. We also leverage advanced tools for clash detection, 4D scheduling, quantity takeoff, and virtual reality visualization. Our team stays updated with the latest BIM technologies and industry standards.',
       category: 'Technical'
     },
     {

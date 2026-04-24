@@ -14,7 +14,7 @@ import TechSlider from './components/TechSlider'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import { Toaster } from './components/ui/sonner'
 
-const sections = ['home', 'services', 'workflow', 'projects', 'about', 'contact']
+const sections = ['home', 'services', 'lod', 'workflow', 'projects', 'about', 'contact']
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -52,6 +52,13 @@ function App() {
 
   const scrollToSection = (sectionId: string) => {
     console.log(`Attempting to scroll to section: ${sectionId}`);
+    
+    // Special handling for home to scroll to absolute top
+    if (sectionId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const element = document.getElementById(sectionId)
     if (element) {
       console.log(`Element found, scrolling to:`, element);
