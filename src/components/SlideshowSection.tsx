@@ -38,21 +38,21 @@ const SlideshowSection: React.FC = () => {
       title: 'IFC Drawings & Documentation',
       description: 'Extraction of accurate construction drawings including plans, sections, and elevations directly from coordinated BIM models.',
       tags: ['IFC Drawings', 'Shop Drawings', 'Sheet Production'],
-      images: ['/slideshow-images/04. sd -1.png', '/slideshow-images/04. sd -2.png'],
+      images: ['/slideshow-images/04-sd-1.png', '/slideshow-images/04-sd-2.png'],
     },
     {
       id: 5,
       title: 'Scan to BIM',
       description: 'Conversion of point cloud data into precise BIM models for renovation and as-built documentation.',
       tags: ['Point Cloud', 'As-Built Model', 'High Accuracy'],
-      images: ['/slideshow-images/05.Point cloud 1.png', '/slideshow-images/05.Point cloud 2.png'],
+      images: ['/slideshow-images/05-Point-cloud-1.png', '/slideshow-images/05-Point-cloud-2.png'],
     },
     {
       id: 6,
       title: 'Food Service BIM',
       description: 'Specialized BIM modeling for commercial kitchens including equipment layout and coordination.',
       tags: ['Equipment Layout', 'Fabrication Ready', 'Coordination'],
-      images: ['/slideshow-images/06. kitchen 1.png', '/slideshow-images/06.kitchen 2.png'],
+      images: ['/slideshow-images/06-kitchen-1.png', '/slideshow-images/06-kitchen-2.png'],
     }
   ]
 
@@ -60,31 +60,27 @@ const SlideshowSection: React.FC = () => {
     target: sectionRef,
     offset: ["start end", "end start"]
   })
-
+ 
   const imageY = useTransform(scrollYProgress, [0, 1], [-20, 20])
 
+  const stopAutoPlay = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    if (imageIntervalRef.current) clearInterval(imageIntervalRef.current)
+    intervalRef.current = null
+    imageIntervalRef.current = null
+  }, [])
+
   const startAutoPlay = useCallback(() => {
-    if (intervalRef.current) return
+    stopAutoPlay()
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
       setCurrentImageIndex(0)
-    }, 6000)
+    }, 4000)
 
     imageIntervalRef.current = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % 2)
-    }, 3000)
-  }, [slides.length])
-
-  const stopAutoPlay = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-      intervalRef.current = null
-    }
-    if (imageIntervalRef.current) {
-      clearInterval(imageIntervalRef.current)
-      imageIntervalRef.current = null
-    }
-  }, [])
+    }, 2000)
+  }, [slides.length, stopAutoPlay])
 
   useEffect(() => {
     startAutoPlay()
@@ -94,12 +90,14 @@ const SlideshowSection: React.FC = () => {
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
     setCurrentImageIndex(0)
-  }, [slides.length])
+    startAutoPlay() // Reset timer on manual navigation
+  }, [slides.length, startAutoPlay])
 
   const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
     setCurrentImageIndex(0)
-  }, [slides.length])
+    startAutoPlay() // Reset timer on manual navigation
+  }, [slides.length, startAutoPlay])
 
   const goToSlide = useCallback((index: number) => {
     setCurrentSlide(index)
