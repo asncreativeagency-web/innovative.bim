@@ -86,7 +86,6 @@ export const useContactForm = (): UseContactFormReturn => {
       projectType: '',
       message: ''
     })
-    setSubmitStatus('idle')
   }
 
   return {
