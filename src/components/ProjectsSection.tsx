@@ -207,7 +207,11 @@ const ProjectsSection: React.FC = () => {
               }, [isAutoPlay, testimonials.length])
 
               return (
-                <div className="relative min-h-[350px] sm:min-h-[280px] flex flex-col items-center justify-center pt-8 sm:pt-12">
+                <div 
+                  className="relative min-h-[350px] sm:min-h-[280px] flex flex-col items-center justify-center pt-8 sm:pt-12"
+                  onMouseEnter={() => setIsAutoPlay(false)}
+                  onMouseLeave={() => setIsAutoPlay(true)}
+                >
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeIndex}
