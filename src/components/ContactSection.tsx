@@ -22,7 +22,14 @@ const ContactSection: React.FC = () => {
   } = useContactForm()
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const categories = ['Architecture', 'Structure', 'Scan-to-BIM', 'Food Service BIM', 'Other']
+  const categories = [
+    'Architecture',
+    'Structure',
+    'Scan-to-BIM',
+    'Food Service BIM',
+    'MEP BIM',
+    'Other'
+  ]
 
   return (
     <div id="contact" className="relative bg-[#050810] overflow-hidden pt-32 pb-0">
@@ -139,31 +146,17 @@ const ContactSection: React.FC = () => {
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10 relative z-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
-                  <div className="relative group">
-                    <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>First Name</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-base sm:text-lg"
-                      placeholder="John"
-                      required
-                    />
-                  </div>
-                  <div className="relative group">
-                    <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Last Name</label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-base sm:text-lg"
-                      placeholder="Doe"
-                      required
-                    />
-                  </div>
+                <div className="relative group sm:col-span-2">
+                  <label className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1 sm:mb-2 block group-focus-within:text-blue-400 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Full Name</label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    className="w-full bg-transparent border-b border-white/10 py-2 sm:py-3 text-white focus:outline-none focus:border-blue-500 transition-all font-bold tracking-tight text-base sm:text-lg"
+                    placeholder="John Doe"
+                    required
+                  />
                 </div>
 
                 <div className="relative group">

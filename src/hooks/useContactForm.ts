@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { ContactService } from '../lib/contactService'
 
 interface ContactFormData {
-  firstName: string
-  lastName: string
+  fullName: string
   email: string
   company: string
   projectType: string
@@ -21,8 +20,7 @@ interface UseContactFormReturn {
 
 export const useContactForm = (): UseContactFormReturn => {
   const [formData, setFormData] = useState<ContactFormData>({
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
     company: '',
     projectType: '',
@@ -45,33 +43,36 @@ export const useContactForm = (): UseContactFormReturn => {
     setSubmitStatus('idle')
     
     try {
-      const result = await ContactService.submitInquiry({
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        email: formData.email,
-        company: formData.company,
-        project_type: formData.projectType,
-        message: formData.message
+      // Direct Email via Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: "d9a0faab-af44-47ea-9c13-fdcf5f49b806",
+          subject: `New Project Inquiry: ${formData.fullName}`,
+          from_name: "BIM Arcana Website",
+          name: formData.fullName,
+          email: formData.email,
+          company: formData.company,
+          project_type: formData.projectType,
+          message: formData.message,
+        })
       })
-      
+
+      const result = await response.json()
+
       if (result.success) {
         setSubmitStatus('success')
-        // Don't reset form immediately - let user see success message
-        // resetForm()
+        resetForm()
       } else {
-        // For debugging - show success even if there's an error
-        console.error('Form submission error:', result.error)
-        if (result.error && result.error.includes('row-level security')) {
-          // RLS error but data might have been inserted
-          setSubmitStatus('success')
-          // resetForm()
-        } else {
-          setSubmitStatus('error')
-        }
+        setSubmitStatus('error')
       }
     } catch (error) {
       setSubmitStatus('error')
-      console.error('Unexpected error:', error)
+      console.error('Submission error:', error)
     } finally {
       setIsSubmitting(false)
     }
@@ -79,8 +80,7 @@ export const useContactForm = (): UseContactFormReturn => {
 
   const resetForm = () => {
     setFormData({
-      firstName: '',
-      lastName: '',
+      fullName: '',
       email: '',
       company: '',
       projectType: '',
