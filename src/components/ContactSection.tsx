@@ -299,7 +299,7 @@ const ContactSection: React.FC = () => {
         <div className="relative w-full">
           {/* Main Image Banner */}
           <img 
-            src="/images/footer-bg.jpg" 
+            src="/images/footer-bg.png" 
             alt="Footer Banner" 
             className="w-full h-auto min-h-[300px] object-cover" 
           />
