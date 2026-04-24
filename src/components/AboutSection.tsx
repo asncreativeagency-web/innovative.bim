@@ -125,7 +125,6 @@ const AboutSection: React.FC = () => {
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-[100px] group-hover:bg-cyan-500/20 transition-all duration-700" />
         </div>
 
-        {/* Missing line and button from screenshot */}
         <div className="mt-12 text-center px-4">
           <p className="text-lg sm:text-2xl font-bold text-blue-400/90 mb-8 sm:mb-10 tracking-tight">
             Supporting contractors, consultants, and food service specialists across global projects.

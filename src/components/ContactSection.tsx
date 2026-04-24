@@ -32,7 +32,7 @@ const ContactSection: React.FC = () => {
   ]
 
   return (
-    <div id="contact" className="relative bg-[#050810] overflow-hidden pt-32 pb-0">
+    <div id="contact" className="relative bg-[#050810] overflow-hidden pt-16 sm:pt-24 pb-0">
       {/* Technical Master Grid */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div 
@@ -295,27 +295,27 @@ const ContactSection: React.FC = () => {
       </div>
 
       {/* Corporate Footer */}
-      <footer className="mt-24 sm:mt-48 border-t border-white/5 bg-[#1e2633]">
+      <footer className="mt-12 sm:mt-16 bg-[#1e2633]">
         <div className="relative w-full">
           {/* Main Image Banner */}
           <img 
             src="/images/footer-bg.png" 
             alt="Footer Banner" 
-            className="w-full h-auto min-h-[300px] object-cover" 
+            className="w-full h-auto min-h-[300px] sm:min-h-[450px] object-cover" 
           />
           
         </div>
 
-        {/* The Dark Bottom Area - Extended as needed */}
-        <div className="bg-[#1e2633] pt-10 sm:pt-14 pb-12 sm:pb-16 text-center relative z-20">
+        {/* The Dark Bottom Area - Compacted */}
+        <div className="bg-[#1e2633] pt-6 sm:pt-8 pb-8 sm:pb-10 text-center relative z-20">
           <div className="max-w-7xl mx-auto px-4">
             {/* Description Text */}
-            <p className="text-white font-bold mb-10 sm:mb-16 max-w-5xl mx-auto text-lg sm:text-2xl lg:text-3xl leading-relaxed tracking-tight px-4 opacity-95">
+            <p className="text-white font-bold mb-6 sm:mb-10 max-w-5xl mx-auto text-lg sm:text-2xl lg:text-3xl leading-relaxed tracking-tight px-4 opacity-95">
               Delivering coordinated, construction-ready BIM solutions across architecture, structure, scan-to-BIM, and food service projects.
             </p>
 
             {/* LinkedIn Link */}
-            <div className="mb-10 sm:mb-16">
+            <div className="mb-6 sm:mb-10">
               <motion.a 
                 href="https://www.linkedin.com/company/innovativebimservices/" 
                 target="_blank" 
@@ -330,7 +330,7 @@ const ContactSection: React.FC = () => {
 
             {/* Copyright */}
             <p className="text-gray-500 font-bold text-[8px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.6em] uppercase px-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              © 2026 Innovative BIM Services. All rights reserved. Built for global AEC and food service BIM delivery.
+              © 2026 Innovative BIM Services. All rights reserved. Built for global AEC and food service BIM delivery. Developed by <a href="https://www.fraylontech.com" target="_blank" className="text-blue-400/80 hover:text-blue-400 transition-colors">Fraylon Technologies</a>.
             </p>
           </div>
         </div>

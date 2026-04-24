@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import ArcanaButton from './ArcanaButton'
 
 interface ProjectHighlight {
@@ -166,7 +166,7 @@ const ProjectsSection: React.FC = () => {
         </div>
 
 
-        {/* Testimonial */}
+        {/* Testimonials Slider */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -181,30 +181,72 @@ const ProjectsSection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Quote icon */}
-          <div className="mb-8">
-            <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-500/30 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
-            </svg>
-          </div>
+          <div className="relative group px-4">
+            {/* Testimonials Array and Logic */}
+            {(() => {
+              const testimonials = [
+                {
+                  quote: "Working with Hari has been a gamechanger for our project workflow. He isn't just a technical expert in BIM and production drawing; he truly feels like an extension of our own team. Hari has a rare ability to grasp our specific standards quickly and execute them with incredible precision. Even under tight deadlines, he remains highly responsive and consistent. If you're looking for someone who combines professional excellence with a reliable, collaborative spirit, I can't recommend Hari highly enough.",
+                  author: "Food service facility designer"
+                },
+                {
+                  quote: "A great resource for production drawing and BIM support. Highly responsive, aligned well with our team's standards, and consistently delivered on time. I would definitely recommend their services.",
+                  author: "FCSI Consultant, Principal & Creative Director"
+                }
+              ]
+              
+              const [activeIndex, setActiveIndex] = React.useState(0)
+              const [isAutoPlay, setIsAutoPlay] = React.useState(true)
 
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-200 italic leading-relaxed mb-8 font-light px-4">
-            "A great resource for production drawing and BIM support. Highly responsive, aligned well with our team's standards, and consistently delivered on time. I would definitely recommend their services."
-          </p>
+              React.useEffect(() => {
+                if (!isAutoPlay) return
+                const interval = setInterval(() => {
+                  setActiveIndex((prev) => (prev + 1) % testimonials.length)
+                }, 8000)
+                return () => clearInterval(interval)
+              }, [isAutoPlay, testimonials.length])
 
-          <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-8 bg-blue-500/30" />
-            <p className="text-xs sm:text-sm text-blue-400 font-bold tracking-[0.2em] uppercase">
-              FCSI Consultant, Principal & Creative Director
-            </p>
-            <div className="h-px w-8 bg-blue-500/30" />
+              return (
+                <div className="relative min-h-[350px] sm:min-h-[280px] flex flex-col items-center justify-center pt-8 sm:pt-12">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeIndex}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="flex flex-col items-center justify-center w-full"
+                    >
+                      {/* Quote icon */}
+                      <div className="mb-8">
+                        <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-500/30 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
+                        </svg>
+                      </div>
+
+                      <p className="text-xl sm:text-2xl md:text-2xl text-gray-200 italic leading-relaxed mb-10 font-light px-4 max-w-3xl">
+                        "{testimonials[activeIndex].quote}"
+                      </p>
+
+                      <div className="flex items-center justify-center gap-4">
+                        <div className="h-px w-8 sm:w-12 bg-blue-500/30" />
+                        <p className="text-[10px] sm:text-xs text-blue-400 font-bold tracking-[0.2em] uppercase">
+                          {testimonials[activeIndex].author}
+                        </p>
+                        <div className="h-px w-8 sm:w-12 bg-blue-500/30" />
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              )
+            })()}
           </div>
 
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="mt-12 text-sm sm:text-base font-bold text-blue-400/90 tracking-tight"
+            className="mt-20 text-sm sm:text-base font-bold text-blue-400/90 tracking-tight"
           >
             We don’t just create models — we deliver coordinated, construction-ready BIM aligned with real project workflows.
           </motion.p>
