@@ -34,7 +34,7 @@ const technologies = [
   },
   {
     name: 'Enscape',
-    icon: '/logos/enscape_logo-white-rgb-900x277px-768x236.webp',
+    icon: '/logos/enscape.png',
     category: 'Visualization'
   }
 ]
