@@ -4,7 +4,9 @@ import ArcanaButton from './ArcanaButton'
 
 const SlideshowSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const imageIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
@@ -15,84 +17,42 @@ const SlideshowSection: React.FC = () => {
       title: 'Architectural BIM Modeling',
       description: 'Detailed LOD 300–400 architectural models developed for accurate design representation and construction readiness.',
       tags: ['LOD 300–400', 'Coordinated Model', 'IFC Ready'],
-      image: '/slideshow-images/01.Architecture-1.png',
+      images: ['/slideshow-images/01.Architecture-1.png', '/slideshow-images/01.Architecture-2.png'],
     },
     {
       id: 2,
-      title: 'Architectural BIM Modeling',
-      description: 'Detailed LOD 300–400 architectural models developed for accurate design representation and construction readiness.',
-      tags: ['LOD 300–400', 'Coordinated Model', 'IFC Ready'],
-      image: '/slideshow-images/01.Architecture-2.png',
+      title: 'Structural BIM Modeling',
+      description: 'Precise modeling of beams, columns, and structural systems aligned with construction requirements.',
+      tags: ['LOD 300–400', 'Structural Systems', 'Construction Ready'],
+      images: ['/slideshow-images/02.Structure-1.png', '/slideshow-images/02.Structure-2.png'],
     },
     {
       id: 3,
-      title: 'Structural BIM Modeling',
-      description: 'Precise modeling of beams, columns, and structural systems aligned with construction requirements.',
-      tags: ['LOD 300–400', 'Structural Systems', 'Construction Ready'],
-      image: '/slideshow-images/02.Structure-1.png',
+      title: 'BIM Coordination & Clash Resolution',
+      description: 'Multi-discipline coordination ensuring clash-free, construction-ready models through issue identification and resolution.',
+      tags: ['Clash Detection', 'Issue Resolution', 'Coordinated Model'],
+      images: ['/slideshow-images/03.coordination-1.png', '/slideshow-images/03.coordination-2.png'],
     },
     {
       id: 4,
-      title: 'Structural BIM Modeling',
-      description: 'Precise modeling of beams, columns, and structural systems aligned with construction requirements.',
-      tags: ['LOD 300–400', 'Structural Systems', 'Construction Ready'],
-      image: '/slideshow-images/02.Structure-2.png',
+      title: 'IFC Drawings & Documentation',
+      description: 'Extraction of accurate construction drawings including plans, sections, and elevations directly from coordinated BIM models.',
+      tags: ['IFC Drawings', 'Shop Drawings', 'Sheet Production'],
+      images: ['/slideshow-images/04. sd -1.png', '/slideshow-images/04. sd -2.png'],
     },
     {
       id: 5,
-      title: 'BIM Coordination & Clash Resolution',
-      description: 'Multi-discipline coordination ensuring clash-free, construction-ready models through issue identification and resolution.',
-      tags: ['Clash Detection', 'Issue Resolution', 'Coordinated Model'],
-      image: '/slideshow-images/03.coordination-1.png',
+      title: 'Scan to BIM',
+      description: 'Conversion of point cloud data into precise BIM models for renovation and as-built documentation.',
+      tags: ['Point Cloud', 'As-Built Model', 'High Accuracy'],
+      images: ['/slideshow-images/05.Point cloud 1.png', '/slideshow-images/05.Point cloud 2.png'],
     },
     {
       id: 6,
-      title: 'BIM Coordination & Clash Resolution',
-      description: 'Multi-discipline coordination ensuring clash-free, construction-ready models through issue identification and resolution.',
-      tags: ['Clash Detection', 'Issue Resolution', 'Coordinated Model'],
-      image: '/slideshow-images/03.coordination-2.png',
-    },
-    {
-      id: 7,
-      title: 'IFC Drawings & Documentation',
-      description: 'Extraction of accurate construction drawings including plans, sections, and elevations directly from coordinated BIM models.',
-      tags: ['IFC Drawings', 'Shop Drawings', 'Sheet Production'],
-      image: '/slideshow-images/04. sd -1.png',
-    },
-    {
-      id: 8,
-      title: 'IFC Drawings & Documentation',
-      description: 'Extraction of accurate construction drawings including plans, sections, and elevations directly from coordinated BIM models.',
-      tags: ['IFC Drawings', 'Shop Drawings', 'Sheet Production'],
-      image: '/slideshow-images/04. sd -2.png',
-    },
-    {
-      id: 9,
-      title: 'Scan to BIM',
-      description: 'Conversion of point cloud data into precise BIM models for renovation and as-built documentation.',
-      tags: ['Point Cloud', 'As-Built Model', 'High Accuracy'],
-      image: '/slideshow-images/05.Point cloud 1.png',
-    },
-    {
-      id: 10,
-      title: 'Scan to BIM',
-      description: 'Conversion of point cloud data into precise BIM models for renovation and as-built documentation.',
-      tags: ['Point Cloud', 'As-Built Model', 'High Accuracy'],
-      image: '/slideshow-images/05.Point cloud 2.png',
-    },
-    {
-      id: 11,
       title: 'Food Service BIM',
       description: 'Specialized BIM modeling for commercial kitchens including equipment layout and coordination.',
       tags: ['Equipment Layout', 'Fabrication Ready', 'Coordination'],
-      image: '/slideshow-images/06. kitchen 1.png',
-    },
-    {
-      id: 12,
-      title: 'Food Service BIM',
-      description: 'Specialized BIM modeling for commercial kitchens including equipment layout and coordination.',
-      tags: ['Equipment Layout', 'Fabrication Ready', 'Coordination'],
-      image: '/slideshow-images/06.kitchen 2.png',
+      images: ['/slideshow-images/06. kitchen 1.png', '/slideshow-images/06.kitchen 2.png'],
     }
   ]
 
@@ -107,13 +67,22 @@ const SlideshowSection: React.FC = () => {
     if (intervalRef.current) return
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 4000)
+      setCurrentImageIndex(0)
+    }, 6000)
+
+    imageIntervalRef.current = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % 2)
+    }, 3000)
   }, [slides.length])
 
   const stopAutoPlay = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current)
       intervalRef.current = null
+    }
+    if (imageIntervalRef.current) {
+      clearInterval(imageIntervalRef.current)
+      imageIntervalRef.current = null
     }
   }, [])
 
@@ -122,9 +91,20 @@ const SlideshowSection: React.FC = () => {
     return () => stopAutoPlay()
   }, [startAutoPlay, stopAutoPlay])
 
-  const nextSlide = useCallback(() => setCurrentSlide((prev) => (prev + 1) % slides.length), [slides.length])
-  const prevSlide = useCallback(() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length), [slides.length])
-  const goToSlide = useCallback((index: number) => setCurrentSlide(index), [])
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+    setCurrentImageIndex(0)
+  }, [slides.length])
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+    setCurrentImageIndex(0)
+  }, [slides.length])
+
+  const goToSlide = useCallback((index: number) => {
+    setCurrentSlide(index)
+    setCurrentImageIndex(0)
+  }, [])
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => touchStartX.current = e.touches[0].clientX, [])
   const handleTouchMove = useCallback((e: React.TouchEvent) => touchEndX.current = e.touches[0].clientX, [])
@@ -198,7 +178,7 @@ const SlideshowSection: React.FC = () => {
             {/* Image Layer - Always changes */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={slide.id}
+                key={slide.id + '-' + currentImageIndex}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -213,7 +193,7 @@ const SlideshowSection: React.FC = () => {
                 >
                   <motion.img
                     style={{ y: imageY }}
-                    src={slide.image}
+                    src={slide.images[currentImageIndex]}
                     alt={slide.title}
                     className="w-full h-full object-cover opacity-90"
                   />

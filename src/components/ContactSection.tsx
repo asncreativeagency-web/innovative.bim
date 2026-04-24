@@ -302,31 +302,44 @@ const ContactSection: React.FC = () => {
       </div>
 
       {/* Corporate Footer */}
-      <footer className="mt-24 sm:mt-48 border-t border-white/5 pt-16 sm:pt-32 pb-16 sm:pb-24 bg-black/60 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          {/* Logo ONLY */}
-          <img src="/logo.png" alt="BIM Arcana" className="h-24 sm:h-44 mx-auto mb-10 sm:mb-12 brightness-0 invert opacity-100 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]" />
+      <footer className="mt-24 sm:mt-48 border-t border-white/5 bg-[#1e2633]">
+        <div className="relative w-full">
+          {/* Main Image Banner */}
+          <img 
+            src="/images/footer-bg.jpg" 
+            alt="Footer Banner" 
+            className="w-full h-auto min-h-[300px] object-cover" 
+          />
           
-          <p className="text-gray-300 font-bold mb-10 sm:mb-16 max-w-4xl mx-auto text-lg sm:text-2xl leading-relaxed tracking-tight px-4">
-            Delivering coordinated, construction-ready BIM solutions across architecture, structure, scan-to-BIM, and food service projects.
-          </p>
+        </div>
 
-          <div className="flex flex-col items-center justify-center gap-6 sm:gap-8 mb-12 sm:mb-16 border-t border-white/5 pt-10 sm:pt-12">
-            <motion.a 
-              href="https://www.linkedin.com/company/innovativebimservices/" 
-              target="_blank" 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-4 sm:gap-6 px-8 py-4 sm:px-10 sm:py-5 bg-blue-600/10 backdrop-blur-md border border-blue-500/30 rounded-full text-white font-black uppercase tracking-[0.4em] text-[10px] sm:text-[12px] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.1)] group"
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              Follow us on LinkedIn
-            </motion.a>
+        {/* The Dark Bottom Area - Extended as needed */}
+        <div className="bg-[#1e2633] pt-10 sm:pt-14 pb-12 sm:pb-16 text-center relative z-20">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Description Text */}
+            <p className="text-white font-bold mb-10 sm:mb-16 max-w-5xl mx-auto text-lg sm:text-2xl lg:text-3xl leading-relaxed tracking-tight px-4 opacity-95">
+              Delivering coordinated, construction-ready BIM solutions across architecture, structure, scan-to-BIM, and food service projects.
+            </p>
+
+            {/* LinkedIn Link */}
+            <div className="mb-10 sm:mb-16">
+              <motion.a 
+                href="https://www.linkedin.com/company/innovativebimservices/" 
+                target="_blank" 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 sm:gap-4 text-blue-400 hover:text-white transition-colors font-bold uppercase tracking-[0.4em] text-[10px] sm:text-[12px]"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                Follow us on LinkedIn
+              </motion.a>
+            </div>
+
+            {/* Copyright */}
+            <p className="text-gray-500 font-bold text-[8px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.6em] uppercase px-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              © 2026 Innovative BIM Services. All rights reserved. Built for global AEC and food service BIM delivery.
+            </p>
           </div>
-
-          <p className="text-gray-600 font-bold text-[8px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.6em] uppercase px-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            © 2026 Innovative BIM Services. All rights reserved. Built for global AEC and food service BIM delivery.
-          </p>
         </div>
       </footer>
     </div>
