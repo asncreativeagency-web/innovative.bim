@@ -20,6 +20,10 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
+    // Force scroll to top on refresh
+    window.history.scrollRestoration = 'manual'
+    window.scrollTo(0, 0)
+
     let ticking = false
     
     const handleScroll = () => {
