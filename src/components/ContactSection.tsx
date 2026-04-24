@@ -307,10 +307,10 @@ const ContactSection: React.FC = () => {
         </div>
 
         {/* The Dark Bottom Area - Compacted */}
-        <div className="bg-[#1e2633] pt-6 sm:pt-8 pb-8 sm:pb-10 text-center relative z-20">
+        <div className="bg-[#1e2633] pt-0 -mt-32 sm:-mt-48 pb-8 sm:pb-10 text-center relative z-20">
           <div className="max-w-7xl mx-auto px-4">
             {/* Description Text */}
-            <p className="text-white font-bold mb-6 sm:mb-10 max-w-5xl mx-auto text-lg sm:text-2xl lg:text-3xl leading-relaxed tracking-tight px-4 opacity-95">
+            <p className="text-white font-bold mb-4 sm:mb-6 max-w-5xl mx-auto text-lg sm:text-2xl lg:text-3xl leading-relaxed tracking-tight px-4 opacity-95">
               Delivering coordinated, construction-ready BIM solutions across architecture, structure, scan-to-BIM, and food service projects.
             </p>
 
