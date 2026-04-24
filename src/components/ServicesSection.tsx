@@ -15,7 +15,7 @@ const ToolLogo: React.FC<{ tool: string }> = ({ tool }) => {
   const logoSrc = toolLogos[tool]
   if (logoSrc) {
     return (
-      <div className="h-8 sm:h-10 flex items-center">
+      <div className={`h-8 sm:h-10 ${tool === 'Revit' ? 'pr-6' : ''} ${tool === 'Forma' ? 'mr-32 sm:mr-40' : ''} flex items-center`}>
         <img
           src={logoSrc}
           alt={tool}
@@ -348,9 +348,9 @@ const ServicesSection: React.FC = () => {
                       : 'rounded-xl px-3 py-2 sm:px-4 sm:py-3'
                     }`}>
                     <p className="text-[9px] sm:text-[10px] font-bold text-blue-300 uppercase tracking-wider mb-1.5">Tools Used</p>
-                    <div className={`flex flex-wrap ${selectedService.id === '5' ? 'gap-4' : 'gap-2'}`}>
-                      {selectedService.tools.map((tech, index) => (
-                        <ToolLogo key={index} tool={tech} />
+                    <div className="flex flex-wrap items-center gap-6 sm:gap-4">
+                      {selectedService.tools.map((tool) => (
+                        <ToolLogo key={tool} tool={tool} />
                       ))}
                     </div>
                   </div>
