@@ -32,7 +32,7 @@ const ContactSection: React.FC = () => {
   ]
 
   return (
-    <div id="contact" className="relative bg-[#050810] overflow-hidden -mt-64 sm:mt-0 pt-0 sm:pt-16 pb-0">
+    <div id="contact" className="relative bg-[#050810] overflow-hidden pt-12 sm:pt-16 pb-0">
       {/* Technical Master Grid */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div 

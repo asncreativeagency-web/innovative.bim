@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import ArcanaButton from '../common/ArcanaButton'
 
 interface ProjectHighlight {
@@ -197,17 +197,20 @@ const ProjectsSection: React.FC = () => {
               
               const [activeIndex, setActiveIndex] = React.useState(0)
               const [isAutoPlay, setIsAutoPlay] = React.useState(true)
+              const testimonialRef = React.useRef(null)
+              const isInView = useInView(testimonialRef, { amount: 0.3 })
 
               React.useEffect(() => {
-                if (!isAutoPlay) return
+                if (!isAutoPlay || !isInView) return
                 const interval = setInterval(() => {
                   setActiveIndex((prev) => (prev + 1) % testimonials.length)
                 }, 8000)
                 return () => clearInterval(interval)
-              }, [isAutoPlay, testimonials.length])
+              }, [isAutoPlay, isInView, testimonials.length])
 
               return (
                 <div 
+                  ref={testimonialRef}
                   className="relative min-h-[350px] sm:min-h-[280px] flex flex-col items-center justify-center pt-8 sm:pt-12"
                   onMouseEnter={() => setIsAutoPlay(false)}
                   onMouseLeave={() => setIsAutoPlay(true)}
