@@ -309,7 +309,7 @@ const ContactSection: React.FC = () => {
         </div>
 
         {/* The Dark Bottom Area - Compacted */}
-        <div className="bg-[#1e2633] pt-8 sm:pt-12 pb-8 sm:pb-10 text-center relative z-20">
+        <div className="bg-[#1e2633] pt-8 sm:pt-0 mt-0 sm:-mt-48 pb-8 sm:pb-10 text-center relative z-20">
           <div className="max-w-7xl mx-auto px-4">
             {/* Description Text */}
             <p className="text-white font-bold mb-4 sm:mb-6 max-w-5xl mx-auto text-lg sm:text-2xl lg:text-3xl leading-relaxed tracking-tight px-4 opacity-95">
