@@ -330,23 +330,54 @@ const ContactSection: React.FC = () => {
               </motion.a>
             </div>
 
-            {/* Featured In Badge */}
-            <div className="mb-10 flex justify-center">
-              <motion.a 
-                href="https://businessconnectindia.in/innovative-bim-services/"
-                target="_blank"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full inline-flex items-center gap-3 group hover:bg-white/10 transition-all duration-300"
-              >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                </svg>
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest">Featured in</span>
-                  <span className="text-sm sm:text-base font-black text-white tracking-tight group-hover:text-blue-400 transition-colors">Business Connect India</span>
-                </div>
-              </motion.a>
+            {/* Accreditations & Featured In Layout */}
+            <div className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-between mt-8 sm:mt-12">
+              {/* Left Column: Autodesk Revit Certified */}
+              <div className="flex justify-center md:justify-start">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="h-24 md:h-32 bg-white rounded-xl p-3 flex items-center justify-center border border-white/20 shadow-xl"
+                >
+                  <img 
+                    src="/logos/revit-certified.jpg" 
+                    alt="Autodesk Revit Certified Professional" 
+                    className="h-full w-auto object-contain rounded-lg" 
+                  />
+                </motion.div>
+              </div>
+
+              {/* Center Column: Featured In Badge */}
+              <div className="flex justify-center order-first md:order-none">
+                <motion.a 
+                  href="https://businessconnectindia.in/innovative-bim-services/"
+                  target="_blank"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full inline-flex items-center gap-3 group hover:bg-white/10 transition-all duration-300"
+                >
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                  </svg>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest">Featured in</span>
+                    <span className="text-sm sm:text-base font-black text-white tracking-tight group-hover:text-blue-400 transition-colors">Business Connect India</span>
+                  </div>
+                </motion.a>
+              </div>
+
+              {/* Right Column: FCSI Active Supporter */}
+              <div className="flex justify-center md:justify-end">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="h-24 md:h-32 bg-white rounded-xl p-3 flex items-center justify-center border border-white/20 shadow-xl"
+                >
+                  <img 
+                    src="/logos/fcsi-member.jpg" 
+                    alt="Foodservice Consultants Society International (FCSI) Active Supporter" 
+                    className="h-full w-auto object-contain rounded-lg" 
+                  />
+                </motion.div>
+              </div>
             </div>
 
             {/* Copyright */}
